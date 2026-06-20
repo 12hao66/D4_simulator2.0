@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="38" height="38">
+  <defs>
+    <linearGradient id="axeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b7355"/>
+      <stop offset="50%" style="stop-color:#a08060"/>
+      <stop offset="100%" style="stop-color:#8b7355"/>
+    </linearGradient>
+    <linearGradient id="axeBlade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a0a0a0"/>
+      <stop offset="50%" style="stop-color:#c0c0c0"/>
+      <stop offset="100%" style="stop-color:#808080"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- 斧头刃（左） -->
+  <path d="M12 20 L28 32 L24 45 L8 35 Z" fill="url(#axeBlade)" stroke="#666" stroke-width="1"/>
+  
+  <!-- 斧头刃（右） -->
+  <path d="M52 20 L36 32 L40 45 L56 35 Z" fill="url(#axeBlade)" stroke="#666" stroke-width="1"/>
+  
+  <!-- 斧头中心 -->
+  <circle cx="32" cy="32" r="8" fill="url(#axeGrad)" stroke="#6b5344" stroke-width="1.5"/>
+  
+  <!-- 斧头细节 -->
+  <path d="M28 32 L32 36 L36 32" fill="none" stroke="#666" stroke-width="1"/>
+  
+  <!-- 斧柄 -->
+  <rect x="30" y="40" width="4" height="22" fill="#4a3a2a" stroke="#333" stroke-width="1"/>
+  
+  <!-- 斧柄缠绕 -->
+  <line x1="30" y1="45" x2="34" y2="45" stroke="#2a1a0a" stroke-width="1"/>
+  <line x1="30" y1="48" x2="34" y2="48" stroke="#2a1a0a" stroke-width="1"/>
+  <line x1="30" y1="51" x2="34" y2="51" stroke="#2a1a0a" stroke-width="1"/>
+  <line x1="30" y1="54" x2="34" y2="54" stroke="#2a1a0a" stroke-width="1"/>
+  
+  <!-- 斧柄末端 -->
+  <rect x="28" y="60" width="8" height="2" fill="#6b5344" stroke="#4a3a2a" stroke-width="0.5"/>
+  
+  <!-- 金属铆钉 -->
+  <circle cx="32" cy="32" r="2" fill="#ffd700" stroke="#cc9900" stroke-width="0.5"/>
+</svg>

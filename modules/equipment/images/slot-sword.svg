@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="swordGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C0C0C0"/>
+      <stop offset="50%" style="stop-color:#A0A0A0"/>
+      <stop offset="100%" style="stop-color:#808080"/>
+    </linearGradient>
+    <linearGradient id="swordHandle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B4513"/>
+      <stop offset="100%" style="stop-color:#4B250D"/>
+    </linearGradient>
+  </defs>
+  <path d="M24 6L18 24h12L24 6z" fill="url(#swordGrad)"/>
+  <path d="M22 24v16M26 24v16" stroke="#C9922A" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="24" cy="32" r="4" fill="url(#swordHandle)"/>
+  <circle cx="24" cy="42" r="3" fill="#FFD700" opacity="0.8"/>
+</svg>

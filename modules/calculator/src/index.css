@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0d0d0d;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@layer base {
+  :root {
+    --d4-dark: #0d0d0d;
+    --d4-card: #1a1a1a;
+    --d4-border: #333333;
+    --d4-gold: #e0a020;
+    --d4-text: #ffffff;
+    --d4-text-secondary: #999999;
+  }
+}
+
+@layer components {
+  .d4-card {
+    @apply bg-d4-card border border-d4-border rounded-lg p-4;
+  }
+  
+  .d4-button {
+    @apply bg-d4-gold text-d4-dark font-bold py-2 px-4 rounded hover:bg-yellow-400 transition-colors;
+  }
+  
+  .d4-input {
+    @apply bg-d4-dark border border-d4-border rounded px-3 py-2 text-d4-text focus:outline-none focus:border-d4-gold;
+  }
+  
+  .d4-tab {
+    @apply px-4 py-2 rounded-t border-t border-x border-d4-border bg-d4-dark hover:bg-d4-card cursor-pointer transition-colors;
+  }
+  
+  .d4-tab.active {
+    @apply bg-d4-card border-b-0;
+  }
+}

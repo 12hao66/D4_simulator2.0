@@ -1,0 +1,60 @@
+{
+  "id": "shadow",
+  "name": "暗影盘",
+  "nodes": [
+    {
+      "id": "shadow-entry-top",
+      "type": "normal",
+      "x": 10,
+      "y": 0,
+      "isEntryPoint": true
+    },
+    {
+      "id": "shadow-path-1",
+      "type": "magic",
+      "x": 10,
+      "y": 1,
+      "effects": ["+5% 暗影伤害"]
+    },
+    {
+      "id": "shadow-path-2",
+      "type": "rare",
+      "x": 10,
+      "y": 2,
+      "effects": ["+10% 暴击伤害"]
+    },
+    {
+      "id": "shadow-center",
+      "type": "legendary",
+      "x": 10,
+      "y": 5,
+      "effects": ["+20% 暗影伤害"]
+    },
+    {
+      "id": "shadow-link-bottom",
+      "type": "link",
+      "x": 10,
+      "y": 20
+    },
+    {
+      "id": "shadow-link-left",
+      "type": "link",
+      "x": 0,
+      "y": 10
+    },
+    {
+      "id": "shadow-link-right",
+      "type": "link",
+      "x": 20,
+      "y": 10
+    }
+  ],
+  "connections": [
+    ["shadow-entry-top", "shadow-path-1"],
+    ["shadow-path-1", "shadow-path-2"],
+    ["shadow-path-2", "shadow-center"],
+    ["shadow-center", "shadow-link-bottom"],
+    ["shadow-center", "shadow-link-left"],
+    ["shadow-center", "shadow-link-right"]
+  ]
+}

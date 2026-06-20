@@ -1,0 +1,2679 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>暗黑4 · 野蛮人伤害模拟器 S13</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+/* ══════════════════════════════════════════════
+   D4 野蛮人模拟器 S13 — 全新视觉设计
+   风格：炼金工坊 / 铸造厂 — 黑铁底色+熔金高光
+   核心原则：高对比 · 清晰层次 · 工具专业感
+══════════════════════════════════════════════ */
+:root {
+  /* 黑铁背景层次 */
+  --ink-0:   #0d0d0f;   /* 最深底色 */
+  --ink-1:   #141418;   /* 主背景 */
+  --ink-2:   #1c1c22;   /* 面板背景 */
+  --ink-3:   #242430;   /* 卡片背景 */
+  --ink-4:   #2e2e3c;   /* 悬停/选中 */
+
+  /* 熔金色系 */
+  --fire-1:  #ffd060;   /* 最亮金 — 主高光 */
+  --fire-2:  #e8a020;   /* 中金 — 标题/强调 */
+  --fire-3:  #b06010;   /* 暗金 — 边框/辅助 */
+  --fire-4:  #603008;   /* 深铜 — 微弱边框 */
+
+  /* 功能语义色 */
+  --emerald:  #00d68f;   /* 成功/正向 */
+  --crimson:  #ff4d4f;   /* 危险/负向 */
+  --sapphire: #4096ff;   /* 信息/蓝色 */
+  --amber:    #ff9800;   /* 警告/橙色 */
+
+  /* 文字层次 — 高对比度 */
+  --text-primary:   #f0ead8;   /* 主要文字：高亮暖白 */
+  --text-secondary: #b0a080;   /* 次要文字：中等对比 */
+  --text-muted:     #6a6050;   /* 说明文字：低对比 */
+  --text-disabled:  #3a3530;   /* 禁用状态 */
+
+  /* 边框 — 明显可见 */
+  --border-strong: rgba(224,160,32,.55);  /* 强边框 */
+  --border-mid:    rgba(180,120,20,.30);  /* 中等边框 */
+  --border-soft:   rgba(140, 90,15,.18);  /* 柔和边框 */
+  --border-faint:  rgba(100, 70,10,.12);  /* 极淡边框 */
+
+  /* 间距 & 形状 */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%; width: 100%;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 14px; line-height: 1.5;
+  background: var(--ink-0);
+  color: var(--text-primary);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* 大气背景效果 */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 40% at 50% 0%,   rgba(180,100,0,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 0%   100%, rgba(100,30,0,.14) 0%, transparent 55%),
+    radial-gradient(ellipse 30% 40% at 100% 20%,  rgba(50,20,80,.10) 0%, transparent 50%);
+}
+
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+  opacity: .6;
+}
+
+.app {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column;
+  height: 100vh; width: 100vw;
+}
+
+/* ══ TOPBAR ══ */
+.topbar {
+  flex-shrink: 0;
+  display: flex; align-items: center; gap: 18px;
+  height: 54px; padding: 0 22px;
+  background: rgba(10,10,14,.97);
+  border-bottom: 1px solid var(--border-strong);
+  box-shadow: 0 1px 0 rgba(224,160,32,.08), 0 4px 20px rgba(0,0,0,.4);
+  z-index: 100;
+}
+
+.logo {
+  font-family: 'Cinzel', serif;
+  font-size: 18px; font-weight: 900; letter-spacing: 3px;
+  background: linear-gradient(135deg, #fff0c0 0%, var(--fire-1) 40%, var(--fire-2) 80%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  filter: drop-shadow(0 0 12px rgba(255,208,96,.4));
+}
+
+.topbar-sep {
+  width: 1px; height: 24px;
+  background: linear-gradient(180deg, transparent, var(--border-mid), transparent);
+}
+
+.s-badge {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px; letter-spacing: 3px;
+  color: var(--fire-2); padding: 3px 10px;
+  border: 1px solid var(--border-mid); border-radius: 2px;
+  background: rgba(180,96,16,.12);
+  text-transform: uppercase;
+}
+
+.topbar-tabs { display: flex; gap: 2px; margin-left: auto; }
+
+.ttab {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-family: 'Cinzel', serif; font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+  padding: 7px 18px; cursor: pointer;
+  border-radius: var(--radius-sm); transition: all .2s;
+}
+.ttab:hover {
+  color: var(--text-secondary);
+  background: rgba(255,255,255,.04);
+  border-color: var(--border-soft);
+}
+.ttab.active {
+  color: var(--fire-1);
+  background: rgba(224,160,32,.1);
+  border-color: var(--border-mid);
+  box-shadow: inset 0 1px 0 rgba(255,208,96,.1);
+}
+
+/* ══ PLAN BAR ══ */
+.plan-bar {
+  flex-shrink: 0;
+  display: flex; align-items: center; gap: 6px;
+  height: 42px; padding: 0 18px;
+  background: var(--ink-1);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.plan-tabs {
+  display: flex; gap: 5px; flex: 1; overflow-x: auto;
+  padding-right: 8px;
+}
+.plan-tabs::-webkit-scrollbar { height: 2px; }
+.plan-tabs::-webkit-scrollbar-thumb { background: var(--fire-4); border-radius: 1px; }
+
+.ptab {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--ink-3);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 5px 12px; cursor: pointer;
+  font-size: 12px; color: var(--text-secondary);
+  transition: all .18s; white-space: nowrap; flex-shrink: 0; position: relative;
+}
+.ptab:hover { border-color: var(--border-mid); color: var(--text-primary); background: var(--ink-4); }
+.ptab.active {
+  background: rgba(224,160,32,.14);
+  border-color: var(--border-strong);
+  color: var(--fire-1);
+  box-shadow: 0 0 0 1px rgba(224,160,32,.08) inset;
+}
+.ptab-name {
+  font-family: 'Cinzel', serif; font-size: 11px; font-weight: 600; letter-spacing: .5px;
+  max-width: 110px; overflow: hidden; text-overflow: ellipsis;
+}
+.ptab-x {
+  background: none; border: none; color: var(--text-muted);
+  font-size: 14px; cursor: pointer; padding: 0; line-height: 1; transition: color .15s;
+}
+.ptab-x:hover { color: var(--crimson); }
+.ptab-rename {
+  position: absolute; inset: 0;
+  background: var(--ink-1); border: 1px solid var(--fire-2);
+  border-radius: var(--radius-sm); padding: 2px 10px;
+  color: var(--text-primary); font-size: 11px; outline: none; width: 100%;
+  font-family: 'Cinzel', serif;
+}
+
+.plan-btns { display: flex; gap: 5px; flex-shrink: 0; }
+.pb {
+  background: rgba(224,160,32,.08);
+  border: 1px solid var(--border-mid);
+  color: var(--text-secondary);
+  font-size: 12px; font-weight: 500;
+  padding: 5px 14px; border-radius: var(--radius-sm);
+  cursor: pointer; font-family: 'Rajdhani', sans-serif;
+  white-space: nowrap; transition: all .18s;
+}
+.pb:hover {
+  border-color: var(--border-strong);
+  color: var(--fire-1);
+  background: rgba(224,160,32,.15);
+}
+
+/* ══ THREE COLUMNS ══ */
+.cols {
+  flex: 1; display: grid;
+  grid-template-columns: 1fr 1fr 1.35fr;
+  overflow: hidden; min-width: 0;
+}
+
+.col {
+  overflow-y: auto; overflow-x: hidden;
+  border-right: 1px solid var(--border-soft);
+  min-width: 0; background: var(--ink-1);
+}
+.col:last-child { border-right: none; background: var(--ink-0); }
+.col::-webkit-scrollbar { width: 5px; }
+.col::-webkit-scrollbar-track { background: transparent; }
+.col::-webkit-scrollbar-thumb { background: var(--fire-4); border-radius: 3px; }
+.col::-webkit-scrollbar-thumb:hover { background: var(--fire-3); }
+
+/* ══ SECTION HEADER ══ */
+.sh {
+  font-family: 'Cinzel', serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 2.5px; color: var(--fire-2); text-transform: uppercase;
+  padding: 12px 16px 10px;
+  border-bottom: 1px solid var(--border-soft);
+  background: linear-gradient(180deg, rgba(20,20,26,.98) 0%, rgba(16,16,20,.95) 100%);
+  display: flex; align-items: center; gap: 10px;
+  position: sticky; top: 0; z-index: 20; backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 rgba(224,160,32,.06);
+}
+.sh-badge {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 10px; font-weight: 600; letter-spacing: 1px;
+  padding: 2px 8px; border-radius: 12px;
+  background: rgba(224,160,32,.12);
+  border: 1px solid var(--border-mid);
+  color: var(--fire-2); margin-left: auto;
+}
+
+/* ══ FIELD BLOCKS ══ */
+.fblock { padding: 6px 16px 10px; }
+
+.frow {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-faint);
+  min-width: 0;
+}
+.frow:last-child { border-bottom: none; }
+
+.flabel {
+  flex: 1; min-width: 0;
+  font-size: 13px; font-weight: 500;
+  color: var(--text-primary); line-height: 1.4;
+}
+.flabel small {
+  display: block; font-size: 11px;
+  color: var(--text-muted); margin-top: 2px;
+  font-weight: 400; letter-spacing: .2px;
+}
+
+/* 标签徽章 */
+.ftag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; font-weight: 400;
+  padding: 2px 7px; border-radius: 3px;
+  border: 1px solid; white-space: nowrap; flex-shrink: 0;
+  letter-spacing: .5px;
+}
+.tag-add  { border-color: rgba(64,150,255,.5);  color: #70b8ff; background: rgba(64,150,255,.1); }
+.tag-x    { border-color: rgba(232,160,32,.55); color: var(--fire-1); background: rgba(232,160,32,.1); }
+.tag-crit { border-color: rgba(255,208,64,.5);  color: var(--fire-1); background: rgba(255,208,64,.1); }
+.tag-vuln { border-color: rgba(255,80,80,.5);   color: #ff8070; background: rgba(255,80,80,.1); }
+.tag-op   { border-color: rgba(255,152,0,.5);   color: var(--amber); background: rgba(255,152,0,.1); }
+.tag-base { border-color: rgba(0,214,143,.5);   color: var(--emerald); background: rgba(0,214,143,.1); }
+.tag-lock { border-color: rgba(150,120,60,.4);  color: var(--text-muted); background: rgba(100,80,40,.12); }
+
+.lock-val {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 14px; font-weight: 600;
+  color: var(--text-secondary); white-space: nowrap;
+}
+
+/* ══ NUMBER INPUTS — 关键可读性 ══ */
+.ni {
+  background: var(--ink-0);
+  border: 1.5px solid var(--border-mid);
+  color: var(--text-primary);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 14px; font-weight: 400;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  outline: none; width: 92px;
+  text-align: right;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+  flex-shrink: 0;
+  -moz-appearance: textfield;
+}
+.ni::-webkit-inner-spin-button,
+.ni::-webkit-outer-spin-button { opacity: .4; }
+.ni:hover { border-color: var(--border-strong); }
+.ni:focus {
+  border-color: var(--fire-2);
+  box-shadow: 0 0 0 3px rgba(224,160,32,.15);
+  background: rgba(224,160,32,.04);
+}
+#f_class:hover { border-color: var(--border-strong); }
+#f_class:focus { border-color: var(--fire-2); box-shadow: 0 0 0 3px rgba(224,160,32,.15); outline:none; }
+#f_class option { background: var(--ink-2); color: var(--text-primary); }
+.ni.w { width: 110px; }
+.ni.dis {
+  color: var(--text-disabled); background: var(--ink-2);
+  border-color: var(--border-faint); cursor: not-allowed;
+}
+
+/* checkbox */
+.cbrow {
+  display: flex; align-items: center; gap: 9px;
+  padding: 8px 0; cursor: pointer;
+  font-size: 13px; font-weight: 500; color: var(--text-primary);
+  user-select: none;
+}
+.cbrow input[type=checkbox] {
+  width: 16px; height: 16px;
+  accent-color: var(--fire-2); cursor: pointer; flex-shrink: 0;
+}
+
+/* ══ DYNAMIC X ROWS ══ */
+.xsec { padding: 6px 14px 2px; }
+
+/* 词缀行：4列 toggle | name | val | del */
+.xrow {
+  display: grid;
+  grid-template-columns: 28px 1fr 78px 28px;
+  gap: 5px; align-items: center;
+  margin-bottom: 4px;
+  padding: 3px 4px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition: background .15s, border-color .15s;
+}
+.xrow:hover {
+  background: rgba(255,255,255,.025);
+  border-color: var(--border-faint);
+}
+
+/* 禁用状态 */
+.xrow.disabled { opacity: .42; }
+.xrow.disabled .xname {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+.xrow.disabled .ni { color: var(--text-disabled); }
+
+/* 启用/禁用 toggle 按钮 */
+.xtoggle {
+  width: 26px; height: 26px;
+  border-radius: 4px;
+  border: 1.5px solid var(--border-mid);
+  background: transparent;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; line-height: 1;
+  transition: all .18s; flex-shrink: 0;
+  padding: 0;
+}
+.xtoggle.on {
+  background: rgba(224,160,32,.18);
+  border-color: var(--fire-2);
+  color: var(--fire-1);
+}
+.xtoggle.off {
+  background: transparent;
+  border-color: var(--border-soft);
+  color: var(--text-muted);
+}
+.xtoggle:hover { border-color: var(--border-strong); }
+
+.xname {
+  background: var(--ink-0); border: 1.5px solid var(--border-mid);
+  color: var(--text-primary); font-family: 'Rajdhani', sans-serif;
+  font-size: 13px; font-weight: 500; padding: 5px 8px;
+  border-radius: var(--radius-sm); outline: none; width: 100%;
+  transition: border-color .2s;
+}
+.xname::placeholder { color: var(--text-disabled); font-size: 11px; }
+.xname:hover { border-color: var(--border-strong); }
+.xname:focus { border-color: var(--fire-2); box-shadow: 0 0 0 2px rgba(224,160,32,.12); }
+
+.xdel {
+  background: transparent; border: 1.5px solid var(--border-soft);
+  color: var(--text-muted); font-size: 13px; cursor: pointer;
+  width: 28px; height: 28px; display: flex; align-items: center;
+  justify-content: center; border-radius: var(--radius-sm); transition: all .18s;
+  padding: 0; flex-shrink: 0;
+}
+.xdel:hover { border-color: var(--crimson); color: var(--crimson); background: rgba(255,77,79,.08); }
+
+/* 合计显示栏 */
+.zone-total {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 6px 10px; margin: 4px 0 2px;
+  background: rgba(224,160,32,.06);
+  border: 1px solid var(--border-mid);
+  border-radius: 5px;
+  font-family: 'Share Tech Mono', monospace;
+  min-height: 32px;
+}
+.zone-total-label { font-size: 11px; color: var(--text-muted); letter-spacing: .5px; }
+.zone-total-val   { font-size: 14px; font-weight: 700; color: var(--fire-1); }
+
+.btn-add-x {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  width: 100%; padding: 6px 12px; margin: 4px 0 8px;
+  background: transparent; border: 1.5px dashed var(--border-mid);
+  color: var(--text-secondary); font-size: 12px; font-weight: 500;
+  letter-spacing: .5px; cursor: pointer; border-radius: var(--radius-sm);
+  font-family: 'Rajdhani', sans-serif; transition: all .2s;
+}
+.btn-add-x:hover {
+  border-color: var(--border-strong); color: var(--fire-1);
+  background: rgba(224,160,32,.08);
+}
+
+/* ══ BD CARDS ══ */
+.bd-list { padding: 10px 14px; display: flex; flex-direction: column; gap: 8px; }
+.bd-card {
+  background: var(--ink-2); border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md); overflow: hidden;
+  transition: border-color .2s, box-shadow .2s;
+}
+.bd-card:hover {
+  border-color: var(--border-mid);
+  box-shadow: 0 4px 16px rgba(0,0,0,.35);
+}
+.bd-card.selected {
+  border-color: var(--border-strong);
+  background: rgba(224,160,32,.05);
+  box-shadow: 0 0 0 1px rgba(224,160,32,.1) inset;
+}
+.bd-head {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; cursor: pointer;
+}
+.bd-icon { font-size: 22px; flex-shrink: 0; }
+.bd-info { flex: 1; min-width: 0; }
+.bd-name {
+  font-family: 'Cinzel', serif; font-size: 13px; font-weight: 700;
+  color: var(--text-primary); letter-spacing: .5px;
+}
+.bd-meta { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+.bd-tier {
+  font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700;
+  padding: 3px 9px; border-radius: 20px;
+  background: rgba(224,160,32,.15); border: 1px solid var(--border-mid);
+  color: var(--fire-1); white-space: nowrap; flex-shrink: 0; letter-spacing: .5px;
+}
+.bd-body { display: none; border-top: 1px solid var(--border-soft); padding: 12px 14px; }
+.bd-card.open .bd-body { display: block; }
+.bd-stat-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 6px 20px; margin-bottom: 12px;
+}
+.bd-stat { font-size: 13px; color: var(--text-secondary); }
+.bd-stat span { color: var(--fire-1); font-weight: 700; }
+.bd-actions { display: flex; gap: 8px; }
+.btn-bd {
+  flex: 1; padding: 8px 12px;
+  background: var(--ink-3); border: 1px solid var(--border-soft);
+  color: var(--text-secondary); font-size: 12px; font-weight: 600; letter-spacing: .5px;
+  cursor: pointer; border-radius: var(--radius-sm);
+  font-family: 'Cinzel', serif; transition: all .2s; text-align: center;
+}
+.btn-bd:hover { border-color: var(--border-mid); color: var(--fire-1); background: var(--ink-4); }
+.btn-bd.primary {
+  background: linear-gradient(180deg, rgba(200,120,20,.35) 0%, rgba(140,76,8,.25) 100%);
+  border-color: var(--fire-3); color: var(--fire-1);
+}
+.btn-bd.primary:hover {
+  background: linear-gradient(180deg, rgba(220,140,30,.45) 0%, rgba(160,90,12,.35) 100%);
+  border-color: var(--border-strong);
+}
+
+/* ══ RIGHT COL ══ */
+.rcol { display: flex; flex-direction: column; }
+
+.rtabs {
+  display: flex; border-bottom: 1px solid var(--border-soft);
+  flex-shrink: 0; background: var(--ink-2);
+}
+.rtab {
+  background: transparent; border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-secondary);
+  font-family: 'Cinzel', serif; font-size: 12px; font-weight: 600; letter-spacing: 1px;
+  padding: 12px 20px; cursor: pointer; transition: all .2s;
+  margin-bottom: -1px; white-space: nowrap;
+}
+.rtab:hover { color: var(--text-primary); background: rgba(255,255,255,.02); }
+.rtab.active { color: var(--fire-1); border-bottom-color: var(--fire-2); }
+
+.rtab-panel {
+  display: none; overflow-y: auto; padding: 18px 22px;
+}
+.rtab-panel.active { display: block; }
+.rtab-panel::-webkit-scrollbar { width: 5px; }
+.rtab-panel::-webkit-scrollbar-track { background: transparent; }
+.rtab-panel::-webkit-scrollbar-thumb { background: var(--fire-4); border-radius: 3px; }
+
+/* ══ CALC BUTTON ══ */
+.btn-calc {
+  display: block; width: 100%; padding: 14px 20px;
+  margin-bottom: 18px;
+  background: linear-gradient(180deg, #c89028 0%, #7c4808 100%);
+  border: 1.5px solid var(--fire-2); border-radius: var(--radius-md);
+  color: #fff0c0;
+  font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700; letter-spacing: 4px;
+  cursor: pointer; text-transform: uppercase;
+  position: relative; overflow: hidden; transition: all .22s;
+  box-shadow: 0 2px 0 rgba(0,0,0,.5), 0 4px 20px rgba(200,144,40,.15),
+              inset 0 1px 0 rgba(255,240,160,.2);
+}
+.btn-calc::before {
+  content: '';
+  position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,200,.12), transparent);
+  transition: left .4s;
+}
+.btn-calc:hover {
+  background: linear-gradient(180deg, #e0a830 0%, #904e08 100%);
+  box-shadow: 0 2px 0 rgba(0,0,0,.5), 0 6px 28px rgba(224,168,48,.3),
+              inset 0 1px 0 rgba(255,240,160,.25);
+  transform: translateY(-1px);
+  border-color: var(--fire-1);
+}
+.btn-calc:hover::before { left: 100%; }
+.btn-calc:active { transform: translateY(0); box-shadow: 0 1px 0 rgba(0,0,0,.5); }
+
+/* ══ RESULT HERO ══ */
+.r-hero {
+  text-align: center; padding: 22px 18px 18px;
+  border: 1px solid var(--border-mid); border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, rgba(180,100,0,.12) 0%, rgba(14,14,18,.8) 100%);
+  margin-bottom: 18px;
+  position: relative; overflow: hidden;
+}
+.r-hero::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--fire-2), transparent);
+}
+.r-mode {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; letter-spacing: 3px; color: var(--text-secondary);
+  text-transform: uppercase; margin-bottom: 10px;
+}
+.r-num {
+  font-family: 'Cinzel', serif; font-weight: 900;
+  font-size: clamp(38px, 4.5vw, 64px); line-height: 1;
+  background: linear-gradient(180deg, #fff0c0 0%, var(--fire-1) 45%, var(--fire-2) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(255,208,96,.5));
+}
+.r-sub {
+  font-size: 12px; color: var(--text-secondary);
+  margin-top: 8px; line-height: 1.6;
+}
+
+/* ══ STEPS TOGGLE ══ */
+.steps-toggle {
+  display: flex; gap: 4px; margin: 0 0 14px;
+  background: var(--ink-2); border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm); padding: 3px;
+}
+.stoggle {
+  flex: 1; background: transparent; border: 1px solid transparent;
+  color: var(--text-muted); font-family: 'Cinzel', serif;
+  font-size: 11px; font-weight: 600; letter-spacing: 1px; padding: 7px;
+  cursor: pointer; border-radius: 3px; transition: all .18s;
+}
+.stoggle:hover { color: var(--text-secondary); }
+.stoggle.active {
+  background: rgba(224,160,32,.16); color: var(--fire-1);
+  border-color: var(--border-mid);
+  box-shadow: 0 1px 0 rgba(255,208,96,.08) inset;
+}
+
+/* ══ SIMPLE STEPS ══ */
+.steps-simple {
+  background: var(--ink-2); border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md); overflow: hidden;
+}
+.step-s {
+  display: flex; align-items: center; gap: 12px;
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--border-faint);
+  transition: background .15s;
+}
+.step-s:hover { background: rgba(255,255,255,.02); }
+.step-s:last-child { border-bottom: none; }
+.step-s.hl {
+  background: rgba(224,160,32,.07);
+  border-bottom: 1px solid var(--border-soft);
+}
+.step-icon { font-size: 15px; flex-shrink: 0; width: 22px; text-align: center; }
+.step-label { flex: 1; font-size: 13px; font-weight: 500; color: var(--text-primary); }
+.step-label .note {
+  display: block; font-size: 11px; color: var(--text-muted);
+  margin-top: 2px; font-weight: 400;
+}
+.step-mult {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px; color: var(--fire-2);
+  text-align: right; min-width: 68px; flex-shrink: 0;
+}
+.step-val {
+  font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700;
+  color: var(--fire-1); text-align: right; min-width: 88px; flex-shrink: 0;
+}
+.step-s.hl .step-val { font-size: 17px; }
+.step-arrow {
+  text-align: center; color: var(--border-mid); font-size: 12px;
+  padding: 2px 14px; user-select: none; letter-spacing: .5px;
+}
+
+/* ══ DETAILED STEPS ══ */
+.step-d {
+  background: var(--ink-2); border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md); margin-bottom: 6px; overflow: hidden;
+}
+.step-d-head {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 14px; cursor: pointer; transition: background .15s;
+}
+.step-d-head:hover { background: rgba(255,255,255,.025); }
+.step-d-icon { font-size: 18px; flex-shrink: 0; }
+.step-d-name { flex: 1; font-size: 13px; font-weight: 600; color: var(--text-primary); }
+.step-d-result {
+  font-family: 'Cinzel', serif; font-size: 15px;
+  font-weight: 700; color: var(--fire-1);
+}
+.step-d-body {
+  display: none; border-top: 1px solid var(--border-faint);
+  padding: 12px 16px; font-size: 13px; color: var(--text-secondary);
+  line-height: 1.8; background: rgba(0,0,0,.25);
+}
+.step-d-body .formula {
+  font-family: 'Share Tech Mono', monospace; font-size: 12px;
+  color: var(--fire-1); background: var(--ink-0);
+  padding: 8px 12px; border-radius: var(--radius-sm); margin: 6px 0;
+  display: block; border-left: 3px solid var(--fire-3); word-break: break-all;
+  line-height: 1.7;
+}
+.step-d.open .step-d-body { display: block; }
+.step-d.final {
+  border-color: var(--fire-3);
+  background: rgba(224,160,32,.05);
+}
+.step-d.final .step-d-name { color: var(--fire-2); font-size: 14px; }
+.step-d.final .step-d-result { font-size: 20px; }
+
+/* ══ DPS GRID ══ */
+.dps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-top: 12px; }
+.dps-stat {
+  background: var(--ink-2); border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md); padding: 14px 12px; text-align: center;
+  transition: border-color .2s;
+}
+.dps-stat:hover { border-color: var(--border-mid); }
+.dps-key {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; letter-spacing: 1.5px; color: var(--text-muted);
+  text-transform: uppercase; margin-bottom: 6px;
+}
+.dps-val { font-family: 'Cinzel', serif; font-size: 20px; font-weight: 700; color: var(--fire-1); }
+.dps-sub { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+/* ══ BD COMPARE ══ */
+.cmp-title {
+  font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 2px; color: var(--fire-2);
+  margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border-soft);
+}
+.cmp-vs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.cmp-side {
+  background: var(--ink-2); border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md); padding: 14px 16px;
+}
+.cmp-side.mine { border-color: var(--fire-3); }
+.cmp-side.bd { border-color: rgba(64,150,255,.35); }
+.cmp-side-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; letter-spacing: 1.5px; color: var(--text-muted);
+  margin-bottom: 8px; text-transform: uppercase;
+}
+.cmp-side-num { font-family: 'Cinzel', serif; font-size: 24px; font-weight: 700; color: var(--fire-1); }
+.cmp-side-sub { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+.cmp-diff-bar {
+  background: var(--ink-2); border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md); padding: 16px 20px;
+  margin-bottom: 12px; text-align: center;
+}
+.cmp-diff-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 1.5px;
+}
+.cmp-diff-num { font-family: 'Cinzel', serif; font-size: 36px; font-weight: 900; }
+.cmp-diff-num.up   { color: var(--emerald); filter: drop-shadow(0 0 12px rgba(0,214,143,.4)); }
+.cmp-diff-num.down { color: var(--crimson);  filter: drop-shadow(0 0 12px rgba(255,77,79,.35)); }
+.cmp-row-list { display: flex; flex-direction: column; gap: 4px; }
+.cmp-row {
+  display: grid; grid-template-columns: 1fr auto auto auto;
+  gap: 12px; align-items: center;
+  padding: 8px 14px;
+  background: var(--ink-2); border: 1px solid var(--border-faint);
+  border-radius: var(--radius-sm); font-size: 13px;
+  transition: background .15s;
+}
+.cmp-row:hover { background: var(--ink-3); }
+.cmp-rkey  { color: var(--text-secondary); font-weight: 500; }
+.cmp-rmine { color: var(--text-primary); font-weight: 700; text-align: right; }
+.cmp-rbd   { color: var(--sapphire); text-align: right; font-weight: 600; }
+.cmp-rdiff { text-align: right; font-weight: 700; min-width: 52px; font-family: 'Share Tech Mono', monospace; }
+.cmp-rdiff.pos { color: var(--emerald); }
+.cmp-rdiff.neg { color: var(--crimson); }
+
+/* full-compare CSS removed */
+.guide-page {
+  display: none; grid-column: 1/-1;
+  overflow-y: auto; padding: 28px 36px;
+  max-width: 900px; background: var(--ink-0);
+}
+.guide-page::-webkit-scrollbar { width: 5px; }
+.guide-page::-webkit-scrollbar-thumb { background: var(--fire-4); border-radius: 3px; }
+
+/* ══ EMPTY STATE ══ */
+.empty { text-align: center; padding: 40px 20px; color: var(--text-muted); }
+.empty-icon { font-size: 32px; opacity: .35; margin-bottom: 12px; }
+.empty-text { font-size: 13px; line-height: 1.8; }
+
+/* ══ TOAST ══ */
+.toast {
+  position: fixed; bottom: 26px; left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--ink-3);
+  border: 1px solid var(--fire-2);
+  color: var(--fire-1);
+  font-family: 'Cinzel', serif; font-size: 12px; font-weight: 600; letter-spacing: 1px;
+  padding: 11px 22px; border-radius: var(--radius-md);
+  opacity: 0; transition: all .3s cubic-bezier(.34,1.56,.64,1);
+  z-index: 9999; pointer-events: none;
+  box-shadow: 0 8px 32px rgba(0,0,0,.6), 0 0 0 1px rgba(224,160,32,.08) inset;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 1000px) {
+  .cols { grid-template-columns: 1fr 1fr; }
+  .col:nth-child(2) { display: none; }
+}
+@media (max-width: 640px) {
+  .cols { grid-template-columns: 1fr; }
+  .col:nth-child(1) { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- ══ TOPBAR ══ -->
+<div class="topbar">
+  <div class="logo">D4 · BARBARIAN</div>
+  <div class="topbar-sep"></div>
+  <div class="s-badge">S13</div>
+  <div class="topbar-tabs">
+    <button class="ttab active" data-page="sim">⚔ 模拟器</button>
+    <button class="ttab" data-page="bdcmp">⚖ BD对比</button>
+    <button class="ttab" data-page="guide">📖 公式说明</button>
+  </div>
+</div>
+
+<!-- ══ PLAN BAR ══ -->
+<div class="plan-bar">
+  <div class="plan-tabs" id="plan-tabs"></div>
+  <div class="plan-btns">
+    <button class="pb" onclick="newPlan()">＋ 新建</button>
+    <button class="pb" onclick="clonePlan()">复制</button>
+    <button class="pb" onclick="exportPlan()">💾 导出</button>
+    <button class="pb" onclick="exportAsBD()">📋 导出BD</button>
+    <button class="pb" onclick="triggerImportFile()">📂 导入</button>
+    <input type="file" id="import-file-input" accept=".json" style="display:none" onchange="handleImportFile(this)">
+  </div>
+</div>
+
+<!-- ══ THREE COLUMNS ══ -->
+<div class="cols" id="cols">
+
+  <!-- ════ LEFT COL: 基础属性 ════ -->
+  <div class="col" id="col-left">
+
+    <!-- 职业选择 -->
+    <div class="sh">👤 职业</div>
+    <div style="padding:10px 14px 12px">
+      <select id="f_class" onchange="save();updateClassLabel(this.value)" style="
+        width:100%;
+        background:var(--ink-1);
+        border:1.5px solid var(--border-mid);
+        color:var(--text-primary);
+        font-family:'Cinzel',serif;
+        font-size:13px;
+        font-weight:600;
+        letter-spacing:0.5px;
+        padding:9px 12px;
+        border-radius:6px;
+        outline:none;
+        cursor:pointer;
+        appearance:none;
+        -webkit-appearance:none;
+        background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9922a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+        background-repeat:no-repeat;
+        background-position:right 12px center;
+        padding-right:32px;
+        transition:border-color .2s, box-shadow .2s">
+        <option value="barbarian">⚔ 野蛮人</option>
+        <option value="druid">🌿 德鲁伊</option>
+        <option value="sorc">🔥 法师</option>
+        <option value="necro">💀 死灵法师</option>
+        <option value="rogue">🗡 游侠</option>
+        <option value="paladin">🛡 圣骑士</option>
+        <option value="spiritborn">🦅 术士</option>
+      </select>
+      <div id="class-hint" style="margin-top:6px;font-size:11px;color:var(--text-muted);
+        display:flex;align-items:center;gap:6px">
+        <span id="stat-div-label" style="color:var(--fire-2);font-family:'Share Tech Mono',monospace">
+          系数：1 + 力量/900
+        </span>
+      </div>
+    </div>
+
+    <div class="sh">⚔ 武器 &amp; 基础</div>
+    <div class="fblock">
+      <div class="frow">
+        <div class="flabel">主手武器点伤（平均）<small>面板小字取中值</small></div>
+        <input class="ni w" type="number" id="f_wpn1" value="3000" min="0" oninput="save()">
+      </div>
+      <div class="frow">
+        <div class="flabel">副手武器点伤<small>双持填；单武器留0</small></div>
+        <input class="ni w" type="number" id="f_wpn2" value="0" min="0" oninput="save()">
+      </div>
+
+      <div class="frow">
+        <div class="flabel">总攻击速度 APS<small>仅DPS计算使用</small></div>
+        <input class="ni" type="number" id="f_aps" value="1.2" step="0.01" min="0.1" oninput="save()">
+      </div>
+      <div class="frow">
+        <div class="flabel" id="stat-label">力量（主属性）<small id="stat-div-label">系数：1 + 力量/900</small></div>
+        <input class="ni w" type="number" id="f_str" value="5000" min="0" oninput="save()">
+        <span class="ftag tag-base">主属</span>
+      </div>
+    </div>
+
+    <div class="sh">⚡ 技能</div>
+    <div class="fblock">
+      <div class="frow">
+        <div class="flabel">技能伤害倍率<small>从技能详情查看</small></div>
+        <input class="ni" type="number" id="f_skill_pct" value="215" min="1" oninput="save()">
+        <span class="ftag tag-base">%</span>
+      </div>
+      <div class="frow">
+        <div class="flabel">每次挥击命中数</div>
+        <input class="ni" type="number" id="f_hits" value="1" min="0.1" step="0.1" oninput="save()">
+      </div>
+      <div class="frow">
+        <label class="cbrow"><input type="checkbox" id="f_is_dot" onchange="save()">
+          <span>持续伤害（DoT）不可暴击/压制</span></label>
+      </div>
+    </div>
+
+    <div class="sh">➕ A类区 [+]%<div class="sh-badge">前缀·加法合算</div></div>
+    <div style="padding:4px 10px 2px;font-size:11px;color:var(--text-muted);line-height:1.6">
+      装备回火词缀 · 巅峰盘节点 · 均为[+]前缀
+    </div>
+    <div class="xsec" id="xsec-a"></div>
+    <div id="total-a" class="zone-total" style="margin:2px 10px 4px"></div>
+    <div style="padding:0 10px 8px">
+      <button class="btn-add-x" onclick="addAffix('a')">＋ 添加 A类词缀</button>
+    </div>
+
+    <div class="sh">💥 暴击</div>
+    <div class="fblock">
+      <div class="frow">
+        <div class="flabel">暴击伤害 基础 [×]<small>固定，不可修改</small></div>
+        <span class="lock-val">50%</span>
+        <span class="ftag tag-lock">锁定</span>
+      </div>
+      <div class="frow">
+        <div class="flabel">暴击伤害 [+]%<small>归入A类区参与加法合算</small></div>
+        <input class="ni" type="number" id="f_crit_dmg_add" value="0" min="0" oninput="save()">
+        <span class="ftag tag-add">[+]%</span>
+      </div>
+      <div class="frow">
+        <div class="flabel">暴击率 %</div>
+        <input class="ni" type="number" id="f_crit_chance" value="50" min="0" max="100" oninput="save()">
+        <span class="ftag tag-crit">%</span>
+      </div>
+      <div class="frow">
+        <label class="cbrow"><input type="checkbox" id="f_crit_active" onchange="save()" checked>
+          <span>此次命中触发暴击（单次）</span></label>
+      </div>
+    </div>
+
+    <div class="sh">🔴 易伤</div>
+    <div class="fblock">
+      <div class="frow">
+        <div class="flabel">易伤基础乘数 [×]<small>固定 ×1.2</small></div>
+        <span class="lock-val">20%</span>
+        <span class="ftag tag-lock">锁定</span>
+      </div>
+      <div class="frow">
+        <div class="flabel">易伤伤害 [+]%<small>装备词缀，目标易伤时计入A伤</small></div>
+        <input class="ni" type="number" id="f_vuln_add" value="0" min="0" oninput="save()">
+        <span class="ftag tag-add">[+]%</span>
+      </div>
+      <div class="frow">
+        <label class="cbrow"><input type="checkbox" id="f_vuln_active" onchange="save()" checked>
+          <span>目标携带易伤</span></label>
+      </div>
+      <div class="frow">
+        <div class="flabel">易伤覆盖率<small>仅影响DPS，不影响单次伤害</small></div>
+        <input class="ni" type="number" id="f_vuln_uptime" value="80" min="0" max="100" oninput="save()">
+        <span class="ftag tag-vuln">%</span>
+      </div>
+    </div>
+
+    <div class="sh">⚡ 压制（Overpower）S13</div>
+    <div class="fblock">
+      <div style="font-size:11px;color:var(--text-muted);line-height:1.7;padding:6px 0 8px">
+        S13机制：叠层 [+]% 自动归入 A类区参与计算<br>
+        叠层数填 0 = 无压制效果
+      </div>
+      <div class="frow">
+        <div class="flabel">每层加成 [+]%<small>单层压制词缀数值</small></div>
+        <input class="ni" type="number" id="f_op_stack_add" value="15" min="0" oninput="save()">
+        <span class="ftag tag-add">[+]%</span>
+      </div>
+      <div class="frow">
+        <div class="flabel">当前叠层数<small>填0表示无压制</small></div>
+        <input class="ni" type="number" id="f_op_stacks" value="0" min="0" max="99" oninput="save()">
+      </div>
+    </div>
+
+    <div class="sh">🛡 怪物减伤</div>
+    <div class="fblock">
+      <div class="frow">
+        <div class="flabel">怪物减伤 [×]%<small>70级约80%</small></div>
+        <input class="ni" type="number" id="f_monster_dr" value="80" min="0" max="99" oninput="save()">
+        <span class="ftag tag-x">[×]%</span>
+      </div>
+      <div class="frow">
+        <label class="cbrow"><input type="checkbox" id="f_apply_dr" onchange="save()">
+          <span>计入怪物减伤（显示实际伤害）</span></label>
+      </div>
+    </div>
+
+  </div><!-- /col-left -->
+
+  <!-- ════ MIDDLE COL: B类+独立X乘区 + BD预设 ════ -->
+  <div class="col" id="col-mid">
+
+    <!-- B类区：[×]% 前缀，同名相加后作为独立乘区 -->
+    <div class="sh">✖ B类区 [×]%<div class="sh-badge">前缀·同名相加</div></div>
+    <div style="padding:6px 14px 4px;font-size:11px;color:var(--text-muted);line-height:1.8">
+      装备原生词缀 · 宝石 · 均为[×]前缀<br>
+      💡 同名词缀自动合并（如两颗×22%物理宝石 → B类合计44%）
+    </div>
+    <div class="xsec" id="xsec-b"></div>
+    <div id="total-b" class="zone-total" style="margin:2px 10px 4px"></div>
+    <div style="padding:0 10px 8px">
+      <button class="btn-add-x" onclick="addAffix('b')">＋ 添加 B类词缀</button>
+    </div>
+
+    <!-- 独立X乘区（传奇威能/套装/异名[×]%） -->
+    <div class="sh">✖ 独立X乘区 [×]%<div class="sh-badge">后缀·各自独立相乘</div></div>
+    <div style="padding:6px 14px 4px;font-size:11px;color:var(--text-muted);line-height:1.6">
+      传奇威能、套装效果、不同名 [×]% 词缀各填一行，每行独立相乘
+    </div>
+    <div class="xsec" id="xsec-leg"></div>
+    <div id="total-leg" class="zone-total" style="margin:2px 10px 4px"></div>
+    <div style="padding:0 10px 8px">
+      <button class="btn-add-x" onclick="addAffix('leg')">＋ 添加独立X词缀</button>
+    </div>
+
+    <!-- 内置BD -->
+    <div class="sh">📊 天梯 Top BD 参考<div class="sh-badge">S13</div></div>
+    <div style="padding:6px 10px;font-size:10px;color:var(--text-muted);line-height:1.6">
+      点击 BD 卡片查看参数，可导入对比或一键套用
+    </div>
+    <div class="bd-list" id="bd-list"></div>
+
+    <!-- 快照面板 -->
+    <div class="sh">📸 快照<div class="sh-badge">最多5个</div></div>
+    <div style="padding:8px 14px 4px;font-size:11px;color:var(--text-muted)">
+      保存当前方案的数据副本，防止数据丢失
+    </div>
+    <div style="padding:4px 14px 8px">
+      <button onclick="takeSnapshot()" style="
+        width:100%;padding:8px;
+        background:linear-gradient(180deg,rgba(200,144,32,.2),rgba(140,88,8,.15));
+        border:1.5px solid var(--border-mid);color:var(--fire-1);
+        font-family:'Cinzel',serif;font-size:12px;font-weight:700;
+        letter-spacing:1px;cursor:pointer;border-radius:6px;
+        transition:all .2s">📸 保存快照</button>
+    </div>
+    <div style="padding:0 14px 12px" id="snap-list"></div>
+
+  </div><!-- /col-mid -->
+
+  <!-- ════ RIGHT COL: 计算结果 ════ -->
+  <div class="col rcol" id="col-right">
+
+    <div class="rtabs">
+      <button class="rtab active" data-rtab="result">计算结果</button>
+      <button class="rtab" data-rtab="dps">DPS</button>
+      <button class="rtab" data-rtab="bdcmp">BD对比</button>
+    </div>
+
+    <!-- RESULT TAB -->
+    <div class="rtab-panel active" id="rtab-result">
+      <button class="btn-calc" onclick="calculate()">⚔ 计算最终伤害</button>
+      <div id="r-empty" class="empty">
+        <div class="empty-icon">⚔</div>
+        <div class="empty-text">填写左侧参数后<br>点击计算</div>
+      </div>
+      <div id="r-content" style="display:none">
+        <div class="r-hero">
+          <div class="r-mode" id="r-mode">单次命中期望</div>
+          <div class="r-num" id="r-num">—</div>
+          <div class="r-sub" id="r-sub">—</div>
+        </div>
+        <!-- toggle -->
+        <div class="steps-toggle">
+          <button class="stoggle active" id="st-simple" onclick="switchSteps('simple')">简洁模式</button>
+          <button class="stoggle" id="st-detail" onclick="switchSteps('detail')">详细展开</button>
+        </div>
+        <!-- simple -->
+        <div id="steps-simple" class="steps-simple"></div>
+        <!-- detail -->
+        <div id="steps-detail" style="display:none"></div>
+      </div>
+    </div>
+
+    <!-- DPS TAB -->
+    <div class="rtab-panel" id="rtab-dps">
+      <div id="dps-empty" class="empty" style="margin-top:20px">
+        <div class="empty-icon">📊</div>
+        <div class="empty-text">请先计算伤害</div>
+      </div>
+      <div id="dps-content" style="display:none">
+        <div class="r-hero" style="margin-bottom:10px">
+          <div class="r-mode">平均 DPS</div>
+          <div class="r-num" id="dps-main">—</div>
+          <div class="r-sub" id="dps-sub">—</div>
+        </div>
+        <div class="dps-grid" id="dps-grid"></div>
+      </div>
+    </div>
+
+    <!-- BD对比 TAB — 重设计 -->
+    <div class="rtab-panel" id="rtab-bdcmp">
+      <!-- 选择基准 -->
+      <div style="margin-bottom:12px">
+        <div style="font-size:11px;color:var(--text-muted);letter-spacing:.5px;
+          margin-bottom:6px;text-transform:uppercase;font-family:'Share Tech Mono',monospace">
+          基准方案
+        </div>
+        <select id="cmp-base" style="width:100%;background:var(--ink-1);
+          border:1.5px solid var(--border-mid);color:var(--text-primary);
+          font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:600;
+          padding:7px 10px;border-radius:6px;outline:none;cursor:pointer">
+        </select>
+      </div>
+      <!-- 对比目标（多选） -->
+      <div style="margin-bottom:12px">
+        <div style="font-size:11px;color:var(--text-muted);letter-spacing:.5px;
+          margin-bottom:6px;text-transform:uppercase;font-family:'Share Tech Mono',monospace">
+          对比目标（可多选）
+        </div>
+        <div id="cmp-targets" style="display:flex;flex-direction:column;gap:4px"></div>
+      </div>
+      <!-- 对比按钮 -->
+      <div style="margin-bottom:14px">
+        <button onclick="runBDCompare()" style="
+          width:100%;padding:9px;
+          background:linear-gradient(180deg,rgba(200,144,32,.35),rgba(140,88,8,.25));
+          border:1.5px solid var(--border-mid);color:var(--fire-1);
+          font-family:'Cinzel',serif;font-size:12px;font-weight:700;
+          letter-spacing:2px;cursor:pointer;border-radius:6px;transition:all .2s">
+          ⚖ 开始对比
+        </button>
+        <div style="font-size:10px;color:var(--text-muted);margin-top:5px;text-align:center">
+          各方案使用自身 skill_pct 计算，结果更真实
+        </div>
+      </div>
+      <!-- 结果 -->
+      <div id="bdcmp-result"></div>
+    </div>
+
+  </div><!-- /col-right -->
+
+</div><!-- /cols -->
+
+
+
+<!-- ══ GUIDE PAGE ══ -->
+<div class="guide-page" id="page-guide">
+
+  <!-- 页头 -->
+  <div style="margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border-soft)">
+    <h2 style="font-family:'Cinzel',serif;font-size:26px;font-weight:900;margin-bottom:8px;
+      background:linear-gradient(135deg,#fff0c0,var(--fire-1),var(--fire-2));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      filter:drop-shadow(0 0 12px rgba(255,208,96,.3))">S13 伤害公式说明</h2>
+    <p style="font-size:13px;color:var(--text-muted);letter-spacing:.5px;line-height:1.6">
+      暗黑4 第13赛季（憎恨之躯 3.0）· 全职业通用 · 同名相加，异名相乘
+    </p>
+  </div>
+
+  <!-- 版本对比 -->
+  <div style="margin-bottom:24px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <div style="background:var(--ink-2);border:1px solid var(--border-soft);
+      border-radius:8px;padding:14px 16px;opacity:.7">
+      <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;
+        color:var(--text-muted);text-transform:uppercase;margin-bottom:8px">2.0 旧公式</div>
+      <div style="font-family:'Share Tech Mono',monospace;font-size:11px;
+        color:var(--text-secondary);line-height:2">
+        武器 × 技能 × 主属<br>
+        × A类 [+]%<br>
+        × 独立X×N [×]%后缀<br>
+        <span style="color:var(--text-muted)">压制：3%触发，HP加入基础</span>
+      </div>
+    </div>
+    <div style="background:rgba(224,160,32,.06);border:1.5px solid var(--border-mid);
+      border-radius:8px;padding:14px 16px;position:relative">
+      <div style="position:absolute;top:-1px;left:-1px;right:-1px;height:2px;
+        background:linear-gradient(90deg,transparent,var(--fire-2),transparent);border-radius:8px 8px 0 0"></div>
+      <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;
+        color:var(--fire-2);text-transform:uppercase;margin-bottom:8px">3.0 S13 新公式</div>
+      <div style="font-family:'Share Tech Mono',monospace;font-size:11px;
+        color:var(--text-primary);line-height:2">
+        武器 × 技能 × 主属<br>
+        × A类 [+]% <span style="color:var(--fire-1)">（含压制叠层）</span><br>
+        <span style="color:var(--fire-1)">× B类 [×]%前缀 ← 新增</span><br>
+        × 独立X×N [×]%后缀
+      </div>
+    </div>
+  </div>
+
+  <!-- 完整公式 -->
+  <div style="margin-bottom:24px">
+    <div style="font-family:'Cinzel',serif;font-size:11px;font-weight:700;
+      letter-spacing:2px;color:var(--fire-2);text-transform:uppercase;
+      margin-bottom:12px;display:flex;align-items:center;gap:10px">
+      <span style="display:inline-block;width:3px;height:16px;
+        background:var(--fire-2);border-radius:2px"></span>
+      完整伤害公式（S13 3.0）
+    </div>
+    <div style="background:var(--ink-1);border:1.5px solid var(--border-mid);
+      border-radius:8px;padding:20px 24px;font-family:'Share Tech Mono',monospace;
+      font-size:13px;line-height:2.6;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;
+        background:linear-gradient(90deg,transparent,var(--fire-2),transparent)"></div>
+      <span style="color:var(--fire-1);font-weight:700">最终伤害</span>
+      <span style="color:var(--text-muted)"> =</span><br>
+      <span style="color:var(--text-disabled)">　</span>
+      <span style="color:var(--emerald)">武器点伤</span>
+      <span style="color:var(--text-secondary)"> × (1 + 附加武器[+]%)</span><br>
+      <span style="color:var(--text-disabled)">　</span>
+      <span style="color:var(--fire-3)">×</span>
+      <span style="color:var(--emerald)">技能系数%</span><br>
+      <span style="color:var(--text-disabled)">　</span>
+      <span style="color:var(--fire-3)">×</span>
+      <span style="color:var(--emerald)">主属区</span>
+      <span style="color:var(--text-secondary)"> (1 + 主属性 / 职业系数)</span><br>
+      <span style="color:var(--text-disabled)">　</span>
+      <span style="color:var(--fire-3)">×</span>
+      <span style="color:#70b8ff">A类区</span>
+      <span style="color:var(--text-secondary)"> (1 + Σ 所有[+]%前缀词缀)</span><br>
+      <span style="color:var(--text-disabled)">　</span>
+      <span style="color:var(--fire-3)">×</span>
+      <span style="color:var(--fire-1)">B类区</span>
+      <span style="color:var(--text-secondary)"> (1 + Σ 同名[×]%前缀词缀)</span>
+      <span style="color:var(--fire-1)">　← S13新增</span><br>
+      <span style="color:var(--text-disabled)">　</span>
+      <span style="color:var(--fire-3)">×</span>
+      <span style="color:var(--fire-1)">暴击区</span>
+      <span style="color:var(--text-secondary)"> (1 + 50%基础 + 暴击[+]%)</span>
+      <span style="color:var(--text-muted)"> — 暴击时</span><br>
+      <span style="color:var(--text-disabled)">　</span>
+      <span style="color:var(--fire-3)">×</span>
+      <span style="color:#ff8070">易伤区</span>
+      <span style="color:var(--text-secondary)"> × 1.2</span>
+      <span style="color:var(--text-muted)"> — 目标易伤时</span><br>
+      <span style="color:var(--text-disabled)">　</span>
+      <span style="color:var(--fire-3)">×</span>
+      <span style="color:var(--fire-2)">独立X₁</span>
+      <span style="color:var(--fire-3)"> × </span>
+      <span style="color:var(--fire-2)">独立X₂</span>
+      <span style="color:var(--fire-3)"> × ... </span>
+      <span style="color:var(--text-muted)"> — [×]%后缀·传奇威能·套装各自独立相乘</span><br>
+      <span style="color:var(--text-disabled)">　</span>
+      <span style="color:var(--fire-3)">÷</span>
+      <span style="color:var(--text-secondary)">怪物减伤</span>
+      <span style="color:var(--text-muted)"> — 可选</span>
+    </div>
+  </div>
+
+  <!-- 各乘区详解 -->
+  <div style="font-family:'Cinzel',serif;font-size:11px;font-weight:700;
+    letter-spacing:2px;color:var(--fire-2);text-transform:uppercase;
+    margin-bottom:14px;display:flex;align-items:center;gap:10px">
+    <span style="display:inline-block;width:3px;height:16px;background:var(--fire-2);border-radius:2px"></span>
+    各乘区详解
+  </div>
+
+  <div style="display:grid;gap:10px;margin-bottom:28px">
+
+    <div style="background:var(--ink-2);border:1px solid var(--border-soft);
+      border-left:4px solid var(--emerald);border-radius:0 8px 8px 0;padding:14px 18px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+        <span style="font-size:18px">⚔</span>
+        <span style="font-family:'Cinzel',serif;font-size:12px;font-weight:700;
+          letter-spacing:2px;color:var(--emerald);text-transform:uppercase">武器 + 技能 + 主属</span>
+      </div>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.8">
+        武器取<strong style="color:var(--text-primary)">面板小字中值</strong>（非 DPS），双持时相加。
+        各职业主属性系数：<strong style="color:var(--fire-1)">野蛮人/圣骑士 ÷900</strong>，
+        <strong style="color:var(--fire-1)">其余职业 ÷800</strong>。
+      </div>
+    </div>
+
+    <div style="background:var(--ink-2);border:1px solid var(--border-soft);
+      border-left:4px solid #4096ff;border-radius:0 8px 8px 0;padding:14px 18px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+        <span style="font-size:18px">➕</span>
+        <span style="font-family:'Cinzel',serif;font-size:12px;font-weight:700;
+          letter-spacing:2px;color:#70b8ff;text-transform:uppercase">A类区 [+]%</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;
+          padding:2px 8px;border-radius:3px;background:rgba(64,150,255,.12);
+          border:1px solid rgba(64,150,255,.3);color:#70b8ff">前缀 · 同名相加</span>
+      </div>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.8">
+        所有 <strong style="color:var(--text-primary)">[+]% 前缀词缀</strong>全部加法合算为一个"桶"：<br>
+        物理/近战/核心/精英/易伤/暴击伤害（[+]%版）等 + 巅峰盘魔法/稀有节点 + 压制叠层加成
+      </div>
+    </div>
+
+    <div style="background:rgba(224,160,32,.05);border:1.5px solid var(--border-mid);
+      border-left:4px solid var(--fire-1);border-radius:0 8px 8px 0;padding:14px 18px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+        <span style="font-size:18px">✖</span>
+        <span style="font-family:'Cinzel',serif;font-size:12px;font-weight:700;
+          letter-spacing:2px;color:var(--fire-1);text-transform:uppercase">B类区 [×]%</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;
+          padding:2px 8px;border-radius:3px;background:rgba(255,208,64,.1);
+          border:1px solid rgba(255,208,64,.3);color:var(--fire-1)">前缀 · S13新增</span>
+      </div>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.8">
+        <strong style="color:var(--fire-1)">[×]% 前缀词缀</strong>（装备词缀和宝石上的 [×]% 标注）：
+        <strong style="color:var(--text-primary)">同名词缀先相加，再整体作为一个独立乘区</strong>与其他乘区相乘。<br>
+        例：两颗 [×]22% 物理伤害宝石 → 同名相加 → B类区填 <strong style="color:var(--fire-1)">44</strong>
+        <br>⚠ 与 A类的区别：B类整体只是一个乘区，A类是全部加在一起只有一个桶。
+      </div>
+    </div>
+
+    <div style="background:var(--ink-2);border:1px solid var(--border-soft);
+      border-left:4px solid var(--fire-1);border-radius:0 8px 8px 0;padding:14px 18px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+        <span style="font-size:18px">💥</span>
+        <span style="font-family:'Cinzel',serif;font-size:12px;font-weight:700;
+          letter-spacing:2px;color:var(--fire-1);text-transform:uppercase">暴击区</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;
+          padding:2px 8px;border-radius:3px;background:rgba(255,208,64,.1);
+          border:1px solid rgba(255,208,64,.3);color:var(--fire-1)">[×]50% 固定</span>
+      </div>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.8">
+        基础暴击乘数 <strong style="color:var(--fire-1)">[×]50%</strong> 固定。
+        装备词缀的<strong style="color:var(--text-primary)">暴击伤害 [+]%</strong> 归入 A类区。
+        暴击时乘以：(1 + 0.5 + 暴击[+]%)
+      </div>
+    </div>
+
+    <div style="background:var(--ink-2);border:1px solid var(--border-soft);
+      border-left:4px solid #ff6050;border-radius:0 8px 8px 0;padding:14px 18px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+        <span style="font-size:18px">🔴</span>
+        <span style="font-family:'Cinzel',serif;font-size:12px;font-weight:700;
+          letter-spacing:2px;color:#ff8070;text-transform:uppercase">易伤区</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;
+          padding:2px 8px;border-radius:3px;background:rgba(255,80,64,.1);
+          border:1px solid rgba(255,80,64,.3);color:#ff8070">[×]1.2 固定</span>
+      </div>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.8">
+        目标携带易伤时独立乘以 <strong style="color:var(--text-primary)">×1.2（固定）</strong>，无法通过装备提升。
+        装备词缀的 [+]易伤伤害% 归入 A类区，仅目标有易伤时才计入。
+      </div>
+    </div>
+
+    <div style="background:var(--ink-2);border:1px solid var(--border-soft);
+      border-left:4px solid var(--fire-2);border-radius:0 8px 8px 0;padding:14px 18px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+        <span style="font-size:18px">✖</span>
+        <span style="font-family:'Cinzel',serif;font-size:12px;font-weight:700;
+          letter-spacing:2px;color:var(--fire-2);text-transform:uppercase">独立X乘区 [×]%</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;
+          padding:2px 8px;border-radius:3px;background:rgba(232,160,32,.12);
+          border:1px solid rgba(232,160,32,.3);color:var(--fire-2)">后缀 · 各自独立相乘</span>
+      </div>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.8">
+        传奇威能、套装效果等 <strong style="color:var(--text-primary)">[×]% 后缀词缀</strong>各自独立相乘。
+        <strong style="color:var(--fire-1)">异名词缀彼此之间均独立相乘</strong>，边际收益递减。<br>
+        同名 [×]% 后缀词缀相加后再独立相乘（同名相加原则）。
+      </div>
+    </div>
+
+    <div style="background:var(--ink-2);border:1px solid var(--border-soft);
+      border-left:4px solid var(--amber);border-radius:0 8px 8px 0;padding:14px 18px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+        <span style="font-size:18px">⚡</span>
+        <span style="font-family:'Cinzel',serif;font-size:12px;font-weight:700;
+          letter-spacing:2px;color:var(--amber);text-transform:uppercase">压制（Overpower）S13</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:10px;
+          padding:2px 8px;border-radius:3px;background:rgba(255,152,0,.1);
+          border:1px solid rgba(255,152,0,.3);color:var(--amber)">归入A类</span>
+      </div>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.8">
+        <strong style="color:var(--fire-1)">S13 压制机制：叠层 [+]% 直接归入 A类区</strong>，
+        不再是单独的乘区。<br><br>
+        · 叠层总加成 = 每层 [+]% × 当前叠层数，全部计入 A类合计<br>
+        · 叠层数填 0 = 无压制效果（相当于无压制）<br>
+        · <strong style="color:var(--text-primary)">不再有「最大HP加成」「生命值乘数」「触发概率」</strong> 等旧机制<br><br>
+        <span style="color:var(--text-muted);font-size:12px">
+          旧版（2.0）压制：3%概率触发，最大HP直接加入伤害基础。S13已完全废除。
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- A类 vs B类 对比说明 -->
+  <div style="background:rgba(224,160,32,.06);border:1px solid var(--border-mid);
+    border-radius:8px;padding:18px 22px;margin-bottom:20px">
+    <div style="font-family:'Cinzel',serif;font-size:11px;font-weight:700;
+      letter-spacing:2px;color:var(--fire-2);margin-bottom:12px;text-transform:uppercase">
+      🔑 A类 vs B类 — 核心区别
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:13px;
+      color:var(--text-secondary);line-height:1.8">
+      <div>
+        <div style="color:#70b8ff;font-weight:700;margin-bottom:4px">A类区 [+]% 前缀</div>
+        · 全部加在一起，只有 1 个桶<br>
+        · (1 + 全部加总%) 整体相乘<br>
+        · 例：[+]30% + [+]20% = ×1.50
+      </div>
+      <div>
+        <div style="color:var(--fire-1);font-weight:700;margin-bottom:4px">B类区 [×]% 前缀</div>
+        · 同名相加后，作为 1 个独立乘区<br>
+        · (1 + 同名加总%) 独立相乘<br>
+        · 例：[×]22% + [×]22% 同名 = ×1.44
+      </div>
+    </div>
+  </div>
+
+  <!-- 实战建议 -->
+  <div style="background:rgba(224,160,32,.06);border:1px solid var(--border-mid);
+    border-radius:8px;padding:18px 22px">
+    <div style="font-family:'Cinzel',serif;font-size:11px;font-weight:700;
+      letter-spacing:2px;color:var(--fire-2);margin-bottom:12px;text-transform:uppercase">
+      💡 S13 实战优化原则
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;
+      font-size:13px;color:var(--text-secondary);line-height:1.8">
+      <div>· A类区内部相加，边际收益递减，适可而止<br>
+           · B类是 S13 新增独立乘区，优先级高<br>
+           · 压制叠层 = 纯 A类加成，多叠层高收益</div>
+      <div>· 独立X越多边际收益越低，注意平衡<br>
+           · 词缀禁用功能可快速评估单条词缀价值<br>
+           · 易伤覆盖率影响 DPS，不影响单次伤害</div>
+    </div>
+  </div>
+
+</div>
+<div class="toast" id="toast"></div>
+</div><!-- /app -->
+
+<!-- ══════════════════════════════════════════════
+  BD 参考数据库
+  格式说明：
+  - 每条BD的 data 字段与「导出方案」JSON格式完全一致
+  - 维护方式：配好方案 → 导出BD → 补充 icon/tier/desc → 粘贴到 builds 数组
+  - version/updated 字段仅供展示用
+══════════════════════════════════════════════ -->
+<script id="bd-data" type="application/json">
+{
+  "version": "S13",
+  "season": "第13赛季·憎恨之躯",
+  "updated": "2025-06",
+  "builds": [
+    {
+      "id": "ww_top",
+      "name": "旋风斩 顶配",
+      "icon": "🌀",
+      "tier": "T0 · 天梯 Top 0.1%",
+      "desc": "超高攻速 + 旋风威能，主流顶配流派",
+      "data": {
+        "class_id": "barbarian",
+        "wpn1": 4800, "wpn2": 4500, "aps": 2.1, "str": 9500,
+        "skill_pct": 215, "is_dot": false, "hits": 1,
+        "affix_a": [
+          {"name": "核心技能伤害", "val": 120, "enabled": true},
+          {"name": "近战伤害",     "val": 80,  "enabled": true},
+          {"name": "暴击伤害[+]",  "val": 250, "enabled": true},
+          {"name": "易伤伤害[+]",  "val": 45,  "enabled": true},
+          {"name": "巅峰盘A类",    "val": 80,  "enabled": true}
+        ],
+        "affix_b": [
+          {"name": "物理伤害倍增宝石×2", "val": 44, "enabled": true},
+          {"name": "核心技能倍增",       "val": 22, "enabled": true}
+        ],
+        "crit_chance": 72, "crit_active": true,
+        "vuln_add": 45, "vuln_active": true, "vuln_uptime": 90,
+        "op_stacks": 3, "op_stack_add": 20,
+        "monster_dr": 80, "apply_dr": false,
+        "multi_leg": [
+          {"name": "旋风斩传奇威能", "val": 60, "enabled": true},
+          {"name": "血腥战意套装",   "val": 40, "enabled": true},
+          {"name": "巅峰独立X节点", "val": 25, "enabled": true}
+        ]
+      }
+    },
+    {
+      "id": "rend_top",
+      "name": "撕裂 顶配",
+      "icon": "🩸",
+      "tier": "T0 · 天梯 Top 0.5%",
+      "desc": "流血持续伤害，爆发恢复强，生存流",
+      "data": {
+        "class_id": "barbarian",
+        "wpn1": 5200, "wpn2": 0, "aps": 1.0, "str": 8800,
+        "skill_pct": 47, "is_dot": true, "hits": 3,
+        "affix_a": [
+          {"name": "流血伤害",      "val": 120, "enabled": true},
+          {"name": "核心技能伤害",  "val": 80,  "enabled": true},
+          {"name": "近战伤害",      "val": 60,  "enabled": true},
+          {"name": "易伤伤害[+]",   "val": 40,  "enabled": true},
+          {"name": "巅峰盘A类",     "val": 70,  "enabled": true}
+        ],
+        "affix_b": [
+          {"name": "流血倍增宝石", "val": 30, "enabled": true},
+          {"name": "物理伤害倍增", "val": 18, "enabled": true}
+        ],
+        "crit_chance": 50, "crit_active": false,
+        "vuln_add": 40, "vuln_active": true, "vuln_uptime": 85,
+        "op_stacks": 0, "op_stack_add": 15,
+        "monster_dr": 80, "apply_dr": false,
+        "multi_leg": [
+          {"name": "撕裂传奇威能", "val": 80, "enabled": true},
+          {"name": "流血专属套装", "val": 50, "enabled": true},
+          {"name": "巅峰独立X",   "val": 20, "enabled": true}
+        ]
+      }
+    },
+    {
+      "id": "hammer_top",
+      "name": "锤击 顶配",
+      "icon": "🔨",
+      "tier": "T1 · 天梯 Top 1%",
+      "desc": "单次爆发极高，压制叠层配合伤害惊人",
+      "data": {
+        "class_id": "barbarian",
+        "wpn1": 6200, "wpn2": 0, "aps": 0.95, "str": 10200,
+        "skill_pct": 160, "is_dot": false, "hits": 1,
+        "affix_a": [
+          {"name": "核心技能伤害",   "val": 140, "enabled": true},
+          {"name": "近战伤害",       "val": 80,  "enabled": true},
+          {"name": "对精英伤害",     "val": 70,  "enabled": true},
+          {"name": "暴击伤害[+]",    "val": 300, "enabled": true},
+          {"name": "易伤伤害[+]",    "val": 50,  "enabled": true},
+          {"name": "压制叠层5×25%",  "val": 125, "enabled": true},
+          {"name": "巅峰盘A类",      "val": 90,  "enabled": true}
+        ],
+        "affix_b": [
+          {"name": "物理伤害倍增宝石", "val": 22, "enabled": true},
+          {"name": "近战倍增",         "val": 18, "enabled": true}
+        ],
+        "crit_chance": 65, "crit_active": true,
+        "vuln_add": 50, "vuln_active": true, "vuln_uptime": 80,
+        "op_stacks": 5, "op_stack_add": 25,
+        "monster_dr": 80, "apply_dr": false,
+        "multi_leg": [
+          {"name": "锤击传奇威能", "val": 70,  "enabled": true},
+          {"name": "压制专属套装", "val": 55,  "enabled": true},
+          {"name": "祖父之剑暴击", "val": 150, "enabled": true}
+        ]
+      }
+    }
+  ]
+}
+</script>
+
+<script>
+// ══════════════════════════════════════════════════
+// BUILT-IN BDs — S13 天梯 Top 参考数据
+// ══════════════════════════════════════════════════
+// BD数据从内嵌 id=bd-data 的JSON块读取
+let BUILTIN_BDS = [];
+
+function loadBDData(){
+  try{
+    const el = document.getElementById('bd-data');
+    if(!el) return;
+    const json = JSON.parse(el.textContent);
+    BUILTIN_BDS = (json.builds||[]).map((b,i)=>({
+      ...b,
+      id: b.id || ('bd_'+i),
+    }));
+    // 更新版本显示
+    const badge = document.getElementById('bd-version-badge');
+    if(badge && json.season) badge.textContent = json.season;
+    const upd = document.getElementById('bd-updated');
+    if(upd && json.updated) upd.textContent = '更新：' + json.updated;
+  } catch(e){
+    console.error('BD数据解析失败:', e);
+  }
+}
+
+// ══════════════════════════════════════════════════
+// STATE & STORAGE
+// ══════════════════════════════════════════════════
+const SKEY      = 'd4_s13_v2';
+const SNAP_KEY  = 'd4_s13_snaps';
+const MAX_SNAPS = 5;
+
+// 全职业主属性配置
+const CLASSES = [
+  { id:'barbarian', name:'野蛮人', icon:'⚔',  stat_label:'力量',  stat_div: 900 },
+  { id:'druid',     name:'德鲁伊', icon:'🌿',  stat_label:'意志',  stat_div: 800 },
+  { id:'sorc',      name:'法师',   icon:'🔥',  stat_label:'智慧',  stat_div: 800 },
+  { id:'necro',     name:'死灵法师',icon:'💀', stat_label:'智慧',  stat_div: 800 },
+  { id:'rogue',     name:'游侠',   icon:'🗡',  stat_label:'敏捷',  stat_div: 800 },
+  { id:'paladin',   name:'圣骑士', icon:'🛡',  stat_label:'力量',  stat_div: 900 },
+  { id:'spiritborn',name:'术士',   icon:'🦅',  stat_label:'敏捷',  stat_div: 800 },
+];
+let plans = [], activeId = null;
+let lastCalcResult = null, lastCalcData = null;
+let selectedBdId = null;
+let stepsMode = 'simple';
+
+function defaultData(){
+  return {
+    class_id:'barbarian',
+    wpn1:3000, wpn2:0, aps:1.2, str:5000,
+    skill_pct:215, is_dot:false, hits:1,
+    // A类：[+]% 前缀词缀，逐条录入
+    affix_a:[],
+    // B类：[×]% 前缀词缀，逐条录入
+    affix_b:[],
+    // 暴击
+    crit_dmg_add:0, crit_chance:50, crit_active:true,
+    // 易伤
+    vuln_add:0, vuln_active:true, vuln_uptime:80,
+    // 压制 S13
+    op_stacks:0, op_stack_add:15,
+    // 怪物减伤
+    monster_dr:80, apply_dr:false,
+    // 独立X乘区：传奇/套装/威能，各自独立相乘
+    multi_leg:[],
+  };
+}
+
+// 创建词缀条目
+function makeAffix(name='', val=0){ return {name, val, enabled:true}; }
+
+// 计算某个词缀数组的启用合计（A类用）
+function affixTotal(arr){ return (arr||[]).filter(r=>r.enabled!==false).reduce((s,r)=>s+(r.val||0),0); }
+
+// B类乘区计算：同名词缀先合并相加，不同名各自独立相乘
+// 例：物理×22% + 物理×22% + 近战×18% → (1+44%) × (1+18%) = 1.44 × 1.18 = 1.699
+function calcBMult(arr){
+  const rows = (arr||[]).filter(r=>r.enabled!==false && (r.val||0)>0);
+  if(!rows.length) return 1;
+  // 按名称分组
+  const groups = {};
+  rows.forEach(r=>{
+    const key = (r.name||'').trim() || '__unnamed__';
+    if(!groups[key]) groups[key] = 0;
+    groups[key] += r.val||0;
+  });
+  // 每组独立相乘
+  let mult = 1;
+  Object.values(groups).forEach(total => { mult *= (1 + total/100); });
+  return mult;
+}
+
+// B类分组展示（用于步骤说明）
+function getBGroups(arr){
+  const rows = (arr||[]).filter(r=>r.enabled!==false && (r.val||0)>0);
+  const groups = {};
+  rows.forEach(r=>{
+    const key = (r.name||'').trim() || '未命名';
+    if(!groups[key]) groups[key] = 0;
+    groups[key] += r.val||0;
+  });
+  return groups;
+}
+
+function loadAll(){
+  try{
+    const r = JSON.parse(localStorage.getItem(SKEY) || '{}');
+    plans   = r.plans   || [];
+    activeId= r.activeId|| null;
+  } catch(e){}
+  if(!plans.length){
+    const id = 'p' + Date.now();
+    plans = [{id, name:'方案 1', data:defaultData()}];
+    activeId = id;
+  }
+  if(!plans.find(p => p.id === activeId)) activeId = plans[0].id;
+}
+
+function saveAll(){
+  try{localStorage.setItem(SKEY,JSON.stringify({plans,activeId}));}catch(e){}
+}
+
+function activePlan(){ return plans.find(p=>p.id===activeId); }
+function activeData(){ return activePlan()?.data||defaultData(); }
+
+// DOM helpers
+const g=id=>document.getElementById(id);
+const num=id=>parseFloat(g(id)?.value)||0;
+const chk=id=>g(id)?.checked||false;
+const set=(id,v)=>{const e=g(id);if(e)e.value=v;};
+const setc=(id,v)=>{const e=g(id);if(e)e.checked=!!v;};
+const fmt=n=>{
+  if(n>=1e9)return(n/1e9).toFixed(2)+' 亿';
+  if(n>=1e6)return(n/1e6).toFixed(2)+' M';
+  if(n>=1e3)return(n/1e3).toFixed(1)+' K';
+  return Math.round(n).toLocaleString();
+};
+
+function save(){
+  const d=activePlan()?.data; if(!d) return;
+  d.class_id    = g('f_class')?.value || 'barbarian';
+  d.wpn1        = num('f_wpn1');
+  d.wpn2        = num('f_wpn2');
+  d.aps         = num('f_aps');
+  d.str         = num('f_str');
+  d.skill_pct   = num('f_skill_pct');
+  d.is_dot      = chk('f_is_dot');
+  d.hits        = num('f_hits');
+  d.crit_dmg_add= num('f_crit_dmg_add');
+  d.crit_chance = num('f_crit_chance');
+  d.crit_active = chk('f_crit_active');
+  d.vuln_add    = num('f_vuln_add');
+  d.vuln_active = chk('f_vuln_active');
+  d.vuln_uptime = num('f_vuln_uptime');
+  d.op_stacks   = num('f_op_stacks');
+  d.op_stack_add= num('f_op_stack_add');
+  d.monster_dr  = num('f_monster_dr');
+  d.apply_dr    = chk('f_apply_dr');
+  // affix_a / affix_b / multi_leg 由各自 render 函数实时维护，无需从 DOM 读取
+  saveAll();
+}
+
+function load(){
+  const d=activeData();
+  if(g('f_class')) g('f_class').value = d.class_id||'barbarian';
+  updateClassLabel(d.class_id||'barbarian');
+  set('f_wpn1',d.wpn1); set('f_wpn2',d.wpn2);
+  set('f_aps',d.aps); set('f_str',d.str||5000);
+  set('f_skill_pct',d.skill_pct); setc('f_is_dot',d.is_dot); set('f_hits',d.hits||1);
+  set('f_crit_dmg_add',d.crit_dmg_add); set('f_crit_chance',d.crit_chance||50); setc('f_crit_active',d.crit_active!==false);
+  set('f_vuln_add',d.vuln_add); setc('f_vuln_active',d.vuln_active!==false); set('f_vuln_uptime',d.vuln_uptime||80);
+  set('f_op_stacks',d.op_stacks||0); set('f_op_stack_add',d.op_stack_add||15);
+  set('f_monster_dr',d.monster_dr||80); setc('f_apply_dr',d.apply_dr);
+  renderAffix('a');
+  renderAffix('b');
+  renderAffix('leg');
+  renderSnapList();
+}
+
+// 职业切换：更新主属性标签文字
+function updateClassLabel(class_id){
+  const cls = CLASSES.find(c=>c.id===class_id) || CLASSES[0];
+  const stat_el = g('stat-label');
+  if(stat_el){
+    // 保留 small 子元素，只改主文字
+    const small = stat_el.querySelector('small');
+    stat_el.childNodes[0].textContent = cls.stat_label + '（主属性）';
+    if(small) small.id = 'stat-div-label';
+  }
+  const div_el = g('stat-div-label');
+  if(div_el) div_el.textContent = `系数：1 + ${cls.stat_label}/${cls.stat_div}`;
+}
+
+// ══════════════════════════════════════════════════
+// DYNAMIC X ROWS
+// ══════════════════════════════════════════════════
+// ══════════════════════════════════════════════════
+// 统一词缀行管理（A类 / B类 / 独立X）
+// ══════════════════════════════════════════════════
+const AFFIX_CFG = {
+  a:   { key:'affix_a',   container:'xsec-a',   total:'total-a',   placeholder:'如：核心技能伤害 / 近战伤害' },
+  b:   { key:'affix_b',   container:'xsec-b',   total:'total-b',   placeholder:'如：物理伤害倍增 / 深渊技能倍增' },
+  leg: { key:'multi_leg', container:'xsec-leg', total:'total-leg', placeholder:'如：旋风斩威能 / 套装2件效果' },
+};
+
+function getAffixArr(zone){
+  const d=activePlan()?.data; if(!d) return [];
+  const key=AFFIX_CFG[zone].key;
+  if(!d[key]) d[key]=[];
+  return d[key];
+}
+
+function renderAffix(zone){
+  const cfg=AFFIX_CFG[zone];
+  const rows=getAffixArr(zone);
+  const cont=g(cfg.container); if(!cont) return;
+  cont.innerHTML='';
+  rows.forEach((r,i)=>{
+    const on=r.enabled!==false;
+    const div=document.createElement('div');
+    div.className='xrow'+(on?'':' disabled');
+    div.innerHTML=`
+      <button class="xtoggle ${on?'on':'off'}" onclick="toggleAffix('${zone}',${i})"
+        title="${on?'禁用':'启用'}">${on?'●':'○'}</button>
+      <input class="xname" type="text" value="${r.name||''}"
+        placeholder="${cfg.placeholder}"
+        oninput="updateAffixName('${zone}',${i},this.value)">
+      <input class="ni" type="number" value="${r.val||0}" min="0" step="0.1"
+        style="width:76px" oninput="updateAffixVal('${zone}',${i},this.value)">
+      <button class="xdel" onclick="delAffix('${zone}',${i})" title="删除">✕</button>`;
+    cont.appendChild(div);
+  });
+  updateZoneTotal(zone);
+}
+
+function updateZoneTotal(zone){
+  const cfg=AFFIX_CFG[zone];
+  const rows=getAffixArr(zone);
+  const total=affixTotal(rows);
+  const el=g(cfg.total); if(!el) return;
+  if(zone==='leg'){
+    let mult=1;
+    rows.filter(r=>r.enabled!==false&&r.val>0).forEach(r=>mult*=(1+r.val/100));
+    el.innerHTML=`<span class="zone-total-label">独立X连乘</span>
+      <span class="zone-total-val">×${mult.toFixed(4)}</span>`;
+  } else if(zone==='b'){
+    // B类：同名合并，不同名独立相乘
+    const bm = calcBMult(rows);
+    const groups = getBGroups(rows);
+    const groupCount = Object.keys(groups).length;
+    const detail = groupCount > 1
+      ? Object.entries(groups).map(([k,v])=>`×${(1+v/100).toFixed(3)}`).join(' × ')
+      : '';
+    el.innerHTML=`<span class="zone-total-label">B类乘区${groupCount>1?' ('+groupCount+'组)':''}</span>
+      <span class="zone-total-val" title="${detail}">×${bm.toFixed(4)}</span>`;
+  } else {
+    el.innerHTML=`<span class="zone-total-label">A类合计</span>
+      <span class="zone-total-val">+${total.toFixed(1)}% → ×${(1+total/100).toFixed(4)}</span>`;
+  }
+}
+
+function addAffix(zone){
+  getAffixArr(zone).push(makeAffix());
+  renderAffix(zone); saveAll();
+}
+function delAffix(zone,i){
+  getAffixArr(zone).splice(i,1);
+  renderAffix(zone); saveAll();
+}
+function toggleAffix(zone,i){
+  const arr=getAffixArr(zone);
+  arr[i].enabled=!(arr[i].enabled!==false);
+  renderAffix(zone); saveAll();
+}
+function updateAffixName(zone,i,v){
+  getAffixArr(zone)[i].name=v; saveAll();
+}
+function updateAffixVal(zone,i,v){
+  getAffixArr(zone)[i].val=parseFloat(v)||0;
+  updateZoneTotal(zone); saveAll();
+}
+
+// ══════════════════════════════════════════════════
+// BD LIST RENDER
+// ══════════════════════════════════════════════════
+function renderBDs(){
+  const container=g('bd-list'); if(!container)return;
+  container.innerHTML='';
+  BUILTIN_BDS.forEach(bd=>{
+    const div=document.createElement('div');
+    div.className='bd-card'+(bd.id===selectedBdId?' selected':'');
+    div.innerHTML=`
+      <div class="bd-head" onclick="toggleBD('${bd.id}')">
+        <div class="bd-icon">${bd.icon}</div>
+        <div class="bd-info">
+          <div class="bd-name">${bd.name}</div>
+          <div class="bd-meta">${bd.skill} · ${bd.desc}</div>
+        </div>
+        <div class="bd-tier">${bd.tier}</div>
+      </div>
+      <div class="bd-body">
+        <div class="bd-stat-grid">
+          <div class="bd-stat">武器伤害: <span>${bd.data.wpn1}${bd.data.wpn2>0?'+'+bd.data.wpn2:''}</span></div>
+          <div class="bd-stat">力量: <span>${bd.data.str}</span></div>
+          <div class="bd-stat">A类合计: <span>+${affixTotal(bd.data.affix_a||[])}%</span></div>
+          <div class="bd-stat">暴击率: <span>${bd.data.crit_chance}%</span></div>
+          <div class="bd-stat">技能倍率: <span>${bd.data.skill_pct}%</span></div>
+        </div>
+        <div class="bd-actions">
+          <button class="btn-bd" onclick="selectBDForCompare('${bd.id}')">选为对比</button>
+          <button class="btn-bd primary" onclick="applyBD('${bd.id}')">套用数据</button>
+        </div>
+      </div>`;
+    container.appendChild(div);
+  });
+}
+function toggleBD(id){
+  document.querySelectorAll('.bd-card').forEach(c=>{
+    const isThis=c.querySelector('.bd-head').getAttribute('onclick')?.includes(id);
+    c.classList.toggle('open',isThis&&!c.classList.contains('open'));
+  });
+}
+function applyBD(id){
+  const bd=BUILTIN_BDS.find(b=>b.id===id); if(!bd)return;
+  const p=activePlan(); if(!p)return;
+  p.data=JSON.parse(JSON.stringify(bd.data));
+  load(); saveAll(); toast('已套用：'+bd.name);
+}
+function selectBDForCompare(id){
+  selectedBdId=id;
+  renderBDs();
+  toast('已选为对比：'+BUILTIN_BDS.find(b=>b.id===id)?.name);
+  // switch to bdcmp tab
+  switchRtab('bdcmp');
+  if(lastCalcResult) renderBDCompare();
+}
+
+// ══════════════════════════════════════════════════
+// CALCULATION ENGINE — S13 3.0 修正版
+// 公式：武器 × 技能 × 主属 × A类 × B类 × 暴击 × 易伤 × 独立X×N × 压制
+// ══════════════════════════════════════════════════
+function calcFromData(d){
+  // ① 武器基础
+  const wpnBase=(d.wpn1||0)+(d.wpn2||0);
+  if(wpnBase<=0)return null;
+  const wpnAfterAdd=wpnBase;  // 附加武器伤害字段已移除
+
+  // ② 技能系数
+  const skillMult=(d.skill_pct||100)/100;
+  const afterSkill=wpnAfterAdd*skillMult;
+
+  // ③ 主属区（各职业系数不同）
+  const cls=CLASSES.find(c=>c.id===(d.class_id||'barbarian'))||CLASSES[0];
+  const statMult=1+(d.str||0)/cls.stat_div;
+  const afterStat=afterSkill*statMult;
+
+  // ④ A类区：[+]% 前缀全部加法合算
+  //   包含：装备A类词缀 + 易伤[+]%（目标易伤时）+ 压制叠层[+]%（有叠层时）
+  const vulnActive = !!d.vuln_active;
+  const opStackBonus = (d.op_stack_add||15) * (d.op_stacks||0);  // 叠层→A类
+  const aGearTotal = affixTotal(d.affix_a||[]);
+  const addTotal = aGearTotal
+    + (d.crit_dmg_add||0)          // 暴击伤害[+]% 归入A类
+    + (vulnActive ? (d.vuln_add||0) : 0)
+    + opStackBonus;
+  const addMult = 1 + addTotal/100;
+  const afterAdd = afterStat * addMult;
+
+  // ⑤ B类区：同名词缀先合并，不同名各自独立相乘
+  const bMult = calcBMult(d.affix_b);
+  const afterB = afterAdd * bMult;
+
+  // ⑥ 暴击
+  const isDot = !!d.is_dot;
+  const critDmgBonus = 0.5;  // 固定基础暴击加成，crit_dmg_add已归入A类
+  let normalHit, critHit, afterCrit;
+  if(isDot){
+    normalHit = critHit = afterCrit = afterB;
+  } else {
+    normalHit = afterB;
+    critHit   = afterB * (1 + critDmgBonus);  // ×1.5 固定
+    afterCrit = d.crit_active ? critHit : normalHit;
+  }
+
+  // ⑦ 易伤区：×1.2 固定
+  const vulnMult = vulnActive ? 1.2 : 1.0;
+  const afterVuln = afterCrit * vulnMult;
+
+  // ⑧ 独立X乘区：传奇威能/套装，各自独立相乘
+  let legMult = 1;
+  (d.multi_leg||[]).filter(r=>r.enabled!==false&&r.val>0).forEach(r=>{
+    legMult *= (1 + r.val/100);
+  });
+  const afterLeg = afterVuln * legMult;
+
+  // ⑨ 最终伤害（S13公式到此结束，无额外压制乘区）
+  const finalHit = afterLeg;
+
+  // ⑩ 怪物减伤（可选展示）
+  const finalDisplay = d.apply_dr ? finalHit*(1-(d.monster_dr||0)/100) : finalHit;
+
+  return {
+    wpnBase, wpnAfterAdd, afterSkill, afterStat,
+    afterAdd, afterB, afterCrit, afterVuln, afterLeg,
+    normalHit, critHit, finalHit, finalDisplay,
+    statMult, addMult, bMult, vulnMult, legMult,
+    critDmgBonus, addTotal, opStackBonus,
+    isDot, vulnActive,
+    cls, d,
+  };
+}
+
+// ══════════════════════════════════════════════════
+// CALCULATE & RENDER
+// ══════════════════════════════════════════════════
+function calculate(){
+  save();
+  const d=activeData();
+  const r=calcFromData(d);
+  if(!r){toast('请先填入武器伤害！');return;}
+  lastCalcResult=r; lastCalcData=d;
+
+  g('r-empty').style.display='none';
+  g('r-content').style.display='block';
+
+  const isCrit = !r.isDot && d.crit_active;
+  const finalVal = d.apply_dr ? r.finalDisplay : r.finalHit;
+
+  g('r-mode').textContent = r.isDot ? 'DoT 基础伤害值' : (isCrit ? '暴击命中' : '普通命中');
+  g('r-num').textContent  = fmt(finalVal);
+
+  if(!r.isDot){
+    const normalFinal = r.normalHit * r.vulnMult * r.legMult;
+    const critFinal   = r.critHit   * r.vulnMult * r.legMult;
+    g('r-sub').textContent =
+      `普通: ${fmt(normalFinal)}  ·  暴击: ${fmt(critFinal)}`
+      + (r.opStackBonus>0 ? `  ·  含压制叠层 +${r.opStackBonus.toFixed(0)}% A类` : '');
+  } else {
+    g('r-sub').textContent = 'DoT — 不触发暴击';
+  }
+
+  renderStepsSimple(r,d);
+  renderStepsDetail(r,d);
+  renderDPS(r,d);
+  if(selectedBdId) renderBDCompare();
+
+  switchRtab('result');
+}
+
+function buildStepData(r,d){
+  const isCrit = !r.isDot && d.crit_active;
+  const cls = r.cls || {stat_label:'力量', stat_div:900};
+
+  const noteA = [
+    `A类词缀 +${affixTotal(d.affix_a||[]).toFixed(0)}%`,
+    d.crit_dmg_add>0 ? `暴击伤害 +${d.crit_dmg_add}%` : '',
+    r.vulnActive && d.vuln_add>0 ? `易伤 +${d.vuln_add}%` : '',
+    r.opStackBonus>0 ? `压制叠层 +${r.opStackBonus.toFixed(0)}%` : '',
+  ].filter(Boolean).join(' + ');
+
+  const steps = [
+    { icon:'⚔', label:'武器基础点伤',
+      note: d.wpn2>0 ? `主手 ${fmt(d.wpn1)} + 副手 ${fmt(d.wpn2)}` : '单手武器',
+      mult:'', val:r.wpnBase },
+    { icon:'⚡', label:`技能系数 ×${d.skill_pct}%`,
+      note:'', mult:`×${(d.skill_pct/100).toFixed(3)}`, val:r.afterSkill },
+    { icon:'💪', label:`主属区（${cls.stat_label} ${d.str}）`,
+      note:`1 + ${d.str} / ${cls.stat_div} = ×${r.statMult.toFixed(4)}`,
+      mult:`×${r.statMult.toFixed(4)}`, val:r.afterStat },
+    { icon:'📊', label:`A类区 [+] ${r.addTotal.toFixed(0)}%`,
+      note: noteA,
+      mult:`×${r.addMult.toFixed(4)}`, val:r.afterAdd },
+    { icon:'✖', label:`B类区`,
+      note: (()=>{
+        const groups = getBGroups(d.affix_b);
+        const entries = Object.entries(groups);
+        if(!entries.length) return '无B类词缀';
+        return entries.map(([k,v])=>`${k} +${v.toFixed(0)}% → ×${(1+v/100).toFixed(3)}`).join('  ·  ');
+      })(),
+      mult:`×${r.bMult.toFixed(4)}`, val:r.afterB },
+  ];
+
+  if(!r.isDot){
+    steps.push({ icon:'💥',
+      label: isCrit ? '暴击命中 ×1.5（固定基础加成）' : '普通命中',
+      note:  isCrit ? '暴击伤害[+]%已归入A类区' : '未触发暴击',
+      mult:  isCrit ? '×1.500' : '×1.000',
+      val:   r.afterCrit });
+  }
+
+  steps.push({ icon:'🔴', label:'易伤区 ×1.2',
+    note: r.vulnActive ? '目标携带易伤（固定 ×1.2）' : '目标无易伤',
+    mult: r.vulnActive ? '×1.200' : '×1.000', val:r.afterVuln });
+
+  if(r.legMult > 1){
+    const legNote = (d.multi_leg||[])
+      .filter(x=>x.enabled!==false&&x.val>0)
+      .map(x=>x.name ? `${x.name} +${x.val}%` : `+${x.val}%`)
+      .join(' · ');
+    steps.push({ icon:'✖', label:`独立X乘区`,
+      note: legNote || '',
+      mult:`×${r.legMult.toFixed(4)}`, val:r.afterLeg });
+  }
+
+  const finalVal = d.apply_dr ? r.finalDisplay : r.finalHit;
+  steps.push({ icon:'🏆', label:'最终伤害',
+    note:`总乘 ×${(r.finalHit / r.wpnBase).toFixed(2)}`,
+    mult:'', val:finalVal, final:true });
+
+  if(d.apply_dr){
+    steps.push({ icon:'🛡', label:`扣怪物减伤 ${d.monster_dr||0}%`,
+      note:'', mult:`×${(1-(d.monster_dr||0)/100).toFixed(3)}`,
+      val:r.finalDisplay, final:true });
+  }
+  return steps;
+}
+
+function renderStepsSimple(r,d){
+  const steps=buildStepData(r,d);
+  const c=g('steps-simple'); c.innerHTML='';
+  steps.forEach((s,i)=>{
+    const div=document.createElement('div');
+    div.className='step-s'+(s.final?' hl':'');
+    div.innerHTML=`
+      <div class="step-icon">${s.icon}</div>
+      <div class="step-label">${s.label}${s.note?`<br><span style="font-size:9px;color:var(--text-muted)">${s.note}</span>`:''}
+      </div>
+      <div class="step-mult">${s.mult}</div>
+      <div class="step-val">${fmt(s.val)}</div>`;
+    c.appendChild(div);
+    if(i<steps.length-1&&!s.final){
+      const arr=document.createElement('div');
+      arr.className='step-arrow';arr.textContent='↓';
+      c.appendChild(arr);
+    }
+  });
+}
+
+function renderStepsDetail(r,d){
+  const steps=buildStepData(r,d);
+  const c=g('steps-detail'); c.innerHTML='';
+  // formulas 与 steps 数组一一对应（按索引匹配）
+  const cls = r.cls || {stat_label:'力量', stat_div:900};
+  const formulas = [
+    // 0: 武器
+    `${fmt(d.wpn1)}${d.wpn2>0?' + '+fmt(d.wpn2):''} = ${fmt(r.wpnBase)}`,
+    // 1: 技能
+    `${fmt(r.wpnBase)} × ${d.skill_pct}% = ${fmt(r.wpnBase)} × ${(d.skill_pct/100).toFixed(3)} = ${fmt(r.afterSkill)}`,
+    // 2: 主属
+    `${fmt(r.afterSkill)} × (1 + ${d.str}/${cls.stat_div}) = ${fmt(r.afterSkill)} × ${r.statMult.toFixed(4)} = ${fmt(r.afterStat)}`,
+    // 3: A类
+    `${fmt(r.afterStat)} × (1 + ${r.addTotal.toFixed(0)}/100) = ${fmt(r.afterStat)} × ${r.addMult.toFixed(4)} = ${fmt(r.afterAdd)}`,
+    // 4: B类（同名合并，不同名独立相乘）
+    (()=>{
+      const groups = getBGroups(d.affix_b);
+      const entries = Object.entries(groups);
+      if(!entries.length) return `${fmt(r.afterAdd)} × 1.0000 (无B类) = ${fmt(r.afterB)}`;
+      const formula = entries.map(([k,v])=>`×(1+${v.toFixed(0)}/100)`).join(' ');
+      return `${fmt(r.afterAdd)} ${formula} = ×${r.bMult.toFixed(4)} = ${fmt(r.afterB)}`;
+    })(),
+  ];
+  // 5: 暴击（可选）
+  if(!r.isDot){
+    formulas.push(d.crit_active
+      ? `${fmt(r.afterB)} × 1.5（固定基础暴击）= ${fmt(r.afterCrit)}`
+      : `${fmt(r.afterB)} × 1.000（普通命中）= ${fmt(r.afterCrit)}`);
+  }
+  // 易伤
+  formulas.push(`${fmt(r.afterCrit)} × ${r.vulnActive?'1.200':'1.000'} = ${fmt(r.afterVuln)}`);
+  // 独立X（可选）
+  if(r.legMult>1) formulas.push(`${fmt(r.afterVuln)} × ${r.legMult.toFixed(4)} = ${fmt(r.afterLeg)}`);
+  // 最终
+  formulas.push(`总乘数 = ×${(r.finalHit/r.wpnBase).toFixed(2)}  →  ${fmt(r.finalHit)}`);
+  // 减伤（可选）
+  if(d.apply_dr) formulas.push(`${fmt(r.finalHit)} × ${(1-(d.monster_dr||0)/100).toFixed(3)} = ${fmt(r.finalDisplay)}`);
+
+  steps.forEach((s,i)=>{
+    const div=document.createElement('div');
+    div.className='step-d'+(s.final?' final':'')+((i===0||i===steps.length-1)?' open':'');
+    div.innerHTML=`
+      <div class="step-d-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="step-d-icon">${s.icon}</div>
+        <div class="step-d-name">${s.label}</div>
+        <div class="step-d-result">${fmt(s.val)}</div>
+      </div>
+      <div class="step-d-body">
+        ${formulas[i]?`<code class="formula">${formulas[i]}</code>`:''}
+        ${s.note?`<div style="color:var(--text-muted);font-size:10px">${s.note}</div>`:''}
+        ${s.mult&&s.mult!='★'?`<div>乘数：<span style="color:var(--fire-2);font-weight:700">${s.mult}</span></div>`:''}
+      </div>`;
+    c.appendChild(div);
+  });
+}
+
+function switchSteps(mode){
+  stepsMode=mode;
+  g('steps-simple').style.display=mode==='simple'?'flex':'none';
+  g('steps-detail').style.display=mode==='detail'?'block':'none';
+  g('st-simple').classList.toggle('active',mode==='simple');
+  g('st-detail').classList.toggle('active',mode==='detail');
+}
+
+// ══════════════════════════════════════════════════
+// DPS
+// ══════════════════════════════════════════════════
+function renderDPS(r,d){
+  g('dps-empty').style.display='none';
+  g('dps-content').style.display='block';
+  const aps=d.aps||1, hits=d.hits||1, hps=aps*hits;
+  const cc=Math.min(d.crit_chance||0,100)/100;
+  const cdMult=1.5;  // 固定基础暴击乘数，crit_dmg_add已归入A类
+  const critExp=r.isDot?1:((1-cc)+cc*cdMult);
+  const vuln_up=(d.vuln_uptime||0)/100;
+  const baseNoVuln=(r.afterB||r.afterAdd)*critExp*r.legMult;
+  const baseVuln=baseNoVuln*1.2;
+  const avg=baseVuln*vuln_up+baseNoVuln*(1-vuln_up);
+  const dps=avg*hps;
+  g('dps-main').textContent=fmt(dps);
+  g('dps-sub').textContent=`APS ${aps.toFixed(2)} × ${hits}次/挥  ·  易伤覆盖 ${d.vuln_uptime||0}%`;
+  g('dps-grid').innerHTML=`
+    <div class="dps-stat"><div class="dps-key">命中/秒</div><div class="dps-val">${hps.toFixed(2)}</div><div class="dps-sub">APS×${hits}</div></div>
+    <div class="dps-stat"><div class="dps-key">暴击期望系数</div><div class="dps-val">${critExp.toFixed(3)}</div><div class="dps-sub">CC${d.crit_chance}%</div></div>
+    <div class="dps-stat"><div class="dps-key">无易伤 DPS</div><div class="dps-val">${fmt(baseNoVuln*hps)}</div><div class="dps-sub">目标无易伤</div></div>
+    <div class="dps-stat"><div class="dps-key">满易伤 DPS</div><div class="dps-val">${fmt(baseVuln*hps)}</div><div class="dps-sub">全程易伤</div></div>
+    <div class="dps-stat"><div class="dps-key">易伤覆盖</div><div class="dps-val">${d.vuln_uptime}%</div><div class="dps-sub">加权平均</div></div>
+    <div class="dps-stat"><div class="dps-key">APS</div><div class="dps-val">${aps.toFixed(3)}</div><div class="dps-sub">已含加成</div></div>`;
+}
+
+// ══════════════════════════════════════════════════
+// BD对比 — 重设计（自建方案 + 内置BD 均可互比）
+// ══════════════════════════════════════════════════
+
+// 获取所有可对比的方案列表（自建 + 内置BD）
+function getAllComparables(){
+  const userPlans = plans.map(p=>({id:'u_'+p.id, name:'⚔ '+p.name, data:p.data, type:'user'}));
+  const bdPlans   = BUILTIN_BDS.map(b=>({id:'bd_'+b.id, name:b.icon+' '+b.name+' (参考)', data:b.data, type:'bd'}));
+  return [...userPlans, ...bdPlans];
+}
+
+// 初始化对比面板的选项列表
+function initBDComparePanel(){
+  const all = getAllComparables();
+  // 基准下拉
+  const baseEl = g('cmp-base');
+  if(!baseEl) return;
+  baseEl.innerHTML = all.map(item=>`
+    <option value="${item.id}" ${item.id==='u_'+activeId?'selected':''}>
+      ${item.name}
+    </option>`).join('');
+  // 对比目标多选
+  const targEl = g('cmp-targets');
+  if(!targEl) return;
+  targEl.innerHTML = all.map(item=>`
+    <label style="display:flex;align-items:center;gap:8px;padding:5px 8px;
+      border-radius:4px;cursor:pointer;transition:background .15s;
+      border:1px solid var(--border-faint);background:var(--ink-2)">
+      <input type="checkbox" value="${item.id}"
+        style="width:15px;height:15px;accent-color:var(--fire-2);cursor:pointer"
+        ${item.id!=='u_'+activeId?'checked':''}>
+      <span style="font-size:12px;font-weight:600;color:${item.type==='bd'?'var(--sapphire)':'var(--text-primary)'}">${item.name}</span>
+    </label>`).join('');
+}
+
+function runBDCompare(){
+  const all = getAllComparables();
+  const baseId = g('cmp-base')?.value;
+  const skillPct = parseFloat(g('cmp-skill-pct')?.value)||215;
+
+  // 勾选的对比目标
+  const checked = [...document.querySelectorAll('#cmp-targets input:checked')].map(el=>el.value);
+  if(!checked.length){ g('bdcmp-result').innerHTML='<div class="empty"><div class="empty-icon">⚖</div><div class="empty-text">请至少勾选一个对比目标</div></div>'; return; }
+
+  const baseItem = all.find(x=>x.id===baseId);
+  if(!baseItem){ g('bdcmp-result').innerHTML='<div class="empty"><div class="empty-text">找不到基准方案</div></div>'; return; }
+
+  // 计算所有对比项
+  function calcItem(item){
+    const d = {...item.data, skill_pct:skillPct, crit_active:false, apply_dr:false};
+    const r = calcFromData(d); if(!r) return null;
+    const cc=Math.min(d.crit_chance||0,100)/100;
+    const cdMult=1.5;  // 固定
+    const critExp=d.is_dot?1:((1-cc)+cc*cdMult);
+    const hps=(d.aps||1)*(d.hits||1);
+    const vuln_up=(d.vuln_uptime||0)/100;
+    const baseNoVuln=(r.afterB||r.afterAdd)*critExp*r.legMult;
+    const dps=(baseNoVuln*1.2*vuln_up+baseNoVuln*(1-vuln_up))*hps;
+    return { item, r, d, dmg:r.afterLeg, dps,
+      aTotal:affixTotal(d.affix_a||[]),
+      bTotal:(calcBMult(d.affix_b||[])-1)*100,  // 等效百分比
+      legMult:r.legMult };
+  }
+
+  const baseCalc = calcItem(baseItem);
+  if(!baseCalc){ g('bdcmp-result').innerHTML='<div class="empty"><div class="empty-text">基准方案无武器数据，无法计算</div></div>'; return; }
+
+  const targets = checked.map(id=>{
+    const item=all.find(x=>x.id===id); if(!item) return null;
+    return calcItem(item);
+  }).filter(Boolean);
+
+  // 渲染结果
+  let html = '';
+
+  // 基准卡片
+  html += `<div style="background:rgba(224,160,32,.07);border:1.5px solid var(--border-mid);
+    border-radius:8px;padding:12px 14px;margin-bottom:10px">
+    <div style="font-size:10px;letter-spacing:1.5px;color:var(--fire-2);
+      font-family:'Share Tech Mono',monospace;text-transform:uppercase;margin-bottom:6px">基准方案</div>
+    <div style="font-family:'Cinzel',serif;font-size:15px;font-weight:700;color:var(--fire-1);margin-bottom:4px">${baseItem.name}</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;font-size:12px">
+      <div style="color:var(--text-secondary)">单次伤害：<span style="color:var(--fire-1);font-weight:700">${fmt(baseCalc.dmg)}</span></div>
+      <div style="color:var(--text-secondary)">DPS：<span style="color:var(--fire-1);font-weight:700">${fmt(baseCalc.dps)}</span></div>
+      <div style="color:var(--text-secondary)">A类：<span style="color:var(--text-primary)">+${baseCalc.aTotal.toFixed(0)}%</span></div>
+      <div style="color:var(--text-secondary)">B类：<span style="color:var(--text-primary)">+${baseCalc.bTotal.toFixed(0)}%</span></div>
+      <div style="color:var(--text-secondary)">独立X：<span style="color:var(--text-primary)">×${baseCalc.legMult.toFixed(3)}</span></div>
+      <div style="color:var(--text-secondary)">暴击率：<span style="color:var(--text-primary)">${baseCalc.d.crit_chance||0}%</span></div>
+    </div>
+  </div>`;
+
+  // 对比项
+  targets.forEach(t=>{
+    const dmgDiff = (t.dmg - baseCalc.dmg)/baseCalc.dmg*100;
+    const dpsDiff = (t.dps - baseCalc.dps)/baseCalc.dps*100;
+    const isAhead = dmgDiff >= 0;
+    const isBD = t.item.type==='bd';
+
+    const rows = [
+      {key:'A类合计',mine:`+${baseCalc.aTotal.toFixed(0)}%`,theirs:`+${t.aTotal.toFixed(0)}%`,diff:t.aTotal-baseCalc.aTotal,unit:'%'},
+      {key:'B类乘区',mine:`×${(1+baseCalc.bTotal/100).toFixed(3)}`,theirs:`×${(1+t.bTotal/100).toFixed(3)}`,diff:t.bTotal-baseCalc.bTotal,unit:'%'},
+      {key:'独立X',mine:`×${baseCalc.legMult.toFixed(3)}`,theirs:`×${t.legMult.toFixed(3)}`,diff:(t.legMult-baseCalc.legMult)*100,unit:'%'},
+      {key:'暴击率',mine:`${baseCalc.d.crit_chance||0}%`,theirs:`${t.d.crit_chance||0}%`,diff:(t.d.crit_chance||0)-(baseCalc.d.crit_chance||0),unit:'%'},
+      {key:'A类合计',mine:`+${baseCalc.aTotal.toFixed(0)}%`,theirs:`+${t.aTotal.toFixed(0)}%`,diff:t.aTotal-baseCalc.aTotal,unit:'%'},
+      {key:'力量',mine:`${baseCalc.d.str||0}`,theirs:`${t.d.str||0}`,diff:(t.d.str||0)-(baseCalc.d.str||0),unit:''},
+    ];
+
+    html += `<div style="background:var(--ink-2);border:1px solid ${isBD?'rgba(64,150,255,.35)':'var(--border-soft)'};
+      border-radius:8px;padding:12px 14px;margin-bottom:8px">
+      <!-- 对比对象名称 + 总差 -->
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;
+        padding-bottom:8px;border-bottom:1px solid var(--border-faint)">
+        <div style="font-family:'Cinzel',serif;font-size:13px;font-weight:700;
+          color:${isBD?'var(--sapphire)':'var(--text-primary)'}">${t.item.name}</div>
+        <div style="text-align:right">
+          <div style="font-family:'Cinzel',serif;font-size:18px;font-weight:900;
+            color:${isAhead?'var(--emerald)':'var(--crimson)'};
+            filter:drop-shadow(0 0 8px ${isAhead?'rgba(0,214,143,.4)':'rgba(255,77,79,.3)'})"
+            >${isAhead?'+':''}${dmgDiff.toFixed(1)}%</div>
+          <div style="font-size:10px;color:var(--text-muted);margin-top:2px">
+            DPS ${dpsDiff>=0?'+':''}${dpsDiff.toFixed(1)}%
+          </div>
+        </div>
+      </div>
+      <!-- 伤害对比条 -->
+      <div style="margin-bottom:10px">
+        ${['单次伤害','DPS'].map((label,li)=>{
+          const base=li===0?baseCalc.dmg:baseCalc.dps;
+          const them=li===0?t.dmg:t.dps;
+          const max=Math.max(base,them);
+          const bPct=(base/max*100).toFixed(0);
+          const tPct=(them/max*100).toFixed(0);
+          return `<div style="margin-bottom:6px">
+            <div style="display:flex;justify-content:space-between;font-size:10px;
+              color:var(--text-muted);margin-bottom:3px;font-family:'Share Tech Mono',monospace">
+              <span>${label}</span>
+              <span>基准 ${fmt(base)} | 对比 ${fmt(them)}</span>
+            </div>
+            <div style="height:5px;background:var(--ink-0);border-radius:3px;overflow:hidden;margin-bottom:2px">
+              <div style="width:${bPct}%;height:100%;background:var(--fire-2);border-radius:3px"></div>
+            </div>
+            <div style="height:5px;background:var(--ink-0);border-radius:3px;overflow:hidden">
+              <div style="width:${tPct}%;height:100%;background:${them>=base?'var(--emerald)':'var(--crimson)'};border-radius:3px"></div>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+      <!-- 逐项对比 -->
+      <div style="display:flex;flex-direction:column;gap:3px">
+        ${rows.map(row=>{
+          const pos=row.diff>0, neg=row.diff<0;
+          const clr=pos?'var(--emerald)':neg?'var(--crimson)':'var(--text-muted)';
+          const sign=pos?'+':'';
+          return `<div style="display:grid;grid-template-columns:1fr auto auto auto;
+            gap:8px;align-items:center;padding:4px 8px;
+            background:var(--ink-3);border-radius:3px;font-size:11px">
+            <span style="color:var(--text-secondary)">${row.key}</span>
+            <span style="color:var(--text-primary);font-weight:600">${row.mine}</span>
+            <span style="color:${isBD?'var(--sapphire)':'var(--text-secondary)'}">${row.theirs}</span>
+            <span style="color:${clr};font-weight:700;font-family:'Share Tech Mono',monospace;
+              min-width:46px;text-align:right">${sign}${row.diff.toFixed(row.unit?1:0)}${row.unit}</span>
+          </div>`;
+        }).join('')}
+      </div>
+      <!-- 切换按钮（仅自建方案） -->
+      ${t.item.type==='user'?`
+      <button onclick="switchPlan('${t.item.id.replace('u_','')}');switchRtab('result')"
+        style="width:100%;margin-top:10px;padding:7px;
+          background:rgba(224,160,32,.1);border:1px solid var(--border-mid);
+          color:var(--fire-1);font-family:'Cinzel',serif;font-size:11px;
+          font-weight:700;letter-spacing:1px;cursor:pointer;border-radius:6px">
+        切换到此方案
+      </button>`:''}
+    </div>`;
+  });
+
+  g('bdcmp-result').innerHTML = html;
+}
+
+
+// ══════════════════════════════════════════════════
+// FULL COMPARE PAGE
+// ══════════════════════════════════════════════════
+
+
+// ══════════════════════════════════════════════════
+// 快照系统 — 最多 5 个，手动保存，可恢复
+// ══════════════════════════════════════════════════
+function loadSnaps(){
+  try{ return JSON.parse(localStorage.getItem(SNAP_KEY)||'[]'); }catch(e){ return []; }
+}
+function saveSnaps(snaps){
+  try{ localStorage.setItem(SNAP_KEY,JSON.stringify(snaps)); }catch(e){}
+}
+
+function takeSnapshot(){
+  save();
+  const p=activePlan(); if(!p){ toast('请先选择一个方案'); return; }
+  const snaps=loadSnaps();
+  const snap={
+    id:'snap_'+Date.now(),
+    time:new Date().toLocaleString('zh-CN',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}),
+    planName:p.name,
+    data:JSON.parse(JSON.stringify(p.data)),
+  };
+  snaps.unshift(snap);          // 最新的放最前
+  if(snaps.length>MAX_SNAPS) snaps.length=MAX_SNAPS;
+  saveSnaps(snaps);
+  renderSnapList();
+  toast('✓ 快照已保存：'+snap.time);
+}
+
+function restoreSnapshot(id){
+  const snaps=loadSnaps();
+  const snap=snaps.find(s=>s.id===id); if(!snap) return;
+  const p=activePlan(); if(!p) return;
+  if(!confirm(`恢复到快照「${snap.time} · ${snap.planName}」？当前数据将被覆盖`)) return;
+  p.data=JSON.parse(JSON.stringify(snap.data));
+  saveAll(); load();
+  toast('✓ 已恢复快照：'+snap.time);
+}
+
+function deleteSnapshot(id){
+  const snaps=loadSnaps().filter(s=>s.id!==id);
+  saveSnaps(snaps);
+  renderSnapList();
+  toast('快照已删除');
+}
+
+function renderSnapList(){
+  const el=g('snap-list'); if(!el) return;
+  const snaps=loadSnaps();
+  if(!snaps.length){
+    el.innerHTML='<div style="font-size:11px;color:var(--text-muted);padding:8px 0;text-align:center">暂无快照</div>';
+    return;
+  }
+  el.innerHTML=snaps.map(s=>`
+    <div style="display:flex;align-items:center;gap:6px;padding:6px 0;
+      border-bottom:1px solid var(--border-faint)">
+      <div style="flex:1;min-width:0">
+        <div style="font-size:12px;font-weight:600;color:var(--text-primary);
+          overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${s.planName}</div>
+        <div style="font-size:10px;color:var(--text-muted);margin-top:1px;
+          font-family:'Share Tech Mono',monospace">${s.time}</div>
+      </div>
+      <button onclick="restoreSnapshot('${s.id}')" style="
+        background:rgba(224,160,32,.1);border:1px solid var(--border-mid);
+        color:var(--fire-2);font-size:10px;padding:3px 8px;border-radius:3px;
+        cursor:pointer;white-space:nowrap;transition:all .2s;font-family:'Cinzel',serif">恢复</button>
+      <button onclick="deleteSnapshot('${s.id}')" style="
+        background:transparent;border:1px solid var(--border-faint);
+        color:var(--text-muted);font-size:12px;width:22px;height:22px;
+        border-radius:3px;cursor:pointer;transition:all .2s;
+        display:flex;align-items:center;justify-content:center">✕</button>
+    </div>`).join('');
+}
+
+// ══════════════════════════════════════════════════
+// PLAN MANAGEMENT
+// ══════════════════════════════════════════════════
+function renderPlanTabs(){
+  const wrap=g('plan-tabs'); wrap.innerHTML='';
+  plans.forEach(p=>{
+    const tab=document.createElement('div');
+    tab.className='ptab'+(p.id===activeId?' active':'');
+    tab.style.position='relative';
+    tab.innerHTML=`
+      <span class="ptab-name" ondblclick="renamePlan('${p.id}',this.parentElement)"
+        title="双击重命名">${p.name}</span>
+      <button class="ptab-x" onclick="event.stopPropagation();deletePlan('${p.id}')">✕</button>`;
+    tab.onclick=()=>switchPlan(p.id);
+    wrap.appendChild(tab);
+  });
+}
+function switchPlan(id){
+  if(id===activeId)return;
+  save(); activeId=id; saveAll(); load(); renderPlanTabs();
+  lastCalcResult=null; lastCalcData=null;
+  g('r-empty').style.display='block'; g('r-content').style.display='none';
+  g('dps-empty').style.display='block'; g('dps-content').style.display='none';
+}
+function newPlan(){
+  save();const id='p'+Date.now();
+  plans.push({id,name:'方案 '+(plans.length+1),data:defaultData()});
+  activeId=id;saveAll();load();renderPlanTabs();toast('新建方案');
+}
+function clonePlan(){
+  save();const src=activePlan();if(!src)return;
+  const id='p'+Date.now();
+  plans.push({id,name:src.name+' 副本',data:JSON.parse(JSON.stringify(src.data))});
+  activeId=id;saveAll();load();renderPlanTabs();toast('已复制：'+src.name);
+}
+function deletePlan(id){
+  if(plans.length<=1){toast('至少保留一个方案');return;}
+  plans=plans.filter(p=>p.id!==id);
+  if(activeId===id)activeId=plans[0].id;
+  saveAll();load();renderPlanTabs();
+}
+function renamePlan(id,el){
+  const p=plans.find(x=>x.id===id);if(!p)return;
+  const inp=document.createElement('input');
+  inp.className='ptab-rename';inp.value=p.name;
+  el.appendChild(inp);inp.focus();inp.select();
+  const done=()=>{if(inp.value.trim())p.name=inp.value.trim();inp.remove();saveAll();renderPlanTabs();};
+  inp.onblur=done;
+  inp.onkeydown=e=>{if(e.key==='Enter')done();if(e.key==='Escape')inp.remove();};
+}
+// ══════════════════════════════════════════════════
+// 导出 / 导入 — 文件读写
+// ══════════════════════════════════════════════════
+
+// 导出当前方案为 JSON 文件
+
+// ══════════════════════════════════════════════════
+// 数据清理 & 兼容转换
+// 导出前调用，确保只输出当前有效字段
+// 导入时也调用，自动把旧格式转换成新格式
+// ══════════════════════════════════════════════════
+function cleanData(raw){
+  // 先做兼容转换：旧字段 → 新字段
+  const d = {...raw};
+
+  // add_gear / add_paragon → affix_a
+  if(!d.affix_a) d.affix_a = [];
+  if((d.add_gear||0) > 0){
+    d.affix_a.push({name:'装备A类合计(旧格式)', val:d.add_gear, enabled:true});
+  }
+  if((d.add_paragon||0) > 0){
+    d.affix_a.push({name:'巅峰A类合计(旧格式)', val:d.add_paragon, enabled:true});
+  }
+
+  // b_multis → affix_b（旧字段名）
+  if(!d.affix_b) d.affix_b = [];
+  if(d.b_multis && d.b_multis.length > 0){
+    d.affix_b = [...d.affix_b, ...d.b_multis];
+  }
+
+  // add_b → affix_b（另一种旧格式）
+  if((d.add_b||0) > 0 && d.affix_b.length === 0){
+    d.affix_b.push({name:'B类合计(旧格式)', val:d.add_b, enabled:true});
+  }
+
+  // crit_dmg_add 旧字段 → 迁移到 affix_a（避免重复计算）
+  if((d.crit_dmg_add||0) > 0){
+    if(!d.affix_a) d.affix_a = [];
+    const alreadyIn = d.affix_a.some(x=>x.name==='暴击伤害[+]'||x.name==='暴击伤害');
+    if(!alreadyIn){
+      d.affix_a.push({name:'暴击伤害[+]', val:d.crit_dmg_add, enabled:true});
+    }
+  }
+
+  // multi_leg 确保每条有 enabled 字段
+  if(d.multi_leg){
+    d.multi_leg = d.multi_leg.map(r=>({
+      name: r.name||'', val: r.val||0,
+      enabled: r.enabled !== false
+    }));
+  }
+
+  // 只输出当前有效字段（删除所有旧字段）
+  const VALID_KEYS = [
+    'class_id','wpn1','wpn2','aps','str',
+    'skill_pct','is_dot','hits',
+    'affix_a','affix_b','multi_leg',
+    'crit_chance','crit_active',
+    'vuln_add','vuln_active','vuln_uptime',
+    'op_stacks','op_stack_add',
+    'monster_dr','apply_dr',
+  ];
+  // 注意：crit_dmg_add 已归入 affix_a，不再单独导出
+
+  const clean = {};
+  VALID_KEYS.forEach(k => {
+    if(d[k] !== undefined) clean[k] = d[k];
+  });
+
+  // 确保数组字段存在
+  if(!clean.affix_a)  clean.affix_a  = [];
+  if(!clean.affix_b)  clean.affix_b  = [];
+  if(!clean.multi_leg)clean.multi_leg = [];
+
+  return clean;
+}
+
+// 导出当前方案（标准格式，用于备份/分享/导入）
+function exportPlan(){
+  save();
+  const p = activePlan(); if(!p) return;
+  const cleanedData = cleanData(p.data);
+  const payload = JSON.stringify({name: p.name, data: cleanedData}, null, 2);
+  const blob = new Blob([payload], {type: 'application/json'});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  const cls  = CLASSES.find(x=>x.id===(p.data.class_id||'barbarian'))||CLASSES[0];
+  const safeName = p.name.replace(/[\\/:*?"<>|]/g, '_');
+  a.href     = url;
+  a.download = `D4_${cls.name}_${safeName}_${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  toast('✓ 已导出方案：' + safeName);
+}
+
+// 导出为 BD 参考格式（方案格式 + BD元信息，可直接粘贴到 bd-data JSON）
+function exportAsBD(){
+  save();
+  const p = activePlan(); if(!p) return;
+  const cls = CLASSES.find(x=>x.id===(p.data.class_id||'barbarian'))||CLASSES[0];
+  const cleanedData = cleanData(p.data);
+  const bd = {
+    id:   'bd_' + Date.now(),
+    name: p.name,
+    icon: '⚔',
+    tier: 'T? · 待填写',
+    desc: '待填写描述',
+    data: cleanedData,
+  };
+  const payload = JSON.stringify(bd, null, 2);
+  const blob = new Blob([payload], {type: 'application/json'});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  const safeName = p.name.replace(/[\\/:*?"<>|]/g, '_');
+  a.href     = url;
+  a.download = `D4_BD_${cls.name}_${safeName}_${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  toast('✓ 已导出BD格式，补充 icon/tier/desc 后粘贴到 bd-data');
+}
+
+// 点击触发文件选择
+function triggerImportFile(){
+  g('import-file-input').value = ''; // 允许重复导入同名文件
+  g('import-file-input').click();
+}
+
+// 读取选中的 JSON 文件
+function handleImportFile(input){
+  const file = input.files[0]; if(!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const obj = JSON.parse(e.target.result);
+      if(!obj || !obj.name || !obj.data){
+        toast('❌ 文件格式不对，缺少 name 或 data 字段');
+        return;
+      }
+      importPlanObj(obj);
+    } catch(err) {
+      toast('❌ JSON 解析失败：' + err.message);
+    }
+  };
+  reader.onerror = () => toast('❌ 文件读取失败');
+  reader.readAsText(file, 'utf-8');
+}
+
+// 导入方案对象（通用）— 自动兼容旧格式
+function importPlanObj(obj){
+  save();
+  const id   = 'p' + Date.now();
+  const name = plans.find(p=>p.name===obj.name) ? obj.name+' (导入)' : obj.name;
+  // 清理并兼容转换旧字段
+  const cleanedData = cleanData(obj.data || {});
+  plans.push({id, name, data: cleanedData});
+  activeId = id; saveAll(); load(); renderPlanTabs();
+
+  // 提示转换信息
+  const hasOldFields = ['add_gear','add_paragon','b_multis','op_active','op_hp_pct','add_b']
+    .some(k => obj.data?.[k] !== undefined);
+  if(hasOldFields){
+    toast('✓ 已导入并自动转换旧格式：' + name);
+  } else {
+    toast('✓ 已导入方案：' + name);
+  }
+}
+
+// ══════════════════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════════════════
+function switchPage(name){
+  if(name==='bdcmp'){
+    // BD对比：显示模拟器主界面，激活右列 bdcmp tab
+    g('cols').style.display='grid';
+    g('page-guide').style.display='none';
+    document.querySelectorAll('.ttab').forEach(b=>b.classList.toggle('active',b.dataset.page===name));
+    // 激活右列 bdcmp tab
+    switchRtab('bdcmp');
+    initBDComparePanel();
+    return;
+  }
+  const isSim=name==='sim';
+  g('cols').style.display=isSim?'grid':'none';
+  g('page-guide').style.display=name==='guide'?'block':'none';
+  document.querySelectorAll('.ttab').forEach(b=>b.classList.toggle('active',b.dataset.page===name));
+}
+function switchRtab(name){
+  document.querySelectorAll('.rtab').forEach(b=>b.classList.toggle('active',b.dataset.rtab===name));
+  document.querySelectorAll('.rtab-panel').forEach(p=>p.classList.toggle('active',p.id==='rtab-'+name));
+}
+document.querySelectorAll('.ttab').forEach(b=>b.onclick=()=>switchPage(b.dataset.page));
+document.querySelectorAll('.rtab').forEach(b=>b.onclick=()=>{
+  switchRtab(b.dataset.rtab);
+  if(b.dataset.rtab==='bdcmp') initBDComparePanel();
+});
+
+function toast(msg){
+  const t=g('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2600);
+}
+function copyResult(){
+  const steps=buildStepData(lastCalcResult,lastCalcData);
+  const txt=steps.map(s=>`${s.label}: ${fmt(s.val)}  ${s.mult}`).join('\n');
+  navigator.clipboard.writeText(txt).then(()=>toast('已复制'));
+}
+
+// ══════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════
+// 等 DOM 完全加载后再初始化（确保 bd-data JSON 块已解析）
+document.addEventListener('DOMContentLoaded', function(){
+  loadBDData();
+  loadAll();
+  load();
+  renderPlanTabs();
+  renderBDs();
+  renderSnapList();
+});
+</script>
+
+
+
+</body>
+</html>

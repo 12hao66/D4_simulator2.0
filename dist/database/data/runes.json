@@ -1,0 +1,106 @@
+[
+  {
+    "id": "rune-ahu",
+    "name": "阿胡",
+    "nameEn": "Ahu",
+    "type": "legendary",
+    "category": "Invocation",
+    "icon": "./images/runes/ahu.png",
+    "obtainedFrom": "15 份供品",
+    "effects": [
+      "幸运一击：攻击非健康敌人时，最多有 [100%] 几率。"
+    ],
+    "runeWordDesc": "与一枚祈告符文共同插入装备上的两个镶孔即可关联，组成一段符文之语。同一时间只能激活两段符文之语。"
+  },
+  {
+    "id": "rune-bac",
+    "name": "跋",
+    "nameEn": "Bac",
+    "type": "legendary",
+    "category": "Invocation",
+    "icon": "./images/runes/bac.png",
+    "obtainedFrom": "50 份供品",
+    "effects": [
+      "行进 5 米。"
+    ],
+    "runeWordDesc": "与一枚祈告符文共同插入装备上的两个镶孔即可关联，组成一段符文之语。同一时间只能激活两段符文之语。"
+  },
+  {
+    "id": "rune-igni",
+    "name": "伊格尼",
+    "nameEn": "Igni",
+    "type": "legendary",
+    "category": "Invocation",
+    "icon": "./images/runes/igni.png",
+    "obtainedFrom": "25 份供品",
+    "effects": [
+      "每 0.3 秒储存一份供品，施放非基础技能可以获得所存的供品（至多一份供品，施放非基础技能获得所存的供品（至多 500 份供品）。"
+    ],
+    "runeWordDesc": "与一枚祈告符文共同插入装备上的两个镶孔即可关联，组成一段符文之语。同一时间只能激活两段符文之语。"
+  },
+  {
+    "id": "rune-lith",
+    "name": "丽思",
+    "nameEn": "Lith",
+    "type": "legendary",
+    "category": "Invocation",
+    "icon": "./images/runes/lith.png",
+    "obtainedFrom": "25 份供品",
+    "effects": [
+      "战斗时站着不动，持续 0.3 秒；"
+    ],
+    "runeWordDesc": "与一枚祈告符文共同插入装备上的两个镶孔即可关联，组成一段符文之语。同一时间只能激活两段符文之语。"
+  },
+  {
+    "id": "rune-vol",
+    "name": "沃尔",
+    "nameEn": "Vol",
+    "type": "legendary",
+    "category": "Supplication",
+    "icon": "./images/runes/vol.png",
+    "obtainedFrom": "30 份供品",
+    "effects": [
+      "对敌人造成伤害时，有 [20%] 几率使其燃烧，持续 2 秒。"
+    ],
+    "runeWordDesc": "与一枚仪祭符文共同插入装备上的两个镶孔即可关联，组成一段符文之语。同一时间只能激活两段符文之语。"
+  },
+  {
+    "id": "rune-zir",
+    "name": "兹尔",
+    "nameEn": "Zir",
+    "type": "legendary",
+    "category": "Supplication",
+    "icon": "./images/runes/zir.png",
+    "obtainedFrom": "30 份供品",
+    "effects": [
+      "对燃烧的敌人造成暴击时，恢复 [20] 点能量。"
+    ],
+    "runeWordDesc": "与一枚仪祭符文共同插入装备上的两个镶孔即可关联，组成一段符文之语。同一时间只能激活两段符文之语。"
+  },
+  {
+    "id": "rune-ber",
+    "name": "贝尔",
+    "nameEn": "Ber",
+    "type": "legendary",
+    "category": "Invocation",
+    "icon": "./images/runes/ber.png",
+    "obtainedFrom": "40 份供品",
+    "effects": [
+      "暴击伤害提高 [15%]。"
+    ],
+    "runeWordDesc": "与一枚祈告符文共同插入装备上的两个镶孔即可关联，组成一段符文之语。同一时间只能激活两段符文之语。"
+  },
+  {
+    "id": "rune-hel",
+    "name": "海尔",
+    "nameEn": "Hel",
+    "type": "legendary",
+    "category": "Supplication",
+    "icon": "./images/runes/hel.png",
+    "obtainedFrom": "35 份供品",
+    "effects": [
+      "击杀敌人后，获得 [10%] 攻击速度加成，持续 3 秒。"
+    ],
+    "runeWordDesc": "与一枚仪祭符文共同插入装备上的两个镶孔即可关联，组成一段符文之语。同一时间只能激活两段符文之语。"
+  }
+]

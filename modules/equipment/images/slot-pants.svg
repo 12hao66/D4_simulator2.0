@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="pantsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A4A4A"/>
+      <stop offset="50%" style="stop-color:#3A3A3A"/>
+      <stop offset="100%" style="stop-color:#2A2A2A"/>
+    </linearGradient>
+  </defs>
+  <path d="M40 16H8c-2.21 0-4 1.79-4 4v20c0 2.21 1.79 4 4 4h8v-8h4v8h8v-8h4v8h8v-8h8v8h4c2.21 0 4-1.79 4-4V20c0-2.21-1.79-4-4-4zM16 24v12h-4V24h4zm12 0v12h-4V24h4zm12 0v12h-4V24h4z" fill="url(#pantsGrad)"/>
+  <path d="M24 20v20" stroke="#C9922A" stroke-width="2" opacity="0.6"/>
+</svg>

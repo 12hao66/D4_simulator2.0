@@ -1,0 +1,217 @@
+[
+  {
+    "id": "post-001",
+    "type": "news",
+    "title": "S8赛季更新公告：新职业圣骑士登场",
+    "content": "暗黑破坏神4第八赛季正式上线！本次更新带来了全新的职业——圣骑士，以及全新的赛季机制。圣骑士是一个以神圣力量为核心的近战职业，拥有强大的防御能力和团队增益技能。\n\n主要更新内容：\n1. 新职业圣骑士\n2. 新赛季任务线\n3. 全新传奇装备\n4. 平衡性调整\n\n快来体验全新的游戏内容吧！",
+    "author": {
+      "id": "admin",
+      "name": "官方公告",
+      "level": 20,
+      "badge": "官方"
+    },
+    "images": [],
+    "tags": ["S8赛季", "圣骑士", "更新"],
+    "views": 12580,
+    "likes": 356,
+    "comments": 89,
+    "status": "published",
+    "isPinned": true,
+    "isHot": true,
+    "createdAt": 1718668800000,
+    "updatedAt": 1718668800000
+  },
+  {
+    "id": "post-002",
+    "type": "guide",
+    "title": "野蛮人旋风斩BD完全攻略（S8赛季）",
+    "content": "本攻略详细介绍S8赛季野蛮人旋风斩BD的完整配置，包括装备选择、技能搭配、巅峰盘配置等。\n\n核心装备：\n- 头盔：哈洛加斯之怒\n- 胸甲：先祖之怒\n- 武器：双持狂战士之斧\n\n技能配置：\n- 核心：旋风斩\n- 被动：战斗暴怒、无尽怒火\n\n巅峰盘优先级：\n1. 暴击伤害\n2. 力量\n3. 旋风斩伤害\n\n这套BD在S8赛季表现非常出色，可以轻松通关折磨12难度。",
+    "author": {
+      "id": "user-barbarian",
+      "name": "野蛮人之王",
+      "level": 18,
+      "badge": "攻略达人"
+    },
+    "images": [],
+    "tags": ["野蛮人", "旋风斩", "攻略", "S8"],
+    "views": 8960,
+    "likes": 234,
+    "comments": 56,
+    "status": "published",
+    "isPinned": false,
+    "isHot": true,
+    "createdAt": 1718755200000,
+    "updatedAt": 1718755200000
+  },
+  {
+    "id": "post-003",
+    "type": "guide",
+    "title": "死灵法师骨矛BD详解 - 单人冲榜必备",
+    "content": "骨矛死灵是S8赛季单人冲榜的最佳选择之一，本攻略将详细介绍如何配置这套BD。\n\n核心机制：\n骨矛配合尸爆可以造成大量AOE伤害，同时骨甲提供强大的生存能力。\n\n装备推荐：\n- 武器：黑河\n- 头盔：墓穴之冠\n- 护符：骨矛护符\n\n技能配置：\n- 核心：骨矛\n- 辅助：尸爆、骨甲\n\n巅峰盘：优先点出骨矛伤害和暴击相关节点。\n\n这套BD在单人魔渊中表现极佳，推荐给想要冲榜的玩家。",
+    "author": {
+      "id": "user-necro",
+      "name": "死亡领主",
+      "level": 17
+    },
+    "images": [],
+    "tags": ["死灵法师", "骨矛", "攻略", "冲榜"],
+    "views": 6540,
+    "likes": 189,
+    "comments": 42,
+    "status": "published",
+    "isPinned": false,
+    "isHot": false,
+    "createdAt": 1718841600000,
+    "updatedAt": 1718841600000
+  },
+  {
+    "id": "post-004",
+    "type": "help",
+    "title": "新手求助：怎么快速升级到70级？",
+    "content": "刚入坑的新手玩家，请问大家怎么才能快速升级到70级？现在才30级感觉升级好慢啊。\n\n目前玩的是巫师，感觉伤害不够高，经常被怪打死。有没有大佬指点一下？",
+    "author": {
+      "id": "user-new",
+      "name": "萌新玩家",
+      "level": 1
+    },
+    "images": [],
+    "tags": ["新手", "升级", "求助"],
+    "views": 1230,
+    "likes": 45,
+    "comments": 28,
+    "status": "published",
+    "isPinned": false,
+    "isHot": false,
+    "createdAt": 1718928000000,
+    "updatedAt": 1718928000000
+  },
+  {
+    "id": "post-005",
+    "type": "team",
+    "title": "国服免费带萌新开折磨12、打莉莉丝",
+    "content": "赛季末了，做做公益，免费带新手玩家。\n\n可以帮打：\n- 开通折磨12难度\n- 莉莉丝BOSS\n- 墨菲斯托BOSS\n- 其他BOSS\n\n需要的玩家评论区留下战网ID，我看到会加你好友。\n\nID：公益玩家#1234\n\n注意：完全免费，不收任何费用！",
+    "author": {
+      "id": "user-helper",
+      "name": "公益玩家",
+      "level": 19,
+      "badge": "热心助人"
+    },
+    "images": [],
+    "tags": ["公益", "带新人", "BOSS"],
+    "views": 4560,
+    "likes": 234,
+    "comments": 67,
+    "status": "published",
+    "isPinned": false,
+    "isHot": true,
+    "createdAt": 1719014400000,
+    "updatedAt": 1719014400000
+  },
+  {
+    "id": "post-006",
+    "type": "guide",
+    "title": "巫师冰球BD配置分享 - 高伤害低操作",
+    "content": "分享一套S8赛季非常好用的巫师冰球BD，特点是伤害高、操作简单。\n\n核心技能：冰球术\n配合冰霜新星和传送术，可以快速清怪。\n\n装备选择：\n- 武器：冰霜之触\n- 头盔：冰霜之冠\n- 护符：冰球护符\n\n这套BD非常适合新手玩家，操作简单但伤害不俗。\n\n巅峰盘优先点：冰霜伤害、暴击几率、暴击伤害。",
+    "author": {
+      "id": "user-sorc",
+      "name": "冰霜法师",
+      "level": 16
+    },
+    "images": [],
+    "tags": ["巫师", "冰球", "攻略"],
+    "views": 3890,
+    "likes": 156,
+    "comments": 34,
+    "status": "published",
+    "isPinned": false,
+    "isHot": false,
+    "createdAt": 1719100800000,
+    "updatedAt": 1719100800000
+  },
+  {
+    "id": "post-007",
+    "type": "discussion",
+    "title": "大家觉得S8赛季哪个职业最强？",
+    "content": "S8赛季已经过了一段时间了，大家觉得哪个职业目前最强？\n\n我个人感觉野蛮人和死灵法师都很强，但听说圣骑士也很厉害。\n\n大家来讨论一下吧！",
+    "author": {
+      "id": "user-discuss",
+      "name": "讨论达人",
+      "level": 12
+    },
+    "images": [],
+    "tags": ["讨论", "职业", "S8"],
+    "views": 2670,
+    "likes": 89,
+    "comments": 156,
+    "status": "published",
+    "isPinned": false,
+    "isHot": false,
+    "createdAt": 1719187200000,
+    "updatedAt": 1719187200000
+  },
+  {
+    "id": "post-008",
+    "type": "trade",
+    "title": "出售毕业级暗金头盔，属性完美",
+    "content": "出售一个毕业级暗金头盔，属性非常完美：\n\n- 力量 +50\n- 暴击几率 +8%\n- 暴击伤害 +45%\n- 全属性 +30\n\n适合野蛮人使用，有意者私聊报价。\n\n只接受游戏内交易，不收RMB。",
+    "author": {
+      "id": "user-trader",
+      "name": "装备商人",
+      "level": 15
+    },
+    "images": [],
+    "tags": ["交易", "暗金", "头盔"],
+    "views": 1890,
+    "likes": 23,
+    "comments": 45,
+    "status": "published",
+    "isPinned": false,
+    "isHot": false,
+    "createdAt": 1719273600000,
+    "updatedAt": 1719273600000
+  },
+  {
+    "id": "post-009",
+    "type": "guide",
+    "title": "德鲁伊风暴狼BD - 高端玩家必备",
+    "content": "德鲁伊风暴狼是S8赛季的高端BD，需要一定的装备基础，但伤害非常爆炸。\n\n核心技能：\n- 风暴打击\n- 狼群召唤\n- 熊形态\n\n装备要求：\n- 需要至少3件暗金装备\n- 暴击几率达到50%以上\n\n这套BD在高端局表现极佳，推荐给有装备基础的德鲁伊玩家。",
+    "author": {
+      "id": "user-druid",
+      "name": "自然守护者",
+      "level": 18,
+      "badge": "攻略达人"
+    },
+    "images": [],
+    "tags": ["德鲁伊", "风暴狼", "攻略"],
+    "views": 4230,
+    "likes": 178,
+    "comments": 38,
+    "status": "published",
+    "isPinned": false,
+    "isHot": false,
+    "createdAt": 1719360000000,
+    "updatedAt": 1719360000000
+  },
+  {
+    "id": "post-010",
+    "type": "news",
+    "title": "3.1.0版本更新预告：圣骑士技能调整",
+    "content": "开发团队公布了3.1.0版本的更新预告，主要针对圣骑士职业进行平衡性调整。\n\n主要改动：\n1. 极天之剑伤害提升\n2. 勇猛突进持续时间延长\n3. 英勇溃击格挡几率提高\n\n详细更新内容将在下周正式服更新时公布。",
+    "author": {
+      "id": "admin",
+      "name": "官方公告",
+      "level": 20,
+      "badge": "官方"
+    },
+    "images": [],
+    "tags": ["更新", "圣骑士", "平衡"],
+    "views": 5670,
+    "likes": 145,
+    "comments": 67,
+    "status": "published",
+    "isPinned": false,
+    "isHot": true,
+    "createdAt": 1719446400000,
+    "updatedAt": 1719446400000
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "id": "utility",
+  "name": "通用盘",
+  "nodes": [
+    {
+      "id": "utility-entry-top",
+      "type": "normal",
+      "x": 10,
+      "y": 0,
+      "isEntryPoint": true
+    },
+    {
+      "id": "utility-path-1",
+      "type": "normal",
+      "x": 10,
+      "y": 1,
+      "effects": ["+5% 移动速度"]
+    },
+    {
+      "id": "utility-path-2",
+      "type": "normal",
+      "x": 10,
+      "y": 2,
+      "effects": ["+10% 冷却缩减"]
+    },
+    {
+      "id": "utility-center",
+      "type": "legendary",
+      "x": 10,
+      "y": 5,
+      "effects": ["+15% 冷却缩减"]
+    },
+    {
+      "id": "utility-link-bottom",
+      "type": "link",
+      "x": 10,
+      "y": 20
+    },
+    {
+      "id": "utility-link-left",
+      "type": "link",
+      "x": 0,
+      "y": 10
+    },
+    {
+      "id": "utility-link-right",
+      "type": "link",
+      "x": 20,
+      "y": 10
+    }
+  ],
+  "connections": [
+    ["utility-entry-top", "utility-path-1"],
+    ["utility-path-1", "utility-path-2"],
+    ["utility-path-2", "utility-center"],
+    ["utility-center", "utility-link-bottom"],
+    ["utility-center", "utility-link-left"],
+    ["utility-center", "utility-link-right"]
+  ]
+}

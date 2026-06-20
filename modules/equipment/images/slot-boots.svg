@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="bootsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B4513"/>
+      <stop offset="50%" style="stop-color:#6B3510"/>
+      <stop offset="100%" style="stop-color:#4B250D"/>
+    </linearGradient>
+  </defs>
+  <path d="M12 20h8v8l-4-4-4 4v-8zm16 0h8v8l-4-4-4 4v-8z" fill="url(#bootsGrad)"/>
+  <path d="M10 28h12v12c0 2.21-1.79 4-4 4H10c-2.21 0-4-1.79-4-4V28h4zm24 0h12v12c0 2.21-1.79 4-4 4h-8c-2.21 0-4-1.79-4-4V28h4z" fill="url(#bootsGrad)"/>
+  <path d="M14 36h4" stroke="#C9922A" stroke-width="2" opacity="0.6"/>
+  <path d="M30 36h4" stroke="#C9922A" stroke-width="2" opacity="0.6"/>
+</svg>

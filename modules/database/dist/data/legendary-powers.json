@@ -1,0 +1,90 @@
+[
+  {
+    "id": "lp-eternal-soul",
+    "name": "安魂威能",
+    "description": "你每有一个激活的仆从，获得 [7.0 - 10.0] 点最大精魂值。",
+    "type": "necromancer",
+    "powerType": "resource",
+    "applicableSlots": ["护符", "戒指"],
+    "applicableClasses": ["necromancer"],
+    "boss": "迪亚波罗",
+    "manuallyVerified": true
+  },
+  {
+    "id": "lp-fierce-boxer",
+    "name": "暴烈拳师的威能",
+    "description": "施放终极技能使你的伤害提高 [35 - 55]%[x]，持续 8 秒。终极技能级别额外提高 2 级。",
+    "type": "all",
+    "powerType": "offense",
+    "applicableSlots": ["护符", "手套", "戒指", "单手武器", "双手武器", "副手"],
+    "applicableClasses": ["barbarian", "necromancer", "sorc", "druid", "rogue", "spiritborn", "paladin"],
+    "boss": "莉莉丝",
+    "manuallyVerified": true
+  },
+  {
+    "id": "lp-explosive-catcher",
+    "name": "爆炸捕手的威能",
+    "description": "幸运一击: 对受你陷阱技能影响的敌人造成伤害有 [15 - 35]% 几率产生爆炸，造成 [75 - 105] 点暗影伤害并对其施加易伤，持续 4 秒。",
+    "type": "rogue",
+    "powerType": "utility",
+    "applicableSlots": ["护符", "靴子", "胸甲", "手套", "裤子", "头盔", "副手"],
+    "applicableClasses": ["rogue"],
+    "boss": "安达利尔",
+    "manuallyVerified": true
+  },
+  {
+    "id": "lp-barbarian-blood",
+    "name": "野蛮人热血威能",
+    "description": "每损失 1% 生命值，使你的伤害提高 [3 - 5]%。",
+    "type": "barbarian",
+    "powerType": "offense",
+    "applicableSlots": ["护符", "戒指", "单手武器"],
+    "applicableClasses": ["barbarian"],
+    "boss": "乌里瓦尔",
+    "manuallyVerified": true
+  },
+  {
+    "id": "lp-sorc-fireball",
+    "name": "法师火球威能",
+    "description": "火球技能的爆炸范围扩大 [30 - 50]%，伤害提高 [20 - 35]%。",
+    "type": "sorc",
+    "powerType": "offense",
+    "applicableSlots": ["护符", "单手武器", "双手武器"],
+    "applicableClasses": ["sorc"],
+    "boss": "迪亚波罗",
+    "manuallyVerified": true
+  },
+  {
+    "id": "lp-druid-storm",
+    "name": "德鲁伊风暴威能",
+    "description": "风暴技能有 [25 - 40]% 几率使敌人陷入易伤状态。",
+    "type": "druid",
+    "powerType": "offense",
+    "applicableSlots": ["护符", "胸甲", "靴子"],
+    "applicableClasses": ["druid"],
+    "boss": "莉莉丝",
+    "manuallyVerified": true
+  },
+  {
+    "id": "lp-spiritborn-quake",
+    "name": "灵巫地震威能",
+    "description": "地震技能在 [2 - 3] 秒内造成 [100 - 150]% 额外伤害。",
+    "type": "spiritborn",
+    "powerType": "offense",
+    "applicableSlots": ["护符", "双手武器"],
+    "applicableClasses": ["spiritborn"],
+    "boss": "巴尔",
+    "manuallyVerified": true
+  },
+  {
+    "id": "lp-paladin-holy",
+    "name": "圣骑士神圣威能",
+    "description": "神圣技能对易伤敌人造成的伤害提高 [40 - 60]%。",
+    "type": "paladin",
+    "powerType": "offense",
+    "applicableSlots": ["护符", "单手武器", "胸甲"],
+    "applicableClasses": ["paladin"],
+    "boss": "迪亚波罗",
+    "manuallyVerified": true
+  }
+]

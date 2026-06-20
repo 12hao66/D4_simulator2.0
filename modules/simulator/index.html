@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>暗黑4 · 伤害模拟器</title>
+
+  <!-- CSS模块 -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/utilities.css">
+</head>
+<body>
+  <div class="app">
+
+    <!-- ══ TOPBAR ══ -->
+    <div class="topbar">
+      <div class="logo">D4 · BARBARIAN</div>
+      <div class="topbar-sep"></div>
+      <div class="s-badge">S13</div>
+      <div class="topbar-tabs">
+        <button class="ttab active" data-page="sim">⚔ 模拟器</button>
+        <button class="ttab" data-page="bdcmp">⚖ BD对比</button>
+        <button class="ttab" data-page="guide">📖 公式说明</button>
+      </div>
+    </div>
+
+    <!-- ══ PLAN BAR ══ -->
+    <div class="plan-bar">
+      <div class="plan-tabs" id="plan-tabs"></div>
+      <div class="plan-btns">
+        <button class="pb" onclick="window.app.newPlan()">＋ 新建</button>
+        <button class="pb" onclick="window.app.clonePlan()">复制</button>
+        <button class="pb" onclick="window.app.exportPlan()">💾 导出</button>
+        <button class="pb" onclick="window.app.exportAsBD()">📋 导出BD</button>
+        <button class="pb" onclick="window.app.triggerImportFile()">📂 导入</button>
+        <input type="file" id="import-file-input" accept=".json" style="display:none">
+      </div>
+    </div>
+
+    <!-- ══ THREE COLUMNS ══ -->
+    <div class="cols" id="cols">
+
+      <!-- ════ LEFT COL: 基础属性 ════ -->
+      <div class="col" id="col-left">
+
+        <!-- 职业选择 -->
+        <div class="sh">👤 职业</div>
+        <div style="padding:10px 14px 12px">
+          <select id="f_class" style="
+            width:100%;
+            background:var(--ink-1);
+            border:1.5px solid var(--border-mid);
+            color:var(--text-primary);
+            font-family:'Cinzel',serif;
+            font-size:13px;
+            font-weight:600;
+            letter-spacing:0.5px;
+            padding:9px 12px;
+            border-radius:6px;
+            outline:none;
+            cursor:pointer;
+            appearance:none;
+            -webkit-appearance:none;
+            background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9922a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat:no-repeat;
+            background-position:right 12px center;
+            padding-right:32px;
+            transition:border-color .2s, box-shadow .2s">
+            <option value="barbarian">⚔ 野蛮人</option>
+            <option value="druid">🌿 德鲁伊</option>
+            <option value="sorc">🔥 法师</option>
+            <option value="necro">💀 死灵法师</option>
+            <option value="rogue">🗡 游侠</option>
+            <option value="paladin">🛡 圣骑士</option>
+            <option value="spiritborn">🦅 术士</option>
+          </select>
+          <div id="class-hint" style="margin-top:6px;font-size:11px;color:var(--text-muted);
+            display:flex;align-items:center;gap:6px">
+            <span id="stat-div-label" style="color:var(--fire-2);font-family:'Share Tech Mono',monospace">
+              系数：1 + 力量/900
+            </span>
+          </div>
+        </div>
+
+        <div class="sh">⚔ 武器 &amp; 基础</div>
+        <div class="fblock">
+          <div class="frow">
+            <div class="flabel">主手武器点伤（平均）<small>面板小字取中值</small></div>
+            <input class="ni w" type="number" id="f_wpn1" value="3000" min="0">
+          </div>
+          <div class="frow">
+            <div class="flabel">副手武器点伤<small>双持填；单武器留0</small></div>
+            <input class="ni w" type="number" id="f_wpn2" value="0" min="0">
+          </div>
+
+          <div class="frow">
+            <div class="flabel">总攻击速度 APS<small>仅DPS计算使用</small></div>
+            <input class="ni" type="number" id="f_aps" value="1.2" step="0.01" min="0.1">
+          </div>
+          <div class="frow">
+            <div class="flabel" id="stat-label">力量（主属性）<small id="stat-div-label">系数：1 + 力量/900</small></div>
+            <input class="ni w" type="number" id="f_str" value="5000" min="0">
+            <span class="ftag tag-base">主属</span>
+          </div>
+        </div>
+
+        <div class="sh">⚡ 技能</div>
+        <div class="fblock">
+          <div class="frow">
+            <div class="flabel">技能伤害倍率<small>从技能详情查看</small></div>
+            <input class="ni" type="number" id="f_skill_pct" value="215" min="1">
+            <span class="ftag tag-base">%</span>
+          </div>
+          <div class="frow">
+            <div class="flabel">每次挥击命中数</div>
+            <input class="ni" type="number" id="f_hits" value="1" min="0.1" step="0.1">
+          </div>
+          <div class="frow">
+            <label class="cbrow"><input type="checkbox" id="f_is_dot">
+              <span>持续伤害（DoT）不可暴击/压制</span></label>
+          </div>
+        </div>
+
+        <div class="sh">➕ A类区 [+]%<div class="sh-badge">前缀·加法合算</div></div>
+        <div style="padding:4px 10px 2px;font-size:11px;color:var(--text-muted);line-height:1.6">
+          装备回火词缀 · 巅峰盘节点 · 均为[+]前缀
+        </div>
+        <div class="xsec" id="xsec-a"></div>
+        <div id="total-a" class="zone-total" style="margin:2px 10px 4px"></div>
+        <div style="padding:0 10px 8px">
+          <button class="btn-add-x" onclick="window.app.addAffix('a')">＋ 添加 A类词缀</button>
+        </div>
+
+        <div class="sh">💥 暴击</div>
+        <div class="fblock">
+          <div class="frow">
+            <div class="flabel">暴击伤害 基础 [×]<small>固定，不可修改</small></div>
+            <span class="lock-val">50%</span>
+            <span class="ftag tag-lock">锁定</span>
+          </div>
+          <div class="frow">
+            <div class="flabel">暴击伤害 [+]%<small>归入A类区参与加法合算</small></div>
+            <input class="ni" type="number" id="f_crit_dmg_add" value="0" min="0">
+            <span class="ftag tag-add">[+]%</span>
+          </div>
+          <div class="frow">
+            <div class="flabel">暴击率 %<small>面板暴击率</small></div>
+            <input class="ni" type="number" id="f_crit_chance" value="50" min="0" max="100">
+            <span class="ftag tag-crit">%</span>
+          </div>
+          <div class="frow">
+            <label class="cbrow"><input type="checkbox" id="f_crit_active" checked>
+              <span>启用暴击计算</span></label>
+          </div>
+        </div>
+
+        <div class="sh">🔴 易伤</div>
+        <div class="fblock">
+          <div class="frow">
+            <div class="flabel">易伤基础乘数 [×]<small>固定 ×1.2</small></div>
+            <span class="lock-val">20%</span>
+            <span class="ftag tag-lock">锁定</span>
+          </div>
+          <div class="frow">
+            <div class="flabel">易伤伤害 [+]%<small>装备词缀，目标易伤时计入A伤</small></div>
+            <input class="ni" type="number" id="f_vuln_add" value="0" min="0">
+            <span class="ftag tag-add">[+]%</span>
+          </div>
+          <div class="frow">
+            <label class="cbrow"><input type="checkbox" id="f_vuln_active" checked>
+              <span>目标携带易伤（固定×1.2）</span></label>
+          </div>
+          <div class="frow">
+            <div class="flabel">易伤覆盖率 %<small>仅DPS计算使用</small></div>
+            <input class="ni" type="number" id="f_vuln_uptime" value="80" min="0" max="100">
+            <span class="ftag tag-vuln">%</span>
+          </div>
+        </div>
+
+        <div class="sh">⚡ 压制（Overpower）S13</div>
+        <div class="fblock">
+          <div style="font-size:11px;color:var(--text-muted);line-height:1.7;padding:6px 0 8px">
+            S13机制：叠层 [+]% 自动归入 A类区参与计算<br>
+            叠层数填 0 = 无压制效果
+          </div>
+          <div class="frow">
+            <div class="flabel">每层加成 [+]%<small>单层压制词缀数值</small></div>
+            <input class="ni" type="number" id="f_op_stack_add" value="15" min="0">
+            <span class="ftag tag-add">[+]%</span>
+          </div>
+          <div class="frow">
+            <div class="flabel">当前叠层数<small>填0表示无压制</small></div>
+            <input class="ni" type="number" id="f_op_stacks" value="0" min="0" max="99">
+          </div>
+        </div>
+
+        <div class="sh">🛡 怪物减伤</div>
+        <div class="fblock">
+          <div class="frow">
+            <div class="flabel">怪物减伤 [×]%<small>70级约80%</small></div>
+            <input class="ni" type="number" id="f_monster_dr" value="80" min="0" max="99">
+            <span class="ftag tag-x">[×]%</span>
+          </div>
+          <div class="frow">
+            <label class="cbrow"><input type="checkbox" id="f_apply_dr">
+              <span>计入怪物减伤（显示实际伤害）</span></label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ════ MIDDLE COL: 词缀配置 ════ -->
+      <div class="col" id="col-middle">
+
+        <div class="sh">✖ B类区 [×]%<div class="sh-badge">前缀·同名相加后独立相乘</div></div>
+        <div style="padding:6px 14px 4px;font-size:11px;color:var(--text-muted);line-height:1.8">
+          装备原生词缀 · 宝石 · 均为[×]前缀
+        </div>
+        <div class="xsec" id="xsec-b"></div>
+        <div id="total-b" class="zone-total" style="margin:2px 10px 4px"></div>
+        <div style="padding:0 10px 8px">
+          <button class="btn-add-x" onclick="window.app.addAffix('b')">＋ 添加 B类词缀</button>
+        </div>
+
+        <div class="sh">✖ 独立X乘区 [×]%<div class="sh-badge">后缀·各自独立相乘</div></div>
+        <div style="padding:6px 14px 4px;font-size:11px;color:var(--text-muted);line-height:1.6">
+          传奇威能、套装效果、不同名 [×]% 词缀各填一行，每行独立相乘
+        </div>
+        <div class="xsec" id="xsec-leg"></div>
+        <div id="total-leg" class="zone-total" style="margin:2px 10px 4px"></div>
+        <div style="padding:0 10px 8px">
+          <button class="btn-add-x" onclick="window.app.addAffix('leg')">＋ 添加 独立X</button>
+        </div>
+
+        <div class="sh">📊 天梯 Top BD 参考</div>
+        <div style="padding:4px 10px 2px;font-size:11px;color:var(--text-muted);line-height:1.6">
+          点击 BD 卡片查看参数，可导入对比或一键套用
+        </div>
+        <div class="bd-list" id="bd-list"></div>
+
+        <!-- 快照面板 -->
+        <div class="sh">📸 快照<div class="sh-badge">最多5个</div></div>
+        <div style="padding:8px 14px 4px;font-size:11px;color:var(--text-muted)">
+          保存当前方案的数据副本，防止数据丢失
+        </div>
+        <div style="padding:4px 14px 8px">
+          <button onclick="window.app.takeSnapshot()" style="
+            width:100%;padding:8px;
+            background:linear-gradient(180deg,rgba(200,144,32,.2),rgba(140,88,8,.15));
+            border:1.5px solid var(--border-mid);color:var(--fire-1);
+            font-family:'Cinzel',serif;font-size:12px;font-weight:700;
+            letter-spacing:1px;cursor:pointer;border-radius:6px;
+            transition:all .2s">📸 保存快照</button>
+        </div>
+        <div style="padding:0 14px 12px" id="snap-list"></div>
+
+      </div>
+
+      <!-- ════ RIGHT COL: 结果展示 ════ -->
+      <div class="col rcol" id="col-right">
+
+        <div class="rtabs">
+          <button class="rtab active" data-rtab="result">计算结果</button>
+          <button class="rtab" data-rtab="dps">DPS</button>
+          <button class="rtab" data-rtab="bdcmp">BD对比</button>
+        </div>
+
+        <!-- 结果面板 -->
+        <div class="rtab-panel active" id="rtab-result">
+          <button class="btn-calc" id="btn-calc">⚔ 计算最终伤害</button>
+
+          <div id="r-empty" class="empty">
+            <div class="empty-icon">⚔</div>
+            <div class="empty-text">填写左侧参数后<br>点击计算</div>
+          </div>
+
+          <div id="r-content" style="display:none">
+            <div class="r-hero">
+              <div class="r-mode" id="r-mode">暴击命中</div>
+              <div class="r-num" id="r-num">0</div>
+              <div class="r-sub" id="r-sub"></div>
+            </div>
+
+            <div class="steps-toggle">
+              <button class="stoggle active" data-mode="simple">简洁模式</button>
+              <button class="stoggle" data-mode="detail">详细展开</button>
+            </div>
+
+            <div id="steps-simple" class="steps-simple">
+              <div id="steps-simple-content"></div>
+            </div>
+
+            <div id="steps-detail" style="display:none">
+              <div id="steps-detail-content"></div>
+            </div>
+
+            <button class="btn-add-x" id="btn-copy-result" style="margin-top:16px">
+              📋 复制计算步骤
+            </button>
+          </div>
+        </div>
+
+        <!-- DPS面板 -->
+        <div class="rtab-panel" id="rtab-dps">
+          <div id="dps-empty" class="empty" style="margin-top:20px">
+            <div class="empty-icon">📊</div>
+            <div class="empty-text">请先计算伤害</div>
+          </div>
+          <div id="dps-content" style="display:none">
+            <div class="r-hero" style="margin-bottom:10px">
+              <div class="r-mode">平均 DPS</div>
+              <div class="r-num" id="dps-main">—</div>
+              <div class="r-sub" id="dps-sub">—</div>
+            </div>
+            <div class="dps-grid" id="dps-grid"></div>
+          </div>
+        </div>
+
+        <!-- BD对比面板 -->
+        <div class="rtab-panel" id="rtab-bdcmp">
+          <!-- 选择基准 -->
+          <div style="margin-bottom:12px">
+            <div style="font-size:11px;color:var(--text-muted);letter-spacing:.5px;
+              margin-bottom:6px;text-transform:uppercase;font-family:'Share Tech Mono',monospace">
+              基准方案
+            </div>
+            <select id="cmp-base" style="width:100%;background:var(--ink-1);
+              border:1.5px solid var(--border-mid);color:var(--text-primary);
+              font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:600;
+              padding:7px 10px;border-radius:6px;outline:none;cursor:pointer">
+            </select>
+          </div>
+          <!-- 对比目标（多选） -->
+          <div style="margin-bottom:12px">
+            <div style="font-size:11px;color:var(--text-muted);letter-spacing:.5px;
+              margin-bottom:6px;text-transform:uppercase;font-family:'Share Tech Mono',monospace">
+              对比目标（可多选）
+            </div>
+            <div id="cmp-targets" style="display:flex;flex-direction:column;gap:4px"></div>
+          </div>
+          <!-- 对比按钮 -->
+          <div style="margin-bottom:14px">
+            <button onclick="window.app.runBDCompare()" style="
+              width:100%;padding:9px;
+              background:linear-gradient(180deg,rgba(200,144,32,.35),rgba(140,88,8,.25));
+              border:1.5px solid var(--border-mid);color:var(--fire-1);
+              font-family:'Cinzel',serif;font-size:12px;font-weight:700;
+              letter-spacing:2px;cursor:pointer;border-radius:6px;transition:all .2s">
+              ⚖ 开始对比
+            </button>
+            <div style="font-size:10px;color:var(--text-muted);margin-top:5px;text-align:center">
+              各方案使用自身 skill_pct 计算，结果更真实
+            </div>
+          </div>
+          <!-- 结果 -->
+          <div id="bdcmp-result"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ══ GUIDE PAGE ══ -->
+    <div class="guide-page" id="page-guide">
+
+      <!-- 页头 -->
+      <div style="margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border-soft)">
+        <h2 style="font-family:'Cinzel',serif;font-size:26px;font-weight:900;margin-bottom:8px;
+          background:linear-gradient(135deg,#fff0c0,var(--fire-1),var(--fire-2));
+          -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+          filter:drop-shadow(0 0 12px rgba(255,208,96,.3))">S13 伤害公式说明</h2>
+        <p style="font-size:13px;color:var(--text-muted);letter-spacing:.5px;line-height:1.6">
+          暗黑4 第13赛季（憎恨之躯 3.0）· 全职业通用 · 同名相加，异名相乘
+        </p>
+      </div>
+
+      <!-- 版本对比 -->
+      <div style="margin-bottom:24px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div style="background:var(--ink-2);border:1px solid var(--border-soft);
+          border-radius:8px;padding:14px 16px;opacity:.7">
+          <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;
+            color:var(--text-muted);text-transform:uppercase;margin-bottom:8px">2.0 旧公式</div>
+          <div style="font-family:'Share Tech Mono',monospace;font-size:11px;
+            color:var(--text-secondary);line-height:2">
+            武器 × 技能 × 主属<br>
+            × A类 [+]%<br>
+            × 独立X×N [×]%后缀<br>
+            <span style="color:var(--text-muted)">压制：3%触发，HP加入基础</span>
+          </div>
+        </div>
+        <div style="background:rgba(224,160,32,.06);border:1.5px solid var(--border-mid);
+          border-radius:8px;padding:14px 16px;position:relative">
+          <div style="position:absolute;top:-1px;left:-1px;right:-1px;height:2px;
+            background:linear-gradient(90deg,transparent,var(--fire-2),transparent);border-radius:8px 8px 0 0"></div>
+          <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;
+            color:var(--fire-2);text-transform:uppercase;margin-bottom:8px">3.0 S13 新公式</div>
+          <div style="font-family:'Share Tech Mono',monospace;font-size:11px;
+            color:var(--text-primary);line-height:2">
+            武器 × 技能 × 主属<br>
+            × A类 [+]% <span style="color:var(--fire-1)">（含压制叠层）</span><br>
+            <span style="color:var(--fire-1)">× B类 [×]%前缀 ← 新增</span><br>
+            × 独立X×N [×]%后缀
+          </div>
+        </div>
+      </div>
+
+      <!-- 完整公式 -->
+      <div style="margin-bottom:24px">
+        <div style="font-family:'Cinzel',serif;font-size:11px;font-weight:700;
+          letter-spacing:2px;color:var(--fire-2);text-transform:uppercase;
+          margin-bottom:12px;display:flex;align-items:center;gap:10px">
+          <span style="display:inline-block;width:3px;height:16px;
+            background:var(--fire-2);border-radius:2px"></span>
+          完整伤害公式（S13 3.0）
+        </div>
+        <div style="background:var(--ink-1);border:1.5px solid var(--border-mid);
+          border-radius:8px;padding:20px 24px;font-family:'Share Tech Mono',monospace;
+          font-size:13px;line-height:2.6;position:relative;overflow:hidden">
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;
+            background:linear-gradient(90deg,transparent,var(--fire-2),transparent)"></div>
+          <span style="color:var(--fire-1);font-weight:700">最终伤害</span>
+          <span style="color:var(--text-muted)"> =</span><br>
+          <span style="color:var(--text-disabled)">　</span>
+          <span style="color:var(--emerald)">武器点伤</span>
+          <span style="color:var(--text-secondary)"> × (1 + 附加武器[+]%)</span><br>
+          <span style="color:var(--text-disabled)">　</span>
+          <span style="color:var(--fire-3)">×</span>
+          <span style="color:var(--emerald)">技能系数%</span><br>
+          <span style="color:var(--text-disabled)">　</span>
+          <span style="color:var(--fire-3)">×</span>
+          <span style="color:var(--emerald)">主属区</span>
+          <span style="color:var(--text-secondary)"> (1 + 主属性 / 职业系数)</span><br>
+          <span style="color:var(--text-disabled)">　</span>
+          <span style="color:var(--fire-3)">×</span>
+          <span style="color:#70b8ff">A类区</span>
+          <span style="color:var(--text-secondary)"> (1 + Σ 所有[+]%前缀词缀)</span><br>
+          <span style="color:var(--text-disabled)">　</span>
+          <span style="color:var(--fire-3)">×</span>
+          <span style="color:var(--fire-1)">B类区</span>
+          <span style="color:var(--text-secondary)"> Π (1 + Σ 同名[×]%前缀词缀)</span>
+          <span style="color:var(--fire-1)">　← Π 表示连乘（不同名词缀之间各自独立相乘）</span><br>
+          <span style="color:var(--text-disabled)">　</span>
+          <span style="color:var(--fire-3)">×</span>
+          <span style="color:var(--fire-1)">暴击区</span>
+          <span style="color:var(--text-secondary)"> × 1.5</span>
+          <span style="color:var(--text-muted)"> — 暴击时</span><br>
+          <span style="color:var(--text-disabled)">　</span>
+          <span style="color:var(--fire-3)">×</span>
+          <span style="color:#ff8070">易伤区</span>
+          <span style="color:var(--text-secondary)"> × 1.2</span>
+          <span style="color:var(--text-muted)"> — 目标易伤时</span><br>
+          <span style="color:var(--text-disabled)">　</span>
+          <span style="color:var(--fire-3)">×</span>
+          <span style="color:var(--fire-2)">独立X₁</span>
+          <span style="color:var(--fire-3)"> × </span>
+          <span style="color:var(--fire-2)">独立X₂</span>
+          <span style="color:var(--fire-3)"> × ... </span>
+          <span style="color:var(--text-muted)"> — [×]%后缀·传奇威能·套装各自独立相乘</span><br>
+          <span style="color:var(--text-disabled)">　</span>
+          <span style="color:var(--fire-3)">÷</span>
+          <span style="color:var(--text-secondary)">怪物减伤</span>
+          <span style="color:var(--text-muted)"> — 可选</span>
+        </div>
+      </div>
+
+      <!-- 各乘区详解 -->
+      <div style="font-family:'Cinzel',serif;font-size:11px;font-weight:700;
+        letter-spacing:2px;color:var(--fire-2);text-transform:uppercase;
+        margin-bottom:14px;display:flex;align-items:center;gap:10px">
+        <span style="display:inline-block;width:3px;height:16px;background:var(--fire-2);border-radius:2px"></span>
+        各乘区详解
+      </div>
+
+      <div style="display:grid;gap:10px;margin-bottom:28px">
+
+        <div style="background:var(--ink-2);border:1px solid var(--border-soft);
+          border-left:4px solid var(--emerald);border-radius:0 8px 8px 0;padding:14px 18px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <span style="font-size:18px">⚔</span>
+            <span style="font-family:'Cinzel',serif;font-size:12px;font-weight:700;
+              letter-spacing:2px;color:var(--emerald);text-transform:uppercase">武器 + 技能 + 主属</span>
+          </div>
+          <div style="font-size:13px;color:var(--text-secondary);line-height:1.8">
+            武器取<strong style="color:var(--text-primary)">面板小字中值</strong>（非 DPS），双持时相加。
+            各职业主属性系数：<strong style="color:var(--fire-1)">野蛮人/圣骑士 ÷900</strong>，
+            <strong style="color:var(--fire-1)">其余职业 ÷800</strong>。
+          </div>
+        </div>
+
+        <div style="background:var(--ink-2);border:1px solid var(--border-soft);
+          border-left:4px solid #4096ff;border-radius:0 8px 8px 0;padding:14px 18px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <span style="font-size:18px">➕</span>
+            <span style="font-family:'Cinzel',serif;font-size:12px;font-weight:700;
+              letter-spacing:2px;color:#70b8ff;text-transform:uppercase">A类区 [+]%</span>
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;
+              padding:2px 8px;border-radius:3px;background:rgba(64,150,255,.12);
+              border:1px solid rgba(64,150,255,.3);color:#70b8ff">前缀 · 同名相加</span>
+          </div>
+          <div style="font-size:13px;color:var(--text-secondary);line-height:1.8">
+            所有 <strong style="color:var(--text-primary)">[+]% 前缀词缀</strong>全部加法合算为一个"桶"：<br>
+            物理/近战/核心/精英/易伤/暴击伤害（[+]%版）等 + 巅峰盘魔法/稀有节点 + 压制叠层加成
+          </div>
+        </div>
+
+        <div style="background:rgba(224,160,32,.05);border:1.5px solid var(--border-mid);
+          border-left:4px solid var(--fire-1);border-radius:0 8px 8px 0;padding:14px 18px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <span style="font-size:18px">✖</span>
+            <span style="font-family:'Cinzel',serif;font-size:12px;font-weight:700;
+              letter-spacing:2px;color:var(--fire-1);text-transform:uppercase">B类区 [×]%</span>
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;
+              padding:2px 8px;border-radius:3px;background:rgba(255,208,64,.1);
+              border:1px solid rgba(255,208,64,.3);color:var(--fire-1)">前缀 · S13新增</span>
+          </div>
+          <div style="font-size:13px;color:var(--text-secondary);line-height:1.8">
+            <strong style="color:var(--fire-1)">[×]% 前缀词缀</strong>（装备词缀和宝石上的 [×]% 标注）：
+            <strong style="color:var(--text-primary)">同名词缀先相加，不同名词缀各自独立相乘</strong>。<br>
+            公式：B类区 = Π (1 + Σ 同名[×]%前缀词缀)<br>
+            例1：两颗 [×]22% 物理伤害宝石 → 同名相加 → ×1.44<br>
+            例2：[×]22%物理 + [×]15%近战 → 独立相乘 → ×1.22 × 1.15 = ×1.393<br>
+            ⚠ 与 A类的区别：A类全部加在一起只有一个桶；B类不同名词缀各自独立相乘。
+          </div>
+        </div>
+
+        <div style="background:var(--ink-2);border:1px solid var(--border-soft);
+          border-left:4px solid var(--fire-1);border-radius:0 8px 8px 0;padding:14px 18px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <span style="font-size:18px">💥</span>
+            <span style="font-family:'Cinzel',serif;font-size:12px;font-weight:700;
+              letter-spacing:2px;color:var(--fire-1);text-transform:uppercase">暴击区</span>
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;
+              padding:2px 8px;border-radius:3px;background:rgba(255,208,64,.1);
+              border:1px solid rgba(255,208,64,.3);color:var(--fire-1)">[×]50% 固定</span>
+          </div>
+          <div style="font-size:13px;color:var(--text-secondary);line-height:1.8">
+            基础暴击乘数 <strong style="color:var(--fire-1)">[×]50%</strong> 固定。
+            装备词缀的<strong style="color:var(--text-primary)">暴击伤害 [+]%</strong> 归入 A类区。
+            暴击时乘以：(1 + 0.5 + 暴击[+]%)
+          </div>
+        </div>
+
+        <div style="background:var(--ink-2);border:1px solid var(--border-soft);
+          border-left:4px solid #ff6050;border-radius:0 8px 8px 0;padding:14px 18px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <span style="font-size:18px">🔴</span>
+            <span style="font-family:'Cinzel',serif;font-size:12px;font-weight:700;
+              letter-spacing:2px;color:#ff8070;text-transform:uppercase">易伤区</span>
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;
+              padding:2px 8px;border-radius:3px;background:rgba(255,80,64,.1);
+              border:1px solid rgba(255,80,64,.3);color:#ff8070">[×]1.2 固定</span>
+          </div>
+          <div style="font-size:13px;color:var(--text-secondary);line-height:1.8">
+            目标携带易伤时独立乘以 <strong style="color:var(--text-primary)">×1.2（固定）</strong>，无法通过装备提升。
+            装备词缀的 [+]易伤伤害% 归入 A类区，仅目标有易伤时才计入。
+          </div>
+        </div>
+
+        <div style="background:var(--ink-2);border:1px solid var(--border-soft);
+          border-left:4px solid var(--fire-2);border-radius:0 8px 8px 0;padding:14px 18px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <span style="font-size:18px">✖</span>
+            <span style="font-family:'Cinzel',serif;font-size:12px;font-weight:700;
+              letter-spacing:2px;color:var(--fire-2);text-transform:uppercase">独立X乘区 [×]%</span>
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;
+              padding:2px 8px;border-radius:3px;background:rgba(232,160,32,.12);
+              border:1px solid rgba(232,160,32,.3);color:var(--fire-2)">后缀 · 各自独立相乘</span>
+          </div>
+          <div style="font-size:13px;color:var(--text-secondary);line-height:1.8">
+            传奇威能、套装效果等 <strong style="color:var(--text-primary)">[×]% 后缀词缀</strong>各自独立相乘。
+            <strong style="color:var(--fire-1)">异名词缀彼此之间均独立相乘</strong>，边际收益递减。<br>
+            同名 [×]% 后缀词缀相加后再独立相乘（同名相加原则）。
+          </div>
+        </div>
+
+        <div style="background:var(--ink-2);border:1px solid var(--border-soft);
+          border-left:4px solid var(--amber);border-radius:0 8px 8px 0;padding:14px 18px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <span style="font-size:18px">⚡</span>
+            <span style="font-family:'Cinzel',serif;font-size:12px;font-weight:700;
+              letter-spacing:2px;color:var(--amber);text-transform:uppercase">压制（Overpower）S13</span>
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;
+              padding:2px 8px;border-radius:3px;background:rgba(255,152,0,.1);
+              border:1px solid rgba(255,152,0,.3);color:var(--amber)">归入A类</span>
+          </div>
+          <div style="font-size:13px;color:var(--text-secondary);line-height:1.8">
+            <strong style="color:var(--fire-1)">S13 压制机制：叠层 [+]% 直接归入 A类区</strong>，
+            不再是单独的乘区。<br><br>
+            · 叠层总加成 = 每层 [+]% × 当前叠层数，全部计入 A类合计<br>
+            · 叠层数填 0 = 无压制效果（相当于无压制）<br>
+            · <strong style="color:var(--text-primary)">不再有「最大HP加成」「生命值乘数」「触发概率」</strong> 等旧机制<br><br>
+            <span style="color:var(--text-muted);font-size:12px">
+              旧版（2.0）压制：3%概率触发，最大HP直接加入伤害基础。S13已完全废除。
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- A类 vs B类 对比说明 -->
+      <div style="background:rgba(224,160,32,.06);border:1px solid var(--border-mid);
+        border-radius:8px;padding:18px 22px;margin-bottom:20px">
+        <div style="font-family:'Cinzel',serif;font-size:11px;font-weight:700;
+          letter-spacing:2px;color:var(--fire-2);margin-bottom:12px;text-transform:uppercase">
+          🔑 A类 vs B类 — 核心区别
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:13px;
+          color:var(--text-secondary);line-height:1.8">
+          <div>
+            <div style="color:#70b8ff;font-weight:700;margin-bottom:4px">A类区 [+]% 前缀</div>
+            · 全部加在一起，只有 1 个桶<br>
+            · (1 + 全部加总%) 整体相乘<br>
+            · 例：[+]30% + [+]20% = ×1.50
+          </div>
+          <div>
+            <div style="color:var(--fire-1);font-weight:700;margin-bottom:4px">B类区 [×]% 前缀</div>
+            · 同名相加后，作为 1 个独立乘区<br>
+            · (1 + 同名加总%) 独立相乘<br>
+            · 例：[×]22% + [×]22% 同名 = ×1.44
+          </div>
+        </div>
+      </div>
+
+      <!-- 实战建议 -->
+      <div style="background:rgba(224,160,32,.06);border:1px solid var(--border-mid);
+        border-radius:8px;padding:18px 22px">
+        <div style="font-family:'Cinzel',serif;font-size:11px;font-weight:700;
+          letter-spacing:2px;color:var(--fire-2);margin-bottom:12px;text-transform:uppercase">
+          💡 S13 实战优化原则
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;
+          font-size:13px;color:var(--text-secondary);line-height:1.8">
+          <div>· A类区内部相加，边际收益递减，适可而止<br>
+               · B类是 S13 新增独立乘区，优先级高<br>
+               · 压制叠层 = 纯 A类加成，多叠层高收益</div>
+          <div>· 独立X越多边际收益越低，注意平衡<br>
+               · 词缀禁用功能可快速评估单条词缀价值<br>
+               · 易伤覆盖率影响 DPS，不影响单次伤害</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+  </div>
+
+  <!-- JavaScript模块 -->
+  <script src="js/constants.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

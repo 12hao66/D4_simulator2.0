@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="38" height="38">
+  <defs>
+    <linearGradient id="bootGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a4a4a"/>
+      <stop offset="50%" style="stop-color:#2d2d2d"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="bootHigh" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#666;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#333;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- 靴子主体 -->
+  <path d="M20 25 Q15 28 12 35 L12 50 L18 54 L30 54 L36 50 L36 35 Q33 28 28 25 Z" fill="url(#bootGrad)" stroke="#333" stroke-width="1.5"/>
+  
+  <!-- 靴筒 -->
+  <path d="M20 25 Q18 20 22 18 Q26 16 28 20 Q30 22 28 25" fill="url(#bootGrad)" stroke="#333" stroke-width="1.5"/>
+  
+  <!-- 鞋底 -->
+  <path d="M10 50 L16 56 L32 56 L38 50" fill="#2a2a2a" stroke="#333" stroke-width="1"/>
+  
+  <!-- 脚跟护甲 -->
+  <path d="M12 35 L10 42 L18 44 L18 38 Z" fill="#555" stroke="#333" stroke-width="1"/>
+  
+  <!-- 鞋头护甲 -->
+  <path d="M30 35 L38 33 L38 44 L32 46 Z" fill="#555" stroke="#333" stroke-width="1"/>
+  
+  <!-- 鞋带 -->
+  <line x1="22" y1="28" x2="26" y2="30" stroke="#444" stroke-width="1.5"/>
+  <line x1="22" y1="32" x2="26" y2="34" stroke="#444" stroke-width="1.5"/>
+  <line x1="22" y1="36" x2="26" y2="38" stroke="#444" stroke-width="1.5"/>
+  
+  <!-- 金属装饰 -->
+  <rect x="20" y="22" width="8" height="2" fill="#666" stroke="#444" stroke-width="0.5"/>
+  
+  <!-- 高光效果 -->
+  <ellipse cx="22" cy="30" rx="3" ry="6" fill="url(#bootHigh)"/>
+  
+  <!-- 铆钉 -->
+  <circle cx="16" cy="40" r="1.5" fill="#666" stroke="#444" stroke-width="0.5"/>
+  <circle cx="30" cy="40" r="1.5" fill="#666" stroke="#444" stroke-width="0.5"/>
+</svg>

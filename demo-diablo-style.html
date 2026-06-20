@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D4配装界面 - 游戏风格</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+      background: #0d0d0d;
+      min-height: 100vh;
+      color: #ccc;
+      overflow: hidden;
+    }
+
+    /* 背景纹理 */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse at 30% 50%, rgba(60, 40, 20, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 50%, rgba(40, 30, 20, 0.2) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* 主容器 - 限制最大宽度 */
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* 顶部栏 */
+    .top-bar {
+      background: linear-gradient(180deg, #1a1510 0%, #0d0d0d 100%);
+      border-bottom: 1px solid #2a2018;
+      padding: 6px 12px;
+      position: relative;
+    }
+
+    /* 职业选择 */
+    .class-selector {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .class-radio {
+      display: none;
+    }
+
+    .class-label {
+      padding: 5px 10px;
+      background: #1a1510;
+      border: 1px solid #2a2018;
+      border-radius: 3px;
+      font-size: 11px;
+      color: #888;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .class-label:hover {
+      border-color: #c9922a;
+      color: #c9922a;
+    }
+
+    .class-radio:checked + .class-label {
+      background: linear-gradient(180deg, #2a2015 0%, #1a1510 100%);
+      border-color: #c9922a;
+      color: #c9922a;
+      box-shadow: 0 0 8px rgba(201, 146, 42, 0.2);
+    }
+
+    /* 标签页 */
+    .tabs {
+      display: flex;
+      gap: 2px;
+    }
+
+    .tab {
+      padding: 6px 14px;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      font-size: 12px;
+      color: #666;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+
+    .tab:hover {
+      color: #c9922a;
+    }
+
+    .tab.active {
+      color: #c9922a;
+      border-bottom-color: #c9922a;
+    }
+
+    /* 右侧按钮 */
+    .top-right {
+      position: absolute;
+      top: 6px;
+      right: 12px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .top-btn {
+      font-size: 10px;
+      color: #888;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .top-btn:hover {
+      color: #c9922a;
+    }
+
+    /* 主内容区 */
+    .content-area {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    /* 左侧装备栏 - 缩小宽度 */
+    .left-panel {
+      width: 72px;
+      background: linear-gradient(90deg, rgba(26, 21, 16, 0.9) 0%, rgba(26, 21, 16, 0.6) 100%);
+      border-right: 1px solid #2a2018;
+      display: flex;
+      flex-direction: column;
+      padding: 10px 6px;
+      gap: 6px;
+    }
+
+    /* 右侧装备栏 - 缩小宽度 */
+    .right-panel {
+      width: 72px;
+      background: linear-gradient(270deg, rgba(26, 21, 16, 0.9) 0%, rgba(26, 21, 16, 0.6) 100%);
+      border-left: 1px solid #2a2018;
+      display: flex;
+      flex-direction: column;
+      padding: 10px 6px;
+      gap: 6px;
+    }
+
+    /* 装备槽位 */
+    .eq-slot {
+      aspect-ratio: 1;
+      background: linear-gradient(145deg, #1a1510 0%, #0d0a08 100%);
+      border: 1px solid #2a2018;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .eq-slot:hover {
+      border-color: #c9922a;
+      background: linear-gradient(145deg, #2a2015 0%, #1a1510 100%);
+      transform: scale(1.05);
+      box-shadow: 0 0 12px rgba(201, 146, 42, 0.3);
+    }
+
+    .eq-slot.has-item {
+      border-color: #c9922a;
+    }
+
+    .eq-slot.has-item.rarity-common { border-color: #4a4a4a; }
+    .eq-slot.has-item.rarity-magic { border-color: #1eff00; box-shadow: 0 0 8px rgba(30, 255, 0, 0.25); }
+    .eq-slot.has-item.rarity-rare { border-color: #0070dd; box-shadow: 0 0 8px rgba(0, 112, 221, 0.25); }
+    .eq-slot.has-item.rarity-legendary { border-color: #ff8000; box-shadow: 0 0 10px rgba(255, 128, 0, 0.3); }
+    .eq-slot.has-item.rarity-unique { border-color: #e6cc80; box-shadow: 0 0 10px rgba(230, 204, 128, 0.3); }
+
+    /* 暗黑风格图标 - 使用SVG */
+    .eq-slot-icon {
+      width: 28px;
+      height: 28px;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .eq-slot-icon svg {
+      width: 100%;
+      height: 100%;
+      fill: currentColor;
+    }
+
+    .eq-slot:hover .eq-slot-icon {
+      opacity: 0.9;
+    }
+
+    .eq-slot-label {
+      font-size: 8px;
+      color: #555;
+      text-align: center;
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+
+    /* 装备覆盖层 */
+    .eq-item-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.85);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .eq-slot:hover .eq-item-overlay {
+      opacity: 1;
+    }
+
+    .eq-item-name {
+      font-size: 8px;
+      font-weight: 600;
+      text-align: center;
+      padding: 0 4px;
+    }
+
+    /* 角色展示区 */
+    .character-area {
+      flex: 1;
+      background: linear-gradient(180deg, #1a1510 0%, #0d0d0d 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* 角色模型容器 */
+    .character-placeholder {
+      width: 260px;
+      height: 340px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    /* 职业背景 - 使用CSS渐变模拟 */
+    .character-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* 野蛮人背景 */
+    .character-bg.barbarian {
+      background: 
+        radial-gradient(ellipse at 50% 30%, rgba(180, 60, 20, 0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 30% 70%, rgba(120, 40, 10, 0.3) 0%, transparent 40%),
+        radial-gradient(ellipse at 70% 60%, rgba(100, 30, 5, 0.3) 0%, transparent 40%),
+        linear-gradient(180deg, #1a1008 0%, #0d0805 100%);
+    }
+
+    /* 巫师背景 */
+    .character-bg.sorc {
+      background: 
+        radial-gradient(ellipse at 50% 30%, rgba(60, 100, 180, 0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 30% 70%, rgba(40, 80, 150, 0.3) 0%, transparent 40%),
+        radial-gradient(ellipse at 70% 60%, rgba(80, 60, 160, 0.3) 0%, transparent 40%),
+        linear-gradient(180deg, #0a1020 0%, #050810 100%);
+    }
+
+    /* 德鲁伊背景 */
+    .character-bg.druid {
+      background: 
+        radial-gradient(ellipse at 50% 30%, rgba(60, 140, 60, 0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 30% 70%, rgba(40, 100, 40, 0.3) 0%, transparent 40%),
+        radial-gradient(ellipse at 70% 60%, rgba(80, 120, 50, 0.3) 0%, transparent 40%),
+        linear-gradient(180deg, #101a10 0%, #080d08 100%);
+    }
+
+    /* 游侠背景 */
+    .character-bg.rogue {
+      background: 
+        radial-gradient(ellipse at 50% 30%, rgba(160, 140, 80, 0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 30% 70%, rgba(120, 100, 60, 0.3) 0%, transparent 40%),
+        radial-gradient(ellipse at 70% 60%, rgba(100, 80, 50, 0.3) 0%, transparent 40%),
+        linear-gradient(180deg, #181410 0%, #0d0a08 100%);
+    }
+
+    /* 死灵法师背景 */
+    .character-bg.necro {
+      background: 
+        radial-gradient(ellipse at 50% 30%, rgba(100, 80, 140, 0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 30% 70%, rgba(60, 50, 100, 0.3) 0%, transparent 40%),
+        radial-gradient(ellipse at 70% 60%, rgba(80, 60, 120, 0.3) 0%, transparent 40%),
+        linear-gradient(180deg, #12101a 0%, #08070d 100%);
+    }
+
+    /* 灵巫背景 */
+    .character-bg.spiritborn {
+      background: 
+        radial-gradient(ellipse at 50% 30%, rgba(80, 160, 140, 0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 30% 70%, rgba(60, 120, 100, 0.3) 0%, transparent 40%),
+        radial-gradient(ellipse at 70% 60%, rgba(100, 140, 120, 0.3) 0%, transparent 40%),
+        linear-gradient(180deg, #101816 0%, #080d0a 100%);
+    }
+
+    /* 圣骑士背景 - 使用用户提供的图片 */
+    .character-bg.paladin {
+      background: url('images/paladin-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 1;
+      filter: none;
+    }
+
+    /* 角色剪影 */
+    .character-silhouette {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .character-silhouette svg {
+      width: 100%;
+      height: 100%;
+      opacity: 0.85;
+      filter: drop-shadow(0 0 20px rgba(201, 146, 42, 0.3));
+    }
+
+    /* 角色信息 */
+    .character-info {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    .character-name {
+      font-size: 13px;
+      color: #c9922a;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px rgba(201, 146, 42, 0.5);
+    }
+
+    .character-level {
+      font-size: 10px;
+      color: #666;
+      margin-top: 4px;
+      letter-spacing: 1px;
+    }
+
+    /* 属性栏 */
+    .stats-bar {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 16px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 14px;
+      font-weight: 700;
+      color: #c9922a;
+      font-family: 'Consolas', monospace;
+    }
+
+    .stat-label {
+      font-size: 9px;
+      color: #666;
+      margin-top: 2px;
+    }
+
+    /* 底部快捷栏 */
+    .bottom-bar {
+      background: linear-gradient(180deg, #1a1510 0%, #0d0d0d 100%);
+      border-top: 1px solid #2a2018;
+      padding: 6px 12px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .action-slot {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(145deg, #1a1510 0%, #0d0a08 100%);
+      border: 1px solid #2a2018;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .action-slot:hover {
+      border-color: #c9922a;
+      transform: translateY(-2px);
+    }
+
+    .action-slot svg {
+      width: 20px;
+      height: 20px;
+      opacity: 0.6;
+    }
+
+    /* 装备选择弹窗 */
+    .eq-popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .eq-popup-overlay.show {
+      display: flex;
+    }
+
+    .eq-popup {
+      background: linear-gradient(180deg, #1a1510 0%, #0d0d0d 100%);
+      border: 1px solid #2a2018;
+      border-radius: 6px;
+      width: 100%;
+      max-width: 400px;
+      max-height: 70vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .eq-popup-header {
+      padding: 10px 14px;
+      border-bottom: 1px solid #2a2018;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .eq-popup-title {
+      font-size: 13px;
+      color: #c9922a;
+      font-weight: 600;
+    }
+
+    .eq-popup-close {
+      width: 24px;
+      height: 24px;
+      border: none;
+      background: rgba(255, 255, 255, 0.05);
+      color: #888;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .eq-popup-close:hover {
+      background: rgba(255, 77, 79, 0.2);
+      color: #ff6060;
+    }
+
+    .eq-popup-search {
+      padding: 8px 12px;
+      border-bottom: 1px solid #2a2018;
+    }
+
+    .eq-popup-search input {
+      width: 100%;
+      padding: 6px 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid #2a2018;
+      border-radius: 3px;
+      color: #ccc;
+      font-size: 11px;
+      outline: none;
+    }
+
+    .eq-popup-search input:focus {
+      border-color: #c9922a;
+    }
+
+    .eq-popup-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 6px;
+    }
+
+    .eq-item-card {
+      padding: 8px 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid #2a2018;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .eq-item-card:hover {
+      border-color: #c9922a;
+      background: rgba(201, 146, 42, 0.1);
+    }
+
+    .eq-item-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    .eq-item-card-name {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .eq-item-card-damage {
+      font-family: 'Consolas', monospace;
+      font-size: 11px;
+      color: #c9922a;
+    }
+
+    .eq-item-card-affixes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+    }
+
+    .eq-item-card-affix {
+      padding: 2px 5px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 2px;
+      font-size: 9px;
+      color: #888;
+    }
+
+    /* 稀有度颜色 */
+    .rarity-common { color: #9d9d9d; }
+    .rarity-magic { color: #1eff00; }
+    .rarity-rare { color: #0070dd; }
+    .rarity-legendary { color: #ff8000; }
+    .rarity-unique { color: #e6cc80; }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <!-- 顶部栏 -->
+    <div class="top-bar">
+      <!-- 职业选择 -->
+      <div class="class-selector">
+        <input type="radio" id="class-barbarian" name="class" class="class-radio" checked>
+        <label for="class-barbarian" class="class-label">野蛮人</label>
+        
+        <input type="radio" id="class-sorc" name="class" class="class-radio">
+        <label for="class-sorc" class="class-label">巫师</label>
+        
+        <input type="radio" id="class-druid" name="class" class="class-radio">
+        <label for="class-druid" class="class-label">德鲁伊</label>
+        
+        <input type="radio" id="class-rogue" name="class" class="class-radio">
+        <label for="class-rogue" class="class-label">游侠</label>
+        
+        <input type="radio" id="class-necro" name="class" class="class-radio">
+        <label for="class-necro" class="class-label">死灵法师</label>
+        
+        <input type="radio" id="class-spiritborn" name="class" class="class-radio">
+        <label for="class-spiritborn" class="class-label">灵巫</label>
+        
+        <input type="radio" id="class-paladin" name="class" class="class-radio">
+        <label for="class-paladin" class="class-label">圣骑士</label>
+      </div>
+
+      <!-- 标签页 -->
+      <div class="tabs">
+        <button class="tab active">总览</button>
+        <button class="tab">技能</button>
+        <button class="tab">巅峰</button>
+        <button class="tab">雇佣兵</button>
+        <button class="tab">战争计划</button>
+      </div>
+
+      <!-- 右侧按钮 -->
+      <div class="top-right">
+        <div class="top-btn">C 重置</div>
+        <div class="top-btn">词缀清单</div>
+      </div>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="content-area">
+      <!-- 左侧装备栏 -->
+      <div class="left-panel">
+        <div class="eq-slot" data-slot="helmet">
+          <div class="eq-slot-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C9 2 6 4 6 7v3l-2 2v2h2v6h12v-6h2v-2l-2-2V7c0-3-3-5-6-5zm-2 6h4v2h-4V8z"/></svg>
+          </div>
+          <span class="eq-slot-label">头盔</span>
+        </div>
+        <div class="eq-slot" data-slot="chest">
+          <div class="eq-slot-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L4 5v6l8 4 8-4V5l-8-3zm0 4l4 2-4 2-4-2 4-2zM4 13v6l8 3 8-3v-6l-8 4-8-4z"/></svg>
+          </div>
+          <span class="eq-slot-label">胸部</span>
+        </div>
+        <div class="eq-slot" data-slot="gloves">
+          <div class="eq-slot-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 2v6l-3 2v8c0 2 1 4 3 4h6c2 0 3-2 3-4v-8l-3-2V2H9zm2 2h2v5l3 2v7c0 1-.5 2-1.5 2h-5c-1 0-1.5-1-1.5-2v-7l3-2V4z"/></svg>
+          </div>
+          <span class="eq-slot-label">手套</span>
+        </div>
+        <div class="eq-slot" data-slot="pants">
+          <div class="eq-slot-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16v4l-2 12h-4l-2-8-2 8H6L4 8V4zm2 2v2l1.5 8h1l2-8h3l2 8h1l1.5-8V6H6z"/></svg>
+          </div>
+          <span class="eq-slot-label">裤子</span>
+        </div>
+        <div class="eq-slot" data-slot="boots">
+          <div class="eq-slot-icon">
+            <svg viewBox="0 0 24 24"><path d="M8 2v8l-2 4v6c0 2 1 2 2 2h2c1 0 2 0 2-2v-4l4-4V4c0-2-1-2-2-2H8zm2 2h4v4l-4 4V4z"/></svg>
+          </div>
+          <span class="eq-slot-label">靴子</span>
+        </div>
+        <div class="eq-slot" data-slot="weapon1">
+          <div class="eq-slot-icon">
+            <svg viewBox="0 0 24 24"><path d="M6 2L2 6l2 2 6 6-6 6 2 2 6-6 6 6 2-2-6-6 6-6-2-2-6 6-6-6z"/></svg>
+          </div>
+          <span class="eq-slot-label">钝击</span>
+        </div>
+        <div class="eq-slot" data-slot="weapon2">
+          <div class="eq-slot-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 3l4 4-2 2 8 8 2-2 4 4-2 2-4-4-8-8-2 2-4-4zm14 0l4 4-2 2-4-4 2-2zM5 17l4 4-2 2-4-4 2-2z"/></svg>
+          </div>
+          <span class="eq-slot-label">双持</span>
+        </div>
+      </div>
+
+      <!-- 角色展示区 -->
+      <div class="character-area">
+        <div class="character-placeholder">
+          <!-- 职业背景 -->
+          <div class="character-bg barbarian" id="character-bg"></div>
+          
+          <!-- 角色剪影 -->
+          <div class="character-silhouette" id="character-silhouette">
+            <!-- 野蛮人剪影 SVG -->
+            <svg viewBox="0 0 100 140" id="silhouette-barbarian">
+              <defs>
+                <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" style="stop-color:#c9922a;stop-opacity:0.9"/>
+                  <stop offset="100%" style="stop-color:#8a5a10;stop-opacity:0.7"/>
+                </linearGradient>
+              </defs>
+              <!-- 头部 -->
+              <ellipse cx="50" cy="18" rx="12" ry="14" fill="url(#bodyGrad)"/>
+              <!-- 躯干 -->
+              <path d="M35 30 Q30 50 32 80 L40 85 L50 82 L60 85 L68 80 Q70 50 65 30 Z" fill="url(#bodyGrad)"/>
+              <!-- 左臂 -->
+              <path d="M32 35 Q20 45 15 70 Q12 85 18 90 L25 85 Q28 70 32 55" fill="url(#bodyGrad)"/>
+              <!-- 右臂 -->
+              <path d="M68 35 Q80 45 85 70 Q88 85 82 90 L75 85 Q72 70 68 55" fill="url(#bodyGrad)"/>
+              <!-- 左腿 -->
+              <path d="M40 82 L35 120 L42 125 L48 85" fill="url(#bodyGrad)"/>
+              <!-- 右腿 -->
+              <path d="M60 82 L65 120 L58 125 L52 85" fill="url(#bodyGrad)"/>
+              <!-- 武器（斧头） -->
+              <path d="M85 70 L95 50 L90 45 L80 65 Z" fill="#c9922a" opacity="0.8"/>
+              <rect x="78" y="65" width="3" height="25" fill="#8a5a10"/>
+            </svg>
+          </div>
+          
+          <!-- 角色信息 -->
+          <div class="character-info">
+            <div class="character-name" id="character-name">BARBARIAN</div>
+            <div class="character-level">等级 100 · S13</div>
+          </div>
+        </div>
+
+        <!-- 属性栏 -->
+        <div class="stats-bar">
+          <div class="stat-item">
+            <div class="stat-value">5,000</div>
+            <div class="stat-label">力量</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">3,200</div>
+            <div class="stat-label">敏捷</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">2,800</div>
+            <div class="stat-label">智力</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">1.20</div>
+            <div class="stat-label">APS</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右侧装备栏 -->
+      <div class="right-panel">
+        <div class="eq-slot" data-slot="amulet">
+          <div class="eq-slot-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L8 6v4l4 4 4-4V6l-4-4zm0 3l2 2v2l-2 2-2-2V7l2-2zM8 14v8h8v-8l-4 4-4-4z"/></svg>
+          </div>
+          <span class="eq-slot-label">护符</span>
+        </div>
+        <div class="eq-slot" data-slot="ring1">
+          <div class="eq-slot-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <span class="eq-slot-label">戒指</span>
+        </div>
+        <div class="eq-slot" data-slot="ring2">
+          <div class="eq-slot-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <span class="eq-slot-label">戒指</span>
+        </div>
+        <div class="eq-slot" data-slot="weapon3">
+          <div class="eq-slot-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L4 10l2 2 6-6 6 6 2-2L12 2zm0 8l-6 6 6 6 6-6-6-6z"/></svg>
+          </div>
+          <span class="eq-slot-label">劈砍</span>
+        </div>
+        <div class="eq-slot" data-slot="weapon4">
+          <div class="eq-slot-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 3l4 4-2 2 8 8 2-2 4 4-2 2-4-4-8-8-2 2-4-4zm14 0l4 4-2 2-4-4 2-2z"/></svg>
+          </div>
+          <span class="eq-slot-label">双持</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部快捷栏 -->
+    <div class="bottom-bar">
+      <div class="action-slot">
+        <svg viewBox="0 0 24 24" fill="#c9922a"><path d="M13 3L4 14h7l-2 7 9-11h-7l2-7z"/></svg>
+      </div>
+      <div class="action-slot">
+        <svg viewBox="0 0 24 24" fill="#c9922a"><path d="M12 2L4 5v6l8 4 8-4V5l-8-3z"/></svg>
+      </div>
+      <div class="action-slot">
+        <svg viewBox="0 0 24 24" fill="#c9922a"><circle cx="12" cy="12" r="8"/></svg>
+      </div>
+      <div class="action-slot">
+        <svg viewBox="0 0 24 24" fill="#ff6060"><path d="M12 2C8 2 4 6 4 12s4 10 8 10 8-4 8-10S16 2 12 2z"/></svg>
+      </div>
+      <div class="action-slot">
+        <svg viewBox="0 0 24 24" fill="#60ff60"><path d="M12 2l2 8h8l-6 5 2 8-6-5-6 5 2-8-6-5h8z"/></svg>
+      </div>
+      <div class="action-slot">
+        <svg viewBox="0 0 24 24" fill="#c9922a"><path d="M20 6h-4V4c0-1-1-2-2-2h-4c-1 0-2 1-2 2v2H4c-1 0-2 1-2 2v12c0 1 1 2 2 2h16c1 0 2-1 2-2V8c0-1-1-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 装备选择弹窗 -->
+  <div class="eq-popup-overlay" id="eq-popup">
+    <div class="eq-popup">
+      <div class="eq-popup-header">
+        <span class="eq-popup-title" id="eq-popup-title">选择装备</span>
+        <button class="eq-popup-close" onclick="closePopup()">×</button>
+      </div>
+      <div class="eq-popup-search">
+        <input type="text" id="eq-search-input" placeholder="搜索装备..." onkeyup="filterEquipment()">
+      </div>
+      <div class="eq-popup-list" id="eq-popup-list"></div>
+    </div>
+  </div>
+
+  <script>
+    // 装备数据
+    const equipmentData = {
+      helmet: [
+        { id: 'helm_1', name: '强化头盔', rarity: 'rare', damage: 0, affixes: ['暴击伤害 +25%', '护甲 +15%'] },
+        { id: 'helm_2', name: '不朽战盔', rarity: 'legendary', damage: 0, affixes: ['精英伤害 +30%', '暴击率 +7%'], power: '传奇威能' },
+      ],
+      chest: [
+        { id: 'chest_1', name: '铁甲胸甲', rarity: 'rare', damage: 0, affixes: ['物理伤害 +20%', '护甲 +25%'] },
+        { id: 'chest_2', name: '不朽战甲', rarity: 'legendary', damage: 0, affixes: ['物理伤害 +30%', '精英伤害 +25%'], power: '传奇威能' },
+      ],
+      gloves: [
+        { id: 'gloves_1', name: '战斗手套', rarity: 'rare', damage: 0, affixes: ['攻击速度 +10%', '暴击率 +5%'] },
+      ],
+      pants: [
+        { id: 'pants_1', name: '链甲护腿', rarity: 'rare', damage: 0, affixes: ['移动速度 +15%', '护甲 +20%'] },
+      ],
+      boots: [
+        { id: 'boots_1', name: '战靴', rarity: 'rare', damage: 0, affixes: ['移动速度 +20%', '闪避率 +10%'] },
+      ],
+      weapon1: [
+        { id: 'weapon_1', name: '狂战士之斧', rarity: 'legendary', damage: 2800, affixes: ['物理伤害 +30%', '暴击伤害 +35%'], power: '狂暴威能' },
+        { id: 'weapon_2', name: '双手巨剑', rarity: 'rare', damage: 3200, affixes: ['物理伤害 +22%', '近战伤害 +20%'] },
+      ],
+      weapon2: [
+        { id: 'weapon_3', name: '怒火之刃', rarity: 'legendary', damage: 2600, affixes: ['核心技能伤害 +40%', '精英伤害 +30%'], power: '旋风斩威能' },
+      ],
+      amulet: [
+        { id: 'amulet_1', name: '毁灭之链', rarity: 'legendary', damage: 0, affixes: ['易伤伤害 +40%', '暴击伤害 +35%'], power: '幸运一击威能' },
+      ],
+      ring1: [
+        { id: 'ring_1', name: '暴击指环', rarity: 'rare', damage: 0, affixes: ['暴击伤害 +30%', '暴击率 +7%'] },
+      ],
+      ring2: [
+        { id: 'ring_2', name: '易伤之戒', rarity: 'rare', damage: 0, affixes: ['易伤伤害 +35%', '攻击速度 +10%'] },
+      ],
+      weapon3: [
+        { id: 'weapon_4', name: '猎魔长弓', rarity: 'legendary', damage: 2400, affixes: ['远程伤害 +35%', '暴击伤害 +30%'], power: '暴击几率威能' },
+      ],
+      weapon4: [
+        { id: 'weapon_5', name: '暗影匕首', rarity: 'legendary', damage: 2200, affixes: ['暗影伤害 +30%', '攻击速度 +15%'], power: '暗影威能' },
+      ],
+    };
+
+    // 职业剪影SVG
+    const classSilhouettes = {
+      barbarian: `<svg viewBox="0 0 100 140">
+        <defs><linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#c9922a;stop-opacity:0.9"/><stop offset="100%" style="stop-color:#8a5a10;stop-opacity:0.7"/></linearGradient></defs>
+        <ellipse cx="50" cy="18" rx="12" ry="14" fill="url(#bodyGrad)"/>
+        <path d="M35 30 Q30 50 32 80 L40 85 L50 82 L60 85 L68 80 Q70 50 65 30 Z" fill="url(#bodyGrad)"/>
+        <path d="M32 35 Q20 45 15 70 Q12 85 18 90 L25 85 Q28 70 32 55" fill="url(#bodyGrad)"/>
+        <path d="M68 35 Q80 45 85 70 Q88 85 82 90 L75 85 Q72 70 68 55" fill="url(#bodyGrad)"/>
+        <path d="M40 82 L35 120 L42 125 L48 85" fill="url(#bodyGrad)"/>
+        <path d="M60 82 L65 120 L58 125 L52 85" fill="url(#bodyGrad)"/>
+        <path d="M85 70 L95 50 L90 45 L80 65 Z" fill="#c9922a" opacity="0.8"/>
+        <rect x="78" y="65" width="3" height="25" fill="#8a5a10"/>
+      </svg>`,
+      sorc: `<svg viewBox="0 0 100 140">
+        <defs><linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#6090ff;stop-opacity:0.9"/><stop offset="100%" style="stop-color:#3050a0;stop-opacity:0.7"/></linearGradient></defs>
+        <ellipse cx="50" cy="20" rx="10" ry="12" fill="url(#bodyGrad)"/>
+        <path d="M38 32 Q35 50 37 75 L45 80 L55 80 L63 75 Q65 50 62 32 Z" fill="url(#bodyGrad)"/>
+        <path d="M38 35 Q28 45 25 65 L32 68 L38 50" fill="url(#bodyGrad)"/>
+        <path d="M62 35 Q72 45 75 65 L68 68 L62 50" fill="url(#bodyGrad)"/>
+        <path d="M45 80 L42 118 L48 120 L52 80" fill="url(#bodyGrad)"/>
+        <path d="M55 80 L58 118 L52 120 L48 80" fill="url(#bodyGrad)"/>
+        <circle cx="50" cy="8" r="6" fill="#6090ff" opacity="0.6"/>
+        <path d="M44 8 L50 2 L56 8 L50 14 Z" fill="#a0c0ff" opacity="0.8"/>
+      </svg>`,
+      druid: `<svg viewBox="0 0 100 140">
+        <defs><linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#60a060;stop-opacity:0.9"/><stop offset="100%" style="stop-color:#305030;stop-opacity:0.7"/></linearGradient></defs>
+        <ellipse cx="50" cy="18" rx="14" ry="16" fill="url(#bodyGrad)"/>
+        <path d="M32 34 Q28 52 30 78 L42 85 L58 85 L70 78 Q72 52 68 34 Z" fill="url(#bodyGrad)"/>
+        <path d="M32 38 Q18 48 14 72 L22 76 L30 55" fill="url(#bodyGrad)"/>
+        <path d="M68 38 Q82 48 86 72 L78 76 L70 55" fill="url(#bodyGrad)"/>
+        <path d="M42 85 L38 120 L46 125 L52 85" fill="url(#bodyGrad)"/>
+        <path d="M58 85 L62 120 L54 125 L48 85" fill="url(#bodyGrad)"/>
+        <path d="M36 18 L32 8 L40 12 M64 18 L68 8 L60 12" stroke="#60a060" stroke-width="3" fill="none"/>
+      </svg>`,
+      rogue: `<svg viewBox="0 0 100 140">
+        <defs><linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#c0a060;stop-opacity:0.9"/><stop offset="100%" style="stop-color:#806030;stop-opacity:0.7"/></linearGradient></defs>
+        <ellipse cx="50" cy="18" rx="10" ry="12" fill="url(#bodyGrad)"/>
+        <path d="M38 30 Q35 48 36 75 L44 80 L56 80 L64 75 Q65 48 62 30 Z" fill="url(#bodyGrad)"/>
+        <path d="M38 34 Q26 42 22 60 L28 62 L36 48" fill="url(#bodyGrad)"/>
+        <path d="M62 34 Q74 42 78 60 L72 62 L64 48" fill="url(#bodyGrad)"/>
+        <path d="M44 80 L40 118 L48 122 L52 80" fill="url(#bodyGrad)"/>
+        <path d="M56 80 L60 118 L52 122 L48 80" fill="url(#bodyGrad)"/>
+        <path d="M78 60 L88 45 L85 42 L75 55 Z" fill="#c0a060" opacity="0.8"/>
+        <path d="M75 55 L72 75" stroke="#806030" stroke-width="2"/>
+      </svg>`,
+      necro: `<svg viewBox="0 0 100 140">
+        <defs><linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#8060a0;stop-opacity:0.9"/><stop offset="100%" style="stop-color:#503060;stop-opacity:0.7"/></linearGradient></defs>
+        <ellipse cx="50" cy="18" rx="11" ry="13" fill="url(#bodyGrad)"/>
+        <path d="M36 31 Q32 50 34 78 L44 84 L56 84 L66 78 Q68 50 64 31 Z" fill="url(#bodyGrad)"/>
+        <path d="M36 36 Q24 46 20 68 L28 72 L34 52" fill="url(#bodyGrad)"/>
+        <path d="M64 36 Q76 46 80 68 L72 72 L66 52" fill="url(#bodyGrad)"/>
+        <path d="M44 84 L40 118 L48 122 L52 84" fill="url(#bodyGrad)"/>
+        <path d="M56 84 L60 118 L52 122 L48 84" fill="url(#bodyGrad)"/>
+        <circle cx="45" cy="16" r="3" fill="#a080c0"/>
+        <circle cx="55" cy="16" r="3" fill="#a080c0"/>
+        <path d="M80 68 L92 58 L90 54 L78 62 Z" fill="#8060a0" opacity="0.8"/>
+      </svg>`,
+      spiritborn: `<svg viewBox="0 0 100 140">
+        <defs><linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#60a0a0;stop-opacity:0.9"/><stop offset="100%" style="stop-color:#305050;stop-opacity:0.7"/></linearGradient></defs>
+        <ellipse cx="50" cy="18" rx="11" ry="13" fill="url(#bodyGrad)"/>
+        <path d="M37 31 Q33 50 35 76 L45 82 L55 82 L65 76 Q67 50 63 31 Z" fill="url(#bodyGrad)"/>
+        <path d="M37 36 Q25 45 22 66 L30 70 L36 50" fill="url(#bodyGrad)"/>
+        <path d="M63 36 Q75 45 78 66 L70 70 L64 50" fill="url(#bodyGrad)"/>
+        <path d="M45 82 L42 118 L50 122 L54 82" fill="url(#bodyGrad)"/>
+        <path d="M55 82 L58 118 L50 122 L46 82" fill="url(#bodyGrad)"/>
+        <path d="M50 5 Q40 10 42 18 M50 5 Q60 10 58 18" stroke="#60a0a0" stroke-width="2" fill="none" opacity="0.8"/>
+        <circle cx="50" cy="4" r="4" fill="#80c0c0" opacity="0.6"/>
+      </svg>`,
+      paladin: `<svg viewBox="0 0 100 140">
+        <defs><linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#c9922a;stop-opacity:0.9"/><stop offset="100%" style="stop-color:#8a5a10;stop-opacity:0.7"/></linearGradient></defs>
+        <ellipse cx="50" cy="18" rx="10" ry="12" fill="url(#bodyGrad)"/>
+        <rect x="42" y="8" width="16" height="10" rx="2" fill="url(#bodyGrad)"/>
+        <path d="M35 30 Q32 50 34 78 L42 84 L58 84 L66 78 Q68 50 65 30 Z" fill="url(#bodyGrad)"/>
+        <path d="M35 34 Q25 44 22 66 L28 70 L34 50" fill="url(#bodyGrad)"/>
+        <path d="M65 34 Q75 44 L82 78 L74 82 L66 58" fill="url(#bodyGrad)"/>
+        <path d="M42 84 L38 118 L46 122 L52 84" fill="url(#bodyGrad)"/>
+        <path d="M58 84 L62 118 L54 122 L48 84" fill="url(#bodyGrad)"/>
+        <path d="M82 65 L90 55 L85 48 L78 58 Z" fill="url(#bodyGrad)"/>
+        <rect x="72" y="55" width="6" height="35" fill="#8a5a10"/>
+        <path d="M66 58 L58 55 L55 65 L63 68 Z" fill="#c9922a" opacity="0.9"/>
+        <path d="M58 55 L55 80 L63 82 L66 58 Z" fill="#c9922a" opacity="0.7"/>
+      </svg>`
+    };
+
+    const classNames = {
+      barbarian: 'BARBARIAN',
+      sorc: 'SORCERESS',
+      druid: 'DRUID',
+      rogue: 'ROGUE',
+      necro: 'NECROMANCER',
+      spiritborn: 'SPIRITBORN',
+      paladin: 'PALADIN'
+    };
+
+    let currentSlot = null;
+
+    // 初始化
+    function init() {
+      document.querySelectorAll('.eq-slot').forEach(slot => {
+        slot.addEventListener('click', () => {
+          currentSlot = slot.dataset.slot;
+          openPopup(currentSlot);
+        });
+      });
+
+      document.querySelectorAll('.class-radio').forEach(radio => {
+        radio.addEventListener('change', () => {
+          updateClassDisplay(radio.id.replace('class-', ''));
+        });
+      });
+    }
+
+    function openPopup(slot) {
+      const slotNames = {
+        helmet: '头盔', chest: '胸部', gloves: '手套', pants: '裤子', boots: '靴子',
+        weapon1: '主手武器', weapon2: '副手武器', weapon3: '远程武器', weapon4: '双持武器',
+        amulet: '护符', ring1: '戒指1', ring2: '戒指2'
+      };
+      
+      document.getElementById('eq-popup-title').textContent = `选择${slotNames[slot] || '装备'}`;
+      document.getElementById('eq-popup').classList.add('show');
+      document.getElementById('eq-search-input').value = '';
+      renderEquipmentList(slot);
+    }
+
+    function closePopup() {
+      document.getElementById('eq-popup').classList.remove('show');
+      currentSlot = null;
+    }
+
+    function renderEquipmentList(slot) {
+      const list = document.getElementById('eq-popup-list');
+      const items = equipmentData[slot] || [];
+
+      if (!items.length) {
+        list.innerHTML = '<div style="text-align:center;padding:20px;color:#666;font-size:11px">暂无可用装备</div>';
+        return;
+      }
+
+      list.innerHTML = items.map(item => `
+        <div class="eq-item-card" onclick="selectEquipment('${item.id}', '${slot}', '${item.rarity}')">
+          <div class="eq-item-card-header">
+            <span class="eq-item-card-name rarity-${item.rarity}">${item.name}</span>
+            ${item.damage ? `<span class="eq-item-card-damage">${item.damage.toLocaleString()}</span>` : ''}
+          </div>
+          <div class="eq-item-card-affixes">
+            ${item.affixes.map(a => `<span class="eq-item-card-affix">${a}</span>`).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterEquipment() {
+      const keyword = document.getElementById('eq-search-input').value.toLowerCase();
+      document.querySelectorAll('.eq-item-card').forEach(card => {
+        const name = card.querySelector('.eq-item-card-name').textContent.toLowerCase();
+        card.style.display = name.includes(keyword) ? 'block' : 'none';
+      });
+    }
+
+    function selectEquipment(itemId, slot, rarity) {
+      const slotEl = document.querySelector(`.eq-slot[data-slot="${slot}"]`);
+      const item = equipmentData[slot]?.find(i => i.id === itemId);
+      
+      if (slotEl && item) {
+        slotEl.classList.add('has-item', `rarity-${rarity}`);
+        const iconSvgs = {
+          helmet: '<svg viewBox="0 0 24 24"><path d="M12 2C9 2 6 4 6 7v3l-2 2v2h2v6h12v-6h2v-2l-2-2V7c0-3-3-5-6-5zm-2 6h4v2h-4V8z"/></svg>',
+          chest: '<svg viewBox="0 0 24 24"><path d="M12 2L4 5v6l8 4 8-4V5l-8-3zm0 4l4 2-4 2-4-2 4-2zM4 13v6l8 3 8-3v-6l-8 4-8-4z"/></svg>',
+          gloves: '<svg viewBox="0 0 24 24"><path d="M9 2v6l-3 2v8c0 2 1 4 3 4h6c2 0 3-2 3-4v-8l-3-2V2H9zm2 2h2v5l3 2v7c0 1-.5 2-1.5 2h-5c-1 0-1.5-1-1.5-2v-7l3-2V4z"/></svg>',
+          pants: '<svg viewBox="0 0 24 24"><path d="M4 4h16v4l-2 12h-4l-2-8-2 8H6L4 8V4zm2 2v2l1.5 8h1l2-8h3l2 8h1l1.5-8V6H6z"/></svg>',
+          boots: '<svg viewBox="0 0 24 24"><path d="M8 2v8l-2 4v6c0 2 1 2 2 2h2c1 0 2 0 2-2v-4l4-4V4c0-2-1-2-2-2H8zm2 2h4v4l-4 4V4z"/></svg>',
+          weapon1: '<svg viewBox="0 0 24 24"><path d="M6 2L2 6l2 2 6 6-6 6 2 2 6-6 6 6 2-2-6-6 6-6-2-2-6 6-6-6z"/></svg>',
+          weapon2: '<svg viewBox="0 0 24 24"><path d="M3 3l4 4-2 2 8 8 2-2 4 4-2 2-4-4-8-8-2 2-4-4zm14 0l4 4-2 2-4-4 2-2z"/></svg>',
+          weapon3: '<svg viewBox="0 0 24 24"><path d="M12 2L4 10l2 2 6-6 6 6 2-2L12 2zm0 8l-6 6 6 6 6-6-6-6z"/></svg>',
+          weapon4: '<svg viewBox="0 0 24 24"><path d="M3 3l4 4-2 2 8 8 2-2 4 4-2 2-4-4-8-8-2 2-4-4zm14 0l4 4-2 2-4-4 2-2z"/></svg>',
+          amulet: '<svg viewBox="0 0 24 24"><path d="M12 2L8 6v4l4 4 4-4V6l-4-4zm0 3l2 2v2l-2 2-2-2V7l2-2zM8 14v8h8v-8l-4 4-4-4z"/></svg>',
+          ring1: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="12" cy="12" r="3"/></svg>',
+          ring2: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="12" cy="12" r="3"/></svg>'
+        };
+        
+        slotEl.innerHTML = `
+          <div class="eq-slot-icon">${iconSvgs[slot] || ''}</div>
+          <span class="eq-slot-label">${getSlotLabel(slot)}</span>
+          <div class="eq-item-overlay">
+            <span class="eq-item-name rarity-${rarity}">${item.name}</span>
+          </div>
+        `;
+      }
+
+      closePopup();
+    }
+
+    function getSlotLabel(slot) {
+      const labels = {
+        helmet: '头盔', chest: '胸部', gloves: '手套', pants: '裤子', boots: '靴子',
+        weapon1: '钝击', weapon2: '双持', weapon3: '劈砍', weapon4: '双持',
+        amulet: '护符', ring1: '戒指', ring2: '戒指'
+      };
+      return labels[slot] || slot;
+    }
+
+    function updateClassDisplay(classId) {
+      // 更新背景
+      const bg = document.getElementById('character-bg');
+      bg.className = 'character-bg ' + classId;
+      
+      // 更新剪影
+      const silhouette = document.getElementById('character-silhouette');
+      silhouette.innerHTML = classSilhouettes[classId] || classSilhouettes.barbarian;
+      
+      // 更新名称
+      document.getElementById('character-name').textContent = classNames[classId] || 'UNKNOWN';
+    }
+
+    document.getElementById('eq-popup').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('eq-popup')) {
+        closePopup();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

@@ -1,0 +1,3344 @@
+{
+  "builds": [
+    {
+      "id": "build-barb-001",
+      "author": "战士之王",
+      "authorLevel": 100,
+      "authorRank": 1,
+      "name": "爆炸锤野蛮人 S14",
+      "description": "高伤害爆炸锤构筑，适合高层大秘境。核心装备：布尔布莱德之锤、阿克汉的傲骨胸甲。",
+      "characterClass": "barbarian",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-barb-helm-001",
+          "name": "阿克汉的力量头盔",
+          "slot": "helmet",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "a1", "name": "力量", "value": 120, "type": "additive" },
+            { "id": "a2", "name": "护甲", "value": 350, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "chest": {
+          "id": "eq-barb-chest-001",
+          "name": "阿克汉的傲骨胸甲",
+          "slot": "chest",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "a3", "name": "生命值", "value": 1200, "type": "additive" },
+            { "id": "a4", "name": "护甲", "value": 450, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "gloves": {
+          "id": "eq-barb-gloves-001",
+          "name": "征服者之握",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "a5", "name": "攻击速度", "value": 15, "unit": "%", "type": "additive" },
+            { "id": "a6", "name": "暴击几率", "value": 8, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "pants": {
+          "id": "eq-barb-pants-001",
+          "name": "永恒钢铁护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "a7", "name": "护甲", "value": 380, "type": "additive" },
+            { "id": "a8", "name": "生命值", "value": 800, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "boots": {
+          "id": "eq-barb-boots-001",
+          "name": "疾风战靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "a9", "name": "移动速度", "value": 25, "unit": "%", "type": "additive" },
+            { "id": "a10", "name": "力量", "value": 85, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "weapon1": {
+          "id": "eq-barb-weapon1-001",
+          "name": "布尔布莱德之锤",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "a11", "name": "伤害", "value": 1850, "type": "additive" },
+            { "id": "a12", "name": "暴击伤害", "value": 150, "unit": "%", "type": "additive" }
+          ],
+          "legendaryPower": "使用锤类技能会造成爆炸，对周围敌人造成伤害",
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "weapon2": null,
+        "weapon3": null,
+        "weapon4": null,
+        "shield": {
+          "id": "eq-barb-shield-001",
+          "name": "阿卡拉特的守护",
+          "slot": "shield",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "a13", "name": "护甲", "value": 520, "type": "additive" },
+            { "id": "a14", "name": "全元素抗性", "value": 45, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "amulet": {
+          "id": "eq-barb-amulet-001",
+          "name": "永恒誓约",
+          "slot": "amulet",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "a15", "name": "技能伤害", "value": 10, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "ring1": {
+          "id": "eq-barb-ring1-001",
+          "name": "力量之环",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "a16", "name": "力量", "value": 45, "type": "additive" },
+            { "id": "a17", "name": "暴击伤害", "value": 30, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "ring2": {
+          "id": "eq-barb-ring2-001",
+          "name": "战争之环",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "a18", "name": "易伤伤害", "value": 20, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "bash", "skillName": "重击", "icon": "🪓" },
+        { "slot": "secondary", "skillId": "hammer", "skillName": "震地猛击", "icon": "🔨" }
+      ],
+      "tags": ["爆炸锤", "大秘境", "高伤害"],
+      "playStyle": "爆发型",
+      "difficulty": "高层",
+      "likes": 1250,
+      "downloads": 892,
+      "views": 5420,
+      "createdAt": 1718649600000,
+      "updatedAt": 1718649600000
+    },
+    {
+      "id": "build-barb-002",
+      "author": "狂战士",
+      "authorLevel": 100,
+      "authorRank": 5,
+      "name": "旋风斩野蛮人 S14",
+      "description": "经典旋风斩构筑，持续AOE伤害，适合速刷。",
+      "characterClass": "barbarian",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-barb-helm-002",
+          "name": "狂暴战盔",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "b1", "name": "力量", "value": 95, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "chest": {
+          "id": "eq-barb-chest-002",
+          "name": "狂暴铠甲",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "b2", "name": "护甲", "value": 380, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "gloves": {
+          "id": "eq-barb-gloves-002",
+          "name": "风暴之握",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "b3", "name": "攻击速度", "value": 18, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "pants": {
+          "id": "eq-barb-pants-002",
+          "name": "疾风护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "b4", "name": "护甲", "value": 320, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "boots": {
+          "id": "eq-barb-boots-002",
+          "name": "踏风靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "b5", "name": "移动速度", "value": 28, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "weapon1": {
+          "id": "eq-barb-weapon1-002",
+          "name": "风暴战斧",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "b6", "name": "伤害", "value": 1650, "type": "additive" }
+          ],
+          "legendaryPower": "旋风斩伤害提高",
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "weapon2": null,
+        "weapon3": null,
+        "weapon4": null,
+        "shield": {
+          "id": "eq-barb-shield-002",
+          "name": "风暴之盾",
+          "slot": "shield",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "b7", "name": "护甲", "value": 420, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "amulet": {
+          "id": "eq-barb-amulet-002",
+          "name": "风暴护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "b8", "name": "技能伤害", "value": 12, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "ring1": {
+          "id": "eq-barb-ring1-002",
+          "name": "风暴之环",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "b9", "name": "暴击伤害", "value": 35, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "ring2": {
+          "id": "eq-barb-ring2-002",
+          "name": "狂暴之环",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "b10", "name": "易伤伤害", "value": 22, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "whirlwind", "skillName": "旋风斩", "icon": "🌀" },
+        { "slot": "secondary", "skillId": "frenzy", "skillName": "狂暴", "icon": "😤" }
+      ],
+      "tags": ["旋风斩", "速刷", "AOE"],
+      "playStyle": "持续型",
+      "difficulty": "中低层",
+      "likes": 890,
+      "downloads": 650,
+      "views": 3800,
+      "createdAt": 1718650000000,
+      "updatedAt": 1718650000000
+    },
+    {
+      "id": "build-sorc-001",
+      "author": "冰霜女王",
+      "authorLevel": 100,
+      "authorRank": 1,
+      "name": "冰霜法师 S14",
+      "description": "冰霜系法师，控场能力强，适合组队辅助。",
+      "characterClass": "sorc",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-sorc-helm-001",
+          "name": "神秘法冠",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "s1", "name": "智力", "value": 95, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "chest": {
+          "id": "eq-sorc-chest-001",
+          "name": "极寒法袍",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "s2", "name": "护甲", "value": 320, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "gloves": {
+          "id": "eq-sorc-gloves-001",
+          "name": "冰霜护手",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "s3", "name": "攻击速度", "value": 12, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "pants": {
+          "id": "eq-sorc-pants-001",
+          "name": "秘法护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "s4", "name": "护甲", "value": 280, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "boots": {
+          "id": "eq-sorc-boots-001",
+          "name": "秘法之靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "s5", "name": "移动速度", "value": 20, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "weapon1": {
+          "id": "eq-sorc-weapon1-001",
+          "name": "寒冰之杖",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "s6", "name": "伤害", "value": 1250, "type": "additive" }
+          ],
+          "legendaryPower": "冰霜技能减速效果增强",
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "weapon2": {
+          "id": "eq-sorc-weapon2-001",
+          "name": "副手法杖",
+          "slot": "weapon2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "s7", "name": "智力", "value": 65, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "weapon3": null,
+        "weapon4": null,
+        "shield": null,
+        "amulet": {
+          "id": "eq-sorc-amulet-001",
+          "name": "冰霜护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "s8", "name": "技能伤害", "value": 8, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "ring1": {
+          "id": "eq-sorc-ring1-001",
+          "name": "寒冰之戒",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "s9", "name": "暴击几率", "value": 6, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "ring2": {
+          "id": "eq-sorc-ring2-001",
+          "name": "秘法之戒",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "s10", "name": "易伤伤害", "value": 18, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "frost-bolt", "skillName": "寒冰弹", "icon": "❄️" },
+        { "slot": "secondary", "skillId": "ice-blade", "skillName": "冰霜之刃", "icon": "🗡️" }
+      ],
+      "tags": ["冰霜", "控制", "辅助"],
+      "playStyle": "控制型",
+      "difficulty": "中高层",
+      "likes": 980,
+      "downloads": 654,
+      "views": 3200,
+      "createdAt": 1718649700000,
+      "updatedAt": 1718649700000
+    },
+    {
+      "id": "build-sorc-002",
+      "author": "火焰大师",
+      "authorLevel": 100,
+      "authorRank": 3,
+      "name": "火焰法师 S14",
+      "description": "纯火系法师，高爆发AOE伤害。",
+      "characterClass": "sorc",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-sorc-helm-002",
+          "name": "炎魔法冠",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sf1", "name": "智力", "value": 98, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "chest": {
+          "id": "eq-sorc-chest-002",
+          "name": "烈焰法袍",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sf2", "name": "护甲", "value": 300, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "gloves": {
+          "id": "eq-sorc-gloves-002",
+          "name": "烈焰护手",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sf3", "name": "攻击速度", "value": 14, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "pants": {
+          "id": "eq-sorc-pants-002",
+          "name": "火焰护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sf4", "name": "护甲", "value": 260, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "boots": {
+          "id": "eq-sorc-boots-002",
+          "name": "烈焰之靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sf5", "name": "移动速度", "value": 18, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "weapon1": {
+          "id": "eq-sorc-weapon1-002",
+          "name": "炎龙之杖",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "sf6", "name": "伤害", "value": 1320, "type": "additive" }
+          ],
+          "legendaryPower": "火焰技能伤害提高",
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "weapon2": {
+          "id": "eq-sorc-weapon2-002",
+          "name": "火焰副手",
+          "slot": "weapon2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sf7", "name": "智力", "value": 70, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "weapon3": null,
+        "weapon4": null,
+        "shield": null,
+        "amulet": {
+          "id": "eq-sorc-amulet-002",
+          "name": "火焰护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sf8", "name": "技能伤害", "value": 10, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "ring1": {
+          "id": "eq-sorc-ring1-002",
+          "name": "烈焰之戒",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sf9", "name": "暴击几率", "value": 7, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "ring2": {
+          "id": "eq-sorc-ring2-002",
+          "name": "炎魔之戒",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sf10", "name": "易伤伤害", "value": 20, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "fire-bolt", "skillName": "火球术", "icon": "🔥" },
+        { "slot": "secondary", "skillId": "meteor", "skillName": "陨石术", "icon": "☄️" }
+      ],
+      "tags": ["火焰", "AOE", "爆发"],
+      "playStyle": "爆发型",
+      "difficulty": "高层",
+      "likes": 1100,
+      "downloads": 780,
+      "views": 4500,
+      "createdAt": 1718650100000,
+      "updatedAt": 1718650100000
+    },
+    {
+      "id": "build-necro-001",
+      "author": "骷髅大军",
+      "authorLevel": 100,
+      "authorRank": 2,
+      "name": "召唤死灵 S14",
+      "description": "召唤系死灵法师，大量骷髅和石魔。",
+      "characterClass": "necromancer",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-necro-helm-001",
+          "name": "死灵面甲",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "n1", "name": "智力", "value": 88, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "chest": {
+          "id": "eq-necro-chest-001",
+          "name": "骨甲战袍",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "n2", "name": "护甲", "value": 290, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "gloves": {
+          "id": "eq-necro-gloves-001",
+          "name": "骨爪手套",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "n3", "name": "召唤伤害", "value": 15, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "pants": {
+          "id": "eq-necro-pants-001",
+          "name": "暗影护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "n4", "name": "护甲", "value": 260, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "boots": {
+          "id": "eq-necro-boots-001",
+          "name": "幽魂之靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "n5", "name": "移动速度", "value": 18, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "weapon1": {
+          "id": "eq-necro-weapon1-001",
+          "name": "死亡之镰",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "n6", "name": "伤害", "value": 1450, "type": "additive" }
+          ],
+          "legendaryPower": "召唤物伤害提高",
+          "icon": "./images/class/bg-necro.png"
+        },
+        "weapon2": null,
+        "weapon3": null,
+        "weapon4": null,
+        "shield": {
+          "id": "eq-necro-shield-001",
+          "name": "骸骨之盾",
+          "slot": "shield",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "n7", "name": "护甲", "value": 380, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "amulet": {
+          "id": "eq-necro-amulet-001",
+          "name": "死亡护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "n8", "name": "召唤物生命", "value": 20, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "ring1": {
+          "id": "eq-necro-ring1-001",
+          "name": "骨戒",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "n9", "name": "暴击几率", "value": 7, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "ring2": {
+          "id": "eq-necro-ring2-001",
+          "name": "魂戒",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "n10", "name": "易伤伤害", "value": 22, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "bone-spear", "skillName": "骨矛", "icon": "🦴" },
+        { "slot": "summon", "skillId": "skeleton", "skillName": "召唤骷髅", "icon": "💀" }
+      ],
+      "tags": ["召唤", "死灵", "骷髅"],
+      "playStyle": "召唤型",
+      "difficulty": "中高层",
+      "likes": 1100,
+      "downloads": 780,
+      "views": 4100,
+      "createdAt": 1718649800000,
+      "updatedAt": 1718649800000
+    },
+    {
+      "id": "build-necro-002",
+      "author": "鲜血领主",
+      "authorLevel": 100,
+      "authorRank": 8,
+      "name": "鲜血死灵 S14",
+      "description": "鲜血系死灵法师，高生存能力。",
+      "characterClass": "necromancer",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-necro-helm-002",
+          "name": "鲜血王冠",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "nb1", "name": "智力", "value": 92, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "chest": {
+          "id": "eq-necro-chest-002",
+          "name": "血甲战袍",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "nb2", "name": "护甲", "value": 310, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "gloves": {
+          "id": "eq-necro-gloves-002",
+          "name": "血爪手套",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "nb3", "name": "生命偷取", "value": 5, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "pants": {
+          "id": "eq-necro-pants-002",
+          "name": "血鳞护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "nb4", "name": "护甲", "value": 280, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "boots": {
+          "id": "eq-necro-boots-002",
+          "name": "血影之靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "nb5", "name": "移动速度", "value": 20, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "weapon1": {
+          "id": "eq-necro-weapon1-002",
+          "name": "血镰刀",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "nb6", "name": "伤害", "value": 1380, "type": "additive" }
+          ],
+          "legendaryPower": "鲜血技能治疗效果增强",
+          "icon": "./images/class/bg-necro.png"
+        },
+        "weapon2": null,
+        "weapon3": null,
+        "weapon4": null,
+        "shield": {
+          "id": "eq-necro-shield-002",
+          "name": "血骨之盾",
+          "slot": "shield",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "nb7", "name": "护甲", "value": 400, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "amulet": {
+          "id": "eq-necro-amulet-002",
+          "name": "鲜血护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "nb8", "name": "最大生命值", "value": 15, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "ring1": {
+          "id": "eq-necro-ring1-002",
+          "name": "血戒",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "nb9", "name": "生命偷取", "value": 3, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "ring2": {
+          "id": "eq-necro-ring2-002",
+          "name": "生命之环",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "nb10", "name": "最大生命值", "value": 10, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "blood-bolt", "skillName": "鲜血弹", "icon": "🩸" },
+        { "slot": "secondary", "skillId": "blood-surge", "skillName": "血潮", "icon": "💉" }
+      ],
+      "tags": ["鲜血", "生存", "治疗"],
+      "playStyle": "持续型",
+      "difficulty": "高层",
+      "likes": 780,
+      "downloads": 520,
+      "views": 2800,
+      "createdAt": 1718650200000,
+      "updatedAt": 1718650200000
+    },
+    {
+      "id": "build-rogue-001",
+      "author": "暗影刺客",
+      "authorLevel": 100,
+      "authorRank": 1,
+      "name": "穿刺游侠 S14",
+      "description": "高机动性穿刺流游侠，爆发伤害极高。",
+      "characterClass": "rogue",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-rogue-helm-001",
+          "name": "暗影兜帽",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "r1", "name": "敏捷", "value": 92, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "chest": {
+          "id": "eq-rogue-chest-001",
+          "name": "刺客皮甲",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "r2", "name": "护甲", "value": 270, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "gloves": {
+          "id": "eq-rogue-gloves-001",
+          "name": "穿刺手套",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "r3", "name": "攻击速度", "value": 18, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "pants": {
+          "id": "eq-rogue-pants-001",
+          "name": "夜行者护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "r4", "name": "护甲", "value": 240, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "boots": {
+          "id": "eq-rogue-boots-001",
+          "name": "疾风皮靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "r5", "name": "移动速度", "value": 22, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "weapon1": {
+          "id": "eq-rogue-weapon1-001",
+          "name": "暗影双刃",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "r6", "name": "伤害", "value": 1380, "type": "additive" }
+          ],
+          "legendaryPower": "穿刺技能伤害提高",
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "weapon2": {
+          "id": "eq-rogue-weapon2-001",
+          "name": "副手匕首",
+          "slot": "weapon2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "r7", "name": "敏捷", "value": 55, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "weapon3": null,
+        "weapon4": null,
+        "shield": null,
+        "amulet": {
+          "id": "eq-rogue-amulet-001",
+          "name": "刺客护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "r8", "name": "暴击伤害", "value": 25, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "ring1": {
+          "id": "eq-rogue-ring1-001",
+          "name": "暗影之戒",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "r9", "name": "暴击几率", "value": 8, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "ring2": {
+          "id": "eq-rogue-ring2-001",
+          "name": "穿刺之戒",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "r10", "name": "易伤伤害", "value": 20, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "blade-storm", "skillName": "刀锋风暴", "icon": "🗡️" },
+        { "slot": "secondary", "skillId": "penetrate", "skillName": "穿刺", "icon": "🏹" }
+      ],
+      "tags": ["穿刺", "爆发", "高机动"],
+      "playStyle": "爆发型",
+      "difficulty": "高层",
+      "likes": 1350,
+      "downloads": 920,
+      "views": 5800,
+      "createdAt": 1718649900000,
+      "updatedAt": 1718649900000
+    },
+    {
+      "id": "build-rogue-002",
+      "author": "剧毒杀手",
+      "authorLevel": 100,
+      "authorRank": 4,
+      "name": "剧毒游侠 S14",
+      "description": "剧毒DOT流游侠，持续伤害输出。",
+      "characterClass": "rogue",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-rogue-helm-002",
+          "name": "剧毒兜帽",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "rv1", "name": "敏捷", "value": 88, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "chest": {
+          "id": "eq-rogue-chest-002",
+          "name": "毒刺皮甲",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "rv2", "name": "护甲", "value": 250, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "gloves": {
+          "id": "eq-rogue-gloves-002",
+          "name": "毒液手套",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "rv3", "name": "毒素伤害", "value": 20, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "pants": {
+          "id": "eq-rogue-pants-002",
+          "name": "毒牙护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "rv4", "name": "护甲", "value": 220, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "boots": {
+          "id": "eq-rogue-boots-002",
+          "name": "毒蛇皮靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "rv5", "name": "移动速度", "value": 24, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "weapon1": {
+          "id": "eq-rogue-weapon1-002",
+          "name": "毒牙匕首",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "rv6", "name": "伤害", "value": 1280, "type": "additive" }
+          ],
+          "legendaryPower": "毒素持续时间延长",
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "weapon2": {
+          "id": "eq-rogue-weapon2-002",
+          "name": "毒刃",
+          "slot": "weapon2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "rv7", "name": "敏捷", "value": 52, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "weapon3": null,
+        "weapon4": null,
+        "shield": null,
+        "amulet": {
+          "id": "eq-rogue-amulet-002",
+          "name": "剧毒护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "rv8", "name": "毒素伤害", "value": 15, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "ring1": {
+          "id": "eq-rogue-ring1-002",
+          "name": "蛇戒",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "rv9", "name": "暴击几率", "value": 7, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "ring2": {
+          "id": "eq-rogue-ring2-002",
+          "name": "毒环",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "rv10", "name": "DOT伤害", "value": 18, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "poison-bolt", "skillName": "毒刺", "icon": "🐍" },
+        { "slot": "secondary", "skillId": "venom", "skillName": "毒液爆发", "icon": "💚" }
+      ],
+      "tags": ["剧毒", "DOT", "持续"],
+      "playStyle": "持续型",
+      "difficulty": "中高层",
+      "likes": 820,
+      "downloads": 580,
+      "views": 3500,
+      "createdAt": 1718650300000,
+      "updatedAt": 1718650300000
+    },
+    {
+      "id": "build-druid-001",
+      "author": "森林守护者",
+      "authorLevel": 100,
+      "authorRank": 3,
+      "name": "变形德鲁伊 S14",
+      "description": "熊形态坦克德鲁伊，高生存高控制。",
+      "characterClass": "druid",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-druid-helm-001",
+          "name": "熊头冠",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "d1", "name": "敏捷", "value": 90, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "chest": {
+          "id": "eq-druid-chest-001",
+          "name": "熊皮战甲",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "d2", "name": "护甲", "value": 420, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "gloves": {
+          "id": "eq-druid-gloves-001",
+          "name": "利爪手套",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "d3", "name": "攻击速度", "value": 12, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "pants": {
+          "id": "eq-druid-pants-001",
+          "name": "兽皮护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "d4", "name": "护甲", "value": 360, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "boots": {
+          "id": "eq-druid-boots-001",
+          "name": "野兽之靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "d5", "name": "移动速度", "value": 22, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "weapon1": {
+          "id": "eq-druid-weapon1-001",
+          "name": "大地之爪",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "d6", "name": "伤害", "value": 1550, "type": "additive" }
+          ],
+          "legendaryPower": "变形技能伤害提高",
+          "icon": "./images/class/bg-druid.png"
+        },
+        "weapon2": null,
+        "weapon3": null,
+        "weapon4": null,
+        "shield": {
+          "id": "eq-druid-shield-001",
+          "name": "自然之盾",
+          "slot": "shield",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "d7", "name": "护甲", "value": 450, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "amulet": {
+          "id": "eq-druid-amulet-001",
+          "name": "自然护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "d8", "name": "最大生命值", "value": 12, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "ring1": {
+          "id": "eq-druid-ring1-001",
+          "name": "生命之环",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "d9", "name": "护甲", "value": 150, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "ring2": {
+          "id": "eq-druid-ring2-001",
+          "name": "自然之环",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "d10", "name": "全元素抗性", "value": 30, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "bear-form", "skillName": "熊形态", "icon": "🐻" },
+        { "slot": "secondary", "skillId": "maul", "skillName": "猛击", "icon": "👊" }
+      ],
+      "tags": ["变形", "坦克", "控制"],
+      "playStyle": "持续型",
+      "difficulty": "高层",
+      "likes": 920,
+      "downloads": 680,
+      "views": 3900,
+      "createdAt": 1718650400000,
+      "updatedAt": 1718650400000
+    },
+    {
+      "id": "build-druid-002",
+      "author": "风暴使者",
+      "authorLevel": 100,
+      "authorRank": 6,
+      "name": "风暴德鲁伊 S14",
+      "description": "风系法术德鲁伊，远程AOE输出。",
+      "characterClass": "druid",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-druid-helm-002",
+          "name": "风暴王冠",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "ds1", "name": "敏捷", "value": 95, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "chest": {
+          "id": "eq-druid-chest-002",
+          "name": "风暴法袍",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "ds2", "name": "护甲", "value": 280, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "gloves": {
+          "id": "eq-druid-gloves-002",
+          "name": "风暴手套",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "ds3", "name": "攻击速度", "value": 14, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "pants": {
+          "id": "eq-druid-pants-002",
+          "name": "疾风护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "ds4", "name": "护甲", "value": 240, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "boots": {
+          "id": "eq-druid-boots-002",
+          "name": "疾风之靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "ds5", "name": "移动速度", "value": 24, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "weapon1": {
+          "id": "eq-druid-weapon1-002",
+          "name": "风暴法杖",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "ds6", "name": "伤害", "value": 1320, "type": "additive" }
+          ],
+          "legendaryPower": "风系技能伤害提高",
+          "icon": "./images/class/bg-druid.png"
+        },
+        "weapon2": {
+          "id": "eq-druid-weapon2-002",
+          "name": "风暴副手",
+          "slot": "weapon2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "ds7", "name": "敏捷", "value": 60, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "weapon3": null,
+        "weapon4": null,
+        "shield": null,
+        "amulet": {
+          "id": "eq-druid-amulet-002",
+          "name": "风暴护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "ds8", "name": "技能伤害", "value": 10, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "ring1": {
+          "id": "eq-druid-ring1-002",
+          "name": "风之环",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "ds9", "name": "暴击几率", "value": 6, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "ring2": {
+          "id": "eq-druid-ring2-002",
+          "name": "风暴之环",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "ds10", "name": "易伤伤害", "value": 18, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "wind-storm", "skillName": "风暴", "icon": "🌪️" },
+        { "slot": "secondary", "skillId": "lightning", "skillName": "闪电", "icon": "⚡" }
+      ],
+      "tags": ["风暴", "AOE", "远程"],
+      "playStyle": "爆发型",
+      "difficulty": "中高层",
+      "likes": 880,
+      "downloads": 620,
+      "views": 3400,
+      "createdAt": 1718650500000,
+      "updatedAt": 1718650500000
+    },
+    {
+      "id": "build-spiritborn-001",
+      "author": "灵魂行者",
+      "authorLevel": 100,
+      "authorRank": 2,
+      "name": "暗影灵魂师 S14",
+      "description": "暗影系灵魂师，高爆发单体伤害。",
+      "characterClass": "spiritborn",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-spirit-helm-001",
+          "name": "暗影王冠",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sb1", "name": "智力", "value": 92, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "chest": {
+          "id": "eq-spirit-chest-001",
+          "name": "灵魂法袍",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sb2", "name": "护甲", "value": 280, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "gloves": {
+          "id": "eq-spirit-gloves-001",
+          "name": "暗影手套",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sb3", "name": "攻击速度", "value": 14, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "pants": {
+          "id": "eq-spirit-pants-001",
+          "name": "暗影护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sb4", "name": "护甲", "value": 240, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "boots": {
+          "id": "eq-spirit-boots-001",
+          "name": "灵魂之靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sb5", "name": "移动速度", "value": 22, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "weapon1": {
+          "id": "eq-spirit-weapon1-001",
+          "name": "灵魂之镰",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "sb6", "name": "伤害", "value": 1420, "type": "additive" }
+          ],
+          "legendaryPower": "暗影技能伤害提高",
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "weapon2": {
+          "id": "eq-spirit-weapon2-001",
+          "name": "灵魂副手",
+          "slot": "weapon2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sb7", "name": "智力", "value": 65, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "weapon3": null,
+        "weapon4": null,
+        "shield": null,
+        "amulet": {
+          "id": "eq-spirit-amulet-001",
+          "name": "暗影护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sb8", "name": "技能伤害", "value": 10, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "ring1": {
+          "id": "eq-spirit-ring1-001",
+          "name": "灵魂之戒",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sb9", "name": "暴击几率", "value": 7, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "ring2": {
+          "id": "eq-spirit-ring2-001",
+          "name": "暗影之环",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sb10", "name": "易伤伤害", "value": 20, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "shadow-bolt", "skillName": "暗影弹", "icon": "🌑" },
+        { "slot": "secondary", "skillId": "soul-harvest", "skillName": "灵魂收割", "icon": "👻" }
+      ],
+      "tags": ["暗影", "爆发", "灵魂"],
+      "playStyle": "爆发型",
+      "difficulty": "高层",
+      "likes": 950,
+      "downloads": 680,
+      "views": 4200,
+      "createdAt": 1718650600000,
+      "updatedAt": 1718650600000
+    },
+    {
+      "id": "build-spiritborn-002",
+      "author": "光明使者",
+      "authorLevel": 100,
+      "authorRank": 5,
+      "name": "光明灵魂师 S14",
+      "description": "光明系灵魂师，治疗与输出兼备。",
+      "characterClass": "spiritborn",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-spirit-helm-002",
+          "name": "光明王冠",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sbg1", "name": "智力", "value": 88, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "chest": {
+          "id": "eq-spirit-chest-002",
+          "name": "光明法袍",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sbg2", "name": "护甲", "value": 300, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "gloves": {
+          "id": "eq-spirit-gloves-002",
+          "name": "光明手套",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sbg3", "name": "治疗效果", "value": 15, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "pants": {
+          "id": "eq-spirit-pants-002",
+          "name": "光明护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sbg4", "name": "护甲", "value": 260, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "boots": {
+          "id": "eq-spirit-boots-002",
+          "name": "圣光之靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sbg5", "name": "移动速度", "value": 20, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "weapon1": {
+          "id": "eq-spirit-weapon1-002",
+          "name": "圣光之镰",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "sbg6", "name": "伤害", "value": 1350, "type": "additive" }
+          ],
+          "legendaryPower": "光明技能治疗效果增强",
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "weapon2": {
+          "id": "eq-spirit-weapon2-002",
+          "name": "光明副手",
+          "slot": "weapon2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sbg7", "name": "智力", "value": 60, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "weapon3": null,
+        "weapon4": null,
+        "shield": null,
+        "amulet": {
+          "id": "eq-spirit-amulet-002",
+          "name": "圣光护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sbg8", "name": "最大生命值", "value": 12, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "ring1": {
+          "id": "eq-spirit-ring1-002",
+          "name": "圣光之戒",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sbg9", "name": "暴击几率", "value": 6, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "ring2": {
+          "id": "eq-spirit-ring2-002",
+          "name": "生命之环",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sbg10", "name": "生命偷取", "value": 3, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "light-bolt", "skillName": "光明弹", "icon": "✨" },
+        { "slot": "secondary", "skillId": "heal", "skillName": "治疗", "icon": "💚" }
+      ],
+      "tags": ["光明", "治疗", "支援"],
+      "playStyle": "持续型",
+      "difficulty": "中高层",
+      "likes": 720,
+      "downloads": 510,
+      "views": 2900,
+      "createdAt": 1718650700000,
+      "updatedAt": 1718650700000
+    },
+    {
+      "id": "build-paladin-001",
+      "author": "圣光骑士",
+      "authorLevel": 100,
+      "authorRank": 1,
+      "name": "祝福圣骑士 S14",
+      "description": "祝福系圣骑士，高生存高输出。",
+      "characterClass": "paladin",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-paladin-helm-001",
+          "name": "圣光王冠",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "p1", "name": "力量", "value": 95, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "chest": {
+          "id": "eq-paladin-chest-001",
+          "name": "神圣铠甲",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "p2", "name": "护甲", "value": 400, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "gloves": {
+          "id": "eq-paladin-gloves-001",
+          "name": "祝福手套",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "p3", "name": "攻击速度", "value": 12, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "pants": {
+          "id": "eq-paladin-pants-001",
+          "name": "神圣护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "p4", "name": "护甲", "value": 340, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "boots": {
+          "id": "eq-paladin-boots-001",
+          "name": "圣光战靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "p5", "name": "移动速度", "value": 20, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "weapon1": {
+          "id": "eq-paladin-weapon1-001",
+          "name": "祝福之剑",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "p6", "name": "伤害", "value": 1580, "type": "additive" }
+          ],
+          "legendaryPower": "祝福技能伤害提高",
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "weapon2": null,
+        "weapon3": null,
+        "weapon4": null,
+        "shield": {
+          "id": "eq-paladin-shield-001",
+          "name": "神圣之盾",
+          "slot": "shield",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "p7", "name": "护甲", "value": 500, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "amulet": {
+          "id": "eq-paladin-amulet-001",
+          "name": "祝福护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "p8", "name": "技能伤害", "value": 10, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "ring1": {
+          "id": "eq-paladin-ring1-001",
+          "name": "神圣之戒",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "p9", "name": "暴击几率", "value": 7, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "ring2": {
+          "id": "eq-paladin-ring2-001",
+          "name": "圣光之环",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "p10", "name": "全元素抗性", "value": 25, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "blessing", "skillName": "祝福", "icon": "🙏" },
+        { "slot": "secondary", "skillId": "smite", "skillName": "惩戒", "icon": "⚔️" }
+      ],
+      "tags": ["祝福", "圣骑士", "坦克"],
+      "playStyle": "持续型",
+      "difficulty": "高层",
+      "likes": 1050,
+      "downloads": 750,
+      "views": 4600,
+      "createdAt": 1718650800000,
+      "updatedAt": 1718650800000
+    },
+    {
+      "id": "build-paladin-002",
+      "author": "审判者",
+      "authorLevel": 100,
+      "authorRank": 4,
+      "name": "审判圣骑士 S14",
+      "description": "审判系圣骑士，高爆发伤害。",
+      "characterClass": "paladin",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-paladin-helm-002",
+          "name": "审判王冠",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "pt1", "name": "力量", "value": 98, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "chest": {
+          "id": "eq-paladin-chest-002",
+          "name": "审判铠甲",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "pt2", "name": "护甲", "value": 360, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "gloves": {
+          "id": "eq-paladin-gloves-002",
+          "name": "审判手套",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "pt3", "name": "攻击速度", "value": 15, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "pants": {
+          "id": "eq-paladin-pants-002",
+          "name": "审判护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "pt4", "name": "护甲", "value": 300, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "boots": {
+          "id": "eq-paladin-boots-002",
+          "name": "审判战靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "pt5", "name": "移动速度", "value": 22, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "weapon1": {
+          "id": "eq-paladin-weapon1-002",
+          "name": "审判之剑",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "pt6", "name": "伤害", "value": 1650, "type": "additive" }
+          ],
+          "legendaryPower": "审判技能伤害提高",
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "weapon2": null,
+        "weapon3": null,
+        "weapon4": null,
+        "shield": {
+          "id": "eq-paladin-shield-002",
+          "name": "审判之盾",
+          "slot": "shield",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "pt7", "name": "护甲", "value": 420, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "amulet": {
+          "id": "eq-paladin-amulet-002",
+          "name": "审判护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "pt8", "name": "暴击伤害", "value": 30, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "ring1": {
+          "id": "eq-paladin-ring1-002",
+          "name": "审判之戒",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "pt9", "name": "暴击几率", "value": 8, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "ring2": {
+          "id": "eq-paladin-ring2-002",
+          "name": "正义之环",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "pt10", "name": "易伤伤害", "value": 22, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "judgment", "skillName": "审判", "icon": "⚖️" },
+        { "slot": "secondary", "skillId": "divine-strike", "skillName": "神圣打击", "icon": "💥" }
+      ],
+      "tags": ["审判", "爆发", "圣骑士"],
+      "playStyle": "爆发型",
+      "difficulty": "高层",
+      "likes": 920,
+      "downloads": 660,
+      "views": 3800,
+      "createdAt": 1718650900000,
+      "updatedAt": 1718650900000
+    },
+    {
+      "id": "build-warlock-001",
+      "author": "地狱领主",
+      "authorLevel": 100,
+      "authorRank": 3,
+      "name": "火焰术士 S14",
+      "description": "火焰系术士，高AOE伤害。",
+      "characterClass": "warlock",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-warlock-helm-001",
+          "name": "地狱王冠",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "w1", "name": "智力", "value": 95, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "chest": {
+          "id": "eq-warlock-chest-001",
+          "name": "暗影法袍",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "w2", "name": "护甲", "value": 280, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "gloves": {
+          "id": "eq-warlock-gloves-001",
+          "name": "火焰手套",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "w3", "name": "攻击速度", "value": 14, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "pants": {
+          "id": "eq-warlock-pants-001",
+          "name": "暗影护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "w4", "name": "护甲", "value": 240, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "boots": {
+          "id": "eq-warlock-boots-001",
+          "name": "火焰之靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "w5", "name": "移动速度", "value": 22, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "weapon1": {
+          "id": "eq-warlock-weapon1-001",
+          "name": "地狱火杖",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "w6", "name": "伤害", "value": 1380, "type": "additive" }
+          ],
+          "legendaryPower": "火焰技能伤害提高",
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "weapon2": {
+          "id": "eq-warlock-weapon2-001",
+          "name": "火焰副手",
+          "slot": "weapon2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "w7", "name": "智力", "value": 65, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "weapon3": null,
+        "weapon4": null,
+        "shield": null,
+        "amulet": {
+          "id": "eq-warlock-amulet-001",
+          "name": "火焰护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "w8", "name": "技能伤害", "value": 12, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "ring1": {
+          "id": "eq-warlock-ring1-001",
+          "name": "火焰之戒",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "w9", "name": "暴击几率", "value": 7, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "ring2": {
+          "id": "eq-warlock-ring2-001",
+          "name": "地狱之环",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "w10", "name": "易伤伤害", "value": 20, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "fireball", "skillName": "火球", "icon": "🔥" },
+        { "slot": "secondary", "skillId": "inferno", "skillName": "地狱火", "icon": "🌋" }
+      ],
+      "tags": ["火焰", "AOE", "术士"],
+      "playStyle": "爆发型",
+      "difficulty": "高层",
+      "likes": 1080,
+      "downloads": 780,
+      "views": 4800,
+      "createdAt": 1718651000000,
+      "updatedAt": 1718651000000
+    },
+    {
+      "id": "build-warlock-002",
+      "author": "暗影大师",
+      "authorLevel": 100,
+      "authorRank": 7,
+      "name": "暗影术士 S14",
+      "description": "暗影系术士，DOT持续伤害。",
+      "characterClass": "warlock",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-warlock-helm-002",
+          "name": "暗影王冠",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "ws1", "name": "智力", "value": 92, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "chest": {
+          "id": "eq-warlock-chest-002",
+          "name": "虚空法袍",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "ws2", "name": "护甲", "value": 260, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "gloves": {
+          "id": "eq-warlock-gloves-002",
+          "name": "虚空手套",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "ws3", "name": "DOT伤害", "value": 20, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "pants": {
+          "id": "eq-warlock-pants-002",
+          "name": "虚空护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "ws4", "name": "护甲", "value": 220, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "boots": {
+          "id": "eq-warlock-boots-002",
+          "name": "虚空之靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "ws5", "name": "移动速度", "value": 24, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "weapon1": {
+          "id": "eq-warlock-weapon1-002",
+          "name": "虚空法杖",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "ws6", "name": "伤害", "value": 1320, "type": "additive" }
+          ],
+          "legendaryPower": "暗影DOT持续时间延长",
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "weapon2": {
+          "id": "eq-warlock-weapon2-002",
+          "name": "虚空副手",
+          "slot": "weapon2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "ws7", "name": "智力", "value": 60, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "weapon3": null,
+        "weapon4": null,
+        "shield": null,
+        "amulet": {
+          "id": "eq-warlock-amulet-002",
+          "name": "虚空护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "ws8", "name": "暗影伤害", "value": 15, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "ring1": {
+          "id": "eq-warlock-ring1-002",
+          "name": "虚空之戒",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "ws9", "name": "暴击几率", "value": 6, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "ring2": {
+          "id": "eq-warlock-ring2-002",
+          "name": "暗影之环",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "ws10", "name": "DOT伤害", "value": 18, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "shadow-bolt", "skillName": "暗影箭", "icon": "🏹" },
+        { "slot": "secondary", "skillId": "void-rupture", "skillName": "虚空爆裂", "icon": "🕳️" }
+      ],
+      "tags": ["暗影", "DOT", "术士"],
+      "playStyle": "持续型",
+      "difficulty": "中高层",
+      "likes": 850,
+      "downloads": 620,
+      "views": 3600,
+      "createdAt": 1718651100000,
+      "updatedAt": 1718651100000
+    },
+    {
+      "id": "build-barb-003",
+      "author": "武器大师",
+      "authorLevel": 100,
+      "authorRank": 12,
+      "name": "狂战士野蛮人 S14",
+      "description": "双手武器狂暴流，极致输出。",
+      "characterClass": "barbarian",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-barb-helm-003",
+          "name": "狂暴战盔",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "bk1", "name": "力量", "value": 105, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "chest": {
+          "id": "eq-barb-chest-003",
+          "name": "狂战铠甲",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "bk2", "name": "护甲", "value": 400, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "gloves": {
+          "id": "eq-barb-gloves-003",
+          "name": "狂战手套",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "bk3", "name": "攻击速度", "value": 16, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "pants": {
+          "id": "eq-barb-pants-003",
+          "name": "狂战护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "bk4", "name": "护甲", "value": 340, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "boots": {
+          "id": "eq-barb-boots-003",
+          "name": "狂战之靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "bk5", "name": "移动速度", "value": 20, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "weapon1": {
+          "id": "eq-barb-weapon1-003",
+          "name": "末日之刃",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "bk6", "name": "伤害", "value": 1950, "type": "additive" }
+          ],
+          "legendaryPower": "狂暴状态下伤害提高",
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "weapon2": null,
+        "weapon3": null,
+        "weapon4": null,
+        "shield": null,
+        "amulet": {
+          "id": "eq-barb-amulet-003",
+          "name": "狂暴护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "bk7", "name": "技能伤害", "value": 15, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "ring1": {
+          "id": "eq-barb-ring1-003",
+          "name": "狂战之戒",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "bk8", "name": "暴击伤害", "value": 40, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        },
+        "ring2": {
+          "id": "eq-barb-ring2-003",
+          "name": "力量之环",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "bk9", "name": "易伤伤害", "value": 25, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-barbarian.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "berserk", "skillName": "狂暴", "icon": "😤" },
+        { "slot": "secondary", "skillId": "execute", "skillName": "处决", "icon": "💀" }
+      ],
+      "tags": ["狂暴", "双手", "爆发"],
+      "playStyle": "爆发型",
+      "difficulty": "高层",
+      "likes": 780,
+      "downloads": 560,
+      "views": 3200,
+      "createdAt": 1718651200000,
+      "updatedAt": 1718651200000
+    },
+    {
+      "id": "build-sorc-003",
+      "author": "雷电女王",
+      "authorLevel": 100,
+      "authorRank": 6,
+      "name": "闪电法师 S14",
+      "description": "雷电系法师，高爆发单体伤害。",
+      "characterClass": "sorc",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-sorc-helm-003",
+          "name": "雷电王冠",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sl1", "name": "智力", "value": 102, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "chest": {
+          "id": "eq-sorc-chest-003",
+          "name": "雷电法袍",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sl2", "name": "护甲", "value": 290, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "gloves": {
+          "id": "eq-sorc-gloves-003",
+          "name": "雷电手套",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sl3", "name": "攻击速度", "value": 16, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "pants": {
+          "id": "eq-sorc-pants-003",
+          "name": "雷电护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sl4", "name": "护甲", "value": 250, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "boots": {
+          "id": "eq-sorc-boots-003",
+          "name": "雷电之靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sl5", "name": "移动速度", "value": 20, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "weapon1": {
+          "id": "eq-sorc-weapon1-003",
+          "name": "雷霆法杖",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "sl6", "name": "伤害", "value": 1420, "type": "additive" }
+          ],
+          "legendaryPower": "闪电技能伤害提高",
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "weapon2": {
+          "id": "eq-sorc-weapon2-003",
+          "name": "闪电副手",
+          "slot": "weapon2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sl7", "name": "智力", "value": 72, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "weapon3": null,
+        "weapon4": null,
+        "shield": null,
+        "amulet": {
+          "id": "eq-sorc-amulet-003",
+          "name": "雷霆护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sl8", "name": "技能伤害", "value": 12, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "ring1": {
+          "id": "eq-sorc-ring1-003",
+          "name": "雷霆之戒",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sl9", "name": "暴击几率", "value": 8, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        },
+        "ring2": {
+          "id": "eq-sorc-ring2-003",
+          "name": "闪电之环",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "sl10", "name": "易伤伤害", "value": 22, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-sorc.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "lightning-bolt", "skillName": "闪电箭", "icon": "⚡" },
+        { "slot": "secondary", "skillId": "chain-lightning", "skillName": "连锁闪电", "icon": "🔗" }
+      ],
+      "tags": ["闪电", "爆发", "单体"],
+      "playStyle": "爆发型",
+      "difficulty": "高层",
+      "likes": 890,
+      "downloads": 640,
+      "views": 3800,
+      "createdAt": 1718651300000,
+      "updatedAt": 1718651300000
+    },
+    {
+      "id": "build-necro-003",
+      "author": "骨法师",
+      "authorLevel": 100,
+      "authorRank": 9,
+      "name": "骨系死灵 S14",
+      "description": "骨系技能死灵法师，高穿透伤害。",
+      "characterClass": "necromancer",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-necro-helm-003",
+          "name": "白骨王冠",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "nb11", "name": "智力", "value": 98, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "chest": {
+          "id": "eq-necro-chest-003",
+          "name": "白骨战甲",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "nb12", "name": "护甲", "value": 320, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "gloves": {
+          "id": "eq-necro-gloves-003",
+          "name": "骨爪手套",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "nb13", "name": "骨系伤害", "value": 20, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "pants": {
+          "id": "eq-necro-pants-003",
+          "name": "白骨护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "nb14", "name": "护甲", "value": 280, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "boots": {
+          "id": "eq-necro-boots-003",
+          "name": "白骨之靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "nb15", "name": "移动速度", "value": 22, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "weapon1": {
+          "id": "eq-necro-weapon1-003",
+          "name": "白骨之镰",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "nb16", "name": "伤害", "value": 1520, "type": "additive" }
+          ],
+          "legendaryPower": "骨系技能穿透效果增强",
+          "icon": "./images/class/bg-necro.png"
+        },
+        "weapon2": null,
+        "weapon3": null,
+        "weapon4": null,
+        "shield": {
+          "id": "eq-necro-shield-003",
+          "name": "骨盾",
+          "slot": "shield",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "nb17", "name": "护甲", "value": 420, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "amulet": {
+          "id": "eq-necro-amulet-003",
+          "name": "白骨护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "nb18", "name": "技能伤害", "value": 12, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "ring1": {
+          "id": "eq-necro-ring1-003",
+          "name": "骨戒",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "nb19", "name": "暴击几率", "value": 8, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        },
+        "ring2": {
+          "id": "eq-necro-ring2-003",
+          "name": "骨之环",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "nb20", "name": "易伤伤害", "value": 24, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-necro.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "bone-spear", "skillName": "骨矛", "icon": "🦴" },
+        { "slot": "secondary", "skillId": "bone-shard", "skillName": "骨刺", "icon": "💎" }
+      ],
+      "tags": ["骨系", "穿透", "爆发"],
+      "playStyle": "爆发型",
+      "difficulty": "高层",
+      "likes": 760,
+      "downloads": 540,
+      "views": 3000,
+      "createdAt": 1718651400000,
+      "updatedAt": 1718651400000
+    },
+    {
+      "id": "build-rogue-003",
+      "author": "暗影猎手",
+      "authorLevel": 100,
+      "authorRank": 10,
+      "name": "暗影游侠 S14",
+      "description": "暗影系游侠，隐身暗杀流。",
+      "characterClass": "rogue",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-rogue-helm-003",
+          "name": "暗影兜帽",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "r11", "name": "敏捷", "value": 98, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "chest": {
+          "id": "eq-rogue-chest-003",
+          "name": "暗影皮甲",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "r12", "name": "护甲", "value": 260, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "gloves": {
+          "id": "eq-rogue-gloves-003",
+          "name": "暗影手套",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "r13", "name": "暗影伤害", "value": 18, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "pants": {
+          "id": "eq-rogue-pants-003",
+          "name": "暗影护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "r14", "name": "护甲", "value": 230, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "boots": {
+          "id": "eq-rogue-boots-003",
+          "name": "暗影之靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "r15", "name": "移动速度", "value": 26, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "weapon1": {
+          "id": "eq-rogue-weapon1-003",
+          "name": "暗影匕首",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "r16", "name": "伤害", "value": 1420, "type": "additive" }
+          ],
+          "legendaryPower": "隐身状态下伤害提高",
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "weapon2": {
+          "id": "eq-rogue-weapon2-003",
+          "name": "暗影刃",
+          "slot": "weapon2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "r17", "name": "敏捷", "value": 58, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "weapon3": null,
+        "weapon4": null,
+        "shield": null,
+        "amulet": {
+          "id": "eq-rogue-amulet-003",
+          "name": "暗影护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "r18", "name": "暴击伤害", "value": 30, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "ring1": {
+          "id": "eq-rogue-ring1-003",
+          "name": "暗影之戒",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "r19", "name": "暴击几率", "value": 9, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        },
+        "ring2": {
+          "id": "eq-rogue-ring2-003",
+          "name": "暗影之环",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "r20", "name": "易伤伤害", "value": 24, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-rogue.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "stealth", "skillName": "潜行", "icon": "👻" },
+        { "slot": "secondary", "skillId": "shadow-strike", "skillName": "暗影突袭", "icon": "⚔️" }
+      ],
+      "tags": ["暗影", "潜行", "暗杀"],
+      "playStyle": "爆发型",
+      "difficulty": "中高层",
+      "likes": 720,
+      "downloads": 510,
+      "views": 2800,
+      "createdAt": 1718651500000,
+      "updatedAt": 1718651500000
+    },
+    {
+      "id": "build-druid-003",
+      "author": "大地守护者",
+      "authorLevel": 100,
+      "authorRank": 11,
+      "name": "大地德鲁伊 S14",
+      "description": "大地系德鲁伊，控制与输出兼备。",
+      "characterClass": "druid",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-druid-helm-003",
+          "name": "大地王冠",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "dd1", "name": "敏捷", "value": 95, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "chest": {
+          "id": "eq-druid-chest-003",
+          "name": "大地法袍",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "dd2", "name": "护甲", "value": 320, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "gloves": {
+          "id": "eq-druid-gloves-003",
+          "name": "大地手套",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "dd3", "name": "大地伤害", "value": 18, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "pants": {
+          "id": "eq-druid-pants-003",
+          "name": "大地护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "dd4", "name": "护甲", "value": 280, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "boots": {
+          "id": "eq-druid-boots-003",
+          "name": "大地之靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "dd5", "name": "移动速度", "value": 22, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "weapon1": {
+          "id": "eq-druid-weapon1-003",
+          "name": "大地法杖",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "dd6", "name": "伤害", "value": 1380, "type": "additive" }
+          ],
+          "legendaryPower": "大地技能控制效果增强",
+          "icon": "./images/class/bg-druid.png"
+        },
+        "weapon2": {
+          "id": "eq-druid-weapon2-003",
+          "name": "大地副手",
+          "slot": "weapon2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "dd7", "name": "敏捷", "value": 62, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "weapon3": null,
+        "weapon4": null,
+        "shield": null,
+        "amulet": {
+          "id": "eq-druid-amulet-003",
+          "name": "大地护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "dd8", "name": "技能伤害", "value": 10, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "ring1": {
+          "id": "eq-druid-ring1-003",
+          "name": "大地之戒",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "dd9", "name": "暴击几率", "value": 7, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        },
+        "ring2": {
+          "id": "eq-druid-ring2-003",
+          "name": "岩石之环",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "dd10", "name": "易伤伤害", "value": 20, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-druid.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "earthquake", "skillName": "地震", "icon": "🌍" },
+        { "slot": "secondary", "skillId": "stone-shield", "skillName": "岩石护盾", "icon": "🛡️" }
+      ],
+      "tags": ["大地", "控制", "防御"],
+      "playStyle": "持续型",
+      "difficulty": "中高层",
+      "likes": 680,
+      "downloads": 480,
+      "views": 2600,
+      "createdAt": 1718651600000,
+      "updatedAt": 1718651600000
+    },
+    {
+      "id": "build-spiritborn-003",
+      "author": "元素使者",
+      "authorLevel": 100,
+      "authorRank": 13,
+      "name": "元素灵魂师 S14",
+      "description": "元素系灵魂师，多元素伤害输出。",
+      "characterClass": "spiritborn",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-spirit-helm-003",
+          "name": "元素王冠",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "se1", "name": "智力", "value": 96, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "chest": {
+          "id": "eq-spirit-chest-003",
+          "name": "元素法袍",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "se2", "name": "护甲", "value": 290, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "gloves": {
+          "id": "eq-spirit-gloves-003",
+          "name": "元素手套",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "se3", "name": "元素伤害", "value": 16, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "pants": {
+          "id": "eq-spirit-pants-003",
+          "name": "元素护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "se4", "name": "护甲", "value": 250, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "boots": {
+          "id": "eq-spirit-boots-003",
+          "name": "元素之靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "se5", "name": "移动速度", "value": 22, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "weapon1": {
+          "id": "eq-spirit-weapon1-003",
+          "name": "元素之镰",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "se6", "name": "伤害", "value": 1380, "type": "additive" }
+          ],
+          "legendaryPower": "元素技能伤害提高",
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "weapon2": {
+          "id": "eq-spirit-weapon2-003",
+          "name": "元素副手",
+          "slot": "weapon2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "se7", "name": "智力", "value": 65, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "weapon3": null,
+        "weapon4": null,
+        "shield": null,
+        "amulet": {
+          "id": "eq-spirit-amulet-003",
+          "name": "元素护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "se8", "name": "技能伤害", "value": 12, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "ring1": {
+          "id": "eq-spirit-ring1-003",
+          "name": "元素之戒",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "se9", "name": "暴击几率", "value": 7, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        },
+        "ring2": {
+          "id": "eq-spirit-ring2-003",
+          "name": "元素之环",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "se10", "name": "易伤伤害", "value": 22, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-spiritborn.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "elemental-bolt", "skillName": "元素箭", "icon": "🌈" },
+        { "slot": "secondary", "skillId": "elemental-storm", "skillName": "元素风暴", "icon": "🌪️" }
+      ],
+      "tags": ["元素", "AOE", "混合"],
+      "playStyle": "爆发型",
+      "difficulty": "中高层",
+      "likes": 650,
+      "downloads": 460,
+      "views": 2500,
+      "createdAt": 1718651700000,
+      "updatedAt": 1718651700000
+    },
+    {
+      "id": "build-paladin-003",
+      "author": "守护骑士",
+      "authorLevel": 100,
+      "authorRank": 14,
+      "name": "防护圣骑士 S14",
+      "description": "防护系圣骑士，团队主坦克。",
+      "characterClass": "paladin",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-paladin-helm-003",
+          "name": "守护王冠",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "pd1", "name": "力量", "value": 92, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "chest": {
+          "id": "eq-paladin-chest-003",
+          "name": "守护铠甲",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "pd2", "name": "护甲", "value": 450, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "gloves": {
+          "id": "eq-paladin-gloves-003",
+          "name": "守护手套",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "pd3", "name": "格挡率", "value": 15, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "pants": {
+          "id": "eq-paladin-pants-003",
+          "name": "守护护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "pd4", "name": "护甲", "value": 380, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "boots": {
+          "id": "eq-paladin-boots-003",
+          "name": "守护战靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "pd5", "name": "移动速度", "value": 18, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "weapon1": {
+          "id": "eq-paladin-weapon1-003",
+          "name": "守护之剑",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "pd6", "name": "伤害", "value": 1450, "type": "additive" }
+          ],
+          "legendaryPower": "格挡时恢复生命",
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "weapon2": null,
+        "weapon3": null,
+        "weapon4": null,
+        "shield": {
+          "id": "eq-paladin-shield-003",
+          "name": "神圣大盾",
+          "slot": "shield",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "pd7", "name": "护甲", "value": 580, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "amulet": {
+          "id": "eq-paladin-amulet-003",
+          "name": "守护护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "pd8", "name": "最大生命值", "value": 15, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "ring1": {
+          "id": "eq-paladin-ring1-003",
+          "name": "守护之戒",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "pd9", "name": "全元素抗性", "value": 30, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        },
+        "ring2": {
+          "id": "eq-paladin-ring2-003",
+          "name": "防御之环",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "pd10", "name": "护甲", "value": 200, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-paladin.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "shield-bash", "skillName": "盾击", "icon": "🛡️" },
+        { "slot": "secondary", "skillId": "divine-shield", "skillName": "神圣护盾", "icon": "✨" }
+      ],
+      "tags": ["防护", "坦克", "团队"],
+      "playStyle": "持续型",
+      "difficulty": "高层",
+      "likes": 700,
+      "downloads": 500,
+      "views": 2900,
+      "createdAt": 1718651800000,
+      "updatedAt": 1718651800000
+    },
+    {
+      "id": "build-warlock-003",
+      "author": "恶魔召唤者",
+      "authorLevel": 100,
+      "authorRank": 15,
+      "name": "恶魔术士 S14",
+      "description": "恶魔召唤系术士，召唤恶魔作战。",
+      "characterClass": "warlock",
+      "season": "s14",
+      "equipment": {
+        "helmet": {
+          "id": "eq-warlock-helm-003",
+          "name": "恶魔王冠",
+          "slot": "helmet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "wd1", "name": "智力", "value": 94, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "chest": {
+          "id": "eq-warlock-chest-003",
+          "name": "恶魔法袍",
+          "slot": "chest",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "wd2", "name": "护甲", "value": 270, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "gloves": {
+          "id": "eq-warlock-gloves-003",
+          "name": "恶魔手套",
+          "slot": "gloves",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "wd3", "name": "召唤物伤害", "value": 22, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "pants": {
+          "id": "eq-warlock-pants-003",
+          "name": "恶魔护腿",
+          "slot": "pants",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "wd4", "name": "护甲", "value": 230, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "boots": {
+          "id": "eq-warlock-boots-003",
+          "name": "恶魔之靴",
+          "slot": "boots",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "wd5", "name": "移动速度", "value": 22, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "weapon1": {
+          "id": "eq-warlock-weapon1-003",
+          "name": "恶魔法杖",
+          "slot": "weapon1",
+          "rarity": "unique",
+          "level": 100,
+          "itemType": "unique",
+          "affixes": [
+            { "id": "wd6", "name": "伤害", "value": 1350, "type": "additive" }
+          ],
+          "legendaryPower": "召唤物数量增加",
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "weapon2": {
+          "id": "eq-warlock-weapon2-003",
+          "name": "恶魔副手",
+          "slot": "weapon2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "wd7", "name": "智力", "value": 62, "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "weapon3": null,
+        "weapon4": null,
+        "shield": null,
+        "amulet": {
+          "id": "eq-warlock-amulet-003",
+          "name": "恶魔护符",
+          "slot": "amulet",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "wd8", "name": "召唤物生命", "value": 25, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "ring1": {
+          "id": "eq-warlock-ring1-003",
+          "name": "恶魔之戒",
+          "slot": "ring1",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "wd9", "name": "暴击几率", "value": 6, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        },
+        "ring2": {
+          "id": "eq-warlock-ring2-003",
+          "name": "召唤之环",
+          "slot": "ring2",
+          "rarity": "legendary",
+          "level": 100,
+          "affixes": [
+            { "id": "wd10", "name": "召唤物伤害", "value": 15, "unit": "%", "type": "additive" }
+          ],
+          "icon": "./images/class/bg-warlock.png"
+        }
+      },
+      "skills": [
+        { "slot": "primary", "skillId": "summon-imp", "skillName": "召唤小鬼", "icon": "👿" },
+        { "slot": "secondary", "skillId": "summon-demon", "skillName": "召唤恶魔", "icon": "😈" }
+      ],
+      "tags": ["召唤", "恶魔", "宠物"],
+      "playStyle": "召唤型",
+      "difficulty": "中高层",
+      "likes": 740,
+      "downloads": 530,
+      "views": 3100,
+      "createdAt": 1718651900000,
+      "updatedAt": 1718651900000
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "id": "arcane",
+  "name": "奥术盘",
+  "nodes": [
+    {
+      "id": "arcane-entry-top",
+      "type": "normal",
+      "x": 10,
+      "y": 0,
+      "isEntryPoint": true
+    },
+    {
+      "id": "arcane-path-1",
+      "type": "magic",
+      "x": 10,
+      "y": 1,
+      "effects": ["+10% 智力"]
+    },
+    {
+      "id": "arcane-path-2",
+      "type": "magic",
+      "x": 10,
+      "y": 2,
+      "effects": ["+5% 奥术伤害"]
+    },
+    {
+      "id": "arcane-center",
+      "type": "legendary",
+      "x": 10,
+      "y": 5,
+      "effects": ["+15% 奥术伤害"]
+    },
+    {
+      "id": "arcane-link-bottom",
+      "type": "link",
+      "x": 10,
+      "y": 20
+    },
+    {
+      "id": "arcane-link-left",
+      "type": "link",
+      "x": 0,
+      "y": 10
+    },
+    {
+      "id": "arcane-link-right",
+      "type": "link",
+      "x": 20,
+      "y": 10
+    }
+  ],
+  "connections": [
+    ["arcane-entry-top", "arcane-path-1"],
+    ["arcane-path-1", "arcane-path-2"],
+    ["arcane-path-2", "arcane-center"],
+    ["arcane-center", "arcane-link-bottom"],
+    ["arcane-center", "arcane-link-left"],
+    ["arcane-center", "arcane-link-right"]
+  ]
+}

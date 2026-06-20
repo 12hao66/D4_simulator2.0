@@ -1,0 +1,60 @@
+﻿{
+  "id": "flame",
+  "name": "火焰盘",
+  "nodes": [
+    {
+      "id": "flame-entry-top",
+      "type": "entry",
+      "x": 10,
+      "y": 0,
+      "isEntryPoint": true
+    },
+    {
+      "id": "flame-path-1",
+      "type": "normal",
+      "x": 10,
+      "y": 1,
+      "effects": ["+5% 火焰伤害"]
+    },
+    {
+      "id": "flame-path-2",
+      "type": "normal",
+      "x": 10,
+      "y": 2,
+      "effects": ["+10% 燃烧伤害"]
+    },
+    {
+      "id": "flame-center",
+      "type": "major",
+      "x": 10,
+      "y": 5,
+      "effects": ["+20% 火焰伤害"]
+    },
+    {
+      "id": "flame-link-bottom",
+      "type": "link",
+      "x": 10,
+      "y": 20
+    },
+    {
+      "id": "flame-link-left",
+      "type": "link",
+      "x": 0,
+      "y": 10
+    },
+    {
+      "id": "flame-link-right",
+      "type": "link",
+      "x": 20,
+      "y": 10
+    }
+  ],
+  "connections": [
+    ["flame-entry-top", "flame-path-1"],
+    ["flame-path-1", "flame-path-2"],
+    ["flame-path-2", "flame-center"],
+    ["flame-center", "flame-link-bottom"],
+    ["flame-center", "flame-link-left"],
+    ["flame-center", "flame-link-right"]
+  ]
+}

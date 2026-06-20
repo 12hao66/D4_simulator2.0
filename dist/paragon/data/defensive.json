@@ -1,0 +1,346 @@
+{
+  "id": "defensive",
+  "name": "防御盘",
+  "nodes": [
+    {
+      "id": "defensive-entry-top",
+      "type": "normal",
+      "name": "节点",
+      "icon": "●",
+      "x": 0,
+      "y": 320,
+      "effects": [],
+      "connections": [
+        "defensive-path-1"
+      ],
+      "isEntryPoint": true
+    },
+    {
+      "id": "defensive-path-1",
+      "type": "normal",
+      "name": "+50 护甲",
+      "icon": "●",
+      "x": 0,
+      "y": 288,
+      "effects": [
+        {
+          "id": "-50---",
+          "name": "+50 护甲",
+          "description": "+50 护甲",
+          "value": 0,
+          "unit": ""
+        }
+      ],
+      "connections": [
+        "defensive-entry-top",
+        "defensive-path-2"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "defensive-path-2",
+      "type": "normal",
+      "name": "+5% 减伤",
+      "icon": "●",
+      "x": 0,
+      "y": 256,
+      "effects": [
+        {
+          "id": "-5----",
+          "name": "+5% 减伤",
+          "description": "+5% 减伤",
+          "value": 0,
+          "unit": ""
+        }
+      ],
+      "connections": [
+        "defensive-path-1",
+        "defensive-node-1781944554399"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "defensive-center",
+      "type": "legendary",
+      "name": "+10% 最大生命值",
+      "icon": "★",
+      "x": 0,
+      "y": 160,
+      "effects": [
+        {
+          "id": "-10-------",
+          "name": "+10% 最大生命值",
+          "description": "+10% 最大生命值",
+          "value": 0,
+          "unit": ""
+        }
+      ],
+      "connections": [
+        "defensive-node-1781944564826",
+        "defensive-node-1781944572514"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "defensive-link-bottom",
+      "type": "link",
+      "name": "面板链接关口",
+      "icon": "🔗",
+      "x": 0,
+      "y": -320,
+      "effects": [],
+      "connections": [],
+      "isEntryPoint": true
+    },
+    {
+      "id": "defensive-link-left",
+      "type": "link",
+      "name": "面板链接关口",
+      "icon": "🔗",
+      "x": 320,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "defensive-node-1781944695235"
+      ],
+      "isEntryPoint": true
+    },
+    {
+      "id": "defensive-link-right",
+      "type": "link",
+      "name": "面板链接关口",
+      "icon": "🔗",
+      "x": -320,
+      "y": 0,
+      "effects": [],
+      "connections": [],
+      "isEntryPoint": true
+    },
+    {
+      "id": "defensive-node-1781944554399",
+      "type": "normal",
+      "name": "普通01",
+      "icon": "●",
+      "x": 0,
+      "y": 224,
+      "effects": [],
+      "connections": [
+        "defensive-path-2",
+        "defensive-node-1781944564826"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "defensive-node-1781944564826",
+      "type": "normal",
+      "name": "普通02",
+      "icon": "●",
+      "x": 0,
+      "y": 192,
+      "effects": [],
+      "connections": [
+        "defensive-center",
+        "defensive-node-1781944554399"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "defensive-node-1781944572514",
+      "type": "normal",
+      "name": "普通03",
+      "icon": "●",
+      "x": 0,
+      "y": 128,
+      "effects": [],
+      "connections": [
+        "defensive-center",
+        "defensive-node-1781944582277"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "defensive-node-1781944582277",
+      "type": "normal",
+      "name": "普通04",
+      "icon": "●",
+      "x": 0,
+      "y": 96,
+      "effects": [],
+      "connections": [
+        "defensive-node-1781944572514",
+        "defensive-node-1781944590186"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "defensive-node-1781944590186",
+      "type": "normal",
+      "name": "普通05",
+      "icon": "●",
+      "x": 0,
+      "y": 64,
+      "effects": [],
+      "connections": [
+        "defensive-node-1781944582277",
+        "defensive-node-1781944598144"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "defensive-node-1781944598144",
+      "type": "normal",
+      "name": "普通06",
+      "icon": "●",
+      "x": 0,
+      "y": 32,
+      "effects": [],
+      "connections": [
+        "defensive-node-1781944590186",
+        "defensive-node-1781944606302",
+        "defensive-node-1781944617734"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "defensive-node-1781944606302",
+      "type": "normal",
+      "name": "普通07",
+      "icon": "●",
+      "x": 0,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "defensive-node-1781944598144",
+        "defensive-node-1781944617734"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "defensive-node-1781944617734",
+      "type": "magic",
+      "name": "稀有01",
+      "icon": "◈",
+      "x": 32,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "defensive-node-1781944598144",
+        "defensive-node-1781944606302",
+        "defensive-node-1781944628470"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "defensive-node-1781944628470",
+      "type": "magic",
+      "name": "魔法01",
+      "icon": "◈",
+      "x": 64,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "defensive-node-1781944617734",
+        "defensive-node-1781944636482"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "defensive-node-1781944636482",
+      "type": "magic",
+      "name": "魔法02",
+      "icon": "◈",
+      "x": 96,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "defensive-node-1781944628470",
+        "defensive-node-1781944647446"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "defensive-node-1781944647446",
+      "type": "magic",
+      "name": "魔法03",
+      "icon": "◈",
+      "x": 128,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "defensive-node-1781944636482",
+        "defensive-node-1781944657626"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "defensive-node-1781944657626",
+      "type": "normal",
+      "name": "魔法04",
+      "icon": "●",
+      "x": 160,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "defensive-node-1781944647446",
+        "defensive-node-1781944665172"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "defensive-node-1781944665172",
+      "type": "magic",
+      "name": "魔法05",
+      "icon": "◈",
+      "x": 192,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "defensive-node-1781944657626",
+        "defensive-node-1781944675516"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "defensive-node-1781944675516",
+      "type": "magic",
+      "name": "魔法06",
+      "icon": "◈",
+      "x": 224,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "defensive-node-1781944665172",
+        "defensive-node-1781944684067"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "defensive-node-1781944684067",
+      "type": "magic",
+      "name": "魔法07",
+      "icon": "◈",
+      "x": 256,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "defensive-node-1781944675516",
+        "defensive-node-1781944695235"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "defensive-node-1781944695235",
+      "type": "magic",
+      "name": "魔法04",
+      "icon": "◈",
+      "x": 288,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "defensive-link-left",
+        "defensive-node-1781944684067"
+      ],
+      "isEntryPoint": false
+    }
+  ]
+}

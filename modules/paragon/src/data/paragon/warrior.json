@@ -1,0 +1,60 @@
+﻿{
+  "id": "warrior",
+  "name": "战士盘",
+  "nodes": [
+    {
+      "id": "warrior-entry-top",
+      "type": "entry",
+      "x": 10,
+      "y": 0,
+      "isEntryPoint": true
+    },
+    {
+      "id": "warrior-path-1",
+      "type": "normal",
+      "x": 10,
+      "y": 1,
+      "effects": ["+10% 护甲"]
+    },
+    {
+      "id": "warrior-path-2",
+      "type": "normal",
+      "x": 10,
+      "y": 2,
+      "effects": ["+5% 近战伤害"]
+    },
+    {
+      "id": "warrior-center",
+      "type": "major",
+      "x": 10,
+      "y": 5,
+      "effects": ["+15% 近战伤害"]
+    },
+    {
+      "id": "warrior-link-bottom",
+      "type": "link",
+      "x": 10,
+      "y": 20
+    },
+    {
+      "id": "warrior-link-left",
+      "type": "link",
+      "x": 0,
+      "y": 10
+    },
+    {
+      "id": "warrior-link-right",
+      "type": "link",
+      "x": 20,
+      "y": 10
+    }
+  ],
+  "connections": [
+    ["warrior-entry-top", "warrior-path-1"],
+    ["warrior-path-1", "warrior-path-2"],
+    ["warrior-path-2", "warrior-center"],
+    ["warrior-center", "warrior-link-bottom"],
+    ["warrior-center", "warrior-link-left"],
+    ["warrior-center", "warrior-link-right"]
+  ]
+}

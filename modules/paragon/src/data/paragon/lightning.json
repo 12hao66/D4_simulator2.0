@@ -1,0 +1,60 @@
+﻿{
+  "id": "lightning",
+  "name": "闪电盘",
+  "nodes": [
+    {
+      "id": "lightning-entry-top",
+      "type": "entry",
+      "x": 10,
+      "y": 0,
+      "isEntryPoint": true
+    },
+    {
+      "id": "lightning-path-1",
+      "type": "normal",
+      "x": 10,
+      "y": 1,
+      "effects": ["+5% 闪电伤害"]
+    },
+    {
+      "id": "lightning-path-2",
+      "type": "normal",
+      "x": 10,
+      "y": 2,
+      "effects": ["+10% 攻击速度"]
+    },
+    {
+      "id": "lightning-center",
+      "type": "major",
+      "x": 10,
+      "y": 5,
+      "effects": ["+20% 闪电伤害"]
+    },
+    {
+      "id": "lightning-link-bottom",
+      "type": "link",
+      "x": 10,
+      "y": 20
+    },
+    {
+      "id": "lightning-link-left",
+      "type": "link",
+      "x": 0,
+      "y": 10
+    },
+    {
+      "id": "lightning-link-right",
+      "type": "link",
+      "x": 20,
+      "y": 10
+    }
+  ],
+  "connections": [
+    ["lightning-entry-top", "lightning-path-1"],
+    ["lightning-path-1", "lightning-path-2"],
+    ["lightning-path-2", "lightning-center"],
+    ["lightning-center", "lightning-link-bottom"],
+    ["lightning-center", "lightning-link-left"],
+    ["lightning-center", "lightning-link-right"]
+  ]
+}

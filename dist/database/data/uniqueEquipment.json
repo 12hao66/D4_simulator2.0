@@ -1,0 +1,1804 @@
+[
+  {
+    "id": "unique-fate-fist",
+    "name": "命运之拳",
+    "itemType": "unique",
+    "slot": "gloves",
+    "description": "\"你会让恐惧欺骗你一生，还是会不惜一切代价去领悟真谛？毕竟，死亡只不过是我们用来交换生命的钱币。\" - 祖尔克",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-f1",
+        "name": "幸运一击几率",
+        "value": 51.8,
+        "unit": "%",
+        "description": "增加幸运一击几率"
+      },
+      {
+        "id": "aff-f2",
+        "name": "暴击几率",
+        "value": 8.67,
+        "unit": "%",
+        "description": "增加暴击几率"
+      },
+      {
+        "id": "aff-f3",
+        "name": "攻击速度",
+        "value": 8.67,
+        "unit": "%",
+        "description": "增加攻击速度"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-f1",
+        "name": "命运之拳",
+        "description": "幸运一击：最多有 51.8% 的几率施加一个随机的控制效果，持续 2 秒。你的攻击命中时会随机造成其普通伤害的 1% 至 300%。",
+        "condition": ""
+      }
+    ],
+    "icon": "./images/items/unique/fate_fist.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-lightbearer",
+    "name": "光照者之手",
+    "itemType": "unique",
+    "slot": "gloves",
+    "description": "伊纳瑞斯回到庇护之地后，便开始寻找返回高阶天堂的路。他的第一步是重新点燃他在一千年前放弃的宗教：圣光大教堂。",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-l1",
+        "name": "暴击几率",
+        "value": 11,
+        "unit": "%",
+        "description": "增加暴击几率"
+      },
+      {
+        "id": "aff-l2",
+        "name": "火球攻击速度",
+        "value": 15,
+        "unit": "%",
+        "description": "增加火球攻击速度"
+      },
+      {
+        "id": "aff-l3",
+        "name": "火球爆炸时获得的法力",
+        "value": 7,
+        "unit": "",
+        "description": "点火球爆炸时获得的法力"
+      },
+      {
+        "id": "aff-l4",
+        "name": "火球",
+        "value": 8.5,
+        "unit": "",
+        "description": "增加火球技能等级"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-l1",
+        "name": "光照者之手",
+        "description": "火球现在会在前进路径上弹跳，且每次落地时都会发生爆炸，但爆炸只会造成 100% 的普通伤害。(仅限巫师)",
+        "condition": "巫师"
+      }
+    ],
+    "icon": "./images/items/unique/lightbearer.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-frostburn",
+    "name": "霜燃",
+    "itemType": "unique",
+    "slot": "gloves",
+    "description": "如此的冰冷，触碰的瞬间几乎冻结了心跳、刺痛了灵魂。",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-fr1",
+        "name": "幸运一击几率",
+        "value": 8,
+        "unit": "%",
+        "description": "增加幸运一击几率"
+      },
+      {
+        "id": "aff-fr2",
+        "name": "火焰与冰霜伤害",
+        "value": 182,
+        "unit": "%",
+        "description": "增加火焰与冰霜伤害"
+      },
+      {
+        "id": "aff-fr3",
+        "name": "攻击速度",
+        "value": 15,
+        "unit": "%",
+        "description": "增加攻击速度"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-fr1",
+        "name": "霜燃",
+        "description": "幸运一击：最多有 40% 几率造成 2400 点火焰伤害。幸运一击：最多有 40% 几率造成 2400 点冰霜伤害。幸运一击：最多有 60% 几率冻结敌人，持续 3 秒。",
+        "condition": ""
+      }
+    ],
+    "icon": "./images/items/unique/frostburn.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-gore-destroyer",
+    "name": "戈尔的毁灭之握",
+    "itemType": "unique",
+    "slot": "gloves",
+    "description": "\"这副手套的粗犷结构掩盖了其中蕴含的力量。戈尔虽然不是工匠，但只有蠢货才会轻视他的作品。\" - 巴雷特的《名器谱》",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-gd1",
+        "name": "对近距敌人的暴击几率",
+        "value": 22.5,
+        "unit": "%",
+        "description": "对近距敌人的暴击几率"
+      },
+      {
+        "id": "aff-gd2",
+        "name": "移动速度",
+        "value": 12.5,
+        "unit": "%",
+        "description": "增加移动速度"
+      },
+      {
+        "id": "aff-gd3",
+        "name": "攻击速度",
+        "value": 15,
+        "unit": "%",
+        "description": "增加攻击速度"
+      },
+      {
+        "id": "aff-gd4",
+        "name": "旋风斩",
+        "value": 15,
+        "unit": "",
+        "description": "增加旋风斩技能等级"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-gd1",
+        "name": "戈尔的毁灭之握",
+        "description": "旋风斩每 2 秒爆炸一次，结束后对周围敌人造成基础伤害 80% 的火焰伤害。(仅限野蛮人)",
+        "condition": "野蛮人"
+      }
+    ],
+    "icon": "./images/items/unique/gore_destroyer.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-penitent-greaves",
+    "name": "悔罪护胫",
+    "itemType": "unique",
+    "slot": "boots",
+    "description": "忏悔的圣光大教堂信徒必须进行一场艰苦的朝圣之旅，穿越被称为升天冰塔的寒冷冰川。只有这样，他们最深重的罪孽才能得到宽恕。",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-p1",
+        "name": "闪避给予的移动速度",
+        "value": 125,
+        "unit": "%",
+        "description": "闪避给予的移动速度，持续 2 秒"
+      },
+      {
+        "id": "aff-p2",
+        "name": "移动速度",
+        "value": 25,
+        "unit": "%",
+        "description": "增加移动速度"
+      },
+      {
+        "id": "aff-p3",
+        "name": "冻伤减速效果强度",
+        "value": 55,
+        "unit": "%",
+        "description": "增加冻伤减速效果强度"
+      },
+      {
+        "id": "aff-p4",
+        "name": "对冻伤敌人的暴击几率",
+        "value": 6,
+        "unit": "%",
+        "description": "对冻伤敌人的暴击几率"
+      },
+      {
+        "id": "aff-p5",
+        "name": "冰霜抗性",
+        "value": 60,
+        "unit": "%",
+        "description": "增加冰霜抗性"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-p1",
+        "name": "悔罪护胫",
+        "description": "闪避时获得无束状态，持续 7 秒。留下一道可以冻伤敌人的寒霜痕迹。你对被冻伤的敌人造成的伤害提高 25%。",
+        "condition": ""
+      }
+    ],
+    "icon": "./images/items/unique/penitent_greaves.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-flickerstep",
+    "name": "摇曳之步",
+    "itemType": "unique",
+    "slot": "boots",
+    "description": "\"创造这些靴子的人认为它们是失败品。直到一位贵不可及的卡尔蒂姆贵族被刺杀后，人们才明白这些靴子的真正力量。\" - 巴雷特的《名器谱》",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-fs1",
+        "name": "闪避给予的移动速度",
+        "value": 30,
+        "unit": "%",
+        "description": "闪避给予的移动速度，持续 1.5 秒"
+      },
+      {
+        "id": "aff-fs2",
+        "name": "移动速度",
+        "value": 15,
+        "unit": "%",
+        "description": "增加移动速度"
+      },
+      {
+        "id": "aff-fs3",
+        "name": "闪电抗性",
+        "value": 60,
+        "unit": "%",
+        "description": "增加闪电抗性"
+      },
+      {
+        "id": "aff-fs4",
+        "name": "来自近距敌人的伤害减免",
+        "value": 12.5,
+        "unit": "%",
+        "description": "来自近距敌人的伤害减免"
+      },
+      {
+        "id": "aff-fs5",
+        "name": "终极技能伤害",
+        "value": 300,
+        "unit": "%",
+        "description": "增加终极技能伤害"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-fs1",
+        "name": "摇曳之步",
+        "description": "攻击使闪避的冷却时间缩短 2.5 秒。你每用闪避穿过一名敌人，激活的终极技能的冷却时间都会缩短 4 秒，最多缩短 10 秒。",
+        "condition": ""
+      }
+    ],
+    "icon": "./images/items/unique/flickerstep.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-hundred-thousand-steps",
+    "name": "十万加行",
+    "itemType": "unique",
+    "slot": "boots",
+    "description": "\"虽然许多野蛮人留在了恐惧之地，但来自牛族、鹤族和熊族部落的小部分人反而选择在这片土地上寻找一个新的家园。\" - 布尔凯索之子的历史",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-ht1",
+        "name": "闪避给予的攻击速度",
+        "value": 10,
+        "unit": "%",
+        "description": "闪避给予的攻击速度，持续 3 秒"
+      },
+      {
+        "id": "aff-ht2",
+        "name": "移动速度",
+        "value": 15,
+        "unit": "%",
+        "description": "增加移动速度"
+      },
+      {
+        "id": "aff-ht3",
+        "name": "每有一层人形兵器加成所获得的移动速度",
+        "value": 7,
+        "unit": "%",
+        "description": "每有一层人形兵器加成所获得的移动速度"
+      },
+      {
+        "id": "aff-ht4",
+        "name": "对击昏敌人的伤害",
+        "value": 105,
+        "unit": "%",
+        "description": "对击昏敌人的伤害"
+      },
+      {
+        "id": "aff-ht5",
+        "name": "大地践踏技能范围",
+        "value": 60,
+        "unit": "%",
+        "description": "大地践踏技能范围"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-ht1",
+        "name": "十万加行",
+        "description": "激活或刷新完整的人形兵器关键被动效果时，你会自动施放大地践踏，同时获得 100 点怒气。该效果每 5 秒只能触发一次。(仅限野蛮人)",
+        "condition": "野蛮人"
+      }
+    ],
+    "icon": "./images/items/unique/hundred_thousand_steps.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "mythic-andariel-visage",
+    "name": "安达莉尔的仪容",
+    "itemType": "mythic",
+    "slot": "helmet",
+    "description": "痛楚女魔可怕的低语在你的脑海中闪现，让你越来越接近疯狂……",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-a1",
+        "name": "毒素抗性",
+        "value": 666,
+        "unit": "%",
+        "description": "增加毒素抗性"
+      },
+      {
+        "id": "aff-a2",
+        "name": "攻击速度",
+        "value": 30,
+        "unit": "%",
+        "description": "增加攻击速度"
+      },
+      {
+        "id": "aff-a3",
+        "name": "全属性",
+        "value": 110,
+        "unit": "",
+        "description": "增加全属性"
+      },
+      {
+        "id": "aff-a4",
+        "name": "击中回复生命",
+        "value": 0.13,
+        "unit": "",
+        "description": "击中回复生命"
+      },
+      {
+        "id": "aff-a5",
+        "name": "毒素抗性上限",
+        "value": 10,
+        "unit": "%",
+        "description": "增加毒素抗性上限"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-a1",
+        "name": "安达莉尔的仪容",
+        "description": "幸运一击：最多有 20% 几率触发一阵剧毒新星，在 5 秒内对区域内的敌人施加 148000 点毒素伤害。",
+        "condition": ""
+      }
+    ],
+    "icon": "./images/items/unique/andariel_visage.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "mythic-harlequin-crest",
+    "name": "谐角之冠",
+    "itemType": "mythic",
+    "slot": "helmet",
+    "description": "\"这个头饰曾经是一个伪装成宫廷法师的刺客佩戴的。她的背叛行径虽然最终暴露，但在那之前，她已经成功用魔法诅咒了国王和他的整个家族。\" - 《阿斯顿家族的陨落》",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-h1",
+        "name": "冷却时间缩减",
+        "value": 20,
+        "unit": "%",
+        "description": "冷却时间缩减"
+      },
+      {
+        "id": "aff-h2",
+        "name": "生命上限",
+        "value": 1.208,
+        "unit": "",
+        "description": "增加生命上限"
+      },
+      {
+        "id": "aff-h3",
+        "name": "资源上限",
+        "value": 18,
+        "unit": "",
+        "description": "增加资源上限"
+      },
+      {
+        "id": "aff-h4",
+        "name": "护甲值",
+        "value": 350,
+        "unit": "",
+        "description": "增加护甲值"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-h1",
+        "name": "谐角之冠",
+        "description": "获得 20% 伤害减免。此外，所有技能级别 +4。",
+        "condition": ""
+      }
+    ],
+    "icon": "./images/items/unique/harlequin_crest.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-nameless-hood",
+    "name": "无名者兜帽",
+    "itemType": "unique",
+    "slot": "helmet",
+    "description": "\"他被逐出了公会，名字也从书中被划去。彻底抹除他的存在就是对他的惩罚。\" - 摘录于一张烧焦的羊皮纸",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-nh1",
+        "name": "不稳定药剂",
+        "value": 7.5,
+        "unit": "",
+        "description": "增加不稳定药剂技能等级"
+      },
+      {
+        "id": "aff-nh2",
+        "name": "诡诈攻击",
+        "value": 7,
+        "unit": "",
+        "description": "增加诡诈攻击技能等级"
+      },
+      {
+        "id": "aff-nh3",
+        "name": "棋行险招",
+        "value": 7,
+        "unit": "",
+        "description": "增加棋行险招技能等级"
+      },
+      {
+        "id": "aff-nh4",
+        "name": "控制持续时间",
+        "value": 55,
+        "unit": "%",
+        "description": "增加控制持续时间"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-nh1",
+        "name": "无名者兜帽",
+        "description": "对被控制敌人发动攻击时，你获得 40% 幸运一击几率加成。(仅限游侠)",
+        "condition": "游侠"
+      }
+    ],
+    "icon": "./images/items/unique/nameless_hood.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-mad-wolfs-delight",
+    "name": "疯狼的狂喜",
+    "itemType": "unique",
+    "slot": "chest",
+    "description": "\"他不是诅咒的受害者 - 这都是他自找的。就算他的皮肤裂开，骨骼碎裂，他的笑声也从未停止。\" - 疯狂贵族的故事",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-mw1",
+        "name": "生命上限",
+        "value": 1.47,
+        "unit": "",
+        "description": "增加生命上限"
+      },
+      {
+        "id": "aff-mw2",
+        "name": "至凶残狼性的伤害加成",
+        "value": 17.5,
+        "unit": "%",
+        "description": "至凶残狼性的伤害加成"
+      },
+      {
+        "id": "aff-mw3",
+        "name": "狼人攻击速度",
+        "value": 15,
+        "unit": "%",
+        "description": "狼人攻击速度"
+      },
+      {
+        "id": "aff-mw4",
+        "name": "趾行步态",
+        "value": 15,
+        "unit": "",
+        "description": "增加趾行步态技能等级"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-mw1",
+        "name": "疯狼的狂喜",
+        "description": "狼人形态是你的真实形态，你的所有狼人技能级别提升 7。(仅限德鲁伊)",
+        "condition": "德鲁伊"
+      }
+    ],
+    "icon": "./images/items/unique/mad_wolfs_delight.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-infinite-cloak",
+    "name": "无限法衣",
+    "itemType": "unique",
+    "slot": "chest",
+    "description": "你拥有的力量永远不够。",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-ic1",
+        "name": "智力",
+        "value": 94,
+        "unit": "",
+        "description": "增加智力"
+      },
+      {
+        "id": "aff-ic2",
+        "name": "元素调和",
+        "value": 7,
+        "unit": "",
+        "description": "增加元素调和技能等级"
+      },
+      {
+        "id": "aff-ic3",
+        "name": "电冲震击",
+        "value": 7.5,
+        "unit": "",
+        "description": "增加电冲震击技能等级"
+      },
+      {
+        "id": "aff-ic4",
+        "name": "玻璃大炮",
+        "value": 7.5,
+        "unit": "",
+        "description": "增加玻璃大炮技能等级"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-ic1",
+        "name": "无限法衣",
+        "description": "使用传送术后，近距敌人会被拉向你并被击昏 3 秒，但传送术的冷却时间增加 20%。(仅限巫师)",
+        "condition": "巫师"
+      }
+    ],
+    "icon": "./images/items/unique/infinite_cloak.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-insatiable-fury",
+    "name": "无餍之怒",
+    "itemType": "unique",
+    "slot": "chest",
+    "description": "\"灰烬之日\"到来时，伟大的德鲁伊纳菲恩提醒他的门徒们说，为了保护图尔·杜拉不受阿斯塔洛斯的烈焰伤害，没有什么是不能牺牲的，哪怕他们的人性。",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-if1",
+        "name": "生命上限",
+        "value": 12.5,
+        "unit": "%",
+        "description": "增加生命上限"
+      },
+      {
+        "id": "aff-if2",
+        "name": "至巨熊之力的加成效果",
+        "value": 4,
+        "unit": "%",
+        "description": "至巨熊之力的加成效果"
+      },
+      {
+        "id": "aff-if3",
+        "name": "钢铁皮毛",
+        "value": 11,
+        "unit": "",
+        "description": "增加钢铁皮毛技能等级"
+      },
+      {
+        "id": "aff-if4",
+        "name": "熊人压制伤害",
+        "value": 140,
+        "unit": "%",
+        "description": "熊人压制伤害"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-if1",
+        "name": "无餍之怒",
+        "description": "熊人形态是你的真实形态，你的所有熊人技能级别提升 5。(仅限德鲁伊)",
+        "condition": "德鲁伊"
+      }
+    ],
+    "icon": "./images/items/unique/insatiable_fury.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-razorplate",
+    "name": "剃刀甲",
+    "itemType": "unique",
+    "slot": "chest",
+    "description": "这件连环相扣的护甲是由食人族的阿摩达制作的，每一块部件都被打磨成了刀刃的形状。甚至在她死后的一百年，这套板甲仍然套在她的遗骸上，无法被安全地取下。",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-rp1",
+        "name": "荆棘",
+        "value": 567,
+        "unit": "",
+        "description": "增加荆棘"
+      },
+      {
+        "id": "aff-rp2",
+        "name": "荆棘",
+        "value": 567,
+        "unit": "",
+        "description": "增加荆棘"
+      },
+      {
+        "id": "aff-rp3",
+        "name": "荆棘",
+        "value": 567,
+        "unit": "",
+        "description": "增加荆棘"
+      },
+      {
+        "id": "aff-rp4",
+        "name": "荆棘",
+        "value": 567,
+        "unit": "",
+        "description": "增加荆棘"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-rp1",
+        "name": "剃刀甲",
+        "description": "荆棘有 10% 几率造成 200% 的额外伤害。",
+        "condition": ""
+      }
+    ],
+    "icon": "./images/items/unique/razorplate.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-dark-gaze",
+    "name": "暗夜凝望",
+    "itemType": "unique",
+    "slot": "pants",
+    "description": "\"于是，当太阳坠入山丘后的每个夜晚，他知道灰白杰克不久就会出现在附近。注视着，等待着。\" - 《格林斯莱德的故事》第二章：\"每一个漫漫长夜\"",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-dg1",
+        "name": "陷阱埋设速度",
+        "value": 1,
+        "unit": "秒",
+        "description": "陷阱埋设速度加快 1 秒"
+      },
+      {
+        "id": "aff-dg2",
+        "name": "终极技能伤害",
+        "value": 300,
+        "unit": "%",
+        "description": "增加终极技能伤害"
+      },
+      {
+        "id": "aff-dg3",
+        "name": "余劲尚存",
+        "value": 11,
+        "unit": "",
+        "description": "增加余劲尚存技能等级"
+      },
+      {
+        "id": "aff-dg4",
+        "name": "生命上限",
+        "value": 1.47,
+        "unit": "",
+        "description": "增加生命上限"
+      },
+      {
+        "id": "aff-dg5",
+        "name": "对受陷阱技能影响的敌人的伤害减免",
+        "value": 15,
+        "unit": "%",
+        "description": "对受陷阱技能影响的敌人的伤害减免"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-dg1",
+        "name": "暗夜凝望",
+        "description": "索命陷阱的伤害提高 150%，并且触发后还会再自我装填一次。(仅限游侠)",
+        "condition": "游侠"
+      }
+    ],
+    "icon": "./images/items/unique/dark_gaze.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-storms-companion",
+    "name": "风暴之友",
+    "itemType": "unique",
+    "slot": "pants",
+    "description": "\"风暴之怒即为我怒，兄弟。听我一声长啸，天空轰然回响。\" - 瓦西里对布尔凯索说",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-sc1",
+        "name": "来自近距敌人的伤害减免",
+        "value": 17.5,
+        "unit": "%",
+        "description": "来自近距敌人的伤害减免"
+      },
+      {
+        "id": "aff-sc2",
+        "name": "至兽群领袖灵物恩惠的幸运一击几率",
+        "value": 85,
+        "unit": "%",
+        "description": "至兽群领袖灵物恩惠的幸运一击几率"
+      },
+      {
+        "id": "aff-sc3",
+        "name": "群狼攻击速度",
+        "value": 25,
+        "unit": "%",
+        "description": "群狼攻击速度"
+      },
+      {
+        "id": "aff-sc4",
+        "name": "群狼",
+        "value": 18,
+        "unit": "",
+        "description": "增加群狼技能等级"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-sc1",
+        "name": "风暴之友",
+        "description": "你的狼同伴被灌注风暴之力，造成闪电伤害并且获得风暴嚎叫技能。(仅限德鲁伊)",
+        "condition": "德鲁伊"
+      }
+    ],
+    "icon": "./images/items/unique/storms_companion.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "mythic-doombringer",
+    "name": "末日使者",
+    "itemType": "mythic",
+    "slot": "weapon1",
+    "description": "每当这把古剑重现于世，都预示着一个充满纷争的时代，以及无数生命的毁灭。",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-d1",
+        "name": "伤害",
+        "value": 100,
+        "unit": "%",
+        "description": "增加伤害"
+      },
+      {
+        "id": "aff-d2",
+        "name": "全属性",
+        "value": 160,
+        "unit": "",
+        "description": "增加全属性"
+      },
+      {
+        "id": "aff-d3",
+        "name": "伤害减免",
+        "value": 10,
+        "unit": "%",
+        "description": "伤害减免"
+      },
+      {
+        "id": "aff-d4",
+        "name": "生命上限",
+        "value": 35,
+        "unit": "%",
+        "description": "增加生命上限"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-d1",
+        "name": "末日使者",
+        "description": "幸运一击：最多有 6% 几率对周围敌人造成 92500 点暗影伤害，并使其造成的伤害降低 20%，持续 5 秒。",
+        "condition": ""
+      }
+    ],
+    "icon": "./images/items/unique/doombringer.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "mythic-grandfather",
+    "name": "祖父",
+    "itemType": "mythic",
+    "slot": "weapon1",
+    "description": "力量不动如山，传承延绵万代。",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-g1",
+        "name": "伤害",
+        "value": 75,
+        "unit": "%",
+        "description": "增加伤害"
+      },
+      {
+        "id": "aff-g2",
+        "name": "全属性",
+        "value": 220,
+        "unit": "",
+        "description": "增加全属性"
+      },
+      {
+        "id": "aff-g3",
+        "name": "伤害",
+        "value": 300,
+        "unit": "%",
+        "description": "增加伤害"
+      },
+      {
+        "id": "aff-g4",
+        "name": "生命上限",
+        "value": 2.718,
+        "unit": "",
+        "description": "增加生命上限"
+      },
+      {
+        "id": "aff-g5",
+        "name": "资源上限",
+        "value": 20,
+        "unit": "",
+        "description": "增加资源上限"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-g1",
+        "name": "祖父",
+        "description": "你的暴击伤害提高 x100%。该武器上的其它属性可以随出比平常更高的数值。",
+        "condition": ""
+      }
+    ],
+    "icon": "./images/items/unique/grandfather.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-butcher-cleaver",
+    "name": "屠夫的砍斧",
+    "itemType": "unique",
+    "slot": "weapon1",
+    "description": "一个用血液、骨头还有钢铁融合而成的噩梦之物，和它的创造者一样可怕且致命。",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-b1",
+        "name": "对受伤敌人的伤害",
+        "value": 175,
+        "unit": "%",
+        "description": "对受伤敌人的伤害"
+      },
+      {
+        "id": "aff-b2",
+        "name": "对恐惧敌人的暴击几率",
+        "value": 25,
+        "unit": "%",
+        "description": "对恐惧敌人的暴击几率"
+      },
+      {
+        "id": "aff-b3",
+        "name": "攻击速度",
+        "value": 10,
+        "unit": "%",
+        "description": "增加攻击速度"
+      },
+      {
+        "id": "aff-b4",
+        "name": "物理伤害",
+        "value": 85,
+        "unit": "%",
+        "description": "增加物理伤害"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-b1",
+        "name": "屠夫的砍斧",
+        "description": "幸运一击：对敌人造成暴击时，最多有 100% 几率使其陷入恐惧并减速 90%，持续 4 秒。",
+        "condition": ""
+      }
+    ],
+    "icon": "./images/items/unique/butcher_cleaver.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-windforce",
+    "name": "风之力",
+    "itemType": "unique",
+    "slot": "weapon1",
+    "description": "\"历史上发生过无数次影响世界的冲突。每一场这样的冲突中都会出现这把弓的身影，并且总会在胜利者的手中。\" - 巴雷特的《名器谱》",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-w1",
+        "name": "对被控制的敌人的伤害",
+        "value": 130,
+        "unit": "%",
+        "description": "对被控制的敌人的伤害"
+      },
+      {
+        "id": "aff-w2",
+        "name": "几率使乱射飞行道具施放两次",
+        "value": 55,
+        "unit": "%",
+        "description": "几率使乱射飞行道具施放两次"
+      },
+      {
+        "id": "aff-w3",
+        "name": "乱射",
+        "value": 9,
+        "unit": "",
+        "description": "增加乱射技能等级"
+      },
+      {
+        "id": "aff-w4",
+        "name": "恶意",
+        "value": 7,
+        "unit": "",
+        "description": "增加恶意技能等级"
+      },
+      {
+        "id": "aff-w5",
+        "name": "移动速度",
+        "value": 18,
+        "unit": "%",
+        "description": "增加移动速度"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-w1",
+        "name": "风之力",
+        "description": "乱射击中敌人时，有 50% 几率造成三倍伤害并击倒敌人。(仅限游侠)",
+        "condition": "游侠"
+      }
+    ],
+    "icon": "./images/items/unique/windforce.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "mythic-avarilion",
+    "name": "阿瓦里昂，莱姗德之矛",
+    "itemType": "mythic",
+    "slot": "weapon1",
+    "description": "\"天使莱姗德在这把长矛中为我们留下了她的一部分力量。这足以证明她仍在守护着我们。\" - 神谕者阿尔戈斯尼",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-av1",
+        "name": "暴击、易伤和压制伤害",
+        "value": 79.75,
+        "unit": "%",
+        "description": "暴击、易伤和压制伤害"
+      },
+      {
+        "id": "aff-av2",
+        "name": "全属性",
+        "value": 18,
+        "unit": "%",
+        "description": "增加全属性"
+      },
+      {
+        "id": "aff-av3",
+        "name": "移动速度",
+        "value": 33,
+        "unit": "%",
+        "description": "增加移动速度"
+      },
+      {
+        "id": "aff-av4",
+        "name": "全元素抗性",
+        "value": 66,
+        "unit": "%",
+        "description": "增加全元素抗性"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-av1",
+        "name": "阿瓦里昂",
+        "description": "在消灭一名精英敌人后获得一个随机圣坛效果，持续 20 秒。每 30 秒只能生效一次。",
+        "condition": ""
+      }
+    ],
+    "icon": "./images/items/unique/avarilion.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-blue-anger",
+    "name": "碧蓝怒火",
+    "itemType": "unique",
+    "slot": "weapon1",
+    "description": "作为天使衣卒尔的古老符文剑，碧蓝怒火奇迹般地没有遭受吞噬其主人的腐化力量的影响。",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-ba1",
+        "name": "冰霜伤害",
+        "value": 85,
+        "unit": "%",
+        "description": "增加冰霜伤害"
+      },
+      {
+        "id": "aff-ba2",
+        "name": "全属性",
+        "value": 65,
+        "unit": "",
+        "description": "增加全属性"
+      },
+      {
+        "id": "aff-ba3",
+        "name": "攻击速度",
+        "value": 10,
+        "unit": "%",
+        "description": "增加攻击速度"
+      },
+      {
+        "id": "aff-ba4",
+        "name": "冰霜抗性",
+        "value": 60,
+        "unit": "%",
+        "description": "增加冰霜抗性"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-ba1",
+        "name": "碧蓝怒火",
+        "description": "幸运一击：最多有 20% 几率冻结敌人 3 秒，并对其造成冰霜伤害。",
+        "condition": ""
+      }
+    ],
+    "icon": "./images/items/unique/blue_anger.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-skyhunter",
+    "name": "猎天者",
+    "itemType": "unique",
+    "slot": "weapon1",
+    "description": "\"盖娜拿起她的弓，瞄准了太阳。阳光灼伤了她的双眼，但箭矢依然没有落空。受伤的太阳隐藏了起来，从而带来了第一个夜晚。\" - 《猎天传奇》",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-sh1",
+        "name": "暴击伤害",
+        "value": 170,
+        "unit": "%",
+        "description": "增加暴击伤害"
+      },
+      {
+        "id": "aff-sh2",
+        "name": "几率使神射手施放两次",
+        "value": 45,
+        "unit": "%",
+        "description": "几率使神射手施放两次"
+      },
+      {
+        "id": "aff-sh3",
+        "name": "暴击伤害",
+        "value": 250,
+        "unit": "%",
+        "description": "增加暴击伤害"
+      },
+      {
+        "id": "aff-sh4",
+        "name": "鬼步疾行",
+        "value": 7,
+        "unit": "",
+        "description": "增加鬼步疾行技能等级"
+      },
+      {
+        "id": "aff-sh5",
+        "name": "攻击速度",
+        "value": 20,
+        "unit": "%",
+        "description": "增加攻击速度"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-sh1",
+        "name": "猎天者",
+        "description": "你对敌人造成的首次直接伤害必定暴击。当你消耗多层精准施放一个技能时，该技能造成的暴击伤害提高，同时你会获得能量。(仅限游侠)",
+        "condition": "游侠"
+      }
+    ],
+    "icon": "./images/items/unique/skyhunter.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-conviction",
+    "name": "定罪",
+    "itemType": "unique",
+    "slot": "weapon1",
+    "description": "\"我从未见过如此残忍的屠杀。他活该被流放，就该与其他不信神的杀人犯一起死在沼泽地里。\" - 沃尔科特军士被谋杀时的目击证人",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-cv1",
+        "name": "伤害",
+        "value": 50,
+        "unit": "%",
+        "description": "增加伤害"
+      },
+      {
+        "id": "aff-cv2",
+        "name": "基础攻击速度",
+        "value": 25,
+        "unit": "%",
+        "description": "基础攻击速度"
+      },
+      {
+        "id": "aff-cv3",
+        "name": "几率使敌人陷入易伤状态",
+        "value": 47.25,
+        "unit": "%",
+        "description": "几率使敌人陷入易伤状态"
+      },
+      {
+        "id": "aff-cv4",
+        "name": "每使用一个连击点数的伤害",
+        "value": 65,
+        "unit": "%",
+        "description": "每使用一个连击点数的伤害"
+      },
+      {
+        "id": "aff-cv5",
+        "name": "敏捷",
+        "value": 94,
+        "unit": "",
+        "description": "增加敏捷"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-cv1",
+        "name": "定罪",
+        "description": "当花费 3 个连击点数后，你的核心技能造成的伤害提高 70%。你的基础技能在使用该武器时有 50% 几率产生 3 个连击点数。(仅限游侠)",
+        "condition": "游侠"
+      }
+    ],
+    "icon": "./images/items/unique/conviction.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-asheras-curved-sword",
+    "name": "艾席拉的弯刀",
+    "itemType": "unique",
+    "slot": "weapon1",
+    "description": "当卡尔蒂姆的城门关闭时，艾席拉带着她的铁狼离开了这座城市，她深知他们再也回不来了。他们在凯基斯坦漫游，用刀刃帮助任何有需要的人。",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-ac1",
+        "name": "伤害",
+        "value": 50,
+        "unit": "%",
+        "description": "增加伤害"
+      },
+      {
+        "id": "aff-ac2",
+        "name": "暴击几率",
+        "value": 8,
+        "unit": "%",
+        "description": "增加暴击几率"
+      },
+      {
+        "id": "aff-ac3",
+        "name": "幸运一击几率",
+        "value": 8,
+        "unit": "%",
+        "description": "增加幸运一击几率"
+      },
+      {
+        "id": "aff-ac4",
+        "name": "生命上限",
+        "value": 3291,
+        "unit": "",
+        "description": "增加生命上限"
+      },
+      {
+        "id": "aff-ac5",
+        "name": "武器精通",
+        "value": 7.5,
+        "unit": "",
+        "description": "增加武器精通技能等级"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-ac1",
+        "name": "艾席拉的弯刀",
+        "description": "使用该武器命中时会使你的攻击速度提高 10%，持续 4 秒，最多提高 50%。(仅限游侠)",
+        "condition": "游侠"
+      }
+    ],
+    "icon": "./images/items/unique/asheras_curved_sword.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-flesh-renderer",
+    "name": "血肉撕裂者",
+    "itemType": "unique",
+    "slot": "weapon1",
+    "description": "\"这件武器警醒着我们，德鲁伊先祖做过的肆意野蛮行径。随着时间流逝，我越来越清晰地看出其中的智慧。\" - 德鲁伊学者莫雷格",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-fr1",
+        "name": "对中毒敌人的伤害",
+        "value": 85,
+        "unit": "%",
+        "description": "对中毒敌人的伤害"
+      },
+      {
+        "id": "aff-fr2",
+        "name": "意力",
+        "value": 113,
+        "unit": "",
+        "description": "增加意力"
+      },
+      {
+        "id": "aff-fr3",
+        "name": "以守为攻",
+        "value": 15,
+        "unit": "",
+        "description": "增加以守为攻技能等级"
+      },
+      {
+        "id": "aff-fr4",
+        "name": "防御冷却时间缩减",
+        "value": 12.5,
+        "unit": "%",
+        "description": "防御冷却时间缩减"
+      },
+      {
+        "id": "aff-fr5",
+        "name": "防御技能",
+        "value": 8.5,
+        "unit": "",
+        "description": "增加防御技能等级"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-fr1",
+        "name": "血肉撕裂者",
+        "description": "施放一个防御技能，对附近中毒的敌人造成伤害。每 100 点意力使该伤害提高 50%。(仅限德鲁伊)",
+        "condition": "德鲁伊"
+      }
+    ],
+    "icon": "./images/items/unique/flesh_renderer.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-endless-fury-staff",
+    "name": "无尽怒火法杖",
+    "itemType": "unique",
+    "slot": "weapon1",
+    "description": "\"给你的亲人们留下一堆发黑的骨头供他们哀悼算是便宜你了。\" - 约西亚",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-ef1",
+        "name": "火焰伤害",
+        "value": 170,
+        "unit": "%",
+        "description": "增加火焰伤害"
+      },
+      {
+        "id": "aff-ef2",
+        "name": "几率使火球飞行道具施放两次",
+        "value": 75,
+        "unit": "%",
+        "description": "几率使火球飞行道具施放两次"
+      },
+      {
+        "id": "aff-ef3",
+        "name": "火球的飞行速度",
+        "value": 55,
+        "unit": "%",
+        "description": "火球的飞行速度"
+      },
+      {
+        "id": "aff-ef4",
+        "name": "火球",
+        "value": 17,
+        "unit": "",
+        "description": "增加火球技能等级"
+      },
+      {
+        "id": "aff-ef5",
+        "name": "智力",
+        "value": 204,
+        "unit": "",
+        "description": "增加智力"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-ef1",
+        "name": "无尽怒火法杖",
+        "description": "每第 3 次施放的火球会发射额外 2 个投射物，造成的伤害提高 90%。(仅限巫师)",
+        "condition": "巫师"
+      }
+    ],
+    "icon": "./images/items/unique/endless_fury_staff.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-flamescar",
+    "name": "焰痕",
+    "itemType": "unique",
+    "slot": "weapon1",
+    "description": "灼伤也许能够治愈，但痛感永远不会消失。",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-fs1",
+        "name": "击中回复生命",
+        "value": 0.0387,
+        "unit": "",
+        "description": "击中回复生命"
+      },
+      {
+        "id": "aff-fs2",
+        "name": "智力",
+        "value": 113,
+        "unit": "",
+        "description": "增加智力"
+      },
+      {
+        "id": "aff-fs3",
+        "name": "幸运一击几率",
+        "value": 12.5,
+        "unit": "%",
+        "description": "增加幸运一击几率"
+      },
+      {
+        "id": "aff-fs4",
+        "name": "几率造成双倍伤害",
+        "value": 50,
+        "unit": "%",
+        "description": "几率造成双倍伤害"
+      },
+      {
+        "id": "aff-fs5",
+        "name": "焚烧",
+        "value": 16,
+        "unit": "",
+        "description": "增加焚烧技能等级"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-fs1",
+        "name": "焰痕",
+        "description": "在引导焚烧时，你周期性地射出余烬附着在敌人身上，每次造成火焰伤害。(仅限巫师)",
+        "condition": "巫师"
+      }
+    ],
+    "icon": "./images/items/unique/flamescar.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-stone-of-cenotaph",
+    "name": "支石墓石",
+    "itemType": "unique",
+    "slot": "amulet",
+    "description": "当充满恨意的暴徒敲打他的门时，他紧紧握住不断脉动的碎片，尖声呼号着想要碎片冷静。等他睁开双眼，映入眼帘的只有一片死寂，小屋也成了一处沾满血迹的废墟",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-sc1",
+        "name": "所有抗性",
+        "value": 148,
+        "unit": "",
+        "description": "增加所有抗性"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-sc1",
+        "name": "支石墓石",
+        "description": "滚石效果本该结束时，改为爆炸并对周围敌人额外造成 [450 - 600] 点伤害。",
+        "condition": "德鲁伊"
+      }
+    ],
+    "icon": "./images/items/unique/stone_of_cenotaph.png",
+    "dropBoss": "乌里瓦尔",
+    "manuallyVerified": true
+  },
+  {
+    "id": "unique-wicked-crescent",
+    "name": "凶邪新月",
+    "itemType": "unique",
+    "slot": "amulet",
+    "description": "\"图尔·杜拉已经空无一人，圣光教闻讯，立即派出两队人马。他们原本以为，满月是上天赐予的吉兆，但很快便意识到，还有什么东西从中汲取了力量。\"——《索格伦的历史》第六卷",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-wc1",
+        "name": "所有抗性",
+        "value": 148,
+        "unit": "",
+        "description": "增加所有抗性"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-wc1",
+        "name": "凶邪新月",
+        "description": "当你变身为狼人时会自动施放血性狂吼，并且在狼人形态下每 4 秒施放一次。此外，每当触发血性狂吼时，你造成的伤害提高 [27 - 40]%[x]，持续 4 秒。",
+        "condition": "德鲁伊"
+      }
+    ],
+    "icon": "./images/items/unique/wicked_crescent.png",
+    "dropBoss": "冰中野兽",
+    "manuallyVerified": true
+  },
+  {
+    "id": "unique-sunbird-torc",
+    "name": "太阳鸟颈饰",
+    "itemType": "unique",
+    "slot": "amulet",
+    "description": "很久以前，太阳鸟曾将整个太阳吞入腹中。而在黑暗中，一个名叫希皮尔的灵巫爬进了它的巢穴，将太阳从它的喉咙里扯了出来。自此，这只鸟的身上便留下了愚行的记号——那便是它咽喉处被灼烧出的一抹烬红。",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-sbt1",
+        "name": "所有抗性",
+        "value": 148,
+        "unit": "",
+        "description": "增加所有抗性"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-sbt1",
+        "name": "太阳鸟颈饰",
+        "description": "拾起风暴之羽后，你身边会出现一道持续 8 秒的烈焰风暴，每 0.5 秒造成 [900 - 1,050] 点火焰伤害。在此期间，每拾起 5 片风暴之羽都会进一步强化烈焰风暴，使其伤害提高 100%[x]，但不会刷新其持续时间。风暴之羽现在视作猎豹技能，且烈焰风暴同时被视作天鹰、猎豹和风暴之羽技能。",
+        "condition": "灵巫"
+      }
+    ],
+    "icon": "./images/items/unique/sunbird_torc.png",
+    "dropBoss": "格里戈利、乌里瓦尔",
+    "manuallyVerified": true
+  },
+  {
+    "id": "unique-kvatirs-echo",
+    "name": "库瓦特里的回音",
+    "itemType": "unique",
+    "slot": "amulet",
+    "description": "\"第一击旨在暴露破绽，第二击方能直击要害。\"——初代灵巫伊塞薇忒的教诲",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-kvatir1",
+        "name": "所有抗性",
+        "value": 148,
+        "unit": "",
+        "description": "增加所有抗性"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-kvatir1",
+        "name": "库瓦特里的回音",
+        "description": "你对易伤敌人造成的伤害提高 [53 - 67]%[x]。使敌人陷入易伤状态后，你下一次对他们造成的直接伤害: - 为你恢复 5% 生命上限 - 产生 10 点精力 - 移除易伤效果",
+        "condition": "灵巫"
+      }
+    ],
+    "icon": "./images/items/unique/kvatirs_echo.png",
+    "dropBoss": "阿斯塔洛斯",
+    "manuallyVerified": true
+  },
+  {
+    "id": "unique-selig",
+    "name": "塞利格的溶解之心",
+    "itemType": "mythic",
+    "slot": "amulet",
+    "description": "\"不要让你的热情全都变成了执着。心中的热忱之火固然不能熄灭，但若是为了讨好一个无情的世界而将自己燃烧殆尽，那就是疯了。\" - 塞利格大师的遗言",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "ua-s1",
+        "name": "所有抗性",
+        "value": 157,
+        "unit": "",
+        "description": "增加所有抗性"
+      },
+      {
+        "id": "ua-s2",
+        "name": "全属性",
+        "value": 12,
+        "unit": "%",
+        "description": "增加所有属性"
+      },
+      {
+        "id": "ua-s3",
+        "name": "幸运一击几率",
+        "value": 15,
+        "unit": "%",
+        "description": "增加幸运一击几率"
+      },
+      {
+        "id": "ua-s4",
+        "name": "移动速度",
+        "value": 25,
+        "unit": "%",
+        "description": "增加移动速度"
+      },
+      {
+        "id": "ua-s5",
+        "name": "资源生成",
+        "value": 20,
+        "unit": "%",
+        "description": "增加资源生成"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-s1",
+        "name": "溶解之心",
+        "description": "你受到的伤害会先扣除你的主要资源而不是生命，并且以这种方式承受的伤害将被大幅降低。你的主要资源翻倍，但生命上限降低75%。",
+        "condition": ""
+      }
+    ],
+    "icon": "./images/items/unique/selig_heart_of_dissolution.png",
+    "manuallyVerified": true
+  },
+  {
+    "id": "unique-千变之心",
+    "name": "千变之心",
+    "itemType": "unique",
+    "slot": "amulet",
+    "description": "“纳罕涂瞬息万变，亦亘古长存。哪怕烈焰地狱化为劫灰，哪怕高阶天堂轰然倾颓，纳罕涂依然会屹立不倒。”——摘自《恩卡西的蔑视》",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-unique-千变之心-0",
+        "value": 148,
+        "name": "所有抗性",
+        "unit": "",
+        "description": "增加所有抗性"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-unique-千变之心",
+        "name": "千变之心",
+        "description": "施放的技能对应基础灵力时，赋予: - 天鹰: [17 - 20]%[+] 移动速度 - 狂猿: [17 - 20]% 伤害减免 - 猎豹: [17 - 20]%[+] 攻击速度 - 巨虫: [1.7 - 2.0]% 每秒回复生命 施放不同基础灵力的技能时: - 切换至新的加成 - 使核心属性提高 100%[+]，持续 7 秒。",
+        "condition": "灵巫"
+      }
+    ],
+    "icon": "./images/items/unique/千变之心.png",
+    "dropBoss": "憎恨先驱、安达莉尔",
+    "manuallyVerified": true
+  },
+  {
+    "id": "unique-hunters-peak",
+    "name": "猎手的巅峰",
+    "itemType": "unique",
+    "slot": "ring1",
+    "description": "\"用你们的尖牙、利爪、长矛还有刀剑，把这些从火焰中爬出来的渣滓送回地狱！我们要拿他们的鲜血浇注大地！为了菲亚克拉·盖尔！为了索格伦！\" - 纳菲恩在\"灰烬之日\"如是说",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-hp1",
+        "name": "全元素抗性",
+        "value": 12.5,
+        "unit": "%",
+        "description": "增加全元素抗性"
+      },
+      {
+        "id": "aff-hp2",
+        "name": "闪电抗性",
+        "value": 12.5,
+        "unit": "%",
+        "description": "增加闪电抗性"
+      },
+      {
+        "id": "aff-hp3",
+        "name": "意力",
+        "value": 121,
+        "unit": "",
+        "description": "增加意力"
+      },
+      {
+        "id": "aff-hp4",
+        "name": "掠食本能",
+        "value": 15,
+        "unit": "",
+        "description": "增加掠食本能技能等级"
+      },
+      {
+        "id": "aff-hp5",
+        "name": "敏锐感知",
+        "value": 7,
+        "unit": "",
+        "description": "增加敏锐感知技能等级"
+      },
+      {
+        "id": "aff-hp6",
+        "name": "快速变形",
+        "value": 7.5,
+        "unit": "",
+        "description": "增加快速变形技能等级"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-hp1",
+        "name": "猎手的巅峰",
+        "description": "在动物形态下达到 30 秒后，你的下一个核心技能必定造成压制和暴击，同时伤害提高 60%。(仅限德鲁伊)",
+        "condition": "德鲁伊"
+      }
+    ],
+    "icon": "./images/items/unique/hunters_peak.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-blue-rose",
+    "name": "蓝玫瑰",
+    "itemType": "unique",
+    "slot": "ring1",
+    "description": "\"她所爱之人的灵魂消散了，她在悲伤之中流下了冻结的泪水。每到冬天，眼泪滴落的地方都会开出纯净的冰玫瑰。\" - 《格林斯莱德故事》第七章：\"冰心伊丽娜的神话\"",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-br1",
+        "name": "全元素抗性",
+        "value": 12.5,
+        "unit": "%",
+        "description": "增加全元素抗性"
+      },
+      {
+        "id": "aff-br2",
+        "name": "冰霜抗性",
+        "value": 12.5,
+        "unit": "%",
+        "description": "增加冰霜抗性"
+      },
+      {
+        "id": "aff-br3",
+        "name": "冰刺伤害",
+        "value": 350,
+        "unit": "%",
+        "description": "增加冰刺伤害"
+      },
+      {
+        "id": "aff-br4",
+        "name": "冰霜伤害",
+        "value": 170,
+        "unit": "%",
+        "description": "增加冰霜伤害"
+      },
+      {
+        "id": "aff-br5",
+        "name": "暴击几率",
+        "value": 11,
+        "unit": "%",
+        "description": "增加暴击几率"
+      },
+      {
+        "id": "aff-br6",
+        "name": "冰刺爆炸两次的几率",
+        "value": 35,
+        "unit": "%",
+        "description": "冰刺爆炸两次的几率"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-br1",
+        "name": "蓝玫瑰",
+        "description": "幸运一击：最多有 30% 几率生成一个爆炸性的冰刺，造成冰霜伤害。如果该敌人处于被冻结状态，则此几率变为原来的三倍。(仅限巫师)",
+        "condition": "巫师"
+      }
+    ],
+    "icon": "./images/items/unique/blue_rose.png",
+    "manuallyVerified": false
+  },
+  {
+    "id": "unique-mothers-embrace",
+    "name": "圣母的拥抱",
+    "itemType": "unique",
+    "slot": "ring1",
+    "description": "\"每本巨著，每册书卷，神殿中的每一本书都是相同的答案。\"",
+    "level": 80,
+    "affixes": [
+      {
+        "id": "aff-me1",
+        "name": "全元素抗性",
+        "value": 12.5,
+        "unit": "%",
+        "description": "增加全元素抗性"
+      },
+      {
+        "id": "aff-me2",
+        "name": "暗影抗性",
+        "value": 12.5,
+        "unit": "%",
+        "description": "增加暗影抗性"
+      },
+      {
+        "id": "aff-me3",
+        "name": "攻击速度",
+        "value": 15,
+        "unit": "%",
+        "description": "增加攻击速度"
+      },
+      {
+        "id": "aff-me4",
+        "name": "暴击几率",
+        "value": 8,
+        "unit": "%",
+        "description": "增加暴击几率"
+      },
+      {
+        "id": "aff-me5",
+        "name": "幸运一击几率",
+        "value": 8,
+        "unit": "%",
+        "description": "增加幸运一击几率"
+      },
+      {
+        "id": "aff-me6",
+        "name": "全属性",
+        "value": 65,
+        "unit": "",
+        "description": "增加全属性"
+      }
+    ],
+    "uniqueEffects": [
+      {
+        "id": "ue-me1",
+        "name": "圣母的拥抱",
+        "description": "如果一个核心技能命中 4 个或以上的敌人，返还 60% 消耗的资源。",
+        "condition": ""
+      }
+    ],
+    "icon": "./images/items/unique/mothers_embrace.png",
+    "manuallyVerified": false
+  }
+]

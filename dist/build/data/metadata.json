@@ -1,0 +1,59 @@
+{
+  "seasons": [
+    {
+      "id": "s14",
+      "name": "S14",
+      "displayName": "S14 清算赛季",
+      "startDate": "2025-06-17",
+      "isActive": true
+    },
+    {
+      "id": "s13",
+      "name": "S13",
+      "displayName": "S13 暗黑赛季",
+      "startDate": "2025-03-18",
+      "endDate": "2025-06-16",
+      "isActive": false
+    },
+    {
+      "id": "s12",
+      "name": "S12",
+      "displayName": "S12 血色赛季",
+      "startDate": "2025-01-07",
+      "endDate": "2025-03-17",
+      "isActive": false
+    }
+  ],
+  "classes": [
+    { "id": "barbarian", "name": "野蛮人", "icon": "⚔️" },
+    { "id": "necromancer", "name": "死灵法师", "icon": "💀" },
+    { "id": "sorc", "name": "巫师", "icon": "🔮" },
+    { "id": "druid", "name": "德鲁伊", "icon": "🌿" },
+    { "id": "rogue", "name": "游侠", "icon": "🏹" },
+    { "id": "spiritborn", "name": "术士", "icon": "✨" },
+    { "id": "paladin", "name": "圣骑士", "icon": "🛡️" },
+    { "id": "warlock", "name": "灵巫", "icon": "🦅" }
+  ],
+  "slotNames": {
+    "helmet": "头盔",
+    "chest": "胸甲",
+    "gloves": "手套",
+    "pants": "护腿",
+    "boots": "靴子",
+    "weapon1": "主手武器",
+    "weapon2": "副手武器",
+    "weapon3": "武器3",
+    "weapon4": "武器4",
+    "shield": "盾牌",
+    "amulet": "项链",
+    "ring1": "戒指1",
+    "ring2": "戒指2"
+  },
+  "rarityNames": {
+    "common": "普通",
+    "magic": "魔法",
+    "rare": "稀有",
+    "legendary": "传奇",
+    "unique": "独特"
+  }
+}

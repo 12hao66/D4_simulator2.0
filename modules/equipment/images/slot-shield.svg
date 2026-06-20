@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A7C94"/>
+      <stop offset="50%" style="stop-color:#3A6478"/>
+      <stop offset="100%" style="stop-color:#2A4D5C"/>
+    </linearGradient>
+  </defs>
+  <path d="M24 4C12.954 4 4 12.954 4 24v12c0 4.418 2.686 8.262 6.606 9.48C14.156 45.89 18.954 46 24 46c5.046 0 9.844-.11 13.394-.52C41.314 44.262 44 40.418 44 36V24c0-11.046-8.954-20-20-20z" fill="url(#shieldGrad)"/>
+  <path d="M24 12v24M14 22h20" stroke="#C9922A" stroke-width="3" opacity="0.7"/>
+  <circle cx="24" cy="24" r="6" stroke="#C9922A" stroke-width="2" opacity="0.7" fill="none"/>
+</svg>

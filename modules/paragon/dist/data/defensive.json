@@ -1,0 +1,60 @@
+{
+  "id": "defensive",
+  "name": "防御盘",
+  "nodes": [
+    {
+      "id": "defensive-entry-top",
+      "type": "normal",
+      "x": 10,
+      "y": 0,
+      "isEntryPoint": true
+    },
+    {
+      "id": "defensive-path-1",
+      "type": "normal",
+      "x": 10,
+      "y": 1,
+      "effects": ["+50 护甲"]
+    },
+    {
+      "id": "defensive-path-2",
+      "type": "normal",
+      "x": 10,
+      "y": 2,
+      "effects": ["+5% 减伤"]
+    },
+    {
+      "id": "defensive-center",
+      "type": "legendary",
+      "x": 10,
+      "y": 5,
+      "effects": ["+10% 最大生命值"]
+    },
+    {
+      "id": "defensive-link-bottom",
+      "type": "link",
+      "x": 10,
+      "y": 20
+    },
+    {
+      "id": "defensive-link-left",
+      "type": "link",
+      "x": 0,
+      "y": 10
+    },
+    {
+      "id": "defensive-link-right",
+      "type": "link",
+      "x": 20,
+      "y": 10
+    }
+  ],
+  "connections": [
+    ["defensive-entry-top", "defensive-path-1"],
+    ["defensive-path-1", "defensive-path-2"],
+    ["defensive-path-2", "defensive-center"],
+    ["defensive-center", "defensive-link-bottom"],
+    ["defensive-center", "defensive-link-left"],
+    ["defensive-center", "defensive-link-right"]
+  ]
+}

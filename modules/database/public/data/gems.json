@@ -1,0 +1,233 @@
+[
+  {
+    "id": "gem-grand-ruby",
+    "name": "巨型红宝石",
+    "type": "ruby",
+    "icon": "./images/gems/ruby.png",
+    "weaponEffect": "x24% 火焰与神圣伤害增倍",
+    "armorEffect": "+90 点力量",
+    "jewelryEffect": "+2,625 点火焰抗性",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 1
+  },
+  {
+    "id": "gem-grand-topaz",
+    "name": "巨型黄宝石",
+    "type": "topaz",
+    "icon": "./images/gems/topaz.png",
+    "weaponEffect": "x24% 闪电伤害增倍",
+    "armorEffect": "+90 点智力",
+    "jewelryEffect": "+2,625 点闪电抗性",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 1
+  },
+  {
+    "id": "gem-grand-sapphire",
+    "name": "巨型蓝宝石",
+    "type": "sapphire",
+    "icon": "./images/gems/sapphire.png",
+    "weaponEffect": "x24% 冰霜伤害增倍",
+    "armorEffect": "+90 点意志力",
+    "jewelryEffect": "+2,625 点冰霜抗性",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 1
+  },
+  {
+    "id": "gem-grand-emerald",
+    "name": "巨型绿宝石",
+    "type": "emerald",
+    "icon": "./images/gems/emerald.png",
+    "weaponEffect": "x24% 毒素伤害增倍",
+    "armorEffect": "+90 点敏捷",
+    "jewelryEffect": "+2,625 点毒素抗性",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 1
+  },
+  {
+    "id": "gem-grand-amethyst",
+    "name": "巨型紫宝石",
+    "type": "amethyst",
+    "icon": "./images/gems/amethyst.png",
+    "weaponEffect": "x24% 暗影伤害增倍",
+    "armorEffect": "+90 点意志力",
+    "jewelryEffect": "+2,625 点暗影抗性",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 1
+  },
+  {
+    "id": "gem-grand-skull",
+    "name": "巨型骷髅宝石",
+    "type": "skull",
+    "icon": "./images/gems/skull.png",
+    "weaponEffect": "x24% 物理伤害增倍",
+    "armorEffect": "+22.5% 受到的治疗效果",
+    "jewelryEffect": "+2,625 点护甲值",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 1
+  },
+  {
+    "id": "gem-grand-diamond",
+    "name": "巨型钻石",
+    "type": "diamond",
+    "icon": "./images/gems/diamond.png",
+    "weaponEffect": "x20% 全伤害增倍",
+    "armorEffect": "+30 点全属性",
+    "jewelryEffect": "+375 点全抗性",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 1
+  },
+  {
+    "id": "gem-horadric-ruby",
+    "name": "赫拉迪姆红宝石",
+    "type": "ruby",
+    "icon": "./images/gems/ruby.png",
+    "weaponEffect": "x28% 火焰与神圣伤害增倍",
+    "armorEffect": "+120 点力量",
+    "jewelryEffect": "+3,500 点火焰抗性",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 30
+  },
+  {
+    "id": "gem-horadric-topaz",
+    "name": "赫拉迪姆黄宝石",
+    "type": "topaz",
+    "icon": "./images/gems/topaz.png",
+    "weaponEffect": "x28% 闪电伤害增倍",
+    "armorEffect": "+120 点智力",
+    "jewelryEffect": "+3,500 点闪电抗性",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 30
+  },
+  {
+    "id": "gem-horadric-sapphire",
+    "name": "赫拉迪姆蓝宝石",
+    "type": "sapphire",
+    "icon": "./images/gems/sapphire.png",
+    "weaponEffect": "x28% 冰霜伤害增倍",
+    "armorEffect": "+120 点意志力",
+    "jewelryEffect": "+3,500 点冰霜抗性",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 30
+  },
+  {
+    "id": "gem-horadric-emerald",
+    "name": "赫拉迪姆绿宝石",
+    "type": "emerald",
+    "icon": "./images/gems/emerald.png",
+    "weaponEffect": "x28% 毒素伤害增倍",
+    "armorEffect": "+120 点敏捷",
+    "jewelryEffect": "+3,500 点毒素抗性",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 30
+  },
+  {
+    "id": "gem-horadric-amethyst",
+    "name": "赫拉迪姆紫宝石",
+    "type": "amethyst",
+    "icon": "./images/gems/amethyst.png",
+    "weaponEffect": "x28% 暗影伤害增倍",
+    "armorEffect": "+120 点意志力",
+    "jewelryEffect": "+3,500 点暗影抗性",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 30
+  },
+  {
+    "id": "gem-horadric-skull",
+    "name": "赫拉迪姆骷髅宝石",
+    "type": "skull",
+    "icon": "./images/gems/skull.png",
+    "weaponEffect": "x28% 物理伤害增倍",
+    "armorEffect": "+30% 受到的治疗效果",
+    "jewelryEffect": "+3,500 点护甲值",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 30
+  },
+  {
+    "id": "gem-horadric-diamond",
+    "name": "赫拉迪姆钻石",
+    "type": "diamond",
+    "icon": "./images/gems/diamond.png",
+    "weaponEffect": "x28% 全伤害增倍",
+    "armorEffect": "+120 点全属性",
+    "jewelryEffect": "+3,500 点全抗性",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 30
+  },
+  {
+    "id": "gem-flawless-horadric-ruby",
+    "name": "无瑕赫拉迪姆红宝石",
+    "type": "ruby",
+    "icon": "./images/gems/ruby.png",
+    "weaponEffect": "x32% 火焰与神圣伤害增倍",
+    "armorEffect": "+150 点力量",
+    "jewelryEffect": "+4,375 点火焰抗性",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 50
+  },
+  {
+    "id": "gem-flawless-horadric-topaz",
+    "name": "无瑕赫拉迪姆黄宝石",
+    "type": "topaz",
+    "icon": "./images/gems/topaz.png",
+    "weaponEffect": "x32% 闪电伤害增倍",
+    "armorEffect": "+150 点智力",
+    "jewelryEffect": "+4,375 点闪电抗性",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 50
+  },
+  {
+    "id": "gem-flawless-horadric-sapphire",
+    "name": "无瑕赫拉迪姆蓝宝石",
+    "type": "sapphire",
+    "icon": "./images/gems/sapphire.png",
+    "weaponEffect": "x32% 冰霜伤害增倍",
+    "armorEffect": "+150 点意志力",
+    "jewelryEffect": "+4,375 点冰霜抗性",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 50
+  },
+  {
+    "id": "gem-flawless-horadric-emerald",
+    "name": "无瑕赫拉迪姆绿宝石",
+    "type": "emerald",
+    "icon": "./images/gems/emerald.png",
+    "weaponEffect": "x32% 毒素伤害增倍",
+    "armorEffect": "+150 点敏捷",
+    "jewelryEffect": "+4,375 点毒素抗性",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 50
+  },
+  {
+    "id": "gem-flawless-horadric-amethyst",
+    "name": "无瑕赫拉迪姆紫宝石",
+    "type": "amethyst",
+    "icon": "./images/gems/amethyst.png",
+    "weaponEffect": "x32% 暗影伤害增倍",
+    "armorEffect": "+150 点意志力",
+    "jewelryEffect": "+4,375 点暗影抗性",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 50
+  },
+  {
+    "id": "gem-flawless-horadric-skull",
+    "name": "无瑕赫拉迪姆骷髅宝石",
+    "type": "skull",
+    "icon": "./images/gems/skull.png",
+    "weaponEffect": "x32% 物理伤害增倍",
+    "armorEffect": "+35% 受到的治疗效果",
+    "jewelryEffect": "+4,375 点护甲值",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 50
+  },
+  {
+    "id": "gem-flawless-horadric-diamond",
+    "name": "无瑕赫拉迪姆钻石",
+    "type": "diamond",
+    "icon": "./images/gems/diamond.png",
+    "weaponEffect": "x32% 全伤害增倍",
+    "armorEffect": "+150 点全属性",
+    "jewelryEffect": "+4,375 点全抗性",
+    "cubeEffect": "赫拉迪姆魔盒可以融合该物品。",
+    "requiredLevel": 50
+  }
+]

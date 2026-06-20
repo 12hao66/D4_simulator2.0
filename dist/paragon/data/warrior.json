@@ -1,0 +1,125 @@
+{
+  "id": "warrior",
+  "name": "战士盘",
+  "nodes": [
+    {
+      "id": "warrior-entry-top",
+      "type": "normal",
+      "name": "节点",
+      "icon": "●",
+      "x": 0,
+      "y": 320,
+      "effects": [],
+      "connections": [
+        "warrior-path-1"
+      ],
+      "isEntryPoint": true
+    },
+    {
+      "id": "warrior-path-1",
+      "type": "normal",
+      "name": "+10% 力量",
+      "icon": "●",
+      "x": 0,
+      "y": 288,
+      "effects": [
+        {
+          "id": "-10----",
+          "name": "+10% 力量",
+          "description": "+10% 力量",
+          "value": 0,
+          "unit": ""
+        }
+      ],
+      "connections": [
+        "warrior-entry-top",
+        "warrior-path-2"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "warrior-path-2",
+      "type": "normal",
+      "name": "+5% 近战伤害",
+      "icon": "●",
+      "x": 0,
+      "y": 256,
+      "effects": [
+        {
+          "id": "-5------",
+          "name": "+5% 近战伤害",
+          "description": "+5% 近战伤害",
+          "value": 0,
+          "unit": ""
+        }
+      ],
+      "connections": [
+        "warrior-path-1"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "warrior-center",
+      "type": "legendary",
+      "name": "+15% 近战伤害",
+      "icon": "★",
+      "x": 0,
+      "y": 160,
+      "effects": [
+        {
+          "id": "-15------",
+          "name": "+15% 近战伤害",
+          "description": "+15% 近战伤害",
+          "value": 0,
+          "unit": ""
+        }
+      ],
+      "connections": [],
+      "isEntryPoint": false
+    },
+    {
+      "id": "warrior-link-bottom",
+      "type": "link",
+      "name": "面板链接关口",
+      "icon": "🔗",
+      "x": 0,
+      "y": -320,
+      "effects": [],
+      "connections": [],
+      "isEntryPoint": true
+    },
+    {
+      "id": "warrior-link-left",
+      "type": "link",
+      "name": "面板链接关口",
+      "icon": "🔗",
+      "x": 320,
+      "y": 0,
+      "effects": [],
+      "connections": [],
+      "isEntryPoint": true
+    },
+    {
+      "id": "warrior-link-right",
+      "type": "link",
+      "name": "面板链接关口",
+      "icon": "🔗",
+      "x": -320,
+      "y": 0,
+      "effects": [],
+      "connections": [],
+      "isEntryPoint": true
+    },
+    {
+      "id": "warrior-node-1781944914107",
+      "type": "magic",
+      "name": "魔法01",
+      "icon": "◈",
+      "x": 0,
+      "y": 0,
+      "effects": [],
+      "connections": [],
+      "isEntryPoint": false
+    }
+  ]
+}

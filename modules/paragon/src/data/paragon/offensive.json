@@ -1,0 +1,60 @@
+﻿{
+  "id": "offensive",
+  "name": "进攻盘",
+  "nodes": [
+    {
+      "id": "offensive-entry-top",
+      "type": "entry",
+      "x": 10,
+      "y": 0,
+      "isEntryPoint": true
+    },
+    {
+      "id": "offensive-path-1",
+      "type": "normal",
+      "x": 10,
+      "y": 1,
+      "effects": ["+5% 暴击率"]
+    },
+    {
+      "id": "offensive-path-2",
+      "type": "normal",
+      "x": 10,
+      "y": 2,
+      "effects": ["+10% 暴击伤害"]
+    },
+    {
+      "id": "offensive-center",
+      "type": "major",
+      "x": 10,
+      "y": 5,
+      "effects": ["+20% 伤害"]
+    },
+    {
+      "id": "offensive-link-bottom",
+      "type": "link",
+      "x": 10,
+      "y": 20
+    },
+    {
+      "id": "offensive-link-left",
+      "type": "link",
+      "x": 0,
+      "y": 10
+    },
+    {
+      "id": "offensive-link-right",
+      "type": "link",
+      "x": 20,
+      "y": 10
+    }
+  ],
+  "connections": [
+    ["offensive-entry-top", "offensive-path-1"],
+    ["offensive-path-1", "offensive-path-2"],
+    ["offensive-path-2", "offensive-center"],
+    ["offensive-center", "offensive-link-bottom"],
+    ["offensive-center", "offensive-link-left"],
+    ["offensive-center", "offensive-link-right"]
+  ]
+}

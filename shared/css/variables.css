@@ -1,0 +1,56 @@
+/* CSS变量定义 - 暗黑风格主题 */
+:root {
+  /* 颜色系统 */
+  --color-primary: #c9922a;
+  --color-primary-dark: #8a5a10;
+  --color-primary-light: #ffd700;
+  
+  --color-secondary: #6495ed;
+  --color-secondary-dark: #4169e1;
+  
+  --color-bg-dark: #0d0d0d;
+  --color-bg-card: #1a1510;
+  --color-bg-card-hover: #2a2015;
+  
+  --color-border: #2a2018;
+  --color-border-hover: #c9922a;
+  
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #888888;
+  --color-text-muted: #555555;
+  
+  /* 稀有度颜色 */
+  --color-rarity-common: #888888;
+  --color-rarity-magic: #1eff00;
+  --color-rarity-rare: #0070dd;
+  --color-rarity-legendary: #ff8000;
+  --color-rarity-unique: #e6cc80;
+  
+  /* 字体大小 */
+  --font-size-xs: 10px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 36px;
+  
+  /* 间距 */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-base: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 20px;
+  --spacing-xl: 30px;
+  
+  /* 圆角 */
+  --radius-sm: 4px;
+  --radius-base: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  
+  /* 阴影 */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 40px rgba(201, 146, 42, 0.2);
+}

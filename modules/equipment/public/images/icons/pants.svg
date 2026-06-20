@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="38" height="38">
+  <defs>
+    <linearGradient id="pantsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a4a4a"/>
+      <stop offset="50%" style="stop-color:#2d2d2d"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="pantsHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#666;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#333;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- 裤子主体 -->
+  <path d="M20 25 Q15 22 12 20 L10 20 L8 22 L6 28 L6 45 L18 50 L18 35 Q20 33 24 33 Q28 33 30 35 L30 50 L34 50 L34 35 Q38 33 42 33 Q46 33 48 35 L48 50 L60 45 L60 28 L58 22 L56 20 L54 20 Q51 22 46 25 L44 27 Q40 25 32 27 Q24 25 20 27 Z" fill="url(#pantsGrad)" stroke="#333" stroke-width="1"/>
+  
+  <!-- 腰部装饰 -->
+  <path d="M16 28 Q24 26 32 28 Q40 26 48 28" fill="none" stroke="#555" stroke-width="2"/>
+  
+  <!-- 裤褶线条 -->
+  <path d="M20 35 L22 48" fill="none" stroke="#333" stroke-width="1"/>
+  <path d="M24 35 L26 48" fill="none" stroke="#333" stroke-width="1"/>
+  <path d="M40 35 L38 48" fill="none" stroke="#333" stroke-width="1"/>
+  <path d="M36 35 L34 48" fill="none" stroke="#333" stroke-width="1"/>
+  
+  <!-- 左侧裤腿阴影 -->
+  <path d="M6 28 L8 30 L8 45 L6 45 Z" fill="#000" opacity="0.3"/>
+  
+  <!-- 右侧裤腿阴影 -->
+  <path d="M58 28 L60 30 L60 45 L58 45 Z" fill="#000" opacity="0.3"/>
+  
+  <!-- 高光效果 -->
+  <ellipse cx="22" cy="30" rx="4" ry="3" fill="url(#pantsHighlight)"/>
+  <ellipse cx="42" cy="30" rx="4" ry="3" fill="url(#pantsHighlight)"/>
+  
+  <!-- 腰带扣 -->
+  <rect x="30" y="26" width="4" height="4" fill="#8b7355" stroke="#6b5344" stroke-width="0.5"/>
+</svg>

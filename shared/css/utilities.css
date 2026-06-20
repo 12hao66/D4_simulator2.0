@@ -1,0 +1,194 @@
+/* 工具类样式 */
+
+/* 布局 */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.gap-xs {
+  gap: 4px;
+}
+
+.gap-sm {
+  gap: 8px;
+}
+
+.gap-base {
+  gap: 12px;
+}
+
+.gap-md {
+  gap: 16px;
+}
+
+/* 显示 */
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.none {
+  display: none;
+}
+
+/* 文本 */
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+/* 背景 */
+.bg-dark {
+  background: var(--color-bg-dark);
+}
+
+.bg-card {
+  background: var(--color-bg-card);
+}
+
+/* 边框 */
+.border {
+  border: 1px solid var(--color-border);
+}
+
+.border-primary {
+  border-color: var(--color-primary);
+}
+
+/* 圆角 */
+.rounded-sm {
+  border-radius: var(--radius-sm);
+}
+
+.rounded {
+  border-radius: var(--radius-base);
+}
+
+.rounded-md {
+  border-radius: var(--radius-md);
+}
+
+.rounded-lg {
+  border-radius: var(--radius-lg);
+}
+
+/* 间距 */
+.p-xs {
+  padding: var(--spacing-xs);
+}
+
+.p-sm {
+  padding: var(--spacing-sm);
+}
+
+.p-base {
+  padding: var(--spacing-base);
+}
+
+.p-md {
+  padding: var(--spacing-md);
+}
+
+.p-lg {
+  padding: var(--spacing-lg);
+}
+
+.m-xs {
+  margin: var(--spacing-xs);
+}
+
+.m-sm {
+  margin: var(--spacing-sm);
+}
+
+.m-base {
+  margin: var(--spacing-base);
+}
+
+.m-md {
+  margin: var(--spacing-md);
+}
+
+.m-lg {
+  margin: var(--spacing-lg);
+}
+
+.mt-sm {
+  margin-top: var(--spacing-sm);
+}
+
+.mb-sm {
+  margin-bottom: var(--spacing-sm);
+}
+
+.mt-base {
+  margin-top: var(--spacing-base);
+}
+
+.mb-base {
+  margin-bottom: var(--spacing-base);
+}
+
+/* 尺寸 */
+.w-full {
+  width: 100%;
+}
+
+.max-w-md {
+  max-width: 500px;
+}
+
+.max-w-lg {
+  max-width: 1000px;
+}
+
+/* 动画 */
+.transition {
+  transition: all 0.2s ease;
+}
+
+.transition-md {
+  transition: all 0.3s ease;
+}

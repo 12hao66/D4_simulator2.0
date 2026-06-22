@@ -5,121 +5,56 @@
     {
       "id": "warrior-entry-top",
       "type": "normal",
-      "name": "节点",
-      "icon": "●",
-      "x": 0,
-      "y": 320,
-      "effects": [],
-      "connections": [
-        "warrior-path-1"
-      ],
+      "x": 10,
+      "y": 0,
       "isEntryPoint": true
     },
     {
       "id": "warrior-path-1",
       "type": "normal",
-      "name": "+10% 力量",
-      "icon": "●",
-      "x": 0,
-      "y": 288,
-      "effects": [
-        {
-          "id": "-10----",
-          "name": "+10% 力量",
-          "description": "+10% 力量",
-          "value": 0,
-          "unit": ""
-        }
-      ],
-      "connections": [
-        "warrior-entry-top",
-        "warrior-path-2"
-      ],
-      "isEntryPoint": false
+      "x": 10,
+      "y": 1,
+      "effects": ["+10% 力量"]
     },
     {
       "id": "warrior-path-2",
       "type": "normal",
-      "name": "+5% 近战伤害",
-      "icon": "●",
-      "x": 0,
-      "y": 256,
-      "effects": [
-        {
-          "id": "-5------",
-          "name": "+5% 近战伤害",
-          "description": "+5% 近战伤害",
-          "value": 0,
-          "unit": ""
-        }
-      ],
-      "connections": [
-        "warrior-path-1"
-      ],
-      "isEntryPoint": false
+      "x": 10,
+      "y": 2,
+      "effects": ["+5% 近战伤害"]
     },
     {
       "id": "warrior-center",
       "type": "legendary",
-      "name": "+15% 近战伤害",
-      "icon": "★",
-      "x": 0,
-      "y": 160,
-      "effects": [
-        {
-          "id": "-15------",
-          "name": "+15% 近战伤害",
-          "description": "+15% 近战伤害",
-          "value": 0,
-          "unit": ""
-        }
-      ],
-      "connections": [],
-      "isEntryPoint": false
+      "x": 10,
+      "y": 5,
+      "effects": ["+15% 近战伤害"]
     },
     {
       "id": "warrior-link-bottom",
       "type": "link",
-      "name": "面板链接关口",
-      "icon": "🔗",
-      "x": 0,
-      "y": -320,
-      "effects": [],
-      "connections": [],
-      "isEntryPoint": true
+      "x": 10,
+      "y": 20
     },
     {
       "id": "warrior-link-left",
       "type": "link",
-      "name": "面板链接关口",
-      "icon": "🔗",
-      "x": 320,
-      "y": 0,
-      "effects": [],
-      "connections": [],
-      "isEntryPoint": true
+      "x": 0,
+      "y": 10
     },
     {
       "id": "warrior-link-right",
       "type": "link",
-      "name": "面板链接关口",
-      "icon": "🔗",
-      "x": -320,
-      "y": 0,
-      "effects": [],
-      "connections": [],
-      "isEntryPoint": true
-    },
-    {
-      "id": "warrior-node-1781944914107",
-      "type": "magic",
-      "name": "魔法01",
-      "icon": "◈",
-      "x": 0,
-      "y": 0,
-      "effects": [],
-      "connections": [],
-      "isEntryPoint": false
+      "x": 20,
+      "y": 10
     }
+  ],
+  "connections": [
+    ["warrior-entry-top", "warrior-path-1"],
+    ["warrior-path-1", "warrior-path-2"],
+    ["warrior-path-2", "warrior-center"],
+    ["warrior-center", "warrior-link-bottom"],
+    ["warrior-center", "warrior-link-left"],
+    ["warrior-center", "warrior-link-right"]
   ]
 }

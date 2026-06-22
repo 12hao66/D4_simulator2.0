@@ -190,6 +190,7 @@ interface ParagonActions {
   updateNode: (nodeId: string, updates: Partial<ParagonNode>) => void;
   exportBoardConfig: () => string;
   exportFullConfig: () => string;
+  exportAsDataFile: (boardIndex?: number) => string;
   importFullConfig: (json: string) => Promise<boolean>;
 }
 
@@ -753,6 +754,61 @@ export const useParagonStore = create<ExtendedParagonState & ParagonActions>((se
     };
 
     return JSON.stringify(config, null, 2);
+  },
+
+  // 导出为数据文件格式（与加载格式一致）
+  exportAsDataFile: (boardIndex?: number) => {
+    const { boards } = get();
+    const board = boards[boardIndex ?? get().activeBoardIndex];
+    if (!board) return '';
+
+    const GRID_SPACING = 64; // 网格间距
+
+    // 提取所有连接关系
+    const connections: [string, string][] = [];
+    board.nodes.forEach(node => {
+      if (node.connections) {
+        node.connections.forEach(targetId => {
+          // 避免重复添加连接
+          const exists = connections.some(
+            ([a, b]) => (a === node.id && b === targetId) || (a === targetId && b === node.id)
+          );
+          if (!exists) {
+            connections.push([node.id, targetId]);
+          }
+        });
+      }
+    });
+
+    // 转换节点格式
+    const dataFileNodes = board.nodes.map(node => {
+      // 像素坐标转换为列/行号
+      const col = Math.round((node.x + board.centerSlot.x) / GRID_SPACING);
+      const row = Math.round((node.y + board.centerSlot.y) / GRID_SPACING);
+
+      // effects 对象数组转换为字符串数组
+      const effectStrings = node.effects?.map(e => {
+        if (typeof e === 'string') return e;
+        return e.description || `${e.type}: ${e.value}`;
+      }) || [];
+
+      return {
+        id: node.id,
+        type: node.type,
+        x: col,
+        y: row,
+        effects: effectStrings
+      };
+    });
+
+    const dataFile = {
+      id: board.id,
+      name: board.name,
+      nodes: dataFileNodes,
+      connections: connections
+    };
+
+    return JSON.stringify(dataFile, null, 2);
   },
 
   // 导入完整配置

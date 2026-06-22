@@ -1,6 +1,6 @@
 {
   "id": "core",
-  "name": "核心�?,
+  "name": "核心",
   "nodes": [
     {
       "id": "core-start",
@@ -42,7 +42,7 @@
       "type": "normal",
       "x": 10,
       "y": 5,
-      "effects": ["+3 所有属�?]
+      "effects": ["+3 所有属性"]
     },
     {
       "id": "core-path-6",

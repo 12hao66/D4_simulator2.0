@@ -6,7 +6,7 @@ interface BoardExportImportProps {
 }
 
 export const BoardExportImport = ({ onClose }: BoardExportImportProps) => {
-  const { exportFullConfig, importFullConfig, boards, linkChain } = useParagonStore();
+  const { exportFullConfig, exportAsDataFile, importFullConfig, boards, linkChain } = useParagonStore();
 
   const [importText, setImportText] = useState('');
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
@@ -34,6 +34,22 @@ export const BoardExportImport = ({ onClose }: BoardExportImportProps) => {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
     setMessage({ type: 'success', text: '配置文件已下载！' });
+    setTimeout(() => setMessage(null), 3000);
+  };
+
+  const handleExportAsDataFile = () => {
+    const config = exportAsDataFile();
+    const blob = new Blob([config], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    const boardName = boards[0]?.id || 'board';
+    a.download = `${boardName}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    setMessage({ type: 'success', text: '数据文件已下载！可直接放入 public/data 目录使用' });
     setTimeout(() => setMessage(null), 3000);
   };
 
@@ -126,7 +142,7 @@ export const BoardExportImport = ({ onClose }: BoardExportImportProps) => {
               导出当前所有巅峰盘配置（包括链接关系、解锁状态、雕纹等）
             </p>
 
-            <div className="flex gap-3">
+            <div className="flex gap-3 mb-3">
               <button
                 onClick={handleExport}
                 className="flex-1 py-3 px-4 rounded-lg bg-diablo-gold text-diablo-dark font-medium hover:bg-diablo-gold-hover transition-all flex items-center justify-center gap-2"
@@ -138,6 +154,18 @@ export const BoardExportImport = ({ onClose }: BoardExportImportProps) => {
                 className="flex-1 py-3 px-4 rounded-lg bg-diablo-bg border border-diablo-border text-diablo-gold font-medium hover:bg-diablo-hover transition-all flex items-center justify-center gap-2"
               >
                 <span>💾</span> 下载文件
+              </button>
+            </div>
+
+            <div className="border-t border-diablo-border pt-3 mt-3">
+              <p className="text-sm text-diablo-muted mb-3">
+                导出为数据文件格式（可直接放入 public/data 目录作为预设盘使用）
+              </p>
+              <button
+                onClick={handleExportAsDataFile}
+                className="w-full py-3 px-4 rounded-lg bg-diablo-bg border border-diablo-border text-diablo-gold font-medium hover:bg-diablo-hover transition-all flex items-center justify-center gap-2"
+              >
+                <span>📄</span> 导出为数据文件格式
               </button>
             </div>
           </div>

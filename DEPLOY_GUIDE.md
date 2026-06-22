@@ -157,6 +157,8 @@ dist/
 ├── equipment/          # 装备模拟器（构建后）
 ├── skills/             # 技能模拟器（构建后）
 ├── paragon/            # 巅峰盘模拟器（构建后）
+├── build/              # 构筑浏览器（构建后）
+├── bbs/                # 社区论坛（构建后）
 └── database/           # 数据库管理（构建后）
 ```
 
@@ -169,11 +171,29 @@ dist/
 
 ## 🚀 部署到 GitHub Pages
 
-### 方法一：使用 GitHub Actions（推荐）
+### 方法一：手动创建 GitHub Actions（推荐 - 避免权限问题）
 
-#### 5.1.1 创建 GitHub Actions 工作流
+如果你在推送代码时遇到 OAuth App 权限问题（workflow 文件无法推送），可以使用此方法：
 
-在项目根目录创建 `.github/workflows/deploy.yml`：
+#### 5.1.1 先推送代码到 GitHub
+
+```powershell
+# 添加所有文件
+git add .
+
+# 提交更改（排除 .github 目录）
+git commit -m "Add D4 simulator modules"
+
+# 推送到 GitHub
+git push origin main
+```
+
+#### 5.1.2 在 GitHub 网页上手动创建 Workflow 文件
+
+1. 打开你的 GitHub 仓库：https://github.com/12hao66/D4_simulator2.0
+2. 点击 **Add file** → **Create new file**
+3. 文件路径输入：`.github/workflows/deploy.yml`
+4. 复制以下内容粘贴：
 
 ```yaml
 name: Deploy to GitHub Pages
@@ -181,65 +201,162 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # 或你的主分支名称
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
-      - name: Install dependencies
+      - name: Build calculator
         run: |
-          cd modules/calculator && npm install
-          cd ../equipment && npm install
-          cd ../database && npm install
-          cd ../skills && npm install
-          cd ../paragon && npm install
+          cd modules/calculator
+          npm install
+          npm run build
+          cd ../..
 
-      - name: Build all modules
+      - name: Build database
         run: |
-          cd modules/calculator && npm run build
-          cd ../equipment && npm run build
-          cd ../database && npm run build
-          cd ../skills && npm run build
-          cd ../paragon && npm run build
+          cd modules/database
+          npm install
+          npm run build
+          cd ../..
+
+      - name: Build equipment
+        run: |
+          cd modules/equipment
+          npm install
+          npm run build
+          cd ../..
+
+      - name: Build skills
+        run: |
+          cd modules/skills
+          npm install
+          npm run build
+          cd ../..
+
+      - name: Build paragon
+        run: |
+          cd modules/paragon
+          npm install
+          npm run build
+          cd ../..
+
+      - name: Build build browser
+        run: |
+          cd modules/build
+          npm install
+          npm run build
+          cd ../..
+
+      - name: Build bbs
+        run: |
+          cd modules/bbs
+          npm install
+          npm run build
+          cd ../..
 
       - name: Create dist directory
         run: mkdir -p dist
 
-      - name: Copy build outputs
+      - name: Copy modules to dist
         run: |
-          cp -r modules/calculator/dist/* dist/calculator/
-          cp -r modules/equipment/dist/* dist/equipment/
-          cp -r modules/database/dist/* dist/database/
-          cp -r modules/skills/dist/* dist/skills/
-          cp -r modules/paragon/dist/* dist/paragon/
-          cp -r modules/simulator/* dist/simulator/
+          cp -r modules/calculator/dist dist/calculator
+          cp -r modules/database/dist dist/database
+          cp -r modules/equipment/dist dist/equipment
+          cp -r modules/skills/dist dist/skills
+          cp -r modules/paragon/dist dist/paragon
+          cp -r modules/build/dist dist/build
+          cp -r modules/bbs/dist dist/bbs
+          cp -r modules/simulator dist/simulator
           cp index.html dist/
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          path: './dist'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 ```
 
-#### 5.1.2 配置 GitHub Pages 设置
+5. 点击 **Commit new file**
 
-1. 进入仓库 → Settings → Pages
-2. 在 "Source" 部分：
-   - Branch: `gh-pages`（GitHub Actions 会自动创建）
-   - Folder: `/` (root)
-3. 点击 "Save"
+#### 5.1.3 配置 GitHub Pages 设置
 
-### 方法二：手动部署
+1. 进入仓库 → **Settings** → **Pages**
+2. 在 "Build and deployment" 部分：
+   - Source 选择 **GitHub Actions**
+3. 保存
+
+#### 5.1.4 触发部署
+
+推送代码后，GitHub Actions 会自动构建并部署：
+- 进入仓库 → **Actions** 标签页查看进度
+- 部署完成后访问：`https://12hao66.github.io/D4_simulator2.0/`
+
+---
+
+### 方法二：使用本地上传的 Workflow 文件
+
+如果你希望从本地上传 workflow 文件，需要使用 Personal Access Token：
+
+#### 5.2.1 创建 Personal Access Token
+
+1. GitHub → **Settings** → **Developer settings** → **Personal access tokens** → **Tokens (classic)**
+2. 点击 **Generate new token (classic)**
+3. 勾选 **workflow** 权限
+4. 生成 token 并保存
+
+#### 5.2.2 使用 Token 推送
+
+```powershell
+# 设置远程仓库 URL 包含 Token
+git remote set-url origin https://<YOUR_TOKEN>@github.com/12hao66/D4_simulator2.0.git
+
+# 推送所有文件（包括 .github 目录）
+git add .
+git commit -m "Add GitHub Pages deployment"
+git push origin main
+```
+
+#### 5.2.3 配置 GitHub Pages
+
+同方法一 5.1.3
+
+---
+
+### 方法三：手动部署（不使用 Actions）
 
 #### 5.2.1 安装 gh-pages 工具
 
@@ -279,19 +396,21 @@ GitHub Pages 部署可能需要几分钟时间。
 
 ### 6.2 访问网站
 
-部署成功后，访问：https://12hao66.github.io/
+部署成功后，访问：https://12hao66.github.io/D4_simulator2.0/
 
 ### 6.3 验证所有模块
 
 | 模块 | 地址 |
 |------|------|
-| 首页 | https://12hao66.github.io/ |
-| 伤害计算器3.0 | https://12hao66.github.io/calculator/ |
-| 伤害计算器2.0 | https://12hao66.github.io/simulator/ |
-| 装备模拟器 | https://12hao66.github.io/equipment/ |
-| 技能模拟器 | https://12hao66.github.io/skills/ |
-| 巅峰盘模拟器 | https://12hao66.github.io/paragon/ |
-| 数据库 | https://12hao66.github.io/database/ |
+| 首页 | https://12hao66.github.io/D4_simulator2.0/ |
+| 伤害计算器3.0 | https://12hao66.github.io/D4_simulator2.0/calculator/ |
+| 伤害计算器2.0 | https://12hao66.github.io/D4_simulator2.0/simulator/ |
+| 装备模拟器 | https://12hao66.github.io/D4_simulator2.0/equipment/ |
+| 技能模拟器 | https://12hao66.github.io/D4_simulator2.0/skills/ |
+| 巅峰盘模拟器 | https://12hao66.github.io/D4_simulator2.0/paragon/ |
+| 构筑浏览器 | https://12hao66.github.io/D4_simulator2.0/build/ |
+| 社区论坛 | https://12hao66.github.io/D4_simulator2.0/bbs/ |
+| 数据库 | https://12hao66.github.io/D4_simulator2.0/database/ |
 
 ---
 

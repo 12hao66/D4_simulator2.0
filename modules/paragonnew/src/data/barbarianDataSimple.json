@@ -1,0 +1,4381 @@
+{
+  "version": "52025",
+  "className": "Barbarian",
+  "classNameCn": "野蛮人",
+  "boards": [
+    {
+      "id": "Paragon_Barb_Start",
+      "name": "Start",
+      "rows": 15,
+      "cols": 21,
+      "gates": [
+        {
+          "row": 0,
+          "col": 10,
+          "id": "Generic_Gate",
+          "direction": "bottom"
+        }
+      ],
+      "startNodes": [
+        {
+          "row": 14,
+          "col": 10,
+          "id": "StartNodeBarb"
+        }
+      ]
+    },
+    {
+      "id": "Paragon_Barb_Hemorrhage",
+      "name": "Hemorrhage",
+      "rows": 21,
+      "cols": 21,
+      "gates": [
+        {
+          "row": 0,
+          "col": 10,
+          "id": "Generic_Gate",
+          "direction": "bottom"
+        },
+        {
+          "row": 10,
+          "col": 0,
+          "id": "Generic_Gate",
+          "direction": "right"
+        },
+        {
+          "row": 10,
+          "col": 20,
+          "id": "Generic_Gate",
+          "direction": "left"
+        },
+        {
+          "row": 20,
+          "col": 10,
+          "id": "Generic_Gate",
+          "direction": "top"
+        }
+      ],
+      "startNodes": []
+    },
+    {
+      "id": "Paragon_Barb_Blood_Rage",
+      "name": "Blood Rage",
+      "rows": 21,
+      "cols": 21,
+      "gates": [
+        {
+          "row": 0,
+          "col": 10,
+          "id": "Generic_Gate",
+          "direction": "bottom"
+        },
+        {
+          "row": 10,
+          "col": 0,
+          "id": "Generic_Gate",
+          "direction": "right"
+        },
+        {
+          "row": 10,
+          "col": 20,
+          "id": "Generic_Gate",
+          "direction": "left"
+        },
+        {
+          "row": 20,
+          "col": 10,
+          "id": "Generic_Gate",
+          "direction": "top"
+        }
+      ],
+      "startNodes": []
+    },
+    {
+      "id": "Paragon_Barb_Carnage",
+      "name": "Carnage",
+      "rows": 21,
+      "cols": 21,
+      "gates": [
+        {
+          "row": 0,
+          "col": 10,
+          "id": "Generic_Gate",
+          "direction": "bottom"
+        },
+        {
+          "row": 10,
+          "col": 0,
+          "id": "Generic_Gate",
+          "direction": "right"
+        },
+        {
+          "row": 10,
+          "col": 20,
+          "id": "Generic_Gate",
+          "direction": "left"
+        },
+        {
+          "row": 20,
+          "col": 10,
+          "id": "Generic_Gate",
+          "direction": "top"
+        }
+      ],
+      "startNodes": []
+    },
+    {
+      "id": "Paragon_Barb_Decimator",
+      "name": "Decimator",
+      "rows": 21,
+      "cols": 21,
+      "gates": [
+        {
+          "row": 0,
+          "col": 10,
+          "id": "Generic_Gate",
+          "direction": "bottom"
+        },
+        {
+          "row": 10,
+          "col": 0,
+          "id": "Generic_Gate",
+          "direction": "right"
+        },
+        {
+          "row": 10,
+          "col": 20,
+          "id": "Generic_Gate",
+          "direction": "left"
+        },
+        {
+          "row": 20,
+          "col": 10,
+          "id": "Generic_Gate",
+          "direction": "top"
+        }
+      ],
+      "startNodes": []
+    },
+    {
+      "id": "Paragon_Barb_Bone_Breaker",
+      "name": "Bone Breaker",
+      "rows": 21,
+      "cols": 21,
+      "gates": [
+        {
+          "row": 0,
+          "col": 10,
+          "id": "Generic_Gate",
+          "direction": "bottom"
+        },
+        {
+          "row": 10,
+          "col": 0,
+          "id": "Generic_Gate",
+          "direction": "right"
+        },
+        {
+          "row": 10,
+          "col": 20,
+          "id": "Generic_Gate",
+          "direction": "left"
+        },
+        {
+          "row": 20,
+          "col": 10,
+          "id": "Generic_Gate",
+          "direction": "top"
+        }
+      ],
+      "startNodes": []
+    },
+    {
+      "id": "Paragon_Barb_Flawless_Technique",
+      "name": "Flawless Technique",
+      "rows": 21,
+      "cols": 21,
+      "gates": [
+        {
+          "row": 0,
+          "col": 10,
+          "id": "Generic_Gate",
+          "direction": "bottom"
+        },
+        {
+          "row": 10,
+          "col": 0,
+          "id": "Generic_Gate",
+          "direction": "right"
+        },
+        {
+          "row": 10,
+          "col": 20,
+          "id": "Generic_Gate",
+          "direction": "left"
+        },
+        {
+          "row": 20,
+          "col": 10,
+          "id": "Generic_Gate",
+          "direction": "top"
+        }
+      ],
+      "startNodes": []
+    },
+    {
+      "id": "Paragon_Barb_Warbringer",
+      "name": "Warbringer",
+      "rows": 21,
+      "cols": 21,
+      "gates": [
+        {
+          "row": 0,
+          "col": 10,
+          "id": "Generic_Gate",
+          "direction": "bottom"
+        },
+        {
+          "row": 10,
+          "col": 0,
+          "id": "Generic_Gate",
+          "direction": "right"
+        },
+        {
+          "row": 10,
+          "col": 20,
+          "id": "Generic_Gate",
+          "direction": "left"
+        },
+        {
+          "row": 20,
+          "col": 10,
+          "id": "Generic_Gate",
+          "direction": "top"
+        }
+      ],
+      "startNodes": []
+    },
+    {
+      "id": "Paragon_Barb_Weapons_Master",
+      "name": "Weapons Master",
+      "rows": 21,
+      "cols": 21,
+      "gates": [
+        {
+          "row": 0,
+          "col": 10,
+          "id": "Generic_Gate",
+          "direction": "bottom"
+        },
+        {
+          "row": 10,
+          "col": 0,
+          "id": "Generic_Gate",
+          "direction": "right"
+        },
+        {
+          "row": 10,
+          "col": 20,
+          "id": "Generic_Gate",
+          "direction": "left"
+        },
+        {
+          "row": 20,
+          "col": 10,
+          "id": "Generic_Gate",
+          "direction": "top"
+        }
+      ],
+      "startNodes": []
+    }
+  ],
+  "glyphs": [
+    {
+      "id": "ParagonGlyph_011",
+      "name": "吸收者",
+      "nameEn": "Imbiber",
+      "nameCn": "吸收者",
+      "threshold": "25 Willpower",
+      "thresholdCn": "25 Willpower",
+      "bonus": "你的药水治疗效果提高 +30%。",
+      "bonusEn": "You gain +30% increased Potion Healing.",
+      "bonusCn": "你的药水治疗效果提高 +30%。",
+      "descTemplate": "For every 5 Willpower purchased within range, you deal +{TIER}% increased damage while Healthy.",
+      "tiers": [
+        2.65,
+        3.018,
+        3.385,
+        3.752,
+        4.12,
+        4.487,
+        4.855,
+        5.223,
+        5.59,
+        5.957,
+        6.325,
+        6.692,
+        7.06,
+        7.428,
+        7.795,
+        8.162,
+        8.53,
+        8.897,
+        9.265,
+        9.633,
+        10
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_014",
+      "name": "领地",
+      "nameEn": "Territorial",
+      "nameCn": "领地",
+      "threshold": "25 Dexterity",
+      "thresholdCn": "25 Dexterity",
+      "bonus": "你从近距敌人处受到的伤害降低 10%。",
+      "bonusEn": "You gain 10% Damage Reduction against Close enemies.",
+      "bonusCn": "你从近距敌人处受到的伤害降低 10%。",
+      "descTemplate": "For every 5 Dexterity purchased within range, you deal +{TIER}% increased damage to Close targets.",
+      "tiers": [
+        2,
+        2.4,
+        2.8,
+        3.2,
+        3.6,
+        4,
+        4.4,
+        4.8,
+        5.2,
+        5.6,
+        6,
+        6.4,
+        6.8,
+        7.2,
+        7.6,
+        8,
+        8.4,
+        8.8,
+        9.2,
+        9.6,
+        10
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_016",
+      "name": "利用",
+      "nameEn": "Exploit",
+      "nameCn": "利用",
+      "threshold": "25 Dexterity",
+      "thresholdCn": "25 Dexterity",
+      "bonus": "一名敌人受到你造成的伤害时会受到易伤效果, 持续 3 秒。该效果对每个敌人每 20 秒只能触发一次。",
+      "bonusEn": "When an enemy is damaged by you, they become Vulnerable for 3 seconds. This cannot happen more than once every 20 seconds per enemy.",
+      "bonusCn": "一名敌人受到你造成的伤害时会受到易伤效果, 持续 3 秒。该效果对每个敌人每 20 秒只能触发一次。",
+      "descTemplate": "For every 5 Dexterity purchased within range, you deal +{TIER}% increased damage to Vulnerable targets.",
+      "tiers": [
+        2,
+        2.3,
+        2.6,
+        2.9,
+        3.2,
+        3.5,
+        3.8,
+        4.1,
+        4.4,
+        4.7,
+        5,
+        5.3,
+        5.6,
+        5.9,
+        6.2,
+        6.5,
+        6.8,
+        7.1,
+        7.4,
+        7.7,
+        8
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_021",
+      "name": "灵巧",
+      "nameEn": "Ambidextrous",
+      "nameCn": "灵巧",
+      "threshold": "40 Strength",
+      "thresholdCn": "40 Strength",
+      "bonus": "装备单手武器时, 你造成的伤害提高 x8%。",
+      "bonusEn": "You deal x8% increased damage while wielding One-Handed weapons.",
+      "bonusCn": "装备单手武器时, 你造成的伤害提高 x8%。",
+      "descTemplate": "Grants +{TIER}% bonus to all Magic nodes within range.",
+      "tiers": [
+        25,
+        30,
+        35,
+        40,
+        45,
+        50,
+        55,
+        60,
+        65,
+        70,
+        75,
+        80,
+        85,
+        90,
+        95,
+        100,
+        105,
+        110,
+        115,
+        120,
+        125
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_022",
+      "name": "勇力",
+      "nameEn": "Might",
+      "nameCn": "勇力",
+      "threshold": "40 Strength",
+      "thresholdCn": "40 Strength",
+      "bonus": "装备双手武器时, 你造成的伤害提高 x8%。",
+      "bonusEn": "You deal x8% increased damage while wielding Two-Handed weapons.",
+      "bonusCn": "装备双手武器时, 你造成的伤害提高 x8%。",
+      "descTemplate": "Grants +{TIER}% bonus to all Magic nodes within range.",
+      "tiers": [
+        25,
+        30,
+        35,
+        40,
+        45,
+        50,
+        55,
+        60,
+        65,
+        70,
+        75,
+        80,
+        85,
+        90,
+        95,
+        100,
+        105,
+        110,
+        115,
+        120,
+        125
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_023",
+      "name": "削砍",
+      "nameEn": "Cleaver",
+      "nameCn": "削砍",
+      "threshold": "40 Strength",
+      "thresholdCn": "40 Strength",
+      "bonus": "装备斧类武器时, 你造成的暴击伤害提高 x12%。",
+      "bonusEn": "While wielding an Axe, you deal x12% increased Critical Strike Damage.",
+      "bonusCn": "装备斧类武器时, 你造成的暴击伤害提高 x12%。",
+      "descTemplate": "For every 5 Strength purchased within range, you deal +{TIER}% increased damage while wielding an Axe.",
+      "tiers": [
+        1.333,
+        1.533,
+        1.733,
+        1.933,
+        2.133,
+        2.333,
+        2.533,
+        2.733,
+        2.933,
+        3.133,
+        3.333,
+        3.533,
+        3.733,
+        3.933,
+        4.133,
+        4.333,
+        4.533,
+        4.733,
+        4.933,
+        5.133,
+        5.333
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_024",
+      "name": "恼怒",
+      "nameEn": "Seething",
+      "nameCn": "恼怒",
+      "threshold": "40 Strength",
+      "thresholdCn": "40 Strength",
+      "bonus": "装备剑类武器时, 消灭一名敌人可获得 3 点怒气。",
+      "bonusEn": "While wielding a Sword, you gain 3 Fury when you kill an enemy.",
+      "bonusCn": "装备剑类武器时, 消灭一名敌人可获得 3 点怒气。",
+      "descTemplate": "For every 5 Strength purchased within range, you deal +{TIER}% increased damage while wielding a Sword.",
+      "tiers": [
+        1.333,
+        1.533,
+        1.733,
+        1.933,
+        2.133,
+        2.333,
+        2.533,
+        2.733,
+        2.933,
+        3.133,
+        3.333,
+        3.533,
+        3.733,
+        3.933,
+        4.133,
+        4.333,
+        4.533,
+        4.733,
+        4.933,
+        5.133,
+        5.333
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_025",
+      "name": "碾压者",
+      "nameEn": "Crusher",
+      "nameCn": "碾压者",
+      "threshold": "40 Strength",
+      "thresholdCn": "40 Strength",
+      "bonus": "装备锤类武器时, 你造成的压制伤害提高 x30%。",
+      "bonusEn": "While wielding a Mace, you deal x30% increased Overpower damage.",
+      "bonusCn": "装备锤类武器时, 你造成的压制伤害提高 x30%。",
+      "descTemplate": "For every 5 Strength purchased within range, you deal +{TIER}% increased damage while wielding a Mace.",
+      "tiers": [
+        1.333,
+        1.533,
+        1.733,
+        1.933,
+        2.133,
+        2.333,
+        2.533,
+        2.733,
+        2.933,
+        3.133,
+        3.333,
+        3.533,
+        3.733,
+        3.933,
+        4.133,
+        4.333,
+        4.533,
+        4.733,
+        4.933,
+        5.133,
+        5.333
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_026",
+      "name": "处决者",
+      "nameEn": "Executioner",
+      "nameCn": "处决者",
+      "threshold": "40 Strength",
+      "thresholdCn": "40 Strength",
+      "bonus": "装备长柄武器时,你造成的伤害提高 x10%。",
+      "bonusEn": "While wielding a Polearm, you deal x10% increased damage.",
+      "bonusCn": "装备长柄武器时,你造成的伤害提高 x10%。",
+      "descTemplate": "For every 5 Strength purchased within range, you deal +{TIER}% increased damage while wielding a Polearm.",
+      "tiers": [
+        1.333,
+        1.533,
+        1.733,
+        1.933,
+        2.133,
+        2.333,
+        2.533,
+        2.733,
+        2.933,
+        3.133,
+        3.333,
+        3.533,
+        3.733,
+        3.933,
+        4.133,
+        4.333,
+        4.533,
+        4.733,
+        4.933,
+        5.133,
+        5.333
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_027",
+      "name": "怒火",
+      "nameEn": "Ire",
+      "nameCn": "怒火",
+      "threshold": "40 Strength",
+      "thresholdCn": "40 Strength",
+      "bonus": "处于狂暴状态时, 你受到精英怪的伤害降低 10%。",
+      "bonusEn": "While Berserking, you take 10% reduced damage from Elites.",
+      "bonusCn": "处于狂暴状态时, 你受到精英怪的伤害降低 10%。",
+      "descTemplate": "For every 5 Strength purchased within range, you deal +{TIER}% increased damage while Berserking.",
+      "tiers": [
+        1.333,
+        1.533,
+        1.733,
+        1.933,
+        2.133,
+        2.333,
+        2.533,
+        2.733,
+        2.933,
+        3.133,
+        3.333,
+        3.533,
+        3.733,
+        3.933,
+        4.133,
+        4.333,
+        4.533,
+        4.733,
+        4.933,
+        5.133,
+        5.333
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_028",
+      "name": "统帅",
+      "nameEn": "Marshal",
+      "nameCn": "统帅",
+      "threshold": "40 Strength",
+      "thresholdCn": "40 Strength",
+      "bonus": "施放一个战吼技能后, 所有其他非战吼技能的剩余冷却时间缩短 4 秒。",
+      "bonusEn": "After casting a Shout Skill, the active Cooldown of every other Non-Shout Skill is reduced by 4 seconds.",
+      "bonusCn": "施放一个战吼技能后, 所有其他非战吼技能的剩余冷却时间缩短 4 秒。",
+      "descTemplate": "Grants +{TIER}% bonus to all Magic nodes within range.",
+      "tiers": [
+        25,
+        30,
+        35,
+        40,
+        45,
+        50,
+        55,
+        60,
+        65,
+        70,
+        75,
+        80,
+        85,
+        90,
+        95,
+        100,
+        105,
+        110,
+        115,
+        120,
+        125
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_029",
+      "name": "鲜血喂食者",
+      "nameEn": "Bloodfeeder",
+      "nameCn": "鲜血喂食者",
+      "threshold": "25 Dexterity",
+      "thresholdCn": "25 Dexterity",
+      "bonus": "你对流血敌人造成暴击的几率提高 5%。",
+      "bonusEn": "You have 5% increased Critical Strike Chance against Bleeding enemies.",
+      "bonusCn": "你对流血敌人造成暴击的几率提高 5%。",
+      "descTemplate": "For every 5 Dexterity purchased within range, you deal +{TIER}% increased damage to Bleeding targets.",
+      "tiers": [
+        2,
+        2.3,
+        2.6,
+        2.9,
+        3.2,
+        3.5,
+        3.8,
+        4.1,
+        4.4,
+        4.7,
+        5,
+        5.3,
+        5.6,
+        5.9,
+        6.2,
+        6.5,
+        6.8,
+        7.1,
+        7.4,
+        7.7,
+        8
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_030",
+      "name": "愤怒",
+      "nameEn": "Wrath",
+      "nameCn": "愤怒",
+      "threshold": "25 Dexterity",
+      "thresholdCn": "25 Dexterity",
+      "bonus": "技能暴击时产生 3 点怒气。",
+      "bonusEn": "Skills that Critically Strike generate 3 Fury.",
+      "bonusCn": "技能暴击时产生 3 点怒气。",
+      "descTemplate": "For every 5 Dexterity purchased within range, you deal +{TIER}% increased Critical Strike Damage.",
+      "tiers": [
+        3,
+        3.6,
+        4.2,
+        4.8,
+        5.4,
+        6,
+        6.6,
+        7.2,
+        7.8,
+        8.4,
+        9,
+        9.6,
+        10.2,
+        10.8,
+        11.4,
+        12,
+        12.6,
+        13.2,
+        13.8,
+        14.4,
+        15
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_031",
+      "name": "武器大师",
+      "nameEn": "Weapon Master",
+      "nameCn": "武器大师",
+      "threshold": "25 Dexterity",
+      "thresholdCn": "25 Dexterity",
+      "bonus": "武器精通技能命中时, 随机使另一个武器精通技能的冷却时间缩短 2 秒。",
+      "bonusEn": "Hitting with a Weapon Mastery Skill reduces the active Cooldown of another random Weapon Mastery Skill by 2 seconds.",
+      "bonusCn": "武器精通技能命中时, 随机使另一个武器精通技能的冷却时间缩短 2 秒。",
+      "descTemplate": "Paragon nodes within range gain +{TIER}% bonus to their Physical damage and damage reduction modifiers.",
+      "tiers": [
+        11,
+        13.2,
+        15.4,
+        17.6,
+        19.8,
+        22,
+        24.2,
+        26.4,
+        28.6,
+        30.8,
+        33,
+        35.2,
+        37.4,
+        39.6,
+        41.8,
+        44,
+        46.2,
+        48.4,
+        50.6,
+        52.8,
+        55
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_032",
+      "name": "致命吸引",
+      "nameEn": "Mortal Draw",
+      "nameCn": "致命吸引",
+      "threshold": "25 Dexterity",
+      "thresholdCn": "25 Dexterity",
+      "bonus": "切换武器有 18% 几率使下一个技能暴击。",
+      "bonusEn": "Swapping weapons has a 18% chance to cause the Skill's damage to Critically Strike.",
+      "bonusCn": "切换武器有 18% 几率使下一个技能暴击。",
+      "descTemplate": "For every 5 Dexterity purchased within range, Skills that Swap to a different weapon deal +{TIER}% increased damage.",
+      "tiers": [
+        2.68,
+        3.381,
+        4.082,
+        4.783,
+        5.484,
+        6.185,
+        6.886,
+        7.587,
+        8.288,
+        8.989,
+        9.69,
+        10.391,
+        11.092,
+        11.793,
+        12.494,
+        13.195,
+        13.896,
+        14.597,
+        15.298,
+        15.999,
+        16.7
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_033",
+      "name": "复仇",
+      "nameEn": "Revenge",
+      "nameCn": "复仇",
+      "threshold": "25 Willpower",
+      "thresholdCn": "25 Willpower",
+      "bonus": "对敌人造成荆棘伤害会使你对其造成的所有伤害提高 x1%, 最多提高 x8%, 持续 10 秒。",
+      "bonusEn": "Dealing Thorns damage to an enemy increases all damage it takes from you by x1%, up to x8%, for 10 seconds.",
+      "bonusCn": "对敌人造成荆棘伤害会使你对其造成的所有伤害提高 x1%, 最多提高 x8%, 持续 10 秒。",
+      "descTemplate": "Grants +{TIER}% bonus to all Rare nodes within range.",
+      "tiers": [
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52,
+        56,
+        60,
+        64,
+        68,
+        72,
+        76,
+        80,
+        84,
+        88,
+        92,
+        96,
+        100
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_034",
+      "name": "无惧",
+      "nameEn": "Undaunted",
+      "nameCn": "无惧",
+      "threshold": "25 Willpower",
+      "thresholdCn": "25 Willpower",
+      "bonus": "你拥有的强固值越多, 你获得的伤害减免最多可达 10%。",
+      "bonusEn": "You gain up to 10% Damage Reduction the more Fortify you have.",
+      "bonusCn": "你拥有的强固值越多, 你获得的伤害减免最多可达 10%。",
+      "descTemplate": "For every 5 Willpower purchased within range, you deal +{TIER}% increased damage while Fortified.",
+      "tiers": [
+        2,
+        2.3,
+        2.6,
+        2.9,
+        3.2,
+        3.5,
+        3.8,
+        4.1,
+        4.4,
+        4.7,
+        5,
+        5.3,
+        5.6,
+        5.9,
+        6.2,
+        6.5,
+        6.8,
+        7.1,
+        7.4,
+        7.7,
+        8
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_035_Barb",
+      "name": "支配",
+      "nameEn": "Dominate",
+      "nameCn": "支配",
+      "threshold": "25 Willpower",
+      "thresholdCn": "25 Willpower",
+      "bonus": "30 秒内未造成压制后, 你的下一次攻击造成压制。",
+      "bonusEn": "After not Overpowering for 30 seconds, your next attack will Overpower.",
+      "bonusCn": "30 秒内未造成压制后, 你的下一次攻击造成压制。",
+      "descTemplate": "For every 5 Willpower purchased within range, you deal +{TIER}% increased Overpower damage.",
+      "tiers": [
+        8,
+        9.6,
+        11.2,
+        12.8,
+        14.4,
+        16,
+        17.6,
+        19.2,
+        20.8,
+        22.4,
+        24,
+        25.6,
+        27.2,
+        28.8,
+        30.4,
+        32,
+        33.6,
+        35.2,
+        36.8,
+        38.4,
+        40
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_036",
+      "name": "开膛破肚",
+      "nameEn": "Disembowel",
+      "nameCn": "开膛破肚",
+      "threshold": "25 Willpower",
+      "thresholdCn": "25 Willpower",
+      "bonus": "消灭流血的敌人有 10% 几率使你的非终极技能的剩余冷却时间缩短 1 秒。",
+      "bonusEn": "Killing a Bleeding enemy has a 10% chance to reduce the Cooldowns of your Non-Ultimate active Cooldowns by 1 second.",
+      "bonusCn": "消灭流血的敌人有 10% 几率使你的非终极技能的剩余冷却时间缩短 1 秒。",
+      "descTemplate": "For every 5 Willpower purchased within range, you deal +{TIER}% increased Bleeding damage.",
+      "tiers": [
+        2,
+        2.3,
+        2.6,
+        2.9,
+        3.2,
+        3.5,
+        3.8,
+        4.1,
+        4.4,
+        4.7,
+        5,
+        5.3,
+        5.6,
+        5.9,
+        6.2,
+        6.5,
+        6.8,
+        7.1,
+        7.4,
+        7.7,
+        8
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_037",
+      "name": "搏斗",
+      "nameEn": "Brawl",
+      "nameCn": "搏斗",
+      "threshold": "25 Willpower",
+      "thresholdCn": "25 Willpower",
+      "bonus": "搏斗技能造成的伤害提高 x18%。",
+      "bonusEn": "Brawling Skills deal x18% increased damage.",
+      "bonusCn": "搏斗技能造成的伤害提高 x18%。",
+      "descTemplate": "Paragon nodes within range gain +{TIER}% bonus to their Physical damage and damage reduction modifiers.",
+      "tiers": [
+        11,
+        13.2,
+        15.4,
+        17.6,
+        19.8,
+        22,
+        24.2,
+        26.4,
+        28.6,
+        30.8,
+        33,
+        35.2,
+        37.4,
+        39.6,
+        41.8,
+        44,
+        46.2,
+        48.4,
+        50.6,
+        52.8,
+        55
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_080",
+      "name": "旋风",
+      "nameEn": "Twister",
+      "nameCn": "旋风",
+      "threshold": "40 Strength",
+      "thresholdCn": "40 Strength",
+      "bonus": "生成一个尘魔后, 你造成的伤害提高 x13%, 持续 4 秒。",
+      "bonusEn": "You deal x13% increased damage for 4 seconds after creating a Dust Devil.",
+      "bonusCn": "生成一个尘魔后, 你造成的伤害提高 x13%, 持续 4 秒。",
+      "descTemplate": "For every 5 Strength purchased within range, your Dust Devils deal +{TIER}% increased damage.",
+      "tiers": [
+        13.333,
+        14.667,
+        16,
+        17.333,
+        18.667,
+        20,
+        21.333,
+        22.667,
+        24,
+        25.333,
+        26.667,
+        28,
+        29.333,
+        30.667,
+        32,
+        33.333,
+        34.667,
+        36,
+        37.333,
+        38.667,
+        40
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "ParagonGlyph_081",
+      "name": "轰鸣",
+      "nameEn": "Rumble",
+      "nameCn": "轰鸣",
+      "threshold": "40 Strength",
+      "thresholdCn": "40 Strength",
+      "bonus": "每激活一次撼地重击时, 对首领和被群控敌人造成的伤害提高 x10%。",
+      "bonusEn": "You deal x10% increased damage to Bosses and Crowd Controlled enemies for each active Earthquake.",
+      "bonusCn": "每激活一次撼地重击时, 对首领和被群控敌人造成的伤害提高 x10%。",
+      "descTemplate": "For every 5 Strength purchased within range, your Earthquakes deal +{TIER}% increased damage.",
+      "tiers": [
+        13.333,
+        14.667,
+        16,
+        17.333,
+        18.667,
+        20,
+        21.333,
+        22.667,
+        24,
+        25.333,
+        26.667,
+        28,
+        29.333,
+        30.667,
+        32,
+        33.333,
+        34.667,
+        36,
+        37.333,
+        38.667,
+        40
+      ],
+      "tags": [],
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    }
+  ],
+  "legendaryNodes": [
+    {
+      "id": "Barbarian_Legendary_001",
+      "type": "legendary",
+      "name": "猩红残暴",
+      "nameEn": "Crimson Violence",
+      "nameCn": "猩红残暴",
+      "desc": "你消灭的流血状态敌人产生爆炸, 对附近的敌人造成相当于其生命上限 10% 的伤害。",
+      "descEn": "Bleeding enemies you kill explode, dealing 10% of their max life to surrounding enemies.",
+      "descCn": "你消灭的流血状态敌人产生爆炸, 对附近的敌人造成相当于其生命上限 10% 的伤害。",
+      "tags": [],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Legendary_002",
+      "type": "legendary",
+      "name": "出血",
+      "nameEn": "Hemorrhage",
+      "nameCn": "出血",
+      "desc": "你的流血伤害增加, 相当于你的易伤伤害加成的 x15%。\n\nTags: 流血, 伤害.",
+      "descEn": "Your Bleeding damage is increased by x15% of your Vulnerable Damage Bonus.\n\nTags: Bleed, Damage.",
+      "descCn": "你的流血伤害增加, 相当于你的易伤伤害加成的 x15%。\n\nTags: 流血, 伤害.",
+      "tags": [
+        "流血",
+        "伤害."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Legendary_004",
+      "type": "legendary",
+      "name": "血怒",
+      "nameEn": "Blood Rage",
+      "nameCn": "血怒",
+      "desc": "消灭一名流血敌人有 10% 几率使你进入狂暴状态, 持续 5 秒。你的伤害增加, 相当于狂暴伤害加成的 x25%。\n\nTags: 流血, 狂暴.",
+      "descEn": "Killing a Bleeding enemy has 10% chance to grant Berserking for 5 seconds. Your damage is increased by x25% of your Damage while Berserking bonus.\n\nTags: Bleed, Berserking.",
+      "descCn": "消灭一名流血敌人有 10% 几率使你进入狂暴状态, 持续 5 秒。你的伤害增加, 相当于狂暴伤害加成的 x25%。\n\nTags: 流血, 狂暴.",
+      "tags": [
+        "流血",
+        "狂暴."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Legendary_005",
+      "type": "legendary",
+      "name": "天生领袖",
+      "nameEn": "Natural Leader",
+      "nameCn": "天生领袖",
+      "desc": "你的战吼技能的强度提高 35%。\n\nTags: 战吼.",
+      "descEn": "Increases the power of your Shout Skills by 35%.\n\nTags: Shout.",
+      "descCn": "你的战吼技能的强度提高 35%。\n\nTags: 战吼.",
+      "tags": [
+        "战吼."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Legendary_009",
+      "type": "legendary",
+      "name": "屠戮者",
+      "nameEn": "Carnage",
+      "nameCn": "屠戮者",
+      "desc": "狂暴状态下, 暴击使你的攻击速度提高 +2%, 最多提高 +16%, 持续 6 秒。\n\nTags: 狂暴, 暴击, 攻击速度.",
+      "descEn": "While Berserking, Critical Strikes increase your Attack Speed by +2%, up to +16%, for 6 seconds.\n\nTags: Berserking, Critical Strikes, Attack Speed.",
+      "descCn": "狂暴状态下, 暴击使你的攻击速度提高 +2%, 最多提高 +16%, 持续 6 秒。\n\nTags: 狂暴, 暴击, 攻击速度.",
+      "tags": [
+        "狂暴",
+        "暴击",
+        "攻击速度."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Legendary_010",
+      "type": "legendary",
+      "name": "无情",
+      "nameEn": "Unrelenting",
+      "nameCn": "无情",
+      "desc": "狂暴状态下, 你的防御技能的回复速度提高 50%。",
+      "descEn": "While Berserk, your Defensive Skills recharge 50% faster.",
+      "descCn": "狂暴状态下, 你的防御技能的回复速度提高 50%。",
+      "tags": [],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Legendary_011",
+      "type": "legendary",
+      "name": "战争使者",
+      "nameEn": "Warbringer",
+      "nameCn": "战争使者",
+      "desc": "你每消耗 75 点怒气, 强固你 15% 生命上限 。\n\nTags: 怒气, 强固.",
+      "descEn": "For every 75 Fury you spend, gain 15% of your Maximum Life as Fortify.\n\nTags: Fury, Fortify.",
+      "descCn": "你每消耗 75 点怒气, 强固你 15% 生命上限 。\n\nTags: 怒气, 强固.",
+      "tags": [
+        "怒气",
+        "强固."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Legendary_014",
+      "type": "legendary",
+      "name": "残杀者",
+      "nameEn": "Decimator",
+      "nameCn": "残杀者",
+      "desc": "你每次对敌人造成易伤时, 你的伤害提高 x10%, 持续 5 秒。压制一名易伤敌人可额外获得 x10% 的伤害加成, 持续 5 秒。\n\nTags: 易伤, 压制.",
+      "descEn": "Each time you make an enemy Vulnerable, your damage is increased by x10% for 5 seconds. Overpowering a Vulnerable enemy grants an additional x10% bonus for 5 seconds.\n\nTags: Vulnerable, Overpower.",
+      "descCn": "你每次对敌人造成易伤时, 你的伤害提高 x10%, 持续 5 秒。压制一名易伤敌人可额外获得 x10% 的伤害加成, 持续 5 秒。\n\nTags: 易伤, 压制.",
+      "tags": [
+        "易伤",
+        "压制."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Legendary_015",
+      "type": "legendary",
+      "name": "碎骨者",
+      "nameEn": "Bone Breaker",
+      "nameCn": "碎骨者",
+      "desc": "每过 12 秒, 你的下一个技能必定会造成 压制。\n\nTags: 压制.",
+      "descEn": "Every 12 seconds, your next Skill is guaranteed to Overpower.\n\nTags: Overpower.",
+      "descCn": "每过 12 秒, 你的下一个技能必定会造成 压制。\n\nTags: 压制.",
+      "tags": [
+        "压制."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Legendary_016",
+      "type": "legendary",
+      "name": "无瑕技法",
+      "nameEn": "Flawless Technique",
+      "nameCn": "无瑕技法",
+      "desc": "使用单手武器对敌人造成伤害会使你的暴击几率提高 x1%, 持续 4 秒, 最多提高 x8%。该效果在单次技能施放期间只能触发一次, 在引导旋风斩时每秒可触发两次。\n\nTags: 暴击, 双持.",
+      "descEn": "Damaging enemies with One-Handed Weapons increases your Critical Strike chance by x1% for 4 seconds, up to x8%. This can only happen once per Skill cast, or twice per second while channeling Whirlwind.\n\nTags: Critical Strikes, Dual Wield.",
+      "descCn": "使用单手武器对敌人造成伤害会使你的暴击几率提高 x1%, 持续 4 秒, 最多提高 x8%。该效果在单次技能施放期间只能触发一次, 在引导旋风斩时每秒可触发两次。\n\nTags: 暴击, 双持.",
+      "tags": [
+        "暴击",
+        "双持."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Legendary_017",
+      "type": "legendary",
+      "name": "武器大师",
+      "nameEn": "Weapons Master",
+      "nameCn": "武器大师",
+      "desc": "切换武器可获得怒气上限 4% 的怒气。\n\nTags: 怒气.",
+      "descEn": "Swapping weapons grants you 4% of your Maximum Fury.\n\nTags: Fury.",
+      "descCn": "切换武器可获得怒气上限 4% 的怒气。\n\nTags: 怒气.",
+      "tags": [
+        "怒气."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Magic_BerserkDamage",
+      "type": "magic",
+      "name": "Berserk Damage",
+      "nameEn": "Berserk Damage",
+      "desc": "+5% Damage while Berserking\n\nTags: Berserking, Damage.",
+      "descEn": "+5% Damage while Berserking\n\nTags: Berserking, Damage.",
+      "tags": [
+        "Berserking",
+        "Damage."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Magic_BerserkDuration",
+      "type": "magic",
+      "name": "Berserk Duration",
+      "nameEn": "Berserk Duration",
+      "desc": "+7.5% Berserking Duration\n\nTags: Berserking.",
+      "descEn": "+7.5% Berserking Duration\n\nTags: Berserking.",
+      "tags": [
+        "Berserking."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Magic_Fury",
+      "type": "magic",
+      "name": "Fury",
+      "nameEn": "Fury",
+      "desc": "+4 Fury 上限\n\nTags: 怒气.",
+      "descEn": "+4 Maximum Fury\n\nTags: Fury.",
+      "descCn": "+4 Fury 上限\n\nTags: 怒气.",
+      "tags": [
+        "怒气."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Magic_FuryOnKill",
+      "type": "magic",
+      "name": "Fury On Kill",
+      "nameEn": "Fury On Kill",
+      "desc": "消灭获得1 Fury\n\nTags: 怒气.",
+      "descEn": "1 Fury On Kill\n\nTags: Fury.",
+      "descCn": "消灭获得1 Fury\n\nTags: 怒气.",
+      "tags": [
+        "怒气."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_001",
+      "type": "rare",
+      "name": "钢铁力量",
+      "nameEn": "Iron Strength",
+      "nameCn": "钢铁力量",
+      "desc": "+100 护甲值\n+10 点力量\n\nBonus: Another +100 Armor if requirements met:\n{thresholdRequirements}\n\nTags: 护甲, 力量.",
+      "descEn": "+100 Armor\n+10 Strength\n\nBonus: Another +100 Armor if requirements met:\n{thresholdRequirements}\n\nTags: Armor, Strength.",
+      "descCn": "+100 护甲值\n+10 点力量\n\nBonus: Another +100 Armor if requirements met:\n{thresholdRequirements}\n\nTags: 护甲, 力量.",
+      "tags": [
+        "护甲",
+        "力量."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_003",
+      "type": "rare",
+      "name": "狂战士",
+      "nameEn": "Berserker",
+      "nameCn": "狂战士",
+      "desc": "+5% Damage while Berserking\n+16% 对精英的伤害\n\nBonus: Another +5% Damage while Berserking if requirements met:\n{thresholdRequirements}\n\nTags: 狂暴, 精英怪物, 伤害.",
+      "descEn": "+5% Damage while Berserking\n+16% Damage to Elites\n\nBonus: Another +5% Damage while Berserking if requirements met:\n{thresholdRequirements}\n\nTags: Berserking, Elite Monsters, Damage.",
+      "descCn": "+5% Damage while Berserking\n+16% 对精英的伤害\n\nBonus: Another +5% Damage while Berserking if requirements met:\n{thresholdRequirements}\n\nTags: 狂暴, 精英怪物, 伤害.",
+      "tags": [
+        "狂暴",
+        "精英怪物",
+        "伤害."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_004",
+      "type": "rare",
+      "name": "剥皮者",
+      "nameEn": "Flayer",
+      "nameCn": "剥皮者",
+      "desc": "+10% Physical 持续性伤害\n+10% 对Bleeding 敌人的伤害\n\nBonus: Another +10% Physical Damage Over Time if requirements met:\n{thresholdRequirements}\n\nTags: 流血, 伤害.",
+      "descEn": "+10% Physical Damage Over Time\n+10% Damage to Bleeding Enemies\n\nBonus: Another +10% Physical Damage Over Time if requirements met:\n{thresholdRequirements}\n\nTags: Bleed, Damage.",
+      "descCn": "+10% Physical 持续性伤害\n+10% 对Bleeding 敌人的伤害\n\nBonus: Another +10% Physical Damage Over Time if requirements met:\n{thresholdRequirements}\n\nTags: 流血, 伤害.",
+      "tags": [
+        "流血",
+        "伤害."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_005",
+      "type": "rare",
+      "name": "屠夫",
+      "nameEn": "Butcher",
+      "nameCn": "屠夫",
+      "desc": "+10% Physical 持续性伤害\n+10 点力量\n\nBonus: Another +10% Physical Damage Over Time if requirements met:\n{thresholdRequirements}\n\nTags: 流血, 伤害, 力量.",
+      "descEn": "+10% Physical Damage Over Time\n+10 Strength\n\nBonus: Another +10% Physical Damage Over Time if requirements met:\n{thresholdRequirements}\n\nTags: Bleed, Damage, Strength.",
+      "descCn": "+10% Physical 持续性伤害\n+10 点力量\n\nBonus: Another +10% Physical Damage Over Time if requirements met:\n{thresholdRequirements}\n\nTags: 流血, 伤害, 力量.",
+      "tags": [
+        "流血",
+        "伤害",
+        "力量."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_006",
+      "type": "rare",
+      "name": "撕裂者",
+      "nameEn": "Lacerator",
+      "nameCn": "撕裂者",
+      "desc": "+10% Physical 持续性伤害\n+10% Physical 伤害\n\nBonus: Another +10% Physical Damage Over Time if requirements met:\n{thresholdRequirements}\n\nTags: 流血, 物理, 伤害.",
+      "descEn": "+10% Physical Damage Over Time\n+10% Physical Damage\n\nBonus: Another +10% Physical Damage Over Time if requirements met:\n{thresholdRequirements}\n\nTags: Bleed, Physical, Damage.",
+      "descCn": "+10% Physical 持续性伤害\n+10% Physical 伤害\n\nBonus: Another +10% Physical Damage Over Time if requirements met:\n{thresholdRequirements}\n\nTags: 流血, 物理, 伤害.",
+      "tags": [
+        "流血",
+        "物理",
+        "伤害."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_008",
+      "type": "rare",
+      "name": "钝击者",
+      "nameEn": "Bludgeoner",
+      "nameCn": "钝击者",
+      "desc": "+10% 使用Two-Handed Bludgeoning 的伤害\n+45% 压制伤害\n\nBonus: Another +10% Damage with Two-Handed Bludgeoning if requirements met:\n{thresholdRequirements}\n\nTags: 压制, 伤害, 双手, 钝击.",
+      "descEn": "+10% Damage with Two-Handed Bludgeoning\n+45% Overpower Damage\n\nBonus: Another +10% Damage with Two-Handed Bludgeoning if requirements met:\n{thresholdRequirements}\n\nTags: Overpower, Damage, Two-Handed, Bludgeoning.",
+      "descCn": "+10% 使用Two-Handed Bludgeoning 的伤害\n+45% 压制伤害\n\nBonus: Another +10% Damage with Two-Handed Bludgeoning if requirements met:\n{thresholdRequirements}\n\nTags: 压制, 伤害, 双手, 钝击.",
+      "tags": [
+        "压制",
+        "伤害",
+        "双手",
+        "钝击."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_009",
+      "type": "rare",
+      "name": "精力",
+      "nameEn": "Vigor",
+      "nameCn": "精力",
+      "desc": "5% 健康状态下的伤害减免\n+10 点力量\n\nBonus: Another 5% Damage Reduction while Healthy if requirements met:\n{thresholdRequirements}\n\nTags: 健康, 伤害减免, 力量.",
+      "descEn": "5% Damage Reduction while Healthy\n+10 Strength\n\nBonus: Another 5% Damage Reduction while Healthy if requirements met:\n{thresholdRequirements}\n\nTags: Healthy, Damage Reduction, Strength.",
+      "descCn": "5% 健康状态下的伤害减免\n+10 点力量\n\nBonus: Another 5% Damage Reduction while Healthy if requirements met:\n{thresholdRequirements}\n\nTags: 健康, 伤害减免, 力量.",
+      "tags": [
+        "健康",
+        "伤害减免",
+        "力量."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_010",
+      "type": "rare",
+      "name": "适应严寒",
+      "nameEn": "Cold Conditioned",
+      "nameCn": "适应严寒",
+      "desc": "+10% Cold 抗性\n+100 护甲值\n\nBonus: Another +10% Cold Resistance if requirements met:\n{thresholdRequirements}\n\nTags: 冰霜, 抗性, 护甲.",
+      "descEn": "+10% Cold Resistance\n+100 Armor\n\nBonus: Another +10% Cold Resistance if requirements met:\n{thresholdRequirements}\n\nTags: Cold, Resistance, Armor.",
+      "descCn": "+10% Cold 抗性\n+100 护甲值\n\nBonus: Another +10% Cold Resistance if requirements met:\n{thresholdRequirements}\n\nTags: 冰霜, 抗性, 护甲.",
+      "tags": [
+        "冰霜",
+        "抗性",
+        "护甲."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_015",
+      "type": "rare",
+      "name": "坚韧",
+      "nameEn": "Tenacity",
+      "nameCn": "坚韧",
+      "desc": "+4% 生命\n+100 护甲值\n\nBonus: Another +4% Life if requirements met:\n{thresholdRequirements}\n\nTags: 生命, 护甲.",
+      "descEn": "+4% Life\n+100 Armor\n\nBonus: Another +4% Life if requirements met:\n{thresholdRequirements}\n\nTags: Life, Armor.",
+      "descCn": "+4% 生命\n+100 护甲值\n\nBonus: Another +4% Life if requirements met:\n{thresholdRequirements}\n\nTags: 生命, 护甲.",
+      "tags": [
+        "生命",
+        "护甲."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_016",
+      "type": "rare",
+      "name": "毅力",
+      "nameEn": "Grit",
+      "nameCn": "毅力",
+      "desc": "4% 对Bleeding 敌人的伤害减免\n+10 点力量\n\nBonus: Another 4% Damage Reduction from Bleeding Enemies if requirements met:\n{thresholdRequirements}\n\nTags: 流血, 伤害减免, 力量.",
+      "descEn": "4% Damage Reduction from Bleeding Enemies\n+10 Strength\n\nBonus: Another 4% Damage Reduction from Bleeding Enemies if requirements met:\n{thresholdRequirements}\n\nTags: Bleed, Damage Reduction, Strength.",
+      "descCn": "4% 对Bleeding 敌人的伤害减免\n+10 点力量\n\nBonus: Another 4% Damage Reduction from Bleeding Enemies if requirements met:\n{thresholdRequirements}\n\nTags: 流血, 伤害减免, 力量.",
+      "tags": [
+        "流血",
+        "伤害减免",
+        "力量."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_018",
+      "type": "rare",
+      "name": "适应环境",
+      "nameEn": "Conditioned",
+      "nameCn": "适应环境",
+      "desc": "+3% 全元素抗性\n+10 点力量\n\nBonus: Another +3% Resistance to All Elements if requirements met:\n{thresholdRequirements}\n\nTags: 抗性, 力量, 非物理.",
+      "descEn": "+3% Resistance to All Elements\n+10 Strength\n\nBonus: Another +3% Resistance to All Elements if requirements met:\n{thresholdRequirements}\n\nTags: Resistance, Strength, Non-Physical.",
+      "descCn": "+3% 全元素抗性\n+10 点力量\n\nBonus: Another +3% Resistance to All Elements if requirements met:\n{thresholdRequirements}\n\nTags: 抗性, 力量, 非物理.",
+      "tags": [
+        "抗性",
+        "力量",
+        "非物理."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_019",
+      "type": "rare",
+      "name": "适应火焰",
+      "nameEn": "Fire Conditioned",
+      "nameCn": "适应火焰",
+      "desc": "+10% Fire 抗性\n+100 护甲值\n\nBonus: Another +10% Fire Resistance if requirements met:\n{thresholdRequirements}\n\nTags: 抗性, 护甲, 火焰.",
+      "descEn": "+10% Fire Resistance\n+100 Armor\n\nBonus: Another +10% Fire Resistance if requirements met:\n{thresholdRequirements}\n\nTags: Resistance, Armor, Fire.",
+      "descCn": "+10% Fire 抗性\n+100 护甲值\n\nBonus: Another +10% Fire Resistance if requirements met:\n{thresholdRequirements}\n\nTags: 抗性, 护甲, 火焰.",
+      "tags": [
+        "抗性",
+        "护甲",
+        "火焰."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_020",
+      "type": "rare",
+      "name": "饥饿怒火",
+      "nameEn": "Hungering Fury",
+      "nameCn": "饥饿怒火",
+      "desc": "+8 Fury 上限\n消灭获得2 Fury\n\nBonus: Another +8 Maximum Fury if requirements met:\n{thresholdRequirements}\n\nTags: 怒气.",
+      "descEn": "+8 Maximum Fury\n2 Fury On Kill\n\nBonus: Another +8 Maximum Fury if requirements met:\n{thresholdRequirements}\n\nTags: Fury.",
+      "descCn": "+8 Fury 上限\n消灭获得2 Fury\n\nBonus: Another +8 Maximum Fury if requirements met:\n{thresholdRequirements}\n\nTags: 怒气.",
+      "tags": [
+        "怒气."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_021",
+      "type": "rare",
+      "name": "适应闪电",
+      "nameEn": "Lightning Conditioned",
+      "nameCn": "适应闪电",
+      "desc": "+10% Lightning 抗性\n+100 护甲值\n\nBonus: Another +10% Lightning Resistance if requirements met:\n{thresholdRequirements}\n\nTags: 抗性, 闪电, 护甲.",
+      "descEn": "+10% Lightning Resistance\n+100 Armor\n\nBonus: Another +10% Lightning Resistance if requirements met:\n{thresholdRequirements}\n\nTags: Resistance, Lightning, Armor.",
+      "descCn": "+10% Lightning 抗性\n+100 护甲值\n\nBonus: Another +10% Lightning Resistance if requirements met:\n{thresholdRequirements}\n\nTags: 抗性, 闪电, 护甲.",
+      "tags": [
+        "抗性",
+        "闪电",
+        "护甲."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_022",
+      "type": "rare",
+      "name": "膂力",
+      "nameEn": "Brawn",
+      "nameCn": "膂力",
+      "desc": "+10% Physical 伤害\n+4% 生命\n\nBonus: Another +10% Physical Damage if requirements met:\n{thresholdRequirements}\n\nTags: 物理, 伤害, 生命.",
+      "descEn": "+10% Physical Damage\n+4% Life\n\nBonus: Another +10% Physical Damage if requirements met:\n{thresholdRequirements}\n\nTags: Physical, Damage, Life.",
+      "descCn": "+10% Physical 伤害\n+4% 生命\n\nBonus: Another +10% Physical Damage if requirements met:\n{thresholdRequirements}\n\nTags: 物理, 伤害, 生命.",
+      "tags": [
+        "物理",
+        "伤害",
+        "生命."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_023",
+      "type": "rare",
+      "name": "凶暴",
+      "nameEn": "Fierce",
+      "nameCn": "凶暴",
+      "desc": "+10% Damage while Berserking\n+10 点力量\n\nBonus: Another +10% Damage while Berserking if requirements met:\n{thresholdRequirements}\n\nTags: 狂暴, 伤害, 力量.",
+      "descEn": "+10% Damage while Berserking\n+10 Strength\n\nBonus: Another +10% Damage while Berserking if requirements met:\n{thresholdRequirements}\n\nTags: Berserking, Damage, Strength.",
+      "descCn": "+10% Damage while Berserking\n+10 点力量\n\nBonus: Another +10% Damage while Berserking if requirements met:\n{thresholdRequirements}\n\nTags: 狂暴, 伤害, 力量.",
+      "tags": [
+        "狂暴",
+        "伤害",
+        "力量."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_024",
+      "type": "rare",
+      "name": "沉重猛击",
+      "nameEn": "Heavy Blows",
+      "nameCn": "沉重猛击",
+      "desc": "+15% One-Handed 的暴击伤害\n+10 点力量\n\nBonus: Another +15% Critical Strike Damage with One-Handed if requirements met:\n{thresholdRequirements}\n\nTags: 暴击, 伤害, 力量, 双持.",
+      "descEn": "+15% Critical Strike Damage with One-Handed\n+10 Strength\n\nBonus: Another +15% Critical Strike Damage with One-Handed if requirements met:\n{thresholdRequirements}\n\nTags: Critical Strikes, Damage, Strength, Dual Wield.",
+      "descCn": "+15% One-Handed 的暴击伤害\n+10 点力量\n\nBonus: Another +15% Critical Strike Damage with One-Handed if requirements met:\n{thresholdRequirements}\n\nTags: 暴击, 伤害, 力量, 双持.",
+      "tags": [
+        "暴击",
+        "伤害",
+        "力量",
+        "双持."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_025",
+      "type": "rare",
+      "name": "狂野之力",
+      "nameEn": "Wild Force",
+      "nameCn": "狂野之力",
+      "desc": "+10% 使用One-Handed 的伤害\n+2.5% 攻击速度\n\nBonus: Another +10% Damage with One-Handed if requirements met:\n{thresholdRequirements}\n\nTags: 伤害, 攻击速度, 双持.",
+      "descEn": "+10% Damage with One-Handed\n+2.5% Attack Speed\n\nBonus: Another +10% Damage with One-Handed if requirements met:\n{thresholdRequirements}\n\nTags: Damage, Attack Speed, Dual Wield.",
+      "descCn": "+10% 使用One-Handed 的伤害\n+2.5% 攻击速度\n\nBonus: Another +10% Damage with One-Handed if requirements met:\n{thresholdRequirements}\n\nTags: 伤害, 攻击速度, 双持.",
+      "tags": [
+        "伤害",
+        "攻击速度",
+        "双持."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_026",
+      "type": "rare",
+      "name": "适应毒素",
+      "nameEn": "Poison Conditioned",
+      "nameCn": "适应毒素",
+      "desc": "+10% Poison 抗性\n+100 护甲值\n\nBonus: Another +10% Poison Resistance if requirements met:\n{thresholdRequirements}\n\nTags: 抗性, 护甲, 毒素.",
+      "descEn": "+10% Poison Resistance\n+100 Armor\n\nBonus: Another +10% Poison Resistance if requirements met:\n{thresholdRequirements}\n\nTags: Resistance, Armor, Poison.",
+      "descCn": "+10% Poison 抗性\n+100 护甲值\n\nBonus: Another +10% Poison Resistance if requirements met:\n{thresholdRequirements}\n\nTags: 抗性, 护甲, 毒素.",
+      "tags": [
+        "抗性",
+        "护甲",
+        "毒素."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_030",
+      "type": "rare",
+      "name": "毁灭者",
+      "nameEn": "Destroyer",
+      "nameCn": "毁灭者",
+      "desc": "+10% 使用Two-Handed Slashing 的伤害\n+10% 易伤伤害\n\nBonus: Another +10% Damage with Two-Handed Slashing if requirements met:\n{thresholdRequirements}\n\nTags: 伤害, 易伤, 劈斩, 双手.",
+      "descEn": "+10% Damage with Two-Handed Slashing\n+10% Vulnerable Damage\n\nBonus: Another +10% Damage with Two-Handed Slashing if requirements met:\n{thresholdRequirements}\n\nTags: Damage, Vulnerable, Slashing, Two-Handed.",
+      "descCn": "+10% 使用Two-Handed Slashing 的伤害\n+10% 易伤伤害\n\nBonus: Another +10% Damage with Two-Handed Slashing if requirements met:\n{thresholdRequirements}\n\nTags: 伤害, 易伤, 劈斩, 双手.",
+      "tags": [
+        "伤害",
+        "易伤",
+        "劈斩",
+        "双手."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "Barbarian_Rare_032",
+      "type": "rare",
+      "name": "暴怒",
+      "nameEn": "Enraged",
+      "nameCn": "暴怒",
+      "desc": "+10% Damage while Berserking\n+15% Berserking Duration\n\nBonus: Another +10% Damage while Berserking if requirements met:\n{thresholdRequirements}\n\nTags: Berserking, Damage.",
+      "descEn": "+10% Damage while Berserking\n+15% Berserking Duration\n\nBonus: Another +10% Damage while Berserking if requirements met:\n{thresholdRequirements}\n\nTags: Berserking, Damage.",
+      "tags": [
+        "Berserking",
+        "Damage."
+      ],
+      "tierValues": []
+    },
+    {
+      "id": "StartNodeBarb",
+      "type": "start",
+      "name": "巅峰等级起始节点",
+      "nameEn": "Paragon Starting Node",
+      "nameCn": "巅峰等级起始节点",
+      "desc": "",
+      "tags": [],
+      "tierValues": []
+    }
+  ],
+  "connections": [
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Hemorrhage",
+        "boardName": "Hemorrhage",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Blood_Rage",
+        "boardName": "Blood Rage",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Hemorrhage",
+        "boardName": "Hemorrhage",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Blood_Rage",
+        "boardName": "Blood Rage",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Hemorrhage",
+        "boardName": "Hemorrhage",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Carnage",
+        "boardName": "Carnage",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Hemorrhage",
+        "boardName": "Hemorrhage",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Carnage",
+        "boardName": "Carnage",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Hemorrhage",
+        "boardName": "Hemorrhage",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Decimator",
+        "boardName": "Decimator",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Hemorrhage",
+        "boardName": "Hemorrhage",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Decimator",
+        "boardName": "Decimator",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Hemorrhage",
+        "boardName": "Hemorrhage",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Bone_Breaker",
+        "boardName": "Bone Breaker",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Hemorrhage",
+        "boardName": "Hemorrhage",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Bone_Breaker",
+        "boardName": "Bone Breaker",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Hemorrhage",
+        "boardName": "Hemorrhage",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Flawless_Technique",
+        "boardName": "Flawless Technique",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Hemorrhage",
+        "boardName": "Hemorrhage",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Flawless_Technique",
+        "boardName": "Flawless Technique",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Hemorrhage",
+        "boardName": "Hemorrhage",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Warbringer",
+        "boardName": "Warbringer",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Hemorrhage",
+        "boardName": "Hemorrhage",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Warbringer",
+        "boardName": "Warbringer",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Hemorrhage",
+        "boardName": "Hemorrhage",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Weapons_Master",
+        "boardName": "Weapons Master",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Hemorrhage",
+        "boardName": "Hemorrhage",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Weapons_Master",
+        "boardName": "Weapons Master",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Blood_Rage",
+        "boardName": "Blood Rage",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Carnage",
+        "boardName": "Carnage",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Blood_Rage",
+        "boardName": "Blood Rage",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Carnage",
+        "boardName": "Carnage",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Blood_Rage",
+        "boardName": "Blood Rage",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Decimator",
+        "boardName": "Decimator",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Blood_Rage",
+        "boardName": "Blood Rage",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Decimator",
+        "boardName": "Decimator",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Blood_Rage",
+        "boardName": "Blood Rage",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Bone_Breaker",
+        "boardName": "Bone Breaker",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Blood_Rage",
+        "boardName": "Blood Rage",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Bone_Breaker",
+        "boardName": "Bone Breaker",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Blood_Rage",
+        "boardName": "Blood Rage",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Flawless_Technique",
+        "boardName": "Flawless Technique",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Blood_Rage",
+        "boardName": "Blood Rage",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Flawless_Technique",
+        "boardName": "Flawless Technique",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Blood_Rage",
+        "boardName": "Blood Rage",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Warbringer",
+        "boardName": "Warbringer",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Blood_Rage",
+        "boardName": "Blood Rage",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Warbringer",
+        "boardName": "Warbringer",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Blood_Rage",
+        "boardName": "Blood Rage",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Weapons_Master",
+        "boardName": "Weapons Master",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Blood_Rage",
+        "boardName": "Blood Rage",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Weapons_Master",
+        "boardName": "Weapons Master",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Carnage",
+        "boardName": "Carnage",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Decimator",
+        "boardName": "Decimator",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Carnage",
+        "boardName": "Carnage",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Decimator",
+        "boardName": "Decimator",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Carnage",
+        "boardName": "Carnage",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Bone_Breaker",
+        "boardName": "Bone Breaker",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Carnage",
+        "boardName": "Carnage",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Bone_Breaker",
+        "boardName": "Bone Breaker",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Carnage",
+        "boardName": "Carnage",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Flawless_Technique",
+        "boardName": "Flawless Technique",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Carnage",
+        "boardName": "Carnage",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Flawless_Technique",
+        "boardName": "Flawless Technique",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Carnage",
+        "boardName": "Carnage",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Warbringer",
+        "boardName": "Warbringer",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Carnage",
+        "boardName": "Carnage",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Warbringer",
+        "boardName": "Warbringer",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Carnage",
+        "boardName": "Carnage",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Weapons_Master",
+        "boardName": "Weapons Master",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Carnage",
+        "boardName": "Carnage",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Weapons_Master",
+        "boardName": "Weapons Master",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Decimator",
+        "boardName": "Decimator",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Bone_Breaker",
+        "boardName": "Bone Breaker",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Decimator",
+        "boardName": "Decimator",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Bone_Breaker",
+        "boardName": "Bone Breaker",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Decimator",
+        "boardName": "Decimator",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Flawless_Technique",
+        "boardName": "Flawless Technique",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Decimator",
+        "boardName": "Decimator",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Flawless_Technique",
+        "boardName": "Flawless Technique",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Decimator",
+        "boardName": "Decimator",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Warbringer",
+        "boardName": "Warbringer",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Decimator",
+        "boardName": "Decimator",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Warbringer",
+        "boardName": "Warbringer",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Decimator",
+        "boardName": "Decimator",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Weapons_Master",
+        "boardName": "Weapons Master",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Decimator",
+        "boardName": "Decimator",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Weapons_Master",
+        "boardName": "Weapons Master",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Bone_Breaker",
+        "boardName": "Bone Breaker",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Flawless_Technique",
+        "boardName": "Flawless Technique",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Bone_Breaker",
+        "boardName": "Bone Breaker",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Flawless_Technique",
+        "boardName": "Flawless Technique",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Bone_Breaker",
+        "boardName": "Bone Breaker",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Warbringer",
+        "boardName": "Warbringer",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Bone_Breaker",
+        "boardName": "Bone Breaker",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Warbringer",
+        "boardName": "Warbringer",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Bone_Breaker",
+        "boardName": "Bone Breaker",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Weapons_Master",
+        "boardName": "Weapons Master",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Bone_Breaker",
+        "boardName": "Bone Breaker",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Weapons_Master",
+        "boardName": "Weapons Master",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Flawless_Technique",
+        "boardName": "Flawless Technique",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Warbringer",
+        "boardName": "Warbringer",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Flawless_Technique",
+        "boardName": "Flawless Technique",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Warbringer",
+        "boardName": "Warbringer",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Flawless_Technique",
+        "boardName": "Flawless Technique",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Weapons_Master",
+        "boardName": "Weapons Master",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Flawless_Technique",
+        "boardName": "Flawless Technique",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Weapons_Master",
+        "boardName": "Weapons Master",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Warbringer",
+        "boardName": "Warbringer",
+        "row": 20,
+        "col": 10
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Weapons_Master",
+        "boardName": "Weapons Master",
+        "row": 0,
+        "col": 10
+      },
+      "direction": "vertical"
+    },
+    {
+      "from": {
+        "boardId": "Paragon_Barb_Warbringer",
+        "boardName": "Warbringer",
+        "row": 10,
+        "col": 20
+      },
+      "to": {
+        "boardId": "Paragon_Barb_Weapons_Master",
+        "boardName": "Weapons Master",
+        "row": 10,
+        "col": 0
+      },
+      "direction": "horizontal"
+    }
+  ],
+  "nodeIndex": {
+    "Generic_Gate": {
+      "id": "Generic_Gate",
+      "type": "gate",
+      "name": "面板连接关口",
+      "nameEn": "Board Attachment Gate",
+      "nameCn": "面板连接关口",
+      "desc": "+5 点力量\n+5 点智力\n+5 点意力\n+5 点敏捷\n\nTags: 力量, 智力, 意力, 敏捷.",
+      "descEn": "+5 Strength\n+5 Intelligence\n+5 Willpower\n+5 Dexterity\n\nTags: Strength, Intelligence, Willpower, Dexterity.",
+      "descCn": "+5 点力量\n+5 点智力\n+5 点意力\n+5 点敏捷\n\nTags: 力量, 智力, 意力, 敏捷.",
+      "tags": [
+        "力量",
+        "智力",
+        "意力",
+        "敏捷."
+      ],
+      "tierValues": []
+    },
+    "Generic_Normal_Will": {
+      "id": "Generic_Normal_Will",
+      "type": "normal",
+      "name": "Willpower",
+      "nameEn": "Willpower",
+      "desc": "+5 点意力\n\nTags: 意力.",
+      "descEn": "+5 Willpower\n\nTags: Willpower.",
+      "descCn": "+5 点意力\n\nTags: 意力.",
+      "tags": [
+        "意力."
+      ],
+      "tierValues": []
+    },
+    "Generic_Normal_Str": {
+      "id": "Generic_Normal_Str",
+      "type": "normal",
+      "name": "Strength",
+      "nameEn": "Strength",
+      "desc": "+5 点力量\n\nTags: 力量.",
+      "descEn": "+5 Strength\n\nTags: Strength.",
+      "descCn": "+5 点力量\n\nTags: 力量.",
+      "tags": [
+        "力量."
+      ],
+      "tierValues": []
+    },
+    "Generic_Normal_Int": {
+      "id": "Generic_Normal_Int",
+      "type": "normal",
+      "name": "Intelligence",
+      "nameEn": "Intelligence",
+      "desc": "+5 点智力\n\nTags: 智力.",
+      "descEn": "+5 Intelligence\n\nTags: Intelligence.",
+      "descCn": "+5 点智力\n\nTags: 智力.",
+      "tags": [
+        "智力."
+      ],
+      "tierValues": []
+    },
+    "Generic_Normal_Dex": {
+      "id": "Generic_Normal_Dex",
+      "type": "normal",
+      "name": "Dexterity",
+      "nameEn": "Dexterity",
+      "desc": "+5 点敏捷\n\nTags: 敏捷.",
+      "descEn": "+5 Dexterity\n\nTags: Dexterity.",
+      "descCn": "+5 点敏捷\n\nTags: 敏捷.",
+      "tags": [
+        "敏捷."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_DamagePhysical": {
+      "id": "Generic_Magic_DamagePhysical",
+      "type": "magic",
+      "name": "Damage Physical",
+      "nameEn": "Damage Physical",
+      "desc": "+5% Physical 伤害\n\nTags: 物理, 伤害.",
+      "descEn": "+5% Physical Damage\n\nTags: Physical, Damage.",
+      "descCn": "+5% Physical 伤害\n\nTags: 物理, 伤害.",
+      "tags": [
+        "物理",
+        "伤害."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_Armor": {
+      "id": "Generic_Magic_Armor",
+      "type": "magic",
+      "name": "Armor",
+      "nameEn": "Armor",
+      "desc": "+50 护甲值\n\nTags: 护甲.",
+      "descEn": "+50 Armor\n\nTags: Armor.",
+      "descCn": "+50 护甲值\n\nTags: 护甲.",
+      "tags": [
+        "护甲."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_Dex": {
+      "id": "Generic_Magic_Dex",
+      "type": "magic",
+      "name": "Dexterity",
+      "nameEn": "Dexterity",
+      "desc": "+7 点敏捷\n\nTags: 敏捷.",
+      "descEn": "+7 Dexterity\n\nTags: Dexterity.",
+      "descCn": "+7 点敏捷\n\nTags: 敏捷.",
+      "tags": [
+        "敏捷."
+      ],
+      "tierValues": []
+    },
+    "Generic_Rare_066": {
+      "id": "Generic_Rare_066",
+      "type": "rare",
+      "name": "原始力量",
+      "nameEn": "Raw Power",
+      "nameCn": "原始力量",
+      "desc": "+10% Physical 伤害\n+10 点力量\n\nBonus: Another +10% Physical Damage if requirements met:\n{thresholdRequirements}\n\nTags: 物理, 伤害, 力量.",
+      "descEn": "+10% Physical Damage\n+10 Strength\n\nBonus: Another +10% Physical Damage if requirements met:\n{thresholdRequirements}\n\nTags: Physical, Damage, Strength.",
+      "descCn": "+10% Physical 伤害\n+10 点力量\n\nBonus: Another +10% Physical Damage if requirements met:\n{thresholdRequirements}\n\nTags: 物理, 伤害, 力量.",
+      "tags": [
+        "物理",
+        "伤害",
+        "力量."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Rare_001": {
+      "id": "Barbarian_Rare_001",
+      "type": "rare",
+      "name": "钢铁力量",
+      "nameEn": "Iron Strength",
+      "nameCn": "钢铁力量",
+      "desc": "+100 护甲值\n+10 点力量\n\nBonus: Another +100 Armor if requirements met:\n{thresholdRequirements}\n\nTags: 护甲, 力量.",
+      "descEn": "+100 Armor\n+10 Strength\n\nBonus: Another +100 Armor if requirements met:\n{thresholdRequirements}\n\nTags: Armor, Strength.",
+      "descCn": "+100 护甲值\n+10 点力量\n\nBonus: Another +100 Armor if requirements met:\n{thresholdRequirements}\n\nTags: 护甲, 力量.",
+      "tags": [
+        "护甲",
+        "力量."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_Will": {
+      "id": "Generic_Magic_Will",
+      "type": "magic",
+      "name": "Willpower",
+      "nameEn": "Willpower",
+      "desc": "+7 点意力\n\nTags: 意力.",
+      "descEn": "+7 Willpower\n\nTags: Willpower.",
+      "descCn": "+7 点意力\n\nTags: 意力.",
+      "tags": [
+        "意力."
+      ],
+      "tierValues": []
+    },
+    "Generic_Socket": {
+      "id": "Generic_Socket",
+      "type": "socket",
+      "name": "雕文插槽",
+      "nameEn": "Glyph Socket",
+      "nameCn": "雕文插槽",
+      "tags": [],
+      "tierValues": []
+    },
+    "Generic_Magic_HPPercent": {
+      "id": "Generic_Magic_HPPercent",
+      "type": "magic",
+      "name": "HP Percent",
+      "nameEn": "HP Percent",
+      "desc": "+2% 生命\n\nTags: 生命.",
+      "descEn": "+2% Life\n\nTags: Life.",
+      "descCn": "+2% 生命\n\nTags: 生命.",
+      "tags": [
+        "生命."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Rare_015": {
+      "id": "Barbarian_Rare_015",
+      "type": "rare",
+      "name": "坚韧",
+      "nameEn": "Tenacity",
+      "nameCn": "坚韧",
+      "desc": "+4% 生命\n+100 护甲值\n\nBonus: Another +4% Life if requirements met:\n{thresholdRequirements}\n\nTags: 生命, 护甲.",
+      "descEn": "+4% Life\n+100 Armor\n\nBonus: Another +4% Life if requirements met:\n{thresholdRequirements}\n\nTags: Life, Armor.",
+      "descCn": "+4% 生命\n+100 护甲值\n\nBonus: Another +4% Life if requirements met:\n{thresholdRequirements}\n\nTags: 生命, 护甲.",
+      "tags": [
+        "生命",
+        "护甲."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Rare_022": {
+      "id": "Barbarian_Rare_022",
+      "type": "rare",
+      "name": "膂力",
+      "nameEn": "Brawn",
+      "nameCn": "膂力",
+      "desc": "+10% Physical 伤害\n+4% 生命\n\nBonus: Another +10% Physical Damage if requirements met:\n{thresholdRequirements}\n\nTags: 物理, 伤害, 生命.",
+      "descEn": "+10% Physical Damage\n+4% Life\n\nBonus: Another +10% Physical Damage if requirements met:\n{thresholdRequirements}\n\nTags: Physical, Damage, Life.",
+      "descCn": "+10% Physical 伤害\n+4% 生命\n\nBonus: Another +10% Physical Damage if requirements met:\n{thresholdRequirements}\n\nTags: 物理, 伤害, 生命.",
+      "tags": [
+        "物理",
+        "伤害",
+        "生命."
+      ],
+      "tierValues": []
+    },
+    "StartNodeBarb": {
+      "id": "StartNodeBarb",
+      "type": "start",
+      "name": "巅峰等级起始节点",
+      "nameEn": "Paragon Starting Node",
+      "nameCn": "巅峰等级起始节点",
+      "tags": [],
+      "tierValues": []
+    },
+    "Generic_Magic_DamageBleed": {
+      "id": "Generic_Magic_DamageBleed",
+      "type": "magic",
+      "name": "Damage Bleed",
+      "nameEn": "Damage Bleed",
+      "desc": "+5% Physical 持续性伤害\n\nTags: 流血, 伤害.",
+      "descEn": "+5% Physical Damage Over Time\n\nTags: Bleed, Damage.",
+      "descCn": "+5% Physical 持续性伤害\n\nTags: 流血, 伤害.",
+      "tags": [
+        "流血",
+        "伤害."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Rare_005": {
+      "id": "Barbarian_Rare_005",
+      "type": "rare",
+      "name": "屠夫",
+      "nameEn": "Butcher",
+      "nameCn": "屠夫",
+      "desc": "+10% Physical 持续性伤害\n+10 点力量\n\nBonus: Another +10% Physical Damage Over Time if requirements met:\n{thresholdRequirements}\n\nTags: 流血, 伤害, 力量.",
+      "descEn": "+10% Physical Damage Over Time\n+10 Strength\n\nBonus: Another +10% Physical Damage Over Time if requirements met:\n{thresholdRequirements}\n\nTags: Bleed, Damage, Strength.",
+      "descCn": "+10% Physical 持续性伤害\n+10 点力量\n\nBonus: Another +10% Physical Damage Over Time if requirements met:\n{thresholdRequirements}\n\nTags: 流血, 伤害, 力量.",
+      "tags": [
+        "流血",
+        "伤害",
+        "力量."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_DamageReductionFromBleedingTarget": {
+      "id": "Generic_Magic_DamageReductionFromBleedingTarget",
+      "type": "magic",
+      "name": "Damage Reduction From Bleeding Target",
+      "nameEn": "Damage Reduction From Bleeding Target",
+      "desc": "2% 对Bleeding 敌人的伤害减免\n\nTags: 流血, 伤害减免.",
+      "descEn": "2% Damage Reduction from Bleeding Enemies\n\nTags: Bleed, Damage Reduction.",
+      "descCn": "2% 对Bleeding 敌人的伤害减免\n\nTags: 流血, 伤害减免.",
+      "tags": [
+        "流血",
+        "伤害减免."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Rare_016": {
+      "id": "Barbarian_Rare_016",
+      "type": "rare",
+      "name": "毅力",
+      "nameEn": "Grit",
+      "nameCn": "毅力",
+      "desc": "4% 对Bleeding 敌人的伤害减免\n+10 点力量\n\nBonus: Another 4% Damage Reduction from Bleeding Enemies if requirements met:\n{thresholdRequirements}\n\nTags: 流血, 伤害减免, 力量.",
+      "descEn": "4% Damage Reduction from Bleeding Enemies\n+10 Strength\n\nBonus: Another 4% Damage Reduction from Bleeding Enemies if requirements met:\n{thresholdRequirements}\n\nTags: Bleed, Damage Reduction, Strength.",
+      "descCn": "4% 对Bleeding 敌人的伤害减免\n+10 点力量\n\nBonus: Another 4% Damage Reduction from Bleeding Enemies if requirements met:\n{thresholdRequirements}\n\nTags: 流血, 伤害减免, 力量.",
+      "tags": [
+        "流血",
+        "伤害减免",
+        "力量."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_ResistancePoison": {
+      "id": "Generic_Magic_ResistancePoison",
+      "type": "magic",
+      "name": "Resistance Poison",
+      "nameEn": "Resistance Poison",
+      "desc": "+5% Poison 抗性\n\nTags: 抗性, 毒素.",
+      "descEn": "+5% Poison Resistance\n\nTags: Resistance, Poison.",
+      "descCn": "+5% Poison 抗性\n\nTags: 抗性, 毒素.",
+      "tags": [
+        "抗性",
+        "毒素."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Rare_026": {
+      "id": "Barbarian_Rare_026",
+      "type": "rare",
+      "name": "适应毒素",
+      "nameEn": "Poison Conditioned",
+      "nameCn": "适应毒素",
+      "desc": "+10% Poison 抗性\n+100 护甲值\n\nBonus: Another +10% Poison Resistance if requirements met:\n{thresholdRequirements}\n\nTags: 抗性, 护甲, 毒素.",
+      "descEn": "+10% Poison Resistance\n+100 Armor\n\nBonus: Another +10% Poison Resistance if requirements met:\n{thresholdRequirements}\n\nTags: Resistance, Armor, Poison.",
+      "descCn": "+10% Poison 抗性\n+100 护甲值\n\nBonus: Another +10% Poison Resistance if requirements met:\n{thresholdRequirements}\n\nTags: 抗性, 护甲, 毒素.",
+      "tags": [
+        "抗性",
+        "护甲",
+        "毒素."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_DamageToBleed": {
+      "id": "Generic_Magic_DamageToBleed",
+      "type": "magic",
+      "name": "Damage To Bleed",
+      "nameEn": "Damage To Bleed",
+      "desc": "+5% 对Bleeding 敌人的伤害\n\nTags: 流血, 伤害.",
+      "descEn": "+5% Damage to Bleeding Enemies\n\nTags: Bleed, Damage.",
+      "descCn": "+5% 对Bleeding 敌人的伤害\n\nTags: 流血, 伤害.",
+      "tags": [
+        "流血",
+        "伤害."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Rare_004": {
+      "id": "Barbarian_Rare_004",
+      "type": "rare",
+      "name": "剥皮者",
+      "nameEn": "Flayer",
+      "nameCn": "剥皮者",
+      "desc": "+10% Physical 持续性伤害\n+10% 对Bleeding 敌人的伤害\n\nBonus: Another +10% Physical Damage Over Time if requirements met:\n{thresholdRequirements}\n\nTags: 流血, 伤害.",
+      "descEn": "+10% Physical Damage Over Time\n+10% Damage to Bleeding Enemies\n\nBonus: Another +10% Physical Damage Over Time if requirements met:\n{thresholdRequirements}\n\nTags: Bleed, Damage.",
+      "descCn": "+10% Physical 持续性伤害\n+10% 对Bleeding 敌人的伤害\n\nBonus: Another +10% Physical Damage Over Time if requirements met:\n{thresholdRequirements}\n\nTags: 流血, 伤害.",
+      "tags": [
+        "流血",
+        "伤害."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_CCDurationReduction": {
+      "id": "Generic_Magic_CCDurationReduction",
+      "type": "magic",
+      "name": "CC Duration Reduction",
+      "nameEn": "CC Duration Reduction",
+      "desc": "4% 控制受限时间缩短\n\nTags: 控制.",
+      "descEn": "4% Control Impaired Duration Reduction\n\nTags: Crowd Control.",
+      "descCn": "4% 控制受限时间缩短\n\nTags: 控制.",
+      "tags": [
+        "控制."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_DamageReductionFromDot": {
+      "id": "Generic_Magic_DamageReductionFromDot",
+      "type": "magic",
+      "name": "Damage Reduction From DoT",
+      "nameEn": "Damage Reduction From DoT",
+      "desc": "3.2% 受到的持续伤害减免\n\nTags: 伤害减免.",
+      "descEn": "3.2% Damage Taken Over Time Reduction\n\nTags: Damage Reduction.",
+      "descCn": "3.2% 受到的持续伤害减免\n\nTags: 伤害减免.",
+      "tags": [
+        "伤害减免."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Legendary_002": {
+      "id": "Barbarian_Legendary_002",
+      "type": "legendary",
+      "name": "出血",
+      "nameEn": "Hemorrhage",
+      "nameCn": "出血",
+      "desc": "你的流血伤害增加, 相当于你的易伤伤害加成的 x15%。\n\nTags: 流血, 伤害.",
+      "descEn": "Your Bleeding damage is increased by x15% of your Vulnerable Damage Bonus.\n\nTags: Bleed, Damage.",
+      "descCn": "你的流血伤害增加, 相当于你的易伤伤害加成的 x15%。\n\nTags: 流血, 伤害.",
+      "tags": [
+        "流血",
+        "伤害."
+      ],
+      "tierValues": []
+    },
+    "Generic_Rare_006": {
+      "id": "Generic_Rare_006",
+      "type": "rare",
+      "name": "飞驰",
+      "nameEn": "Fleeting",
+      "nameCn": "飞驰",
+      "desc": "8% 控制受限时间缩短\n6.5% 受到的持续伤害减免\n\nBonus: Another 8% Control Impaired Duration Reduction if requirements met:\n{thresholdRequirements}\n\nTags: 控制, 伤害减免.",
+      "descEn": "8% Control Impaired Duration Reduction\n6.5% Damage Taken Over Time Reduction\n\nBonus: Another 8% Control Impaired Duration Reduction if requirements met:\n{thresholdRequirements}\n\nTags: Crowd Control, Damage Reduction.",
+      "descCn": "8% 控制受限时间缩短\n6.5% 受到的持续伤害减免\n\nBonus: Another 8% Control Impaired Duration Reduction if requirements met:\n{thresholdRequirements}\n\nTags: 控制, 伤害减免.",
+      "tags": [
+        "控制",
+        "伤害减免."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Rare_006": {
+      "id": "Barbarian_Rare_006",
+      "type": "rare",
+      "name": "撕裂者",
+      "nameEn": "Lacerator",
+      "nameCn": "撕裂者",
+      "desc": "+10% Physical 持续性伤害\n+10% Physical 伤害\n\nBonus: Another +10% Physical Damage Over Time if requirements met:\n{thresholdRequirements}\n\nTags: 流血, 物理, 伤害.",
+      "descEn": "+10% Physical Damage Over Time\n+10% Physical Damage\n\nBonus: Another +10% Physical Damage Over Time if requirements met:\n{thresholdRequirements}\n\nTags: Bleed, Physical, Damage.",
+      "descCn": "+10% Physical 持续性伤害\n+10% Physical 伤害\n\nBonus: Another +10% Physical Damage Over Time if requirements met:\n{thresholdRequirements}\n\nTags: 流血, 物理, 伤害.",
+      "tags": [
+        "流血",
+        "物理",
+        "伤害."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_PotionHealing": {
+      "id": "Generic_Magic_PotionHealing",
+      "type": "magic",
+      "name": "Potion Healing",
+      "nameEn": "Potion Healing",
+      "desc": "2% 药水恢复效果\n\nTags: 治疗.",
+      "descEn": "+2% Potion Healing\n\nTags: Healing.",
+      "descCn": "2% 药水恢复效果\n\nTags: 治疗.",
+      "tags": [
+        "治疗."
+      ],
+      "tierValues": []
+    },
+    "Generic_Rare_042": {
+      "id": "Generic_Rare_042",
+      "type": "rare",
+      "name": "恢复",
+      "nameEn": "Restorative",
+      "nameCn": "恢复",
+      "desc": "4% 药水恢复效果\n+4% 生命\n\nBonus: Another +4% Potion Healing if requirements met:\n{thresholdRequirements}\n\nTags: 治疗, 生命.",
+      "descEn": "+4% Potion Healing\n+4% Life\n\nBonus: Another +4% Potion Healing if requirements met:\n{thresholdRequirements}\n\nTags: Healing, Life.",
+      "descCn": "4% 药水恢复效果\n+4% 生命\n\nBonus: Another +4% Potion Healing if requirements met:\n{thresholdRequirements}\n\nTags: 治疗, 生命.",
+      "tags": [
+        "治疗",
+        "生命."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Magic_BerserkDamage": {
+      "id": "Barbarian_Magic_BerserkDamage",
+      "type": "magic",
+      "name": "Berserk Damage",
+      "nameEn": "Berserk Damage",
+      "desc": "+5% Damage while Berserking\n\nTags: Berserking, Damage.",
+      "descEn": "+5% Damage while Berserking\n\nTags: Berserking, Damage.",
+      "tags": [
+        "Berserking",
+        "Damage."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Rare_032": {
+      "id": "Barbarian_Rare_032",
+      "type": "rare",
+      "name": "暴怒",
+      "nameEn": "Enraged",
+      "nameCn": "暴怒",
+      "desc": "+10% Damage while Berserking\n+15% Berserking Duration\n\nBonus: Another +10% Damage while Berserking if requirements met:\n{thresholdRequirements}\n\nTags: Berserking, Damage.",
+      "descEn": "+10% Damage while Berserking\n+15% Berserking Duration\n\nBonus: Another +10% Damage while Berserking if requirements met:\n{thresholdRequirements}\n\nTags: Berserking, Damage.",
+      "tags": [
+        "Berserking",
+        "Damage."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Magic_BerserkDuration": {
+      "id": "Barbarian_Magic_BerserkDuration",
+      "type": "magic",
+      "name": "Berserk Duration",
+      "nameEn": "Berserk Duration",
+      "desc": "+7.5% Berserking Duration\n\nTags: Berserking.",
+      "descEn": "+7.5% Berserking Duration\n\nTags: Berserking.",
+      "tags": [
+        "Berserking."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Legendary_004": {
+      "id": "Barbarian_Legendary_004",
+      "type": "legendary",
+      "name": "血怒",
+      "nameEn": "Blood Rage",
+      "nameCn": "血怒",
+      "desc": "消灭一名流血敌人有 10% 几率使你进入狂暴状态, 持续 5 秒。你的伤害增加, 相当于狂暴伤害加成的 x25%。\n\nTags: 流血, 狂暴.",
+      "descEn": "Killing a Bleeding enemy has 10% chance to grant Berserking for 5 seconds. Your damage is increased by x25% of your Damage while Berserking bonus.\n\nTags: Bleed, Berserking.",
+      "descCn": "消灭一名流血敌人有 10% 几率使你进入狂暴状态, 持续 5 秒。你的伤害增加, 相当于狂暴伤害加成的 x25%。\n\nTags: 流血, 狂暴.",
+      "tags": [
+        "流血",
+        "狂暴."
+      ],
+      "tierValues": []
+    },
+    "Generic_Rare_058": {
+      "id": "Generic_Rare_058",
+      "type": "rare",
+      "name": "狂欢",
+      "nameEn": "Revel",
+      "nameCn": "狂欢",
+      "desc": "+10% 对Bleeding 敌人的伤害\n+10 点力量\n\nBonus: Another +10% Damage to Bleeding Enemies if requirements met:\n{thresholdRequirements}\n\nTags: 流血, 伤害, 力量.",
+      "descEn": "+10% Damage to Bleeding Enemies\n+10 Strength\n\nBonus: Another +10% Damage to Bleeding Enemies if requirements met:\n{thresholdRequirements}\n\nTags: Bleed, Damage, Strength.",
+      "descCn": "+10% 对Bleeding 敌人的伤害\n+10 点力量\n\nBonus: Another +10% Damage to Bleeding Enemies if requirements met:\n{thresholdRequirements}\n\nTags: 流血, 伤害, 力量.",
+      "tags": [
+        "流血",
+        "伤害",
+        "力量."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_ResistanceFire": {
+      "id": "Generic_Magic_ResistanceFire",
+      "type": "magic",
+      "name": "Resistance Fire",
+      "nameEn": "Resistance Fire",
+      "desc": "+5% Fire 抗性\n\nTags: 抗性, 火焰.",
+      "descEn": "+5% Fire Resistance\n\nTags: Resistance, Fire.",
+      "descCn": "+5% Fire 抗性\n\nTags: 抗性, 火焰.",
+      "tags": [
+        "抗性",
+        "火焰."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Rare_019": {
+      "id": "Barbarian_Rare_019",
+      "type": "rare",
+      "name": "适应火焰",
+      "nameEn": "Fire Conditioned",
+      "nameCn": "适应火焰",
+      "desc": "+10% Fire 抗性\n+100 护甲值\n\nBonus: Another +10% Fire Resistance if requirements met:\n{thresholdRequirements}\n\nTags: 抗性, 护甲, 火焰.",
+      "descEn": "+10% Fire Resistance\n+100 Armor\n\nBonus: Another +10% Fire Resistance if requirements met:\n{thresholdRequirements}\n\nTags: Resistance, Armor, Fire.",
+      "descCn": "+10% Fire 抗性\n+100 护甲值\n\nBonus: Another +10% Fire Resistance if requirements met:\n{thresholdRequirements}\n\nTags: 抗性, 护甲, 火焰.",
+      "tags": [
+        "抗性",
+        "护甲",
+        "火焰."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_DamageToElite": {
+      "id": "Generic_Magic_DamageToElite",
+      "type": "magic",
+      "name": "Damage To Elite",
+      "nameEn": "Damage To Elite",
+      "desc": "+8% 对精英的伤害\n\nTags: 精英怪物, 伤害.",
+      "descEn": "+8% Damage to Elites\n\nTags: Elite Monsters, Damage.",
+      "descCn": "+8% 对精英的伤害\n\nTags: 精英怪物, 伤害.",
+      "tags": [
+        "精英怪物",
+        "伤害."
+      ],
+      "tierValues": []
+    },
+    "Generic_Rare_057": {
+      "id": "Generic_Rare_057",
+      "type": "rare",
+      "name": "渴求",
+      "nameEn": "Craving",
+      "nameCn": "渴求",
+      "desc": "+10% 对Bleeding 敌人的伤害\n+16% 对精英的伤害\n\nBonus: Another +10% Damage to Bleeding Enemies if requirements met:\n{thresholdRequirements}\n\nTags: 流血, 精英怪物, 伤害.",
+      "descEn": "+10% Damage to Bleeding Enemies\n+16% Damage to Elites\n\nBonus: Another +10% Damage to Bleeding Enemies if requirements met:\n{thresholdRequirements}\n\nTags: Bleed, Elite Monsters, Damage.",
+      "descCn": "+10% 对Bleeding 敌人的伤害\n+16% 对精英的伤害\n\nBonus: Another +10% Damage to Bleeding Enemies if requirements met:\n{thresholdRequirements}\n\nTags: 流血, 精英怪物, 伤害.",
+      "tags": [
+        "流血",
+        "精英怪物",
+        "伤害."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_ResistanceCold": {
+      "id": "Generic_Magic_ResistanceCold",
+      "type": "magic",
+      "name": "Resistance Cold",
+      "nameEn": "Resistance Cold",
+      "desc": "+5% Cold 抗性\n\nTags: 抗性, 冰霜.",
+      "descEn": "+5% Cold Resistance\n\nTags: Resistance, Cold.",
+      "descCn": "+5% Cold 抗性\n\nTags: 抗性, 冰霜.",
+      "tags": [
+        "抗性",
+        "冰霜."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Rare_010": {
+      "id": "Barbarian_Rare_010",
+      "type": "rare",
+      "name": "适应严寒",
+      "nameEn": "Cold Conditioned",
+      "nameCn": "适应严寒",
+      "desc": "+10% Cold 抗性\n+100 护甲值\n\nBonus: Another +10% Cold Resistance if requirements met:\n{thresholdRequirements}\n\nTags: 冰霜, 抗性, 护甲.",
+      "descEn": "+10% Cold Resistance\n+100 Armor\n\nBonus: Another +10% Cold Resistance if requirements met:\n{thresholdRequirements}\n\nTags: Cold, Resistance, Armor.",
+      "descCn": "+10% Cold 抗性\n+100 护甲值\n\nBonus: Another +10% Cold Resistance if requirements met:\n{thresholdRequirements}\n\nTags: 冰霜, 抗性, 护甲.",
+      "tags": [
+        "冰霜",
+        "抗性",
+        "护甲."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Rare_003": {
+      "id": "Barbarian_Rare_003",
+      "type": "rare",
+      "name": "狂战士",
+      "nameEn": "Berserker",
+      "nameCn": "狂战士",
+      "desc": "+5% Damage while Berserking\n+16% 对精英的伤害\n\nBonus: Another +5% Damage while Berserking if requirements met:\n{thresholdRequirements}\n\nTags: 狂暴, 精英怪物, 伤害.",
+      "descEn": "+5% Damage while Berserking\n+16% Damage to Elites\n\nBonus: Another +5% Damage while Berserking if requirements met:\n{thresholdRequirements}\n\nTags: Berserking, Elite Monsters, Damage.",
+      "descCn": "+5% Damage while Berserking\n+16% 对精英的伤害\n\nBonus: Another +5% Damage while Berserking if requirements met:\n{thresholdRequirements}\n\nTags: 狂暴, 精英怪物, 伤害.",
+      "tags": [
+        "狂暴",
+        "精英怪物",
+        "伤害."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Rare_023": {
+      "id": "Barbarian_Rare_023",
+      "type": "rare",
+      "name": "凶暴",
+      "nameEn": "Fierce",
+      "nameCn": "凶暴",
+      "desc": "+10% Damage while Berserking\n+10 点力量\n\nBonus: Another +10% Damage while Berserking if requirements met:\n{thresholdRequirements}\n\nTags: 狂暴, 伤害, 力量.",
+      "descEn": "+10% Damage while Berserking\n+10 Strength\n\nBonus: Another +10% Damage while Berserking if requirements met:\n{thresholdRequirements}\n\nTags: Berserking, Damage, Strength.",
+      "descCn": "+10% Damage while Berserking\n+10 点力量\n\nBonus: Another +10% Damage while Berserking if requirements met:\n{thresholdRequirements}\n\nTags: 狂暴, 伤害, 力量.",
+      "tags": [
+        "狂暴",
+        "伤害",
+        "力量."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Legendary_009": {
+      "id": "Barbarian_Legendary_009",
+      "type": "legendary",
+      "name": "屠戮者",
+      "nameEn": "Carnage",
+      "nameCn": "屠戮者",
+      "desc": "狂暴状态下, 暴击使你的攻击速度提高 +2%, 最多提高 +16%, 持续 6 秒。\n\nTags: 狂暴, 暴击, 攻击速度.",
+      "descEn": "While Berserking, Critical Strikes increase your Attack Speed by +2%, up to +16%, for 6 seconds.\n\nTags: Berserking, Critical Strikes, Attack Speed.",
+      "descCn": "狂暴状态下, 暴击使你的攻击速度提高 +2%, 最多提高 +16%, 持续 6 秒。\n\nTags: 狂暴, 暴击, 攻击速度.",
+      "tags": [
+        "狂暴",
+        "暴击",
+        "攻击速度."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_DamageReductionFromNear": {
+      "id": "Generic_Magic_DamageReductionFromNear",
+      "type": "magic",
+      "name": "Damage Reduction From Near",
+      "nameEn": "Damage Reduction From Near",
+      "desc": "2.2% 来自近距敌人的伤害减免\n\nTags: 伤害减免.",
+      "descEn": "2.2% Damage Reduction from Close Enemies\n\nTags: Damage Reduction.",
+      "descCn": "2.2% 来自近距敌人的伤害减免\n\nTags: 伤害减免.",
+      "tags": [
+        "伤害减免."
+      ],
+      "tierValues": []
+    },
+    "Generic_Rare_059": {
+      "id": "Generic_Rare_059",
+      "type": "rare",
+      "name": "张狂",
+      "nameEn": "Brash",
+      "nameCn": "张狂",
+      "desc": "4.5% 来自近距敌人的伤害减免\n+10 点力量\n\nBonus: Another 4.5% Damage Reduction from Close Enemies if requirements met:\n{thresholdRequirements}\n\nTags: 伤害减免, 力量.",
+      "descEn": "4.5% Damage Reduction from Close Enemies\n+10 Strength\n\nBonus: Another 4.5% Damage Reduction from Close Enemies if requirements met:\n{thresholdRequirements}\n\nTags: Damage Reduction, Strength.",
+      "descCn": "4.5% 来自近距敌人的伤害减免\n+10 点力量\n\nBonus: Another 4.5% Damage Reduction from Close Enemies if requirements met:\n{thresholdRequirements}\n\nTags: 伤害减免, 力量.",
+      "tags": [
+        "伤害减免",
+        "力量."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_HPRegen": {
+      "id": "Generic_Magic_HPRegen",
+      "type": "magic",
+      "name": "HP Regen",
+      "nameEn": "HP Regen",
+      "desc": "+5 近期未受任何伤害时的生命回复速度\n\nTags: 治疗.",
+      "descEn": "+5 Life Regeneration while Not Damaged Recently\n\nTags: Healing.",
+      "descCn": "+5 近期未受任何伤害时的生命回复速度\n\nTags: 治疗.",
+      "tags": [
+        "治疗."
+      ],
+      "tierValues": []
+    },
+    "Generic_Rare_033": {
+      "id": "Generic_Rare_033",
+      "type": "rare",
+      "name": "复原",
+      "nameEn": "Recuperate",
+      "nameCn": "复原",
+      "desc": "4% 药水恢复效果\n+10 近期未受任何伤害时的生命回复速度\n\nBonus: Another +4% Potion Healing if requirements met:\n{thresholdRequirements}\n\nTags: 治疗.",
+      "descEn": "+4% Potion Healing\n+10 Life Regeneration while Not Damaged Recently\n\nBonus: Another +4% Potion Healing if requirements met:\n{thresholdRequirements}\n\nTags: Healing.",
+      "descCn": "4% 药水恢复效果\n+10 近期未受任何伤害时的生命回复速度\n\nBonus: Another +4% Potion Healing if requirements met:\n{thresholdRequirements}\n\nTags: 治疗.",
+      "tags": [
+        "治疗."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_DamageToVulnerable": {
+      "id": "Generic_Magic_DamageToVulnerable",
+      "type": "magic",
+      "name": "Damage To Vulnerable",
+      "nameEn": "Damage To Vulnerable",
+      "desc": "+5% 易伤伤害\n\nTags: 易伤, 伤害.",
+      "descEn": "+5% Vulnerable Damage\n\nTags: Vulnerable, Damage.",
+      "descCn": "+5% 易伤伤害\n\nTags: 易伤, 伤害.",
+      "tags": [
+        "易伤",
+        "伤害."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_DamageReductionFromVulnerable": {
+      "id": "Generic_Magic_DamageReductionFromVulnerable",
+      "type": "magic",
+      "name": "Damage Reduction From Vulnerable",
+      "nameEn": "Damage Reduction From Vulnerable",
+      "desc": "2% 对易伤敌人的伤害减免\n\nTags: 易伤, 伤害减免.",
+      "descEn": "2% Damage Reduction from Vulnerable Enemies\n\nTags: Vulnerable, Damage Reduction.",
+      "descCn": "2% 对易伤敌人的伤害减免\n\nTags: 易伤, 伤害减免.",
+      "tags": [
+        "易伤",
+        "伤害减免."
+      ],
+      "tierValues": []
+    },
+    "Generic_Rare_070": {
+      "id": "Generic_Rare_070",
+      "type": "rare",
+      "name": "毁坏",
+      "nameEn": "Demolish",
+      "nameCn": "毁坏",
+      "desc": "+10% 易伤伤害\n+10 点力量\n\nBonus: Another +10% Vulnerable Damage if requirements met:\n{thresholdRequirements}\n\nTags: 易伤, 伤害, 力量.",
+      "descEn": "+10% Vulnerable Damage\n+10 Strength\n\nBonus: Another +10% Vulnerable Damage if requirements met:\n{thresholdRequirements}\n\nTags: Vulnerable, Damage, Strength.",
+      "descCn": "+10% 易伤伤害\n+10 点力量\n\nBonus: Another +10% Vulnerable Damage if requirements met:\n{thresholdRequirements}\n\nTags: 易伤, 伤害, 力量.",
+      "tags": [
+        "易伤",
+        "伤害",
+        "力量."
+      ],
+      "tierValues": []
+    },
+    "Generic_Rare_069": {
+      "id": "Generic_Rare_069",
+      "type": "rare",
+      "name": "傲慢",
+      "nameEn": "Arrogance",
+      "nameCn": "傲慢",
+      "desc": "4% 对易伤敌人的伤害减免\n+10 点力量\n\nBonus: Another 4% Damage Reduction from Vulnerable Enemies if requirements met:\n{thresholdRequirements}\n\nTags: 易伤, 伤害减免, 力量.",
+      "descEn": "4% Damage Reduction from Vulnerable Enemies\n+10 Strength\n\nBonus: Another 4% Damage Reduction from Vulnerable Enemies if requirements met:\n{thresholdRequirements}\n\nTags: Vulnerable, Damage Reduction, Strength.",
+      "descCn": "4% 对易伤敌人的伤害减免\n+10 点力量\n\nBonus: Another 4% Damage Reduction from Vulnerable Enemies if requirements met:\n{thresholdRequirements}\n\nTags: 易伤, 伤害减免, 力量.",
+      "tags": [
+        "易伤",
+        "伤害减免",
+        "力量."
+      ],
+      "tierValues": []
+    },
+    "Generic_Rare_025": {
+      "id": "Generic_Rare_025",
+      "type": "rare",
+      "name": "掠夺",
+      "nameEn": "Pillage",
+      "nameCn": "掠夺",
+      "desc": "+10% 易伤伤害\n+100 护甲值\n\nBonus: Another +10% Vulnerable Damage if requirements met:\n{thresholdRequirements}\n\nTags: 易伤, 伤害, 护甲.",
+      "descEn": "+10% Vulnerable Damage\n+100 Armor\n\nBonus: Another +10% Vulnerable Damage if requirements met:\n{thresholdRequirements}\n\nTags: Vulnerable, Damage, Armor.",
+      "descCn": "+10% 易伤伤害\n+100 护甲值\n\nBonus: Another +10% Vulnerable Damage if requirements met:\n{thresholdRequirements}\n\nTags: 易伤, 伤害, 护甲.",
+      "tags": [
+        "易伤",
+        "伤害",
+        "护甲."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Legendary_014": {
+      "id": "Barbarian_Legendary_014",
+      "type": "legendary",
+      "name": "残杀者",
+      "nameEn": "Decimator",
+      "nameCn": "残杀者",
+      "desc": "你每次对敌人造成易伤时, 你的伤害提高 x10%, 持续 5 秒。压制一名易伤敌人可额外获得 x10% 的伤害加成, 持续 5 秒。\n\nTags: 易伤, 压制.",
+      "descEn": "Each time you make an enemy Vulnerable, your damage is increased by x10% for 5 seconds. Overpowering a Vulnerable enemy grants an additional x10% bonus for 5 seconds.\n\nTags: Vulnerable, Overpower.",
+      "descCn": "你每次对敌人造成易伤时, 你的伤害提高 x10%, 持续 5 秒。压制一名易伤敌人可额外获得 x10% 的伤害加成, 持续 5 秒。\n\nTags: 易伤, 压制.",
+      "tags": [
+        "易伤",
+        "压制."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_Damage2HSlashing": {
+      "id": "Generic_Magic_Damage2HSlashing",
+      "type": "magic",
+      "name": "Damage 2H Slashing",
+      "nameEn": "Damage 2H Slashing",
+      "desc": "+5% 使用Two-Handed Slashing 的伤害\n\nTags: 伤害, 双手, 劈斩.",
+      "descEn": "+5% Damage with Two-Handed Slashing\n\nTags: Damage, Two-Handed, Slashing.",
+      "descCn": "+5% 使用Two-Handed Slashing 的伤害\n\nTags: 伤害, 双手, 劈斩.",
+      "tags": [
+        "伤害",
+        "双手",
+        "劈斩."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Rare_030": {
+      "id": "Barbarian_Rare_030",
+      "type": "rare",
+      "name": "毁灭者",
+      "nameEn": "Destroyer",
+      "nameCn": "毁灭者",
+      "desc": "+10% 使用Two-Handed Slashing 的伤害\n+10% 易伤伤害\n\nBonus: Another +10% Damage with Two-Handed Slashing if requirements met:\n{thresholdRequirements}\n\nTags: 伤害, 易伤, 劈斩, 双手.",
+      "descEn": "+10% Damage with Two-Handed Slashing\n+10% Vulnerable Damage\n\nBonus: Another +10% Damage with Two-Handed Slashing if requirements met:\n{thresholdRequirements}\n\nTags: Damage, Vulnerable, Slashing, Two-Handed.",
+      "descCn": "+10% 使用Two-Handed Slashing 的伤害\n+10% 易伤伤害\n\nBonus: Another +10% Damage with Two-Handed Slashing if requirements met:\n{thresholdRequirements}\n\nTags: 伤害, 易伤, 劈斩, 双手.",
+      "tags": [
+        "伤害",
+        "易伤",
+        "劈斩",
+        "双手."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Legendary_015": {
+      "id": "Barbarian_Legendary_015",
+      "type": "legendary",
+      "name": "碎骨者",
+      "nameEn": "Bone Breaker",
+      "nameCn": "碎骨者",
+      "desc": "每过 12 秒, 你的下一个技能必定会造成 压制。\n\nTags: 压制.",
+      "descEn": "Every 12 seconds, your next Skill is guaranteed to Overpower.\n\nTags: Overpower.",
+      "descCn": "每过 12 秒, 你的下一个技能必定会造成 压制。\n\nTags: 压制.",
+      "tags": [
+        "压制."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_DamageReductionWhileFortified": {
+      "id": "Generic_Magic_DamageReductionWhileFortified",
+      "type": "magic",
+      "name": "Damage Reduction While Fortified",
+      "nameEn": "Damage Reduction While Fortified",
+      "desc": "2% 被强固时的伤害减免\n\nTags: 强固, 伤害减免.",
+      "descEn": "2% Damage Reduction while Fortified\n\nTags: Fortify, Damage Reduction.",
+      "descCn": "2% 被强固时的伤害减免\n\nTags: 强固, 伤害减免.",
+      "tags": [
+        "强固",
+        "伤害减免."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_BonusFortify": {
+      "id": "Generic_Magic_BonusFortify",
+      "type": "magic",
+      "name": "Bonus Fortify",
+      "nameEn": "Bonus Fortify",
+      "desc": "+3.2% 强固生成量\n\nTags: 强固.",
+      "descEn": "+3.2% Fortify Generation\n\nTags: Fortify.",
+      "descCn": "+3.2% 强固生成量\n\nTags: 强固.",
+      "tags": [
+        "强固."
+      ],
+      "tierValues": []
+    },
+    "Generic_Rare_032": {
+      "id": "Generic_Rare_032",
+      "type": "rare",
+      "name": "壁垒",
+      "nameEn": "Bulwark",
+      "nameCn": "壁垒",
+      "desc": "4% 被强固时的伤害减免\n+6.5% 强固生成量\n\nBonus: Another 4% Damage Reduction while Fortified if requirements met:\n{thresholdRequirements}\n\nTags: 强固, 伤害减免.",
+      "descEn": "4% Damage Reduction while Fortified\n+6.5% Fortify Generation\n\nBonus: Another 4% Damage Reduction while Fortified if requirements met:\n{thresholdRequirements}\n\nTags: Fortify, Damage Reduction.",
+      "descCn": "4% 被强固时的伤害减免\n+6.5% 强固生成量\n\nBonus: Another 4% Damage Reduction while Fortified if requirements met:\n{thresholdRequirements}\n\nTags: 强固, 伤害减免.",
+      "tags": [
+        "强固",
+        "伤害减免."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_DamageWhileFortified": {
+      "id": "Generic_Magic_DamageWhileFortified",
+      "type": "magic",
+      "name": "Damage While Fortified",
+      "nameEn": "Damage While Fortified",
+      "desc": "+5% 被强固时的伤害\n\nTags: 强固, 伤害.",
+      "descEn": "+5% Damage while Fortified\n\nTags: Fortify, Damage.",
+      "descCn": "+5% 被强固时的伤害\n\nTags: 强固, 伤害.",
+      "tags": [
+        "强固",
+        "伤害."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_DamageWhileHealthy": {
+      "id": "Generic_Magic_DamageWhileHealthy",
+      "type": "magic",
+      "name": "Damage While Healthy",
+      "nameEn": "Damage While Healthy",
+      "desc": "+6.2% 健康时伤害\n\nTags: 健康, 伤害.",
+      "descEn": "+6.2% Damage while Healthy\n\nTags: Healthy, Damage.",
+      "descCn": "+6.2% 健康时伤害\n\nTags: 健康, 伤害.",
+      "tags": [
+        "健康",
+        "伤害."
+      ],
+      "tierValues": []
+    },
+    "Generic_Rare_026": {
+      "id": "Generic_Rare_026",
+      "type": "rare",
+      "name": "内在之力",
+      "nameEn": "Inner Strength",
+      "nameCn": "内在之力",
+      "desc": "+10% 被强固时的伤害\n+12.5% 健康时伤害\n\nBonus: Another +10% Damage while Fortified if requirements met:\n{thresholdRequirements}\n\nTags: 强固, 健康, 伤害.",
+      "descEn": "+10% Damage while Fortified\n+12.5% Damage while Healthy\n\nBonus: Another +10% Damage while Fortified if requirements met:\n{thresholdRequirements}\n\nTags: Fortify, Healthy, Damage.",
+      "descCn": "+10% 被强固时的伤害\n+12.5% 健康时伤害\n\nBonus: Another +10% Damage while Fortified if requirements met:\n{thresholdRequirements}\n\nTags: 强固, 健康, 伤害.",
+      "tags": [
+        "强固",
+        "健康",
+        "伤害."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_OverpowerDamage": {
+      "id": "Generic_Magic_OverpowerDamage",
+      "type": "magic",
+      "name": "Overpower Damage",
+      "nameEn": "Overpower Damage",
+      "desc": "+22.5% 压制伤害\n\nTags: 压制, 伤害.",
+      "descEn": "+22.5% Overpower Damage\n\nTags: Overpower, Damage.",
+      "descCn": "+22.5% 压制伤害\n\nTags: 压制, 伤害.",
+      "tags": [
+        "压制",
+        "伤害."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_Damage2HBludgeoning": {
+      "id": "Generic_Magic_Damage2HBludgeoning",
+      "type": "magic",
+      "name": "Damage 2H Bludgeoning",
+      "nameEn": "Damage 2H Bludgeoning",
+      "desc": "+5% 使用Two-Handed Bludgeoning 的伤害\n\nTags: 伤害, 钝击, 双手.",
+      "descEn": "+5% Damage with Two-Handed Bludgeoning\n\nTags: Damage, Bludgeoning, Two-Handed.",
+      "descCn": "+5% 使用Two-Handed Bludgeoning 的伤害\n\nTags: 伤害, 钝击, 双手.",
+      "tags": [
+        "伤害",
+        "钝击",
+        "双手."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Rare_008": {
+      "id": "Barbarian_Rare_008",
+      "type": "rare",
+      "name": "钝击者",
+      "nameEn": "Bludgeoner",
+      "nameCn": "钝击者",
+      "desc": "+10% 使用Two-Handed Bludgeoning 的伤害\n+45% 压制伤害\n\nBonus: Another +10% Damage with Two-Handed Bludgeoning if requirements met:\n{thresholdRequirements}\n\nTags: 压制, 伤害, 双手, 钝击.",
+      "descEn": "+10% Damage with Two-Handed Bludgeoning\n+45% Overpower Damage\n\nBonus: Another +10% Damage with Two-Handed Bludgeoning if requirements met:\n{thresholdRequirements}\n\nTags: Overpower, Damage, Two-Handed, Bludgeoning.",
+      "descCn": "+10% 使用Two-Handed Bludgeoning 的伤害\n+45% 压制伤害\n\nBonus: Another +10% Damage with Two-Handed Bludgeoning if requirements met:\n{thresholdRequirements}\n\nTags: 压制, 伤害, 双手, 钝击.",
+      "tags": [
+        "压制",
+        "伤害",
+        "双手",
+        "钝击."
+      ],
+      "tierValues": []
+    },
+    "Generic_Rare_072": {
+      "id": "Generic_Rare_072",
+      "type": "rare",
+      "name": "残忍",
+      "nameEn": "Brutality",
+      "nameCn": "残忍",
+      "desc": "+45% 压制伤害\n+10 点力量\n\nBonus: Another +45% Overpower Damage if requirements met:\n{thresholdRequirements}\n\nTags: 压制, 伤害, 力量.",
+      "descEn": "+45% Overpower Damage\n+10 Strength\n\nBonus: Another +45% Overpower Damage if requirements met:\n{thresholdRequirements}\n\nTags: Overpower, Damage, Strength.",
+      "descCn": "+45% 压制伤害\n+10 点力量\n\nBonus: Another +45% Overpower Damage if requirements met:\n{thresholdRequirements}\n\nTags: 压制, 伤害, 力量.",
+      "tags": [
+        "压制",
+        "伤害",
+        "力量."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_DamageReductionWhileHealthy": {
+      "id": "Generic_Magic_DamageReductionWhileHealthy",
+      "type": "magic",
+      "name": "Damage Reduction While Healthy",
+      "nameEn": "Damage Reduction While Healthy",
+      "desc": "2.5% 健康状态下的伤害减免\n\nTags: 健康, 伤害减免.",
+      "descEn": "2.5% Damage Reduction while Healthy\n\nTags: Healthy, Damage Reduction.",
+      "descCn": "2.5% 健康状态下的伤害减免\n\nTags: 健康, 伤害减免.",
+      "tags": [
+        "健康",
+        "伤害减免."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Rare_009": {
+      "id": "Barbarian_Rare_009",
+      "type": "rare",
+      "name": "精力",
+      "nameEn": "Vigor",
+      "nameCn": "精力",
+      "desc": "5% 健康状态下的伤害减免\n+10 点力量\n\nBonus: Another 5% Damage Reduction while Healthy if requirements met:\n{thresholdRequirements}\n\nTags: 健康, 伤害减免, 力量.",
+      "descEn": "5% Damage Reduction while Healthy\n+10 Strength\n\nBonus: Another 5% Damage Reduction while Healthy if requirements met:\n{thresholdRequirements}\n\nTags: Healthy, Damage Reduction, Strength.",
+      "descCn": "5% 健康状态下的伤害减免\n+10 点力量\n\nBonus: Another 5% Damage Reduction while Healthy if requirements met:\n{thresholdRequirements}\n\nTags: 健康, 伤害减免, 力量.",
+      "tags": [
+        "健康",
+        "伤害减免",
+        "力量."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_Damage1H": {
+      "id": "Generic_Magic_Damage1H",
+      "type": "magic",
+      "name": "Damage 1H",
+      "nameEn": "Damage 1H",
+      "desc": "+5% 使用One-Handed 的伤害\n\nTags: 伤害, 双持.",
+      "descEn": "+5% Damage with One-Handed\n\nTags: Damage, Dual Wield.",
+      "descCn": "+5% 使用One-Handed 的伤害\n\nTags: 伤害, 双持.",
+      "tags": [
+        "伤害",
+        "双持."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_AttackSpeed": {
+      "id": "Generic_Magic_AttackSpeed",
+      "type": "magic",
+      "name": "Attack Speed",
+      "nameEn": "Attack Speed",
+      "desc": "+1.2% 攻击速度\n\nTags: 攻击速度.",
+      "descEn": "+1.2% Attack Speed\n\nTags: Attack Speed.",
+      "descCn": "+1.2% 攻击速度\n\nTags: 攻击速度.",
+      "tags": [
+        "攻击速度."
+      ],
+      "tierValues": []
+    },
+    "Generic_Rare_012": {
+      "id": "Generic_Rare_012",
+      "type": "rare",
+      "name": "寒冷抵御",
+      "nameEn": "Cold Resilience",
+      "nameCn": "寒冷抵御",
+      "desc": "+10% Cold 抗性\n+4% 生命\n\nBonus: Another +10% Cold Resistance if requirements met:\n{thresholdRequirements}\n\nTags: 抗性, 冰霜, 生命.",
+      "descEn": "+10% Cold Resistance\n+4% Life\n\nBonus: Another +10% Cold Resistance if requirements met:\n{thresholdRequirements}\n\nTags: Resistance, Cold, Life.",
+      "descCn": "+10% Cold 抗性\n+4% 生命\n\nBonus: Another +10% Cold Resistance if requirements met:\n{thresholdRequirements}\n\nTags: 抗性, 冰霜, 生命.",
+      "tags": [
+        "抗性",
+        "冰霜",
+        "生命."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Rare_025": {
+      "id": "Barbarian_Rare_025",
+      "type": "rare",
+      "name": "狂野之力",
+      "nameEn": "Wild Force",
+      "nameCn": "狂野之力",
+      "desc": "+10% 使用One-Handed 的伤害\n+2.5% 攻击速度\n\nBonus: Another +10% Damage with One-Handed if requirements met:\n{thresholdRequirements}\n\nTags: 伤害, 攻击速度, 双持.",
+      "descEn": "+10% Damage with One-Handed\n+2.5% Attack Speed\n\nBonus: Another +10% Damage with One-Handed if requirements met:\n{thresholdRequirements}\n\nTags: Damage, Attack Speed, Dual Wield.",
+      "descCn": "+10% 使用One-Handed 的伤害\n+2.5% 攻击速度\n\nBonus: Another +10% Damage with One-Handed if requirements met:\n{thresholdRequirements}\n\nTags: 伤害, 攻击速度, 双持.",
+      "tags": [
+        "伤害",
+        "攻击速度",
+        "双持."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_CriticalDamage": {
+      "id": "Generic_Magic_CriticalDamage",
+      "type": "magic",
+      "name": "Critical Damage",
+      "nameEn": "Critical Damage",
+      "desc": "+7.5% 暴击伤害\n\nTags: 暴击, 伤害.",
+      "descEn": "+7.5% Critical Strike Damage\n\nTags: Critical Strikes, Damage.",
+      "descCn": "+7.5% 暴击伤害\n\nTags: 暴击, 伤害.",
+      "tags": [
+        "暴击",
+        "伤害."
+      ],
+      "tierValues": []
+    },
+    "Generic_Rare_013": {
+      "id": "Generic_Rare_013",
+      "type": "rare",
+      "name": "浩劫",
+      "nameEn": "Havoc",
+      "nameCn": "浩劫",
+      "desc": "+15% 暴击伤害\n+10% Physical 伤害\n\nBonus: Another +15% Critical Strike Damage if requirements met:\n{thresholdRequirements}\n\nTags: 暴击, 物理, 伤害.",
+      "descEn": "+15% Critical Strike Damage\n+10% Physical Damage\n\nBonus: Another +15% Critical Strike Damage if requirements met:\n{thresholdRequirements}\n\nTags: Critical Strikes, Physical, Damage.",
+      "descCn": "+15% 暴击伤害\n+10% Physical 伤害\n\nBonus: Another +15% Critical Strike Damage if requirements met:\n{thresholdRequirements}\n\nTags: 暴击, 物理, 伤害.",
+      "tags": [
+        "暴击",
+        "物理",
+        "伤害."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Legendary_016": {
+      "id": "Barbarian_Legendary_016",
+      "type": "legendary",
+      "name": "无瑕技法",
+      "nameEn": "Flawless Technique",
+      "nameCn": "无瑕技法",
+      "desc": "使用单手武器对敌人造成伤害会使你的暴击几率提高 x1%, 持续 4 秒, 最多提高 x8%。该效果在单次技能施放期间只能触发一次, 在引导旋风斩时每秒可触发两次。\n\nTags: 暴击, 双持.",
+      "descEn": "Damaging enemies with One-Handed Weapons increases your Critical Strike chance by x1% for 4 seconds, up to x8%. This can only happen once per Skill cast, or twice per second while channeling Whirlwind.\n\nTags: Critical Strikes, Dual Wield.",
+      "descCn": "使用单手武器对敌人造成伤害会使你的暴击几率提高 x1%, 持续 4 秒, 最多提高 x8%。该效果在单次技能施放期间只能触发一次, 在引导旋风斩时每秒可触发两次。\n\nTags: 暴击, 双持.",
+      "tags": [
+        "暴击",
+        "双持."
+      ],
+      "tierValues": []
+    },
+    "Generic_Rare_067": {
+      "id": "Generic_Rare_067",
+      "type": "rare",
+      "name": "杀戮者",
+      "nameEn": "Slayer",
+      "nameCn": "杀戮者",
+      "desc": "+100 护甲值\n4% 药水恢复效果\n\nBonus: Another +100 Armor if requirements met:\n{thresholdRequirements}\n\nTags: 治疗, 护甲.",
+      "descEn": "+100 Armor\n+4% Potion Healing\n\nBonus: Another +100 Armor if requirements met:\n{thresholdRequirements}\n\nTags: Healing, Armor.",
+      "descCn": "+100 护甲值\n4% 药水恢复效果\n\nBonus: Another +100 Armor if requirements met:\n{thresholdRequirements}\n\nTags: 治疗, 护甲.",
+      "tags": [
+        "治疗",
+        "护甲."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_CriticalDamage1H": {
+      "id": "Generic_Magic_CriticalDamage1H",
+      "type": "magic",
+      "name": "Critical Damage 1H",
+      "nameEn": "Critical Damage 1H",
+      "desc": "+7.5% One-Handed 的暴击伤害\n\nTags: 暴击, 伤害, 双持.",
+      "descEn": "+7.5% Critical Strike Damage with One-Handed\n\nTags: Critical Strikes, Damage, Dual Wield.",
+      "descCn": "+7.5% One-Handed 的暴击伤害\n\nTags: 暴击, 伤害, 双持.",
+      "tags": [
+        "暴击",
+        "伤害",
+        "双持."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Rare_024": {
+      "id": "Barbarian_Rare_024",
+      "type": "rare",
+      "name": "沉重猛击",
+      "nameEn": "Heavy Blows",
+      "nameCn": "沉重猛击",
+      "desc": "+15% One-Handed 的暴击伤害\n+10 点力量\n\nBonus: Another +15% Critical Strike Damage with One-Handed if requirements met:\n{thresholdRequirements}\n\nTags: 暴击, 伤害, 力量, 双持.",
+      "descEn": "+15% Critical Strike Damage with One-Handed\n+10 Strength\n\nBonus: Another +15% Critical Strike Damage with One-Handed if requirements met:\n{thresholdRequirements}\n\nTags: Critical Strikes, Damage, Strength, Dual Wield.",
+      "descCn": "+15% One-Handed 的暴击伤害\n+10 点力量\n\nBonus: Another +15% Critical Strike Damage with One-Handed if requirements met:\n{thresholdRequirements}\n\nTags: 暴击, 伤害, 力量, 双持.",
+      "tags": [
+        "暴击",
+        "伤害",
+        "力量",
+        "双持."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Magic_FuryOnKill": {
+      "id": "Barbarian_Magic_FuryOnKill",
+      "type": "magic",
+      "name": "Fury On Kill",
+      "nameEn": "Fury On Kill",
+      "desc": "消灭获得1 Fury\n\nTags: 怒气.",
+      "descEn": "1 Fury On Kill\n\nTags: Fury.",
+      "descCn": "消灭获得1 Fury\n\nTags: 怒气.",
+      "tags": [
+        "怒气."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Magic_Fury": {
+      "id": "Barbarian_Magic_Fury",
+      "type": "magic",
+      "name": "Fury",
+      "nameEn": "Fury",
+      "desc": "+4 Fury 上限\n\nTags: 怒气.",
+      "descEn": "+4 Maximum Fury\n\nTags: Fury.",
+      "descCn": "+4 Fury 上限\n\nTags: 怒气.",
+      "tags": [
+        "怒气."
+      ],
+      "tierValues": []
+    },
+    "Generic_Rare_031": {
+      "id": "Generic_Rare_031",
+      "type": "rare",
+      "name": "火焰抵御",
+      "nameEn": "Fire Resilience",
+      "nameCn": "火焰抵御",
+      "desc": "+10% Fire 抗性\n+4% 生命\n\nBonus: Another +10% Fire Resistance if requirements met:\n{thresholdRequirements}\n\nTags: 抗性, 火焰, 生命.",
+      "descEn": "+10% Fire Resistance\n+4% Life\n\nBonus: Another +10% Fire Resistance if requirements met:\n{thresholdRequirements}\n\nTags: Resistance, Fire, Life.",
+      "descCn": "+10% Fire 抗性\n+4% 生命\n\nBonus: Another +10% Fire Resistance if requirements met:\n{thresholdRequirements}\n\nTags: 抗性, 火焰, 生命.",
+      "tags": [
+        "抗性",
+        "火焰",
+        "生命."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Rare_020": {
+      "id": "Barbarian_Rare_020",
+      "type": "rare",
+      "name": "饥饿怒火",
+      "nameEn": "Hungering Fury",
+      "nameCn": "饥饿怒火",
+      "desc": "+8 Fury 上限\n消灭获得2 Fury\n\nBonus: Another +8 Maximum Fury if requirements met:\n{thresholdRequirements}\n\nTags: 怒气.",
+      "descEn": "+8 Maximum Fury\n2 Fury On Kill\n\nBonus: Another +8 Maximum Fury if requirements met:\n{thresholdRequirements}\n\nTags: Fury.",
+      "descCn": "+8 Fury 上限\n消灭获得2 Fury\n\nBonus: Another +8 Maximum Fury if requirements met:\n{thresholdRequirements}\n\nTags: 怒气.",
+      "tags": [
+        "怒气."
+      ],
+      "tierValues": []
+    },
+    "Druid_Rare_006": {
+      "id": "Druid_Rare_006",
+      "type": "rare",
+      "name": "Druid_Rare_006",
+      "nameEn": "Druid_Rare_006",
+      "nameCn": "Druid_Rare_006",
+      "desc": "",
+      "descEn": "",
+      "descCn": "",
+      "tags": [],
+      "tierValues": []
+    },
+    "Barbarian_Legendary_011": {
+      "id": "Barbarian_Legendary_011",
+      "type": "legendary",
+      "name": "战争使者",
+      "nameEn": "Warbringer",
+      "nameCn": "战争使者",
+      "desc": "你每消耗 75 点怒气, 强固你 15% 生命上限 。\n\nTags: 怒气, 强固.",
+      "descEn": "For every 75 Fury you spend, gain 15% of your Maximum Life as Fortify.\n\nTags: Fury, Fortify.",
+      "descCn": "你每消耗 75 点怒气, 强固你 15% 生命上限 。\n\nTags: 怒气, 强固.",
+      "tags": [
+        "怒气",
+        "强固."
+      ],
+      "tierValues": []
+    },
+    "Generic_Rare_038": {
+      "id": "Generic_Rare_038",
+      "type": "rare",
+      "name": "核心储备",
+      "nameEn": "Core Reserve",
+      "nameCn": "核心储备",
+      "desc": "+8 Fury 上限\n+4% 生命\n\nBonus: Another +8 Maximum Fury if requirements met:\n{thresholdRequirements}\n\nTags: 怒气, 生命.",
+      "descEn": "+8 Maximum Fury\n+4% Life\n\nBonus: Another +8 Maximum Fury if requirements met:\n{thresholdRequirements}\n\nTags: Fury, Life.",
+      "descCn": "+8 Fury 上限\n+4% 生命\n\nBonus: Another +8 Maximum Fury if requirements met:\n{thresholdRequirements}\n\nTags: 怒气, 生命.",
+      "tags": [
+        "怒气",
+        "生命."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_ResistanceAll": {
+      "id": "Generic_Magic_ResistanceAll",
+      "type": "magic",
+      "name": "Resistance All",
+      "nameEn": "Resistance All",
+      "desc": "+1.5% 全元素抗性\n\nTags: 抗性, 非物理.",
+      "descEn": "+1.5% Resistance to All Elements\n\nTags: Resistance, Non-Physical.",
+      "descCn": "+1.5% 全元素抗性\n\nTags: 抗性, 非物理.",
+      "tags": [
+        "抗性",
+        "非物理."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Rare_018": {
+      "id": "Barbarian_Rare_018",
+      "type": "rare",
+      "name": "适应环境",
+      "nameEn": "Conditioned",
+      "nameCn": "适应环境",
+      "desc": "+3% 全元素抗性\n+10 点力量\n\nBonus: Another +3% Resistance to All Elements if requirements met:\n{thresholdRequirements}\n\nTags: 抗性, 力量, 非物理.",
+      "descEn": "+3% Resistance to All Elements\n+10 Strength\n\nBonus: Another +3% Resistance to All Elements if requirements met:\n{thresholdRequirements}\n\nTags: Resistance, Strength, Non-Physical.",
+      "descCn": "+3% 全元素抗性\n+10 点力量\n\nBonus: Another +3% Resistance to All Elements if requirements met:\n{thresholdRequirements}\n\nTags: 抗性, 力量, 非物理.",
+      "tags": [
+        "抗性",
+        "力量",
+        "非物理."
+      ],
+      "tierValues": []
+    },
+    "Generic_Rare_022": {
+      "id": "Generic_Rare_022",
+      "type": "rare",
+      "name": "屠猎者",
+      "nameEn": "Hunter Killer",
+      "nameCn": "屠猎者",
+      "desc": "+16% 对精英的伤害\n+14% 在消灭一个精英怪后的移动速度,持续 {#} 秒\n\nBonus: Another +16% Damage to Elites if requirements met:\n{thresholdRequirements}\n\nTags: 精英怪物, 伤害, 移动.",
+      "descEn": "+16% Damage to Elites\n+14% Movement Speed for {#} Seconds After Killing an Elite\n\nBonus: Another +16% Damage to Elites if requirements met:\n{thresholdRequirements}\n\nTags: Elite Monsters, Damage, Movement.",
+      "descCn": "+16% 对精英的伤害\n+14% 在消灭一个精英怪后的移动速度,持续 {#} 秒\n\nBonus: Another +16% Damage to Elites if requirements met:\n{thresholdRequirements}\n\nTags: 精英怪物, 伤害, 移动.",
+      "tags": [
+        "精英怪物",
+        "伤害",
+        "移动."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_MoveSpeedEliteKill": {
+      "id": "Generic_Magic_MoveSpeedEliteKill",
+      "type": "magic",
+      "name": "Move Speed Elite Kill",
+      "nameEn": "Move Speed Elite Kill",
+      "desc": "+7% 在消灭一个精英怪后的移动速度,持续 {#} 秒\n\nTags: 移动, 精英怪物.",
+      "descEn": "+7% Movement Speed for {#} Seconds After Killing an Elite\n\nTags: Movement, Elite Monsters.",
+      "descCn": "+7% 在消灭一个精英怪后的移动速度,持续 {#} 秒\n\nTags: 移动, 精英怪物.",
+      "tags": [
+        "移动",
+        "精英怪物."
+      ],
+      "tierValues": []
+    },
+    "Generic_Rare_060": {
+      "id": "Generic_Rare_060",
+      "type": "rare",
+      "name": "暴徒",
+      "nameEn": "Brute",
+      "nameCn": "暴徒",
+      "desc": "+10% Physical 伤害\n+2.5% 攻击速度\n\nBonus: Another +10% Physical Damage if requirements met:\n{thresholdRequirements}\n\nTags: 物理, 伤害, 攻击速度.",
+      "descEn": "+10% Physical Damage\n+2.5% Attack Speed\n\nBonus: Another +10% Physical Damage if requirements met:\n{thresholdRequirements}\n\nTags: Physical, Damage, Attack Speed.",
+      "descCn": "+10% Physical 伤害\n+2.5% 攻击速度\n\nBonus: Another +10% Physical Damage if requirements met:\n{thresholdRequirements}\n\nTags: 物理, 伤害, 攻击速度.",
+      "tags": [
+        "物理",
+        "伤害",
+        "攻击速度."
+      ],
+      "tierValues": []
+    },
+    "Sorcerer_Rare_034": {
+      "id": "Sorcerer_Rare_034",
+      "type": "rare",
+      "name": "Sorcerer_Rare_034",
+      "nameEn": "Sorcerer_Rare_034",
+      "nameCn": "Sorcerer_Rare_034",
+      "desc": "",
+      "descEn": "",
+      "descCn": "",
+      "tags": [],
+      "tierValues": []
+    },
+    "Barbarian_Rare_021": {
+      "id": "Barbarian_Rare_021",
+      "type": "rare",
+      "name": "适应闪电",
+      "nameEn": "Lightning Conditioned",
+      "nameCn": "适应闪电",
+      "desc": "+10% Lightning 抗性\n+100 护甲值\n\nBonus: Another +10% Lightning Resistance if requirements met:\n{thresholdRequirements}\n\nTags: 抗性, 闪电, 护甲.",
+      "descEn": "+10% Lightning Resistance\n+100 Armor\n\nBonus: Another +10% Lightning Resistance if requirements met:\n{thresholdRequirements}\n\nTags: Resistance, Lightning, Armor.",
+      "descCn": "+10% Lightning 抗性\n+100 护甲值\n\nBonus: Another +10% Lightning Resistance if requirements met:\n{thresholdRequirements}\n\nTags: 抗性, 闪电, 护甲.",
+      "tags": [
+        "抗性",
+        "闪电",
+        "护甲."
+      ],
+      "tierValues": []
+    },
+    "Generic_Magic_ResistanceLightning": {
+      "id": "Generic_Magic_ResistanceLightning",
+      "type": "magic",
+      "name": "Resistance Lightning",
+      "nameEn": "Resistance Lightning",
+      "desc": "+5% Lightning 抗性\n\nTags: 闪电, 抗性.",
+      "descEn": "+5% Lightning Resistance\n\nTags: Lightning, Resistance.",
+      "descCn": "+5% Lightning 抗性\n\nTags: 闪电, 抗性.",
+      "tags": [
+        "闪电",
+        "抗性."
+      ],
+      "tierValues": []
+    },
+    "Barbarian_Legendary_017": {
+      "id": "Barbarian_Legendary_017",
+      "type": "legendary",
+      "name": "武器大师",
+      "nameEn": "Weapons Master",
+      "nameCn": "武器大师",
+      "desc": "切换武器可获得怒气上限 4% 的怒气。\n\nTags: 怒气.",
+      "descEn": "Swapping weapons grants you 4% of your Maximum Fury.\n\nTags: Fury.",
+      "descCn": "切换武器可获得怒气上限 4% 的怒气。\n\nTags: 怒气.",
+      "tags": [
+        "怒气."
+      ],
+      "tierValues": []
+    }
+  }
+}

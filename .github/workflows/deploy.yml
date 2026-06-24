@@ -62,7 +62,14 @@ jobs:
           npm install
           npm run build
           cd ../..
-
+          
+      - name: Build paragonnew
+        run: |
+          cd modules/paragonnew
+          npm install
+          npm run build
+          cd ../..
+          
       - name: Build build browser
         run: |
           cd modules/build
@@ -87,6 +94,7 @@ jobs:
           cp -r modules/equipment/dist dist/equipment
           cp -r modules/skills/dist dist/skills
           cp -r modules/paragon/dist dist/paragon
+          cp -r modules/paragonnew/dist dist/paragonnew
           cp -r modules/build/dist dist/build
           cp -r modules/bbs/dist dist/bbs
           cp -r modules/simulator dist/simulator

@@ -27,16 +27,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
-      # 1. 全局彻底清空旧dist，保证全新输出
-      - name: Clean global dist folder
+      # 彻底清空全局输出目录，删除旧打包残留
+      - name: Clean global dist directory
         run: |
           rm -rf dist
           mkdir -p dist
 
-      # 2. 循环构建，每个模块先清自己的dist再build
-      - name: Build all modules (clean before build)
+      # 批量构建所有模块，每个模块先清自身dist再打包
+      - name: Build all modules
         run: |
           set -e
           modules=(
@@ -50,18 +49,21 @@ jobs:
             bbs
           )
           for mod in "${modules[@]}"; do
-            echo "===== Building module: $mod ====="
+            echo "====================================="
+            echo "Start build module: $mod"
+            echo "====================================="
             cd "modules/$mod"
-            # 先删除模块旧构建产物
+            # 删除模块旧产物，保证全新构建
             rm -rf dist
-            npm ci
+            npm install
             npm run build
             cd ../..
           done
 
-      # 3. 复制全新构建产物到空dist
-      - name: Copy built modules to dist
+      # 复制打包产物到全局dist，缺失则直接报错终止流程
+      - name: Copy built resources to dist
         run: |
+          set -e
           modules=(
             calculator
             database
@@ -75,22 +77,21 @@ jobs:
           for mod in "${modules[@]}"; do
             src="modules/$mod/dist"
             dst="dist/$mod"
-            if [ -d "$src" ]; then
-              cp -r "$src" "$dst"
-              echo "Copied $src -> $dst"
-            else
-              echo "ERROR: $src not found, build failed for $mod"
+            if [ ! -d "$src" ]; then
+              echo "ERROR: Module $mod build failed, dist folder missing!"
               exit 1
             fi
+            cp -r "$src" "$dst"
+            echo "Success copy $mod"
           done
-          # 静态目录与首页
+          # 复制simulator静态目录与首页
           cp -r modules/simulator dist/simulator
           cp index.html dist/
 
-      - name: Configure Pages
+      - name: Configure Pages environment
         uses: actions/configure-pages@v4
 
-      - name: Upload Pages artifact
+      - name: Upload static artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
@@ -102,6 +103,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy static files to GitHub Pages
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

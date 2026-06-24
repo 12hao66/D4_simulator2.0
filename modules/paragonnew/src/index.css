@@ -20,10 +20,213 @@
   --node-gate: #e8833a;
   --node-socket: #8a4a9e;
   --node-start: #d9c9a8;
+}
 
-  --font-display: 'Cinzel', serif;
-  --font-body: 'Crimson Pro', serif;
-  --font-mono: 'JetBrains Mono', monospace;
+/* ============ NODE TOOLTIP ============ */
+
+.node-tooltip {
+  position: fixed;
+  background: linear-gradient(180deg, #2a2018 0%, #1a1510 100%);
+  border: 2px solid;
+  border-radius: 4px;
+  padding: 0;
+  min-width: 280px;
+  max-width: 340px;
+  z-index: 10000;
+  pointer-events: none;
+  box-shadow: 
+    0 0 0 1px rgba(201, 161, 59, 0.3),
+    0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* 图标容器 */
+.tooltip-icon-wrapper {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.tooltip-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  border: 3px solid;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+  box-shadow: 
+    0 0 10px rgba(201, 161, 59, 0.5),
+    inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* 头部 */
+.tooltip-header {
+  text-align: center;
+  padding: 24px 12px 8px;
+  border-bottom: 1px solid rgba(201, 161, 59, 0.3);
+}
+
+.tooltip-type {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  text-shadow: 0 0 8px rgba(201, 161, 59, 0.5);
+}
+
+.tooltip-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(201, 161, 59, 0.3);
+}
+
+/* 分隔线 */
+.tooltip-divider {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  gap: 8px;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 161, 59, 0.5), transparent);
+}
+
+.divider-decoration {
+  display: flex;
+  gap: 6px;
+}
+
+.divider-decoration span {
+  font-size: 10px;
+  color: rgba(201, 161, 59, 0.5);
+}
+
+/* 内容区域 */
+.tooltip-content {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--bone);
+  padding: 8px 16px 12px;
+  line-height: 1.5;
+}
+
+/* 属性列表 */
+.attributes {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.attr-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.attr-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.attr-text {
+  color: var(--bone);
+}
+
+/* 传奇节点描述 */
+.legendary-desc {
+  color: var(--bone);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* 提示文字 */
+.socket-hint,
+.start-hint {
+  color: var(--bone-dim);
+  text-align: center;
+}
+
+.gate-hint {
+  color: var(--bone-dim);
+  font-size: 11px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(201, 161, 59, 0.2);
+}
+
+/* 加成区域 */
+.bonus-section {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(201, 161, 59, 0.2);
+}
+
+.bonus-label {
+  font-size: 12px;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.bonus-text {
+  font-size: 12px;
+  color: var(--bone);
+  margin-bottom: 8px;
+}
+
+/* 门槛信息 */
+.threshold-info {
+  margin-top: 8px;
+}
+
+.threshold-bar {
+  height: 4px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 4px;
+  border: 1px solid rgba(201, 161, 59, 0.3);
+}
+
+.threshold-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blood-bright) 0%, var(--gold) 100%);
+  border-radius: 2px;
+}
+
+.threshold-text {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.threshold-current {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.threshold-separator {
+  color: var(--bone-dim);
+  margin: 0 2px;
+}
+
+.threshold-total {
+  color: var(--bone);
+}
+
+.threshold-unit {
+  color: var(--bone-dim);
+  margin-left: 4px;
 }
 
 * {
@@ -882,11 +1085,10 @@ footer a {
 .center-panel {
   flex: 1;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
   background: #1a1a1a;
-  min-height: 600px;
-  padding-top: 20px;
+  min-height: 100%;
+  overflow: hidden;
 }
 
 .center-panel.full-width {
@@ -1336,4 +1538,90 @@ footer a {
 .cancel-btn:hover {
   border-color: var(--rust);
   color: var(--bone);
+}
+
+/* ============ GLYPH SELECT MODAL ============ */
+
+.glyph-select-modal h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--bone);
+  margin: 0 0 16px;
+  text-align: center;
+}
+
+.glyph-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 16px;
+}
+
+.glyph-select-btn {
+  font-family: var(--font-body);
+  font-size: 13px;
+  padding: 10px 12px;
+  background: var(--bg-panel-raised);
+  color: var(--bone);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.glyph-select-btn:hover {
+  background: var(--ember);
+  border-color: var(--ember-bright);
+}
+
+.glyph-name {
+  font-weight: 600;
+}
+
+.glyph-threshold {
+  font-size: 11px;
+  color: var(--bone-dim);
+}
+
+/* 快捷路径模式样式 */
+.quick-path-toggle {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.quick-path-btn {
+  width: 100%;
+  padding: 10px 14px;
+  background: rgba(74, 143, 196, 0.1);
+  border: 1px solid var(--node-magic);
+  border-radius: 4px;
+  color: var(--node-magic);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.quick-path-btn:hover {
+  background: rgba(74, 143, 196, 0.2);
+}
+
+.quick-path-btn.active {
+  background: rgba(74, 143, 196, 0.25);
+  border-color: #4a8fc4;
+  color: #4a8fc4;
+  box-shadow: 0 0 8px rgba(74, 143, 196, 0.4);
+}
+
+.quick-path-hint {
+  margin: 8px 0 0;
+  font-size: 11px;
+  color: #665a48;
+  line-height: 1.4;
 }

@@ -468,10 +468,17 @@
           </div>
         </div>
         
+        <div class="menu-item" data-module="paragonnew" onclick="selectModule('paragonnew')">
+          <div class="menu-icon">⭐</div>
+          <div class="menu-content">
+            <div class="menu-title">巅峰盘模拟器 <span class="menu-version v3">v3.0</span></div>
+          </div>
+        </div>
+        
         <div class="menu-item" data-module="paragon" onclick="selectModule('paragon')">
           <div class="menu-icon">⭐</div>
           <div class="menu-content">
-            <div class="menu-title">巅峰盘模拟器 <span class="menu-version v3">v2.0</span></div>
+            <div class="menu-title">巅峰盘模拟器 <span class="menu-version v2">v2.0</span></div>
           </div>
         </div>
         
@@ -520,6 +527,7 @@
       build: 'build/',
       bbs: 'bbs/',
       skills: 'skills/',
+      paragonnew: 'paragonnew/',
       paragon: 'paragon/',
       database: 'database/',
       dataMaintenance: 'database/index.html?mode=maintenance'
@@ -534,7 +542,8 @@
       build: '构筑浏览器',
       bbs: '社区论坛',
       skills: '技能模拟器',
-      paragon: '巅峰盘模拟器',
+      paragonnew: '巅峰盘模拟器 v3.0',
+      paragon: '巅峰盘模拟器 v2.0',
       database: '数据库',
       dataMaintenance: '数据维护'
     };
@@ -600,9 +609,9 @@
               <div class="welcome-title">技能模拟器</div>
               <div class="welcome-desc">技能选择与组合，预览技能倍率和效果</div>
             </div>
-            <div class="welcome-card" onclick="selectModule('paragon')">
+            <div class="welcome-card" onclick="selectModule('paragonnew')">
               <div class="welcome-icon">⭐</div>
-              <div class="welcome-title">巅峰盘模拟器</div>
+              <div class="welcome-title">巅峰盘模拟器 v3.0</div>
               <div class="welcome-desc">巅峰节点规划，优化属性分配</div>
             </div>
             <div class="welcome-card" onclick="selectModule('database')">

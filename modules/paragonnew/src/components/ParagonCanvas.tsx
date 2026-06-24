@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback, useMemo } from 'react';
+import React, { useRef, useEffect, useCallback, useMemo, useState } from 'react';
 import { 
   ParagonBoard, 
   GridNode, 
@@ -18,6 +18,7 @@ interface ParagonCanvasProps {
   connectedBoards: BoardInstance[];
   allocations: Map<string, NodeAllocation>;
   reachableNodes: Set<string>;
+  socketGlyphs: Map<string, { glyphId: string; rank: number }>;
   hoveredNode: { node: GridNode; boardId: string; row: number; col: number } | null;
   onNodeHover: (node: { node: GridNode; boardId: string; row: number; col: number } | null) => void;
   onNodeClick: (boardId: string, row: number, col: number, node: GridNode) => void;
@@ -26,7 +27,27 @@ interface ParagonCanvasProps {
   pan: { x: number; y: number };
   onZoomChange: (zoom: number) => void;
   onPanChange: (pan: { x: number; y: number }) => void;
+  // 工具栏操作回调
+  onRotateBoard: (index: number) => void;
+  onClearBoard: (index: number) => void;
+  onReplaceBoard: (index: number) => void;
+  onDeleteBoard: (index: number) => void;
 }
+
+// 工具栏按钮类型
+type ToolbarAction = 'rotate' | 'clear' | 'replace' | 'delete';
+
+// 工具栏按钮定义
+const TOOLBAR_BUTTONS: { action: ToolbarAction; icon: string; title: string; tooltip: string }[] = [
+  { action: 'rotate', icon: '↻', title: '旋转盘面', tooltip: '顺时针旋转90°' },
+  { action: 'clear', icon: '⊗', title: '清理盘面', tooltip: '清除所有点亮节点' },
+  { action: 'replace', icon: '⊕', title: '替换盘面', tooltip: '重新选择盘面' },
+  { action: 'delete', icon: '⊖', title: '删除盘面', tooltip: '移除该盘面' },
+];
+
+const TOOLBAR_BUTTON_SIZE = 24;
+const TOOLBAR_BUTTON_GAP = 8;
+const TOOLBAR_PADDING = 10;
 
 
 
@@ -105,12 +126,26 @@ function drawNode(
   size: number,
   isAllocated: boolean,
   isHovered: boolean,
-  isReachable: boolean
+  isReachable: boolean,
+  glyphData?: { glyphId: string; rank: number } | null
 ) {
   const centerX = x + size / 2;
   const centerY = y + size / 2;
-  const radius = size / 2 - 2;
+  
+  // 内边距（小方块与圆形之间的间距）
+  const padding = 4;
+  const circleRadius = (size - padding * 2) / 2;
+  
   const type = node.type;
+  
+  // ========== 步骤1：绘制背景小方块 ==========
+  ctx.fillStyle = '#1a1a1a'; // 方块背景色（深灰色）
+  ctx.fillRect(x, y, size, size);
+  
+  // 方块边框
+  ctx.strokeStyle = '#2a2a2a';
+  ctx.lineWidth = 1;
+  ctx.strokeRect(x, y, size, size);
   
   // 基础颜色
   const baseColor = getNodeColor(type, isAllocated);
@@ -118,40 +153,40 @@ function drawNode(
   // 绘制光晕效果
   if (isAllocated || type === 'legendary') {
     const glowSize = type === 'legendary' ? 10 : 8;
-    const gradient = ctx.createRadialGradient(centerX, centerY, radius, centerX, centerY, radius + glowSize);
+    const gradient = ctx.createRadialGradient(centerX, centerY, circleRadius, centerX, centerY, circleRadius + glowSize);
     gradient.addColorStop(0, baseColor);
     gradient.addColorStop(0.5, baseColor + '60');
     gradient.addColorStop(1, 'transparent');
     ctx.fillStyle = gradient;
     ctx.beginPath();
-    ctx.arc(centerX, centerY, radius + glowSize, 0, Math.PI * 2);
+    ctx.arc(centerX, centerY, circleRadius + glowSize, 0, Math.PI * 2);
     ctx.fill();
   }
   
-  // 绘制节点背景
+  // ========== 步骤2：绘制居中的圆形节点 ==========
   ctx.fillStyle = baseColor;
   ctx.beginPath();
   
   if (type === 'gate' || type === 'socket') {
-    // 菱形
-    ctx.moveTo(centerX, centerY - radius);
-    ctx.lineTo(centerX + radius, centerY);
-    ctx.lineTo(centerX, centerY + radius);
-    ctx.lineTo(centerX - radius, centerY);
+    // 菱形（在方块内居中）
+    ctx.moveTo(centerX, centerY - circleRadius);
+    ctx.lineTo(centerX + circleRadius, centerY);
+    ctx.lineTo(centerX, centerY + circleRadius);
+    ctx.lineTo(centerX - circleRadius, centerY);
     ctx.closePath();
   } else if (type === 'legendary') {
-    // 六边形
+    // 六边形（居中）
     for (let i = 0; i < 6; i++) {
       const angle = (Math.PI / 3) * i - Math.PI / 2;
-      const px = centerX + radius * Math.cos(angle);
-      const py = centerY + radius * Math.sin(angle);
+      const px = centerX + circleRadius * Math.cos(angle);
+      const py = centerY + circleRadius * Math.sin(angle);
       if (i === 0) ctx.moveTo(px, py);
       else ctx.lineTo(px, py);
     }
     ctx.closePath();
   } else {
-    // 圆形
-    ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+    // 圆形（居中）
+    ctx.arc(centerX, centerY, circleRadius, 0, Math.PI * 2);
   }
   ctx.fill();
   
@@ -187,7 +222,13 @@ function drawNode(
   } else if (type === 'gate') {
     ctx.fillText('▸', centerX, centerY);
   } else if (type === 'socket') {
-    ctx.fillText('◈', centerX, centerY);
+    // 如果socket有雕纹，显示雕纹等级
+    if (glyphData) {
+      ctx.font = `bold ${size * 0.3}px Arial`;
+      ctx.fillText(`${glyphData.rank}`, centerX, centerY);
+    } else {
+      ctx.fillText('◈', centerX, centerY);
+    }
   } else if (type === 'legendary') {
     ctx.fillText('◆', centerX, centerY);
   }
@@ -216,6 +257,7 @@ export const ParagonCanvas: React.FC<ParagonCanvasProps> = ({
   connectedBoards,
   allocations,
   reachableNodes,
+  socketGlyphs,
   hoveredNode,
   onNodeHover,
   onNodeClick,
@@ -223,6 +265,10 @@ export const ParagonCanvas: React.FC<ParagonCanvasProps> = ({
   pan,
   onZoomChange,
   onPanChange,
+  onRotateBoard,
+  onClearBoard,
+  onReplaceBoard,
+  onDeleteBoard,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -233,6 +279,14 @@ export const ParagonCanvas: React.FC<ParagonCanvasProps> = ({
   
   // 防抖定时器
   const hoverTimerRef = useRef<number | null>(null);
+  
+  // 悬停的工具栏按钮
+  const [hoveredToolbarButton, setHoveredToolbarButton] = useState<{
+    boardIndex: number;
+    action: ToolbarAction;
+    x: number;
+    y: number;
+  } | null>(null);
   
   // 计算所有连接线（节点之间的连接）
   const allConnections = useMemo(() => {
@@ -322,7 +376,7 @@ export const ParagonCanvas: React.FC<ParagonCanvasProps> = ({
     });
     
     // 绘制所有盘面和节点
-    connectedBoards.forEach(instance => {
+    connectedBoards.forEach((instance, index) => {
       const board = boards.find(b => b.id === instance.boardId);
       if (!board) return;
       
@@ -347,14 +401,19 @@ export const ParagonCanvas: React.FC<ParagonCanvasProps> = ({
         ctx.translate(-centerX, -centerY);
       }
       
-      // 绘制盘面背景
-      ctx.fillStyle = '#252525';
-      ctx.fillRect(offsetX, offsetY, boardWidth, boardHeight);
+      // 旋转后坐标系已改变，使用相对坐标(0,0)开始绘制
+      const drawX = instance.rotation !== 0 ? 0 : offsetX;
+      const drawY = instance.rotation !== 0 ? 0 : offsetY;
       
-      // 绘制边框
-      ctx.strokeStyle = '#444444';
+      // 绘制盘面背景（始终覆盖完整21×21范围）
+      const fullBoardSize = 21 * CELL_SIZE; // 完整21×21逻辑范围
+      ctx.fillStyle = '#252525';
+      ctx.fillRect(drawX, drawY, fullBoardSize, fullBoardSize);
+      
+      // 绘制边框（始终覆盖完整21×21范围，红色描边）
+      ctx.strokeStyle = '#ff0000'; // 红色边框
       ctx.lineWidth = 2 / zoom; // 边框宽度不随缩放变化
-      ctx.strokeRect(offsetX, offsetY, boardWidth, boardHeight);
+      ctx.strokeRect(drawX, drawY, fullBoardSize, fullBoardSize);
       
       // 绘制节点
       for (let row = 0; row < board.rows; row++) {
@@ -369,24 +428,106 @@ export const ParagonCanvas: React.FC<ParagonCanvasProps> = ({
                            hoveredNode?.col === col;
           const isReachable = reachableNodes.has(key) && !isAllocated;
           
-          const x = offsetX + col * CELL_SIZE + NODE_GAP;
-          const y = offsetY + row * CELL_SIZE + NODE_GAP;
+          const x = drawX + col * CELL_SIZE + NODE_GAP;
+          const y = drawY + row * CELL_SIZE + NODE_GAP;
           
-          drawNode(ctx, node, x, y, NODE_SIZE, isAllocated, isHovered, isReachable);
+          const glyphKey = `${instance.boardId}_${row}_${col}`;
+          const glyphData = socketGlyphs.get(glyphKey);
+          
+          drawNode(ctx, node, x, y, NODE_SIZE, isAllocated, isHovered, isReachable, glyphData);
         }
       }
       
-      // 绘制盘面名称
+      ctx.restore();
+      
+      // 绘制盘面名称（在restore之后，使用原始坐标系）
       ctx.fillStyle = '#888888';
       ctx.font = '14px Arial';
       ctx.textAlign = 'center';
       ctx.fillText(board.name, offsetX + (board.cols * CELL_SIZE) / 2, offsetY - 10);
       
-      ctx.restore();
+      // 绘制工具栏（右上角）- 不跟随旋转，始终保持在右上角
+      drawToolbar(ctx, instance, board, index, offsetX, offsetY, boardWidth);
     });
     
     ctx.restore();
-  }, [boards, connectedBoards, allocations, reachableNodes, allConnections, hoveredNode, zoom, pan]);
+  }, [boards, connectedBoards, allocations, reachableNodes, allConnections, hoveredNode, zoom, pan, hoveredToolbarButton]);
+  
+  // 绘制工具栏
+  const drawToolbar = (ctx: CanvasRenderingContext2D, instance: BoardInstance, board: ParagonBoard, boardIndex: number, offsetX: number = 0, offsetY: number = 0, boardWidth: number = 0) => {
+    if (boardWidth === 0) {
+      boardWidth = board.cols * CELL_SIZE;
+    }
+    
+    // 工具栏位置：右上角，距离边缘有padding
+    const toolbarX = offsetX + boardWidth - TOOLBAR_PADDING - TOOLBAR_BUTTON_SIZE;
+    const toolbarY = offsetY + TOOLBAR_PADDING;
+    
+    // 计算需要显示的按钮
+    const isStartBoard = instance.boardId.includes('Start');
+    const buttonsToShow = isStartBoard 
+      ? TOOLBAR_BUTTONS.filter(b => b.action === 'clear')
+      : TOOLBAR_BUTTONS;
+    
+    // 绘制按钮
+    buttonsToShow.forEach((btn, btnIndex) => {
+      const btnX = toolbarX - btnIndex * (TOOLBAR_BUTTON_SIZE + TOOLBAR_BUTTON_GAP);
+      const btnY = toolbarY;
+      
+      // 检查是否悬停
+      const isHovered = hoveredToolbarButton?.boardIndex === boardIndex && 
+                        hoveredToolbarButton?.action === btn.action;
+      
+      // 绘制按钮背景
+      ctx.fillStyle = isHovered ? 'rgba(201, 161, 59, 0.3)' : 'rgba(0, 0, 0, 0.7)';
+      ctx.beginPath();
+      ctx.roundRect(btnX, btnY, TOOLBAR_BUTTON_SIZE, TOOLBAR_BUTTON_SIZE, 4);
+      ctx.fill();
+      
+      // 绘制按钮边框
+      ctx.strokeStyle = isHovered ? '#c9a13b' : '#444';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      
+      // 绘制图标
+      ctx.fillStyle = isHovered ? '#c9a13b' : '#ccc';
+      ctx.font = `${TOOLBAR_BUTTON_SIZE * 0.6}px Arial`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(btn.icon, btnX + TOOLBAR_BUTTON_SIZE / 2, btnY + TOOLBAR_BUTTON_SIZE / 2);
+      
+      // 绘制tooltip提示
+      if (isHovered && btn.tooltip) {
+        const tooltipPadding = 6;
+        const tooltipFontSize = 12;
+        ctx.font = `${tooltipFontSize}px Arial`;
+        const tooltipWidth = ctx.measureText(btn.tooltip).width + tooltipPadding * 2;
+        const tooltipHeight = tooltipFontSize + tooltipPadding * 2;
+        
+        // tooltip位置：按钮下方居中
+        const tooltipX = btnX + TOOLBAR_BUTTON_SIZE / 2 - tooltipWidth / 2;
+        const tooltipY = btnY + TOOLBAR_BUTTON_SIZE + 4;
+        
+        // 绘制tooltip背景
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.9)';
+        ctx.beginPath();
+        ctx.roundRect(tooltipX, tooltipY, tooltipWidth, tooltipHeight, 4);
+        ctx.fill();
+        
+        // 绘制tooltip边框
+        ctx.strokeStyle = '#c9a13b';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        
+        // 绘制tooltip文字
+        ctx.fillStyle = '#c9a13b';
+        ctx.font = `${tooltipFontSize}px Arial`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(btn.tooltip, tooltipX + tooltipWidth / 2, tooltipY + tooltipHeight / 2);
+      }
+    });
+  };
   
   // 获取鼠标在世界坐标中的位置
   const getWorldPosition = useCallback((clientX: number, clientY: number) => {
@@ -403,62 +544,102 @@ export const ParagonCanvas: React.FC<ParagonCanvasProps> = ({
     };
   }, [zoom, pan, canvasRef]);
   
-  // 获取节点世界坐标
-  const getNodeWorldRect = useCallback((board: ParagonBoard, instance: BoardInstance, row: number, col: number) => {
+  // 获取节点世界坐标（返回旋转后的四个角坐标）
+  const getNodeWorldCorners = useCallback((board: ParagonBoard, instance: BoardInstance, row: number, col: number) => {
     const [gridX, gridY] = PARAGON_GRID_COORDINATES[instance.gridLocation] || [0, 0];
     
-    // PARAGON_GRID_COORDINATES存储的是盘面左上角坐标
     const offsetX = gridX;
     const offsetY = gridY;
+    const centerX = board.cols * CELL_SIZE / 2;
+    const centerY = board.rows * CELL_SIZE / 2;
     
-    // 节点实际渲染位置（包含NODE_GAP偏移，与渲染时一致）
-    const nodeBaseX = offsetX + col * CELL_SIZE + NODE_GAP;
-    const nodeBaseY = offsetY + row * CELL_SIZE + NODE_GAP;
-    
-    // 如果有旋转，需要计算旋转后的边界框
     if (instance.rotation !== 0) {
-      const centerX = board.cols * CELL_SIZE / 2;
-      const centerY = board.rows * CELL_SIZE / 2;
       const rad = (instance.rotation * Math.PI) / 180;
       const cos = Math.cos(rad);
       const sin = Math.sin(rad);
       
-      // 节点四个角相对于盘面中心的坐标（包含NODE_GAP）
+      // 节点四个角相对于盘面中心的坐标
       const corners = [
         [col * CELL_SIZE + NODE_GAP - centerX, row * CELL_SIZE + NODE_GAP - centerY],
         [col * CELL_SIZE + NODE_GAP + NODE_SIZE - centerX, row * CELL_SIZE + NODE_GAP - centerY],
         [col * CELL_SIZE + NODE_GAP + NODE_SIZE - centerX, row * CELL_SIZE + NODE_GAP + NODE_SIZE - centerY],
         [col * CELL_SIZE + NODE_GAP - centerX, row * CELL_SIZE + NODE_GAP + NODE_SIZE - centerY]
       ].map(([dx, dy]) => {
-        // Canvas坐标系y轴向下为正，旋转角度方向相反
-        const rotatedDx = dx * cos + dy * sin;
-        const rotatedDy = dx * (-sin) + dy * cos;
+        // 使用与渲染一致的顺时针旋转公式
+        // Canvas的ctx.rotate()在y轴向下的坐标系中，顺时针为正
+        const rotatedDx = dx * cos - dy * sin;
+        const rotatedDy = dx * sin + dy * cos;
         
-        // 转换回世界坐标
         return [
           offsetX + centerX + rotatedDx,
           offsetY + centerY + rotatedDy
         ] as [number, number];
       });
       
-      // 计算边界框
-      const xs = corners.map(c => c[0]);
-      const ys = corners.map(c => c[1]);
-      return {
-        minX: Math.min(...xs),
-        minY: Math.min(...ys),
-        maxX: Math.max(...xs),
-        maxY: Math.max(...ys)
-      };
+      return corners;
     }
     
-    return {
-      minX: nodeBaseX,
-      minY: nodeBaseY,
-      maxX: nodeBaseX + NODE_SIZE,
-      maxY: nodeBaseY + NODE_SIZE
-    };
+    // 没有旋转，直接返回四个角
+    const nodeBaseX = offsetX + col * CELL_SIZE + NODE_GAP;
+    const nodeBaseY = offsetY + row * CELL_SIZE + NODE_GAP;
+    
+    return [
+      [nodeBaseX, nodeBaseY],
+      [nodeBaseX + NODE_SIZE, nodeBaseY],
+      [nodeBaseX + NODE_SIZE, nodeBaseY + NODE_SIZE],
+      [nodeBaseX, nodeBaseY + NODE_SIZE]
+    ] as [number, number][];
   }, []);
+  
+  // 获取节点边界框
+  const getNodeWorldRect = useCallback((board: ParagonBoard, instance: BoardInstance, row: number, col: number) => {
+    const corners = getNodeWorldCorners(board, instance, row, col);
+    const xs = corners.map(c => c[0]);
+    const ys = corners.map(c => c[1]);
+    return {
+      minX: Math.min(...xs),
+      minY: Math.min(...ys),
+      maxX: Math.max(...xs),
+      maxY: Math.max(...ys),
+      corners
+    };
+  }, [getNodeWorldCorners]);
+  
+  // 点是否在多边形内（射线法）
+  const isPointInPolygon = (x: number, y: number, corners: [number, number][]) => {
+    let inside = false;
+    const n = corners.length;
+    
+    for (let i = 0, j = n - 1; i < n; j = i++) {
+      const xi = corners[i][0], yi = corners[i][1];
+      const xj = corners[j][0], yj = corners[j][1];
+      
+      if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) {
+        inside = !inside;
+      }
+    }
+    
+    return inside;
+  };
+  
+  // 获取工具栏按钮的边界框
+  const getToolbarButtonRect = (instance: BoardInstance, board: ParagonBoard, btnIndex: number) => {
+    const [gridX, gridY] = PARAGON_GRID_COORDINATES[instance.gridLocation] || [0, 0];
+    const boardWidth = board.cols * CELL_SIZE;
+    
+    const toolbarX = gridX + boardWidth - TOOLBAR_PADDING - TOOLBAR_BUTTON_SIZE;
+    const toolbarY = gridY + TOOLBAR_PADDING;
+    
+    const btnX = toolbarX - btnIndex * (TOOLBAR_BUTTON_SIZE + TOOLBAR_BUTTON_GAP);
+    const btnY = toolbarY;
+    
+    return {
+      minX: btnX,
+      minY: btnY,
+      maxX: btnX + TOOLBAR_BUTTON_SIZE,
+      maxY: btnY + TOOLBAR_BUTTON_SIZE
+    };
+  };
   
   // 鼠标移动处理
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -477,6 +658,47 @@ export const ParagonCanvas: React.FC<ParagonCanvasProps> = ({
     // 计算鼠标在世界坐标中的位置
     const worldPos = getWorldPosition(e.clientX, e.clientY);
     
+    // 先检查是否悬停在工具栏按钮上
+    let foundToolbarButton: { boardIndex: number; action: ToolbarAction; x: number; y: number } | null = null;
+    
+    for (let boardIndex = 0; boardIndex < connectedBoards.length; boardIndex++) {
+      const instance = connectedBoards[boardIndex];
+      const board = boards.find(b => b.id === instance.boardId);
+      if (!board) continue;
+      
+      const isStartBoard = instance.boardId.includes('Start');
+      const buttonsToShow = isStartBoard 
+        ? TOOLBAR_BUTTONS.filter(b => b.action === 'clear')
+        : TOOLBAR_BUTTONS;
+      
+      for (let btnIndex = 0; btnIndex < buttonsToShow.length; btnIndex++) {
+        const rect = getToolbarButtonRect(instance, board, btnIndex);
+        
+        if (worldPos.x >= rect.minX && worldPos.x <= rect.maxX &&
+            worldPos.y >= rect.minY && worldPos.y <= rect.maxY) {
+          foundToolbarButton = {
+            boardIndex,
+            action: buttonsToShow[btnIndex].action,
+            x: (rect.minX + rect.maxX) / 2,
+            y: rect.minY - 10
+          };
+          break;
+        }
+      }
+      if (foundToolbarButton) break;
+    }
+    
+    // 更新工具栏按钮悬停状态
+    if (foundToolbarButton) {
+      setHoveredToolbarButton(foundToolbarButton);
+      // 设置鼠标样式
+      canvas.style.cursor = 'pointer';
+      return;
+    }
+    
+    // 清除工具栏悬停状态
+    setHoveredToolbarButton(null);
+    
     // 查找悬停的节点
     let foundNode: { node: GridNode; boardId: string; row: number; col: number } | null = null;
     
@@ -491,8 +713,20 @@ export const ParagonCanvas: React.FC<ParagonCanvasProps> = ({
           
           const rect = getNodeWorldRect(board, instance, row, col);
           
-          if (worldPos.x >= rect.minX && worldPos.x <= rect.maxX &&
-              worldPos.y >= rect.minY && worldPos.y <= rect.maxY) {
+          // 先进行快速边界框检测
+          if (worldPos.x < rect.minX || worldPos.x > rect.maxX ||
+              worldPos.y < rect.minY || worldPos.y > rect.maxY) {
+            continue;
+          }
+          
+          // 如果有旋转，使用精确的多边形检测
+          if (instance.rotation !== 0 && rect.corners) {
+            if (isPointInPolygon(worldPos.x, worldPos.y, rect.corners)) {
+              foundNode = { node, boardId: instance.boardId, row, col };
+              break;
+            }
+          } else {
+            // 没有旋转，直接使用边界框
             foundNode = { node, boardId: instance.boardId, row, col };
             break;
           }
@@ -501,6 +735,9 @@ export const ParagonCanvas: React.FC<ParagonCanvasProps> = ({
       }
       if (foundNode) break;
     }
+    
+    // 设置鼠标样式
+    canvas.style.cursor = foundNode ? 'pointer' : 'default';
     
     // 使用防抖减少 hoveredNode 更新频率
     if (hoverTimerRef.current) {
@@ -516,7 +753,7 @@ export const ParagonCanvas: React.FC<ParagonCanvasProps> = ({
         onNodeHover(foundNode);
       }, 30);
     }
-  }, [boards, connectedBoards, getWorldPosition, getNodeWorldRect, onNodeHover, hoveredNode]);
+  }, [boards, connectedBoards, getWorldPosition, getNodeWorldRect, isPointInPolygon, onNodeHover, hoveredNode]);
   
   // 鼠标点击处理
   const handleClick = useCallback((e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -524,6 +761,44 @@ export const ParagonCanvas: React.FC<ParagonCanvasProps> = ({
     
     const worldPos = getWorldPosition(e.clientX, e.clientY);
     
+    // 先检查是否点击了工具栏按钮
+    for (let boardIndex = 0; boardIndex < connectedBoards.length; boardIndex++) {
+      const instance = connectedBoards[boardIndex];
+      const board = boards.find(b => b.id === instance.boardId);
+      if (!board) continue;
+      
+      const isStartBoard = instance.boardId.includes('Start');
+      const buttonsToShow = isStartBoard 
+        ? TOOLBAR_BUTTONS.filter(b => b.action === 'clear')
+        : TOOLBAR_BUTTONS;
+      
+      for (let btnIndex = 0; btnIndex < buttonsToShow.length; btnIndex++) {
+        const rect = getToolbarButtonRect(instance, board, btnIndex);
+        
+        if (worldPos.x >= rect.minX && worldPos.x <= rect.maxX &&
+            worldPos.y >= rect.minY && worldPos.y <= rect.maxY) {
+          // 处理工具栏按钮点击
+          const action = buttonsToShow[btnIndex].action;
+          switch (action) {
+            case 'rotate':
+              onRotateBoard(boardIndex);
+              break;
+            case 'clear':
+              onClearBoard(boardIndex);
+              break;
+            case 'replace':
+              onReplaceBoard(boardIndex);
+              break;
+            case 'delete':
+              onDeleteBoard(boardIndex);
+              break;
+          }
+          return;
+        }
+      }
+    }
+    
+    // 检查是否点击了节点
     for (const instance of connectedBoards) {
       const board = boards.find(b => b.id === instance.boardId);
       if (!board) continue;
@@ -535,15 +810,27 @@ export const ParagonCanvas: React.FC<ParagonCanvasProps> = ({
           
           const rect = getNodeWorldRect(board, instance, row, col);
           
-          if (worldPos.x >= rect.minX && worldPos.x <= rect.maxX &&
-              worldPos.y >= rect.minY && worldPos.y <= rect.maxY) {
+          // 先进行快速边界框检测
+          if (worldPos.x < rect.minX || worldPos.x > rect.maxX ||
+              worldPos.y < rect.minY || worldPos.y > rect.maxY) {
+            continue;
+          }
+          
+          // 如果有旋转，使用精确的多边形检测
+          if (instance.rotation !== 0 && rect.corners) {
+            if (isPointInPolygon(worldPos.x, worldPos.y, rect.corners)) {
+              onNodeClick(instance.boardId, row, col, node);
+              return;
+            }
+          } else {
+            // 没有旋转，直接使用边界框
             onNodeClick(instance.boardId, row, col, node);
             return;
           }
         }
       }
     }
-  }, [boards, connectedBoards, getWorldPosition, getNodeWorldRect, onNodeClick]);
+  }, [boards, connectedBoards, getWorldPosition, getNodeWorldRect, isPointInPolygon, onNodeClick, onRotateBoard, onClearBoard, onReplaceBoard, onDeleteBoard]);
   
   // 鼠标按下（开始拖拽）
   const handleMouseDown = useCallback((e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -618,7 +905,7 @@ export const ParagonCanvas: React.FC<ParagonCanvasProps> = ({
         border: '1px solid #444',
         background: '#1a1a1a',
         width: '100%',
-        height: '600px'
+        height: '100%'
       }}
     >
       <canvas

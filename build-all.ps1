@@ -19,7 +19,7 @@ Write-Host "      OK Output directory ready" -ForegroundColor Green
 Write-Host ""
 Write-Host "[2/3] Building modules..." -ForegroundColor Cyan
 
-$modules = @("calculator", "database", "equipment", "skills", "paragon", "build", "bbs")
+$modules = @("calculator", "database", "equipment", "skills", "paragon", "paragonnew", "build", "bbs")
 
 foreach ($module in $modules) {
     $moduleDir = "$rootDir\modules\$module"

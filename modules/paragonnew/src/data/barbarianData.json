@@ -239,7 +239,10 @@
               "伤害",
               "力量."
             ],
-            "tierValues": []
+            "tierValues": [],
+            "thresholdRequirements": {
+              "Barbarian": ["{180 + (90 * ParagonBoardEquipIndex)} Intelligence"]
+            }
           },
           null,
           {
@@ -255,7 +258,10 @@
               "护甲",
               "力量."
             ],
-            "tierValues": []
+            "tierValues": [],
+            "thresholdRequirements": {
+              "Barbarian": ["{160 + (90 * ParagonBoardEquipIndex)} Willpower"]
+            }
           },
           {
             "id": "Generic_Magic_Will",
@@ -834,7 +840,10 @@
               "生命",
               "护甲."
             ],
-            "tierValues": []
+            "tierValues": [],
+            "thresholdRequirements": {
+              "Barbarian": ["{160 + (90 * ParagonBoardEquipIndex)} Strength"]
+            }
           },
           {
             "id": "Generic_Magic_HPPercent",
@@ -877,7 +886,10 @@
               "伤害",
               "生命."
             ],
-            "tierValues": []
+            "tierValues": [],
+            "thresholdRequirements": {
+              "Barbarian": ["{180 + (90 * ParagonBoardEquipIndex)} Dexterity"]
+            }
           },
           null,
           null,
@@ -1312,7 +1324,10 @@
               "伤害",
               "力量."
             ],
-            "tierValues": []
+            "tierValues": [],
+            "thresholdRequirements": {
+              "Barbarian": ["{180 + (90 * ParagonBoardEquipIndex)} Dexterity"]
+            }
           },
           {
             "id": "Generic_Magic_Dex",
@@ -1661,7 +1676,10 @@
               "伤害减免",
               "力量."
             ],
-            "tierValues": []
+            "tierValues": [],
+            "thresholdRequirements": {
+              "Barbarian": ["{160 + (90 * ParagonBoardEquipIndex)} Willpower"]
+            }
           },
           {
             "id": "Generic_Magic_DamageReductionFromBleedingTarget",
@@ -1905,7 +1923,10 @@
               "护甲",
               "毒素."
             ],
-            "tierValues": []
+            "tierValues": [],
+            "thresholdRequirements": {
+              "Barbarian": ["{160 + (90 * ParagonBoardEquipIndex)} Intelligence"]
+            }
           },
           {
             "id": "Generic_Magic_Armor",
@@ -2335,7 +2356,10 @@
               "流血",
               "伤害."
             ],
-            "tierValues": []
+            "tierValues": [],
+            "thresholdRequirements": {
+              "Barbarian": ["{180 + (90 * ParagonBoardEquipIndex)} Dexterity"]
+            }
           },
           {
             "id": "Generic_Magic_DamageBleed",
@@ -3245,7 +3269,10 @@
               "控制",
               "伤害减免."
             ],
-            "tierValues": []
+            "tierValues": [],
+            "thresholdRequirements": {
+              "Barbarian": ["{160 + (90 * ParagonBoardEquipIndex)} Willpower"]
+            }
           },
           null,
           null,
@@ -3453,7 +3480,10 @@
               "物理",
               "伤害."
             ],
-            "tierValues": []
+            "tierValues": [],
+            "thresholdRequirements": {
+              "Barbarian": ["{180 + (90 * ParagonBoardEquipIndex)} Dexterity"]
+            }
           },
           {
             "id": "Generic_Magic_DamageBleed",
@@ -4104,7 +4134,10 @@
               "治疗",
               "生命."
             ],
-            "tierValues": []
+            "tierValues": [],
+            "thresholdRequirements": {
+              "Barbarian": ["{160 + (90 * ParagonBoardEquipIndex)} Willpower"]
+            }
           },
           {
             "id": "Generic_Magic_PotionHealing",
@@ -4761,7 +4794,10 @@
               "伤害减免",
               "力量."
             ],
-            "tierValues": []
+            "tierValues": [],
+            "thresholdRequirements": {
+              "Barbarian": ["{160 + (90 * ParagonBoardEquipIndex)} Willpower"]
+            }
           },
           {
             "id": "Generic_Magic_Will",
@@ -10319,7 +10355,10 @@
               "伤害",
               "生命."
             ],
-            "tierValues": []
+            "tierValues": [],
+            "thresholdRequirements": {
+              "Barbarian": ["{180 + (90 * ParagonBoardEquipIndex)} Dexterity"]
+            }
           },
           {
             "id": "Generic_Magic_DamagePhysical",
@@ -10669,7 +10708,10 @@
               "治疗",
               "生命."
             ],
-            "tierValues": []
+            "tierValues": [],
+            "thresholdRequirements": {
+              "Barbarian": ["{160 + (90 * ParagonBoardEquipIndex)} Willpower"]
+            }
           },
           {
             "id": "Generic_Magic_PotionHealing",
@@ -11663,7 +11705,10 @@
               "生命",
               "护甲."
             ],
-            "tierValues": []
+            "tierValues": [],
+            "thresholdRequirements": {
+              "Barbarian": ["{160 + (90 * ParagonBoardEquipIndex)} Strength"]
+            }
           },
           {
             "id": "Generic_Magic_HPPercent",
@@ -18019,7 +18064,10 @@
               "伤害",
               "力量."
             ],
-            "tierValues": []
+            "tierValues": [],
+            "thresholdRequirements": {
+              "Barbarian": ["{180 + (90 * ParagonBoardEquipIndex)} Intelligence"]
+            }
           },
           {
             "id": "Generic_Magic_DamagePhysical",
@@ -18976,7 +19024,10 @@
               "伤害",
               "力量."
             ],
-            "tierValues": []
+            "tierValues": [],
+            "thresholdRequirements": {
+              "Barbarian": ["{180 + (90 * ParagonBoardEquipIndex)} Intelligence"]
+            }
           },
           null,
           null,
@@ -19437,7 +19488,10 @@
               "护甲",
               "力量."
             ],
-            "tierValues": []
+            "tierValues": [],
+            "thresholdRequirements": {
+              "Barbarian": ["{160 + (90 * ParagonBoardEquipIndex)} Willpower"]
+            }
           },
           {
             "id": "Generic_Magic_Armor",

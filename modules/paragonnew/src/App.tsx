@@ -1,5 +1,6 @@
 import { useState, useMemo, useCallback, useEffect } from 'react';
 import ParagonCanvas from './components/ParagonCanvas';
+import { NodeTooltip } from './components/NodeTooltip';
 import { 
   ParagonData, 
   GridNode, 
@@ -10,7 +11,6 @@ import {
   NODE_TYPE_LABELS,
   Glyph,
   PARAGON_GRID_COORDINATES,
-  CELL_SIZE,
   PlayerAttributes,
   BOARD_LOCATIONS
 } from './types';
@@ -28,6 +28,16 @@ const GRID_LOCATIONS = [
 // 根据节点坐标和旋转角度计算实际坐标（与原始项目一致）
 const rotateAngle = (cx: number, cy: number, x: number, y: number, angle: number): [number, number] => {
   const radians = (angle * Math.PI) / 180;
+  const cos = Math.cos(radians);
+  const sin = Math.sin(radians);
+  const nx = (cos * (x - cx)) - (sin * (y - cy)) + cx;
+  const ny = (sin * (x - cx)) + (cos * (y - cy)) + cy;
+  return [nx, ny];
+};
+
+// 反向旋转：将旋转后的坐标转换回原始坐标（用于判断Gate方向）
+const reverseRotateAngle = (cx: number, cy: number, x: number, y: number, angle: number): [number, number] => {
+  const radians = -(angle * Math.PI) / 180; // 反向旋转
   const cos = Math.cos(radians);
   const sin = Math.sin(radians);
   const nx = (cos * (x - cx)) - (sin * (y - cy)) + cx;
@@ -79,16 +89,249 @@ const findAdjacentGridLocation = (
   return null;
 };
 
-type ClassName = 'Barbarian' | 'Druid' | 'Necromancer' | 'Rogue' | 'Sorcerer';
+// BFS最短路径算法
+interface PathNode {
+  boardId: string;
+  row: number;
+  col: number;
+}
 
-// 网格布局常量
-const GRID_LAYOUT = [
-  ['V', 'E', 'F', 'G', 'H', 'I', 'U'],
-  ['W', 'D', 'J', 'K', 'L', 'M', 'T'],
-  ['X', 'C', '7', '8', '9', 'N', 'S'],
-  ['Y', 'B', '4', '5', '6', 'O', 'R'],
-  ['Z', 'A', '1', '2', '3', 'P', 'Q'],
-];
+const findShortestPath = (
+  data: ParagonData,
+  connectedBoards: BoardInstance[],
+  allocations: Map<string, NodeAllocation>,
+  startNode: PathNode,
+  targetNode: PathNode
+): PathNode[] => {
+  const visited = new Set<string>();
+  const queue: { node: PathNode; path: PathNode[] }[] = [];
+  const allocatedKeys = new Set(allocations.keys());
+  
+  // 1. 先找到所有与起始节点连通的已点亮节点
+  const reachableAllocatedNodes = new Set<string>();
+  const bfsQueue: PathNode[] = [startNode];
+  
+  while (bfsQueue.length > 0) {
+    const { boardId, row, col } = bfsQueue.shift()!;
+    const key = `${boardId}_${row}_${col}`;
+    
+    if (reachableAllocatedNodes.has(key)) continue;
+    reachableAllocatedNodes.add(key);
+    
+    // 检查四个方向的邻居
+    const directions = [
+      { row: -1, col: 0 },
+      { row: 1, col: 0 },
+      { row: 0, col: -1 },
+      { row: 0, col: 1 }
+    ];
+    
+    const board = data.boards.find(b => b.id === boardId);
+    if (!board) continue;
+    
+    for (const dir of directions) {
+      const newRow = row + dir.row;
+      const newCol = col + dir.col;
+      
+      if (newRow < 0 || newRow >= board.rows || newCol < 0 || newCol >= board.cols) continue;
+      
+      const neighborKey = `${boardId}_${newRow}_${newCol}`;
+      
+      // 只处理已点亮的邻居节点
+      if (allocatedKeys.has(neighborKey)) {
+        const neighborNode = board.grid[newRow]?.[newCol];
+        
+        if (neighborNode?.type === 'gate') {
+          // Gate节点：检查是否是入口Gate
+          const currentBoardInstance = connectedBoards.find(b => b.boardId === boardId);
+          if (currentBoardInstance?.entryGate?.row === newRow && 
+              currentBoardInstance?.entryGate?.col === newCol) {
+            // 是入口Gate，跳转到子盘
+            const childBoard = connectedBoards.find(cb => {
+              if (cb.boardId === boardId) return false;
+              // 检查是否相邻
+              const [currentX, currentY] = PARAGON_GRID_COORDINATES[currentBoardInstance.gridLocation] || [0, 0];
+              const [childX, childY] = PARAGON_GRID_COORDINATES[cb.gridLocation] || [0, 0];
+              const dx = Math.abs(childX - currentX);
+              const dy = Math.abs(childY - currentY);
+              if ((dx === 840 && dy === 0) || (dx === 0 && dy === 840)) {
+                // 检查子盘的entryGate是否匹配
+                let gateDir: string;
+                if (dx > 0) gateDir = childX > currentX ? 'right' : 'left';
+                else gateDir = childY > currentY ? 'bottom' : 'top';
+                
+                let expectedEntryRow: number, expectedEntryCol: number;
+                if (gateDir === 'left') { expectedEntryRow = 10; expectedEntryCol = 0; }
+                else if (gateDir === 'right') { expectedEntryRow = 10; expectedEntryCol = 20; }
+                else if (gateDir === 'top') { expectedEntryRow = 0; expectedEntryCol = 10; }
+                else { expectedEntryRow = 20; expectedEntryCol = 10; }
+                
+                return cb.entryGate?.row === expectedEntryRow && 
+                       cb.entryGate?.col === expectedEntryCol;
+              }
+              return false;
+            });
+            
+            if (childBoard?.entryGate) {
+              bfsQueue.push({
+                boardId: childBoard.boardId,
+                row: childBoard.entryGate.row,
+                col: childBoard.entryGate.col
+              });
+            }
+          }
+        } else {
+          // 普通节点，直接添加到队列
+          bfsQueue.push({ boardId, row: newRow, col: newCol });
+        }
+      }
+    }
+  }
+  
+  console.log('[BFS] 与起始节点连通的已点亮节点数量:', reachableAllocatedNodes.size);
+  
+  // 2. 使用连通的已点亮节点作为起点
+  reachableAllocatedNodes.forEach(key => {
+    const keyParts = key.split('_');
+    const row = parseInt(keyParts[keyParts.length - 2]);
+    const col = parseInt(keyParts[keyParts.length - 1]);
+    const boardId = keyParts.slice(0, -2).join('_');
+    
+    visited.add(key);
+    queue.push({ node: { boardId, row, col }, path: [] });
+  });
+  
+  // 如果没有连通的已点亮节点，使用起始节点
+  if (queue.length === 0) {
+    const startKey = `${startNode.boardId}_${startNode.row}_${startNode.col}`;
+    visited.add(startKey);
+    queue.push({ node: startNode, path: [startNode] });
+  }
+  
+  console.log('[BFS] 起始节点数量:', queue.length);
+  
+  // 方向：上下左右
+  const directions = [
+    { row: -1, col: 0 },
+    { row: 1, col: 0 },
+    { row: 0, col: -1 },
+    { row: 0, col: 1 }
+  ];
+  
+  let iterationCount = 0;
+  const maxIterations = 10000;
+  
+  while (queue.length > 0 && iterationCount < maxIterations) {
+    iterationCount++;
+    const { node, path } = queue.shift()!;
+    const { boardId, row, col } = node;
+    
+    // 到达目标节点
+    if (boardId === targetNode.boardId && row === targetNode.row && col === targetNode.col) {
+      console.log('[BFS] 找到目标节点!');
+      // 返回路径（去除已点亮的节点）
+      const newPath = path.filter(p => {
+        const key = `${p.boardId}_${p.row}_${p.col}`;
+        return !allocatedKeys.has(key);
+      });
+      console.log('[BFS] 返回路径长度:', newPath.length);
+      return newPath;
+    }
+    
+    // 获取当前盘面信息
+    const board = data.boards.find(b => b.id === boardId);
+    if (!board) {
+      console.log('[BFS] 未找到盘面:', boardId);
+      continue;
+    }
+    
+    // 检查当前节点是否是Gate节点，如果是，检查是否链接到其他盘面
+    const currentNode = board.grid[row]?.[col];
+    if (currentNode?.type === 'gate') {
+      // 获取当前盘面在connectedBoards中的实例
+      const currentBoardInstance = connectedBoards.find(b => b.boardId === boardId);
+      if (!currentBoardInstance) continue;
+      
+      // 遍历所有连接的盘面，找到相邻的盘面
+      for (const cb of connectedBoards) {
+        if (cb.boardId === boardId) continue; // 跳过当前盘面
+        
+        // 检查是否相邻
+        const [currentX, currentY] = PARAGON_GRID_COORDINATES[currentBoardInstance.gridLocation] || [0, 0];
+        const [otherX, otherY] = PARAGON_GRID_COORDINATES[cb.gridLocation] || [0, 0];
+        
+        const dx = Math.abs(otherX - currentX);
+        const dy = Math.abs(otherY - currentY);
+        
+        // 如果相邻
+        if ((dx === 840 && dy === 0) || (dx === 0 && dy === 840)) {
+          // 确定当前Gate的方向
+          let gateDir: string;
+          if (col === 0) gateDir = 'left';
+          else if (col === 20) gateDir = 'right';
+          else if (row === 0) gateDir = 'top';
+          else gateDir = 'bottom';
+          
+          // 确定相邻盘面相对于当前盘面的方向
+          let otherDir: string;
+          if (dx > 0) otherDir = otherX > currentX ? 'right' : 'left';
+          else otherDir = otherY > currentY ? 'bottom' : 'top';
+          
+          // 如果Gate方向与相邻盘面方向一致，说明这是连接到该盘面的Gate
+          if (gateDir === otherDir && cb.entryGate) {
+            const entryGateKey = `${cb.boardId}_${cb.entryGate.row}_${cb.entryGate.col}`;
+            if (!visited.has(entryGateKey)) {
+              visited.add(entryGateKey);
+              queue.push({
+                node: {
+                  boardId: cb.boardId,
+                  row: cb.entryGate.row,
+                  col: cb.entryGate.col
+                },
+                path: [...path, {
+                  boardId: cb.boardId,
+                  row: cb.entryGate.row,
+                  col: cb.entryGate.col
+                }]
+              });
+            }
+          }
+        }
+      }
+    }
+    
+    // 遍历四个方向
+    for (const dir of directions) {
+      const newRow = row + dir.row;
+      const newCol = col + dir.col;
+      
+      // 检查边界
+      if (newRow < 0 || newRow >= board.rows || newCol < 0 || newCol >= board.cols) {
+        continue;
+      }
+      
+      const neighborNode = board.grid[newRow]?.[newCol];
+      if (!neighborNode) {
+        console.log(`[BFS] 邻居节点为空: (${newRow}, ${newCol})`);
+        continue;
+      }
+      
+      const newKey = `${boardId}_${newRow}_${newCol}`;
+      if (visited.has(newKey)) continue;
+      
+      visited.add(newKey);
+      queue.push({
+        node: { boardId, row: newRow, col: newCol },
+        path: [...path, { boardId, row: newRow, col: newCol }]
+      });
+    }
+  }
+  
+  console.log('[BFS] 搜索结束，迭代次数:', iterationCount, '队列长度:', queue.length);
+  return []; // 没有找到路径
+};
+
+type ClassName = 'Barbarian' | 'Druid' | 'Necromancer' | 'Rogue' | 'Sorcerer';
 
 function App() {
   const data = barbarianData as ParagonData;
@@ -120,32 +363,22 @@ function App() {
     gateCol: number;
   } | null>(null);
   
-  // 画布变换
-  const [zoom, setZoom] = useState(0.3);
-  const [pan, setPan] = useState({ x: -100, y: 1940 });
+  // 快捷路径模式 - 启用后点击节点会自动点亮最短路径
+  const [quickPathMode, setQuickPathMode] = useState(false);
   
-  // 选择巅峰盘时自动聚焦
-  useEffect(() => {
-    const selectedBoard = connectedBoards[selectedBoardIndex];
-    if (!selectedBoard) return;
-    
-    const [gridX, gridY] = PARAGON_GRID_COORDINATES[selectedBoard.gridLocation] || [0, 0];
-    const boardWidth = 21 * CELL_SIZE;
-    const boardHeight = 21 * CELL_SIZE;
-    
-    // 盘面中心坐标
-    const centerX = gridX + boardWidth / 2;
-    const centerY = gridY + boardHeight / 2;
-    
-    // 设置缩放
-    const newZoom = 0.3;
-    
-    setPan({
-      x: -centerX * newZoom,
-      y: -centerY * newZoom
-    });
-    setZoom(newZoom);
-  }, [selectedBoardIndex, connectedBoards]);
+  // Socket雕纹选择状态 - 点击socket节点后弹出选择框
+  const [selectingGlyphForSocket, setSelectingGlyphForSocket] = useState<{
+    boardId: string;
+    row: number;
+    col: number;
+  } | null>(null);
+  
+  // socket节点上安装的雕纹 (key: "boardId_row_col")
+  const [socketGlyphs, setSocketGlyphs] = useState<Map<string, { glyphId: string; rank: number }>>(new Map());
+  
+  // 画布变换
+  const [zoom, setZoom] = useState(0.65);
+  const [pan, setPan] = useState({ x: -819, y: 819 });
   
   // 悬停的节点
   const [hoveredNode, setHoveredNode] = useState<{
@@ -154,6 +387,19 @@ function App() {
     row: number;
     col: number;
   } | null>(null);
+  
+  // 鼠标位置（用于tooltip定位）
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  
+  // 监听鼠标移动
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
   
   // 节点搜索
   const [searchQuery, setSearchQuery] = useState('');
@@ -335,6 +581,80 @@ function App() {
     // 检查是否有可用点数
     const hasPoints = usedPoints < totalPoints;
     
+    // 快捷路径模式：如果启用且节点不可达且未被点亮，则自动计算最短路径
+    if (quickPathMode && !isReachable && !isAllocated) {
+      console.log('[快捷路径] 模式已启用，开始计算路径...');
+      console.log('[快捷路径] 目标节点:', boardId, row, col);
+      
+      // 找到起始盘的起始节点作为起点参考
+      const startBoard = data.boards.find(b => b.id === 'Paragon_Barb_Start');
+      if (!startBoard?.startNodes?.[0]) {
+        console.log('[快捷路径] 未找到起始盘');
+        // 不返回，继续执行后续逻辑
+      } else {
+        const startNode: PathNode = {
+          boardId: 'Paragon_Barb_Start',
+          row: startBoard.startNodes[0].row,
+          col: startBoard.startNodes[0].col
+        };
+        
+        const targetNode: PathNode = { boardId, row, col };
+        
+        console.log('[快捷路径] 起点:', startNode, '终点:', targetNode);
+        
+        // 计算最短路径
+        const path = findShortestPath(data, connectedBoards, allocations, startNode, targetNode);
+        
+        console.log('[快捷路径] 计算出的路径长度:', path.length);
+        if (path.length > 0) {
+          console.log('[快捷路径] 路径节点:', path);
+          // 检查是否有足够的点数
+          let totalCost = 0;
+          for (const pn of path) {
+            const pNode = data.boards.find(b => b.id === pn.boardId)?.grid[pn.row]?.[pn.col];
+            if (pNode) {
+              if (pNode.type === 'rare') totalCost += 5;
+              else if (pNode.type === 'legendary') totalCost += 1;
+              else if (pNode.type !== 'gate') totalCost += 1; // Gate不消耗点数
+            }
+          }
+          
+          console.log('[快捷路径] 路径总消耗:', totalCost, '当前已用:', usedPoints);
+          
+          if (usedPoints + totalCost > totalPoints) {
+            console.warn('点数不足，无法点亮路径');
+            // 不返回，继续执行后续逻辑
+          } else {
+            // 点亮路径上的所有节点
+            setAllocations(prev => {
+              const newMap = new Map(prev);
+              for (const pn of path) {
+                const pKey = `${pn.boardId}_${pn.row}_${pn.col}`;
+                const pNode = data.boards.find(b => b.id === pn.boardId)?.grid[pn.row]?.[pn.col];
+                newMap.set(pKey, {
+                  nodeId: pNode?.id || 'Generic_Node',
+                  boardId: pn.boardId,
+                  row: pn.row,
+                  col: pn.col,
+                  points: pNode?.type === 'rare' ? 5 : (pNode?.type === 'legendary' ? 1 : 0)
+                });
+              }
+              return newMap;
+            });
+            
+            // 如果目标节点是Gate节点，不返回，继续执行Gate处理逻辑（弹出选择框）
+            if (node.type !== 'gate') {
+              return; // 非Gate节点，处理完成返回
+            }
+            // Gate节点继续执行后续逻辑（弹出选择框）
+          }
+        } else {
+          console.warn('无法找到路径');
+          // 不返回，继续执行后续逻辑
+        }
+      }
+    }
+    
     // 根据节点类型计算消耗的点数
     let pointsCost = 1;
     if (node.type === 'rare') {
@@ -350,7 +670,25 @@ function App() {
       if (!currentBoard) return;
       
       // 检查这个Gate是否是入口Gate（被链接的那个Gate）
-      const isEntryGate = currentBoard.entryGate?.row === row && currentBoard.entryGate?.col === col;
+      // 需要考虑旋转角度：将entryGate的原始坐标旋转后再比较
+      const isEntryGate = (() => {
+        if (!currentBoard.entryGate) return false;
+        
+        const eg = currentBoard.entryGate;
+        const rotation = currentBoard.rotation || 0;
+        
+        if (rotation === 0) {
+          // 未旋转，直接比较
+          return eg.row === row && eg.col === col;
+        }
+        
+        // 旋转后：将entryGate的原始坐标旋转到当前角度，再比较
+        const centerRow = 10;
+        const centerCol = 10;
+        const [rotatedEntryRow, rotatedEntryCol] = rotateAngle(centerRow, centerCol, eg.row, eg.col, rotation);
+        
+        return Math.round(rotatedEntryRow) === row && Math.round(rotatedEntryCol) === col;
+      })();
       
       if (isEntryGate) {
         // 入口Gate：如果未被点亮，则可以点亮
@@ -370,19 +708,160 @@ function App() {
         }
         // 如果已点亮，则不处理
       } else {
-        // 非入口Gate：检查是否已链接（被点亮）
-        if (!isAllocated) {
-          // 未链接：弹出选择框
+        // 非入口Gate：检查是否已连接盘面
+        
+        // 根据旋转角度计算原始（未旋转）坐标，用于判断Gate方向
+        const rotation = currentBoard.rotation || 0;
+        const centerRow = 10; // 盘面中心行（21行的中间）
+        const centerCol = 10; // 盘面中心列（21列的中间）
+        const [originalRow, originalCol] = rotation !== 0 
+          ? reverseRotateAngle(centerRow, centerCol, row, col, rotation) 
+          : [row, col];
+        
+        // 查找是否有盘面通过这个Gate连接
+        const linkedBoard = connectedBoards.find(cb => {
+          if (cb.boardId === boardId) return false;
+          // 检查这个盘面的entryGate是否指向当前Gate
+          // 需要找到连接关系：检查这个盘面是否与当前盘面相邻，且entryGate在对应方向
+          const [currentX, currentY] = PARAGON_GRID_COORDINATES[currentBoard.gridLocation] || [0, 0];
+          const [otherX, otherY] = PARAGON_GRID_COORDINATES[cb.gridLocation] || [0, 0];
+          
+          const dx = Math.abs(otherX - currentX);
+          const dy = Math.abs(otherY - currentY);
+          
+          // 如果相邻
+          if ((dx === 840 && dy === 0) || (dx === 0 && dy === 840)) {
+            // 确定当前Gate的方向（使用原始坐标）
+            let gateDir: string;
+            if (Math.round(originalCol) === 0) gateDir = 'left';
+            else if (Math.round(originalCol) === 20) gateDir = 'right';
+            else if (Math.round(originalRow) === 0) gateDir = 'top';
+            else gateDir = 'bottom';
+            
+            // 确定相邻盘面相对于当前盘面的方向
+            let otherDir: string;
+            if (dx > 0) otherDir = otherX > currentX ? 'right' : 'left';
+            else otherDir = otherY > currentY ? 'bottom' : 'top';
+            
+            // 如果Gate方向与相邻盘面方向一致，说明这是连接到该盘面的Gate
+            return gateDir === otherDir;
+          }
+          return false;
+        });
+        
+        if (linkedBoard) {
+          // 已连接盘面，弹出选择框替换
+          // 需要找到父盘面（通过entryGate反向查找）
+          const parentBoard = connectedBoards.find(cb => {
+            if (cb.boardId === linkedBoard.boardId) return false;
+            
+            // 检查父盘和子盘是否相邻
+            const [parentX, parentY] = PARAGON_GRID_COORDINATES[cb.gridLocation] || [0, 0];
+            const [childX, childY] = PARAGON_GRID_COORDINATES[linkedBoard.gridLocation] || [0, 0];
+            
+            const dx = Math.abs(childX - parentX);
+            const dy = Math.abs(childY - parentY);
+            
+            // 如果相邻
+            if ((dx === 840 && dy === 0) || (dx === 0 && dy === 840)) {
+              // 确定父盘上Gate的方向
+              let gateDir: string;
+              if (dx > 0) gateDir = childX > parentX ? 'right' : 'left';
+              else gateDir = childY > parentY ? 'bottom' : 'top';
+              
+              // 根据方向确定父盘上Gate的位置
+              let gateRow: number, gateCol: number;
+              if (gateDir === 'left') { gateRow = 10; gateCol = 0; }
+              else if (gateDir === 'right') { gateRow = 10; gateCol = 20; }
+              else if (gateDir === 'top') { gateRow = 0; gateCol = 10; }
+              else { gateRow = 20; gateCol = 10; }
+              
+              // 检查子盘的entryGate是否匹配（考虑父盘旋转）
+              // 将子盘的entryGate坐标根据父盘的旋转角度转换后再比较
+              const parentRotation = cb.rotation || 0;
+              let matched = false;
+              
+              if (parentRotation === 0) {
+                // 未旋转，直接比较
+                matched = linkedBoard.entryGate?.row === gateRow && linkedBoard.entryGate?.col === gateCol;
+              } else {
+                // 旋转后：将entryGate的原始坐标旋转到当前角度，再比较
+                const centerRow = 10;
+                const centerCol = 10;
+                const [rotatedEntryRow, rotatedEntryCol] = rotateAngle(centerRow, centerCol, linkedBoard.entryGate?.row || 0, linkedBoard.entryGate?.col || 0, parentRotation);
+                matched = Math.round(rotatedEntryRow) === gateRow && Math.round(rotatedEntryCol) === gateCol;
+              }
+              
+              if (matched) {
+                return true;
+              }
+            }
+            return false;
+          });
+          
+          if (parentBoard) {
+            const parentBoardIndex = connectedBoards.findIndex(b => b.boardId === parentBoard.boardId);
+            
+            // 确定父盘上Gate的方向
+            const [parentX, parentY] = PARAGON_GRID_COORDINATES[parentBoard.gridLocation] || [0, 0];
+            const [childX, childY] = PARAGON_GRID_COORDINATES[linkedBoard.gridLocation] || [0, 0];
+            
+            let gateDirection: string;
+            let gateRow: number, gateCol: number;
+            
+            if (childX > parentX) {
+              gateDirection = 'right';
+              gateRow = 10;
+              gateCol = 20;
+            } else if (childX < parentX) {
+              gateDirection = 'left';
+              gateRow = 10;
+              gateCol = 0;
+            } else if (childY > parentY) {
+              gateDirection = 'bottom';
+              gateRow = 20;
+              gateCol = 10;
+            } else {
+              gateDirection = 'top';
+              gateRow = 0;
+              gateCol = 10;
+            }
+            
+            // 考虑父盘旋转：将原始位置旋转到当前角度，得到视觉位置
+            const parentRotation = parentBoard.rotation || 0;
+            if (parentRotation !== 0) {
+              const centerRow = 10;
+              const centerCol = 10;
+              const [rotatedRow, rotatedCol] = rotateAngle(centerRow, centerCol, gateRow, gateCol, parentRotation);
+              gateRow = Math.round(rotatedRow);
+              gateCol = Math.round(rotatedCol);
+            }
+            
+            setSelectingBoardForGate({
+              boardIndex: parentBoardIndex,
+              gateDirection,
+              gateRow,
+              gateCol
+            });
+          }
+        } else {
+          // 未连接盘面，弹出选择框添加新盘面
+          // 检查是否已达到最大盘面数量限制
+          if (connectedBoards.length >= 5) {
+            console.warn('已达到最大盘面数量限制（5个）');
+            return;
+          }
+          
           // 找到当前盘面在connectedBoards中的索引
           const boardIndex = connectedBoards.findIndex(b => b.boardId === boardId);
           
-          // 根据Gate节点位置确定方向
+          // 根据Gate节点位置确定方向（使用原始坐标，考虑旋转）
           let gateDirection: string;
-          if (col === 0) {
+          if (Math.round(originalCol) === 0) {
             gateDirection = 'left';
-          } else if (col === 20) {
+          } else if (Math.round(originalCol) === 20) {
             gateDirection = 'right';
-          } else if (row === 0) {
+          } else if (Math.round(originalRow) === 0) {
             gateDirection = 'top';
           } else {
             gateDirection = 'bottom';
@@ -395,8 +874,13 @@ function App() {
             gateCol: col
           });
         }
-        // 如果已链接，则不处理（可以后续添加替换功能）
       }
+      return;
+    }
+    
+    // Socket节点处理 - 弹出雕纹选择框
+    if (node.type === 'socket') {
+      setSelectingGlyphForSocket({ boardId, row, col });
       return;
     }
     
@@ -563,18 +1047,25 @@ function App() {
         return newBoards;
       });
     } else {
-      // 添加新盘面
-      const newBoard: BoardInstance = {
-        boardIndex: connectedBoards.length,
-        boardId: targetBoardId,
-        gridLocation: targetGridLocation,
-        rotation: 0,
-        equipIndex: connectedBoards.length + 1,
-        equippedGlyph: null,
-        entryGate
-      };
-      setConnectedBoards(prev => [...prev, newBoard]);
-    }
+        // 添加新盘面
+        // 检查是否已达到最大数量（1个起始盘 + 4个连接盘 = 5个）
+        if (connectedBoards.length >= 5) {
+          console.warn('已达到最大盘面数量限制（5个）');
+          setSelectingBoardForGate(null);
+          return;
+        }
+        
+        const newBoard: BoardInstance = {
+          boardIndex: connectedBoards.length,
+          boardId: targetBoardId,
+          gridLocation: targetGridLocation,
+          rotation: 0,
+          equipIndex: connectedBoards.length + 1,
+          equippedGlyph: null,
+          entryGate
+        };
+        setConnectedBoards(prev => [...prev, newBoard]);
+      }
     
     setSelectingBoardForGate(null);
     
@@ -624,16 +1115,138 @@ function App() {
     });
   }, []);
   
+  // 安装socket雕纹
+  const equipSocketGlyph = useCallback((boardId: string, row: number, col: number, glyphId: string, rank: number) => {
+    const key = `${boardId}_${row}_${col}`;
+    setSocketGlyphs(prev => {
+      const newMap = new Map(prev);
+      newMap.set(key, { glyphId, rank });
+      return newMap;
+    });
+    setSelectingGlyphForSocket(null);
+  }, []);
+  
   // 获取节点名称
   const getNodeName = (node: GridNode): string => {
     if (language === 'zhCN' && node.nameCn) return node.nameCn;
     return node.nameEn || node.name || node.id;
   };
   
+  // 翻译常见英文术语
+  const translateTerms = (text: string): string => {
+    const translations: [string, string][] = [
+      ['Physical', '物理'],
+      ['Damage', '伤害'],
+      ['Strength', '力量'],
+      ['Intelligence', '智力'],
+      ['Willpower', '意力'],
+      ['Dexterity', '敏捷'],
+      ['Armor', '护甲'],
+      ['Life', '生命'],
+      ['Bonus', '加成'],
+      ['Another', '额外'],
+      ['if requirements met', '满足门槛要求'],
+      ['requirements', '门槛要求'],
+      ['met', '满足'],
+      ['\\+', '+'],
+      ['%', '%']
+    ];
+    
+    let result = text;
+    for (const [en, cn] of translations) {
+      const regex = new RegExp(en, 'g');
+      result = result.replace(regex, cn);
+    }
+    
+    // 去掉 "Tags:" 及其后面的内容
+    const tagsIndex = result.indexOf('\n\nTags:');
+    if (tagsIndex !== -1) {
+      result = result.substring(0, tagsIndex);
+    }
+    
+    // 清理多余的空行
+    result = result.replace(/\n{3,}/g, '\n\n').trim();
+    
+    return result;
+  };
+
+  // 计算门槛要求的实际值
+  const calculateThresholdRequirements = (node: GridNode, equipIndex: number = 1, className: string = 'Barbarian'): string => {
+    if (!node.thresholdRequirements) return '';
+    
+    const classRequirements = node.thresholdRequirements[className];
+    if (!classRequirements || classRequirements.length === 0) return '';
+    
+    // 计算第一个门槛要求
+    let requirement = classRequirements[0];
+    
+    // 替换 {160 + (90 * ParagonBoardEquipIndex)} 这样的表达式
+    const expressionMatch = requirement.match(/\{(.+?)\}/);
+    if (expressionMatch) {
+      const expression = expressionMatch[1];
+      // 替换 ParagonBoardEquipIndex 为实际值
+      const evaluatedExpression = expression.replace(/ParagonBoardEquipIndex/g, equipIndex.toString());
+      try {
+        const result = eval(evaluatedExpression);
+        requirement = requirement.replace(/\{.+?\}/, Math.round(result).toString());
+      } catch (e) {
+        console.error('Failed to evaluate threshold expression:', e);
+      }
+    }
+    
+    return requirement;
+  };
+
+  // 属性名称翻译映射
+  const attributeTranslations: Record<string, string> = {
+    'Strength': '力量',
+    'Intelligence': '智力',
+    'Willpower': '意力',
+    'Dexterity': '敏捷'
+  };
+  
+  // 翻译门槛要求中的属性名称
+  const translateAttributeName = (requirement: string): string => {
+    for (const [en, cn] of Object.entries(attributeTranslations)) {
+      requirement = requirement.replace(new RegExp(en, 'g'), cn);
+    }
+    return requirement;
+  };
+  
   // 获取节点描述
-  const getNodeDesc = (node: GridNode): string => {
-    if (language === 'zhCN' && node.descCn) return node.descCn;
-    return node.descEn || node.desc || '';
+  const getNodeDesc = (node: GridNode, equipIndex: number = 1, className: string = 'Barbarian'): string => {
+    let desc = '';
+    if (language === 'zhCN' && node.descCn) {
+      desc = node.descCn;
+    } else {
+      desc = node.descEn || node.desc || '';
+    }
+    
+    // 去掉 "Tags:" 及其后面的内容
+    const tagsIndex = desc.indexOf('\n\nTags:');
+    if (tagsIndex !== -1) {
+      desc = desc.substring(0, tagsIndex);
+    }
+    
+    // 翻译英文术语（仅中文模式）- 先翻译
+    if (language === 'zhCN') {
+      desc = translateTerms(desc);
+    }
+    
+    // 动态替换 {thresholdRequirements} 为实际计算值 - 后替换
+    if (desc.includes('{thresholdRequirements}')) {
+      const thresholdRequirement = calculateThresholdRequirements(node, equipIndex, className);
+      if (thresholdRequirement) {
+        // 根据语言翻译属性名称
+        let translatedRequirement = thresholdRequirement;
+        if (language === 'zhCN') {
+          translatedRequirement = translateAttributeName(thresholdRequirement);
+        }
+        desc = desc.replace(/{thresholdRequirements}/g, translatedRequirement);
+      }
+    }
+    
+    return desc.trim();
   };
   
   // 获取雕纹名称
@@ -680,6 +1293,91 @@ function App() {
   const resetSimulator = useCallback(() => {
     setAllocations(new Map());
   }, []);
+  
+  // 清理指定盘面的所有节点分配
+  const clearBoardAllocations = useCallback((index: number) => {
+    const board = connectedBoards[index];
+    if (!board) return;
+    
+    setAllocations(prev => {
+      const newMap = new Map(prev);
+      newMap.forEach((_, key) => {
+        if (key.startsWith(board.boardId + '_')) {
+          newMap.delete(key);
+        }
+      });
+      return newMap;
+    });
+  }, [connectedBoards]);
+  
+  // 替换盘面（弹出选择框）
+  const [replacingBoardIndex, setReplacingBoardIndex] = useState<number | null>(null);
+  
+  const handleReplaceBoard = useCallback((index: number) => {
+    setReplacingBoardIndex(index);
+  }, []);
+  
+  const confirmReplaceBoard = useCallback((newBoardId: string) => {
+    if (replacingBoardIndex === null) return;
+    
+    setConnectedBoards(prev => {
+      const newBoards = [...prev];
+      newBoards[replacingBoardIndex] = {
+        ...newBoards[replacingBoardIndex],
+        boardId: newBoardId,
+        equippedGlyph: null,
+        entryGate: undefined
+      };
+      return newBoards;
+    });
+    
+    // 同时清除该盘面的所有节点分配
+    const board = connectedBoards[replacingBoardIndex];
+    if (board) {
+      setAllocations(prev => {
+        const newMap = new Map(prev);
+        newMap.forEach((_, key) => {
+          if (key.startsWith(board.boardId + '_')) {
+            newMap.delete(key);
+          }
+        });
+        return newMap;
+      });
+    }
+    
+    setReplacingBoardIndex(null);
+  }, [replacingBoardIndex, connectedBoards]);
+  
+  // 删除盘面
+  const handleDeleteBoard = useCallback((index: number) => {
+    const board = connectedBoards[index];
+    if (!board || board.boardId.includes('Start')) return; // 不能删除起始盘
+    
+    // 删除该盘面的所有节点分配
+    setAllocations(prev => {
+      const newMap = new Map(prev);
+      newMap.forEach((_, key) => {
+        if (key.startsWith(board.boardId + '_')) {
+          newMap.delete(key);
+        }
+      });
+      return newMap;
+    });
+    
+    // 删除盘面
+    setConnectedBoards(prev => {
+      const newBoards = prev.filter((_, i) => i !== index);
+      // 更新剩余盘面的boardIndex
+      return newBoards.map((b, i) => ({ ...b, boardIndex: i }));
+    });
+    
+    // 更新选中状态
+    if (selectedBoardIndex === index) {
+      setSelectedBoardIndex(0);
+    } else if (selectedBoardIndex > index) {
+      setSelectedBoardIndex(selectedBoardIndex - 1);
+    }
+  }, [connectedBoards, selectedBoardIndex]);
   
   // 获取选中的雕文数据
   const selectedGlyph = useMemo(() => {
@@ -745,6 +1443,17 @@ function App() {
               >
                 旋转
               </button>
+            </div>
+            
+            {/* 快捷路径模式切换 */}
+            <div className="quick-path-toggle">
+              <button 
+                className={`quick-path-btn ${quickPathMode ? 'active' : ''}`}
+                onClick={() => setQuickPathMode(!quickPathMode)}
+              >
+                {quickPathMode ? '✓ 快捷路径模式' : '快捷路径模式'}
+              </button>
+              <p className="quick-path-hint">启用后，点击任意未点亮节点会自动点亮最短路径</p>
             </div>
           </div>
           
@@ -947,36 +1656,12 @@ function App() {
         
         {/* 中间 - 画布 */}
         <div className={`center-panel ${!showRightPanel ? 'full-width' : ''}`}>
-          {/* 网格位置指示 */}
-          <div className="grid-overlay">
-            {GRID_LAYOUT.map((row, rowIndex) => (
-              <div key={rowIndex} className="grid-row">
-                {row.map((loc) => {
-                  const isOccupied = connectedBoards.some(b => b.gridLocation === loc);
-                  return (
-                    <button
-                      key={loc}
-                      className={`grid-cell ${isOccupied ? 'occupied' : ''} ${connectedBoards.find(b => b.gridLocation === loc)?.boardId === connectedBoards[selectedBoardIndex]?.boardId ? 'selected' : ''}`}
-                      onClick={() => {
-                        const boardAtLocation = connectedBoards.find(b => b.gridLocation === loc);
-                        if (boardAtLocation) {
-                          setSelectedBoardIndex(boardAtLocation.boardIndex);
-                        }
-                      }}
-                    >
-                      {loc}
-                    </button>
-                  );
-                })}
-              </div>
-            ))}
-          </div>
-          
           <ParagonCanvas
             boards={data.boards}
             connectedBoards={connectedBoards}
             allocations={allocations}
             reachableNodes={reachableNodes}
+            socketGlyphs={socketGlyphs}
             hoveredNode={hoveredNode}
             onNodeHover={setHoveredNode}
             onNodeClick={handleNodeClick}
@@ -984,6 +1669,10 @@ function App() {
             pan={pan}
             onZoomChange={setZoom}
             onPanChange={setPan}
+            onRotateBoard={rotateBoardClockwise}
+            onClearBoard={clearBoardAllocations}
+            onReplaceBoard={handleReplaceBoard}
+            onDeleteBoard={handleDeleteBoard}
           />
         </div>
         
@@ -993,7 +1682,7 @@ function App() {
             <div className="modal-content gate-select-modal" onClick={e => e.stopPropagation()}>
               <h3>选择连接的巅峰盘</h3>
               <div className="board-grid">
-                {data.boards.filter(b => !b.id.includes('Start')).map(board => (
+                {data.boards.filter(b => !b.id.includes('Start') && !connectedBoards.some(cb => cb.boardId === b.id)).map(board => (
                   <button
                     key={board.id}
                     className="board-select-btn"
@@ -1011,6 +1700,69 @@ function App() {
               </button>
             </div>
           </div>
+        )}
+        
+        {/* 替换盘面模态框 */}
+        {replacingBoardIndex !== null && (
+          <div className="modal-overlay" onClick={() => setReplacingBoardIndex(null)}>
+            <div className="modal-content gate-select-modal" onClick={e => e.stopPropagation()}>
+              <h3>替换巅峰盘</h3>
+              <div className="board-grid">
+                {data.boards.filter(b => !b.id.includes('Start') && !connectedBoards.some((cb, i) => i !== replacingBoardIndex && cb.boardId === b.id)).map(board => (
+                  <button
+                    key={board.id}
+                    className={`board-select-btn ${connectedBoards[replacingBoardIndex]?.boardId === board.id ? 'selected' : ''}`}
+                    onClick={() => confirmReplaceBoard(board.id)}
+                  >
+                    {board.name}
+                  </button>
+                ))}
+              </div>
+              <button 
+                className="cancel-btn"
+                onClick={() => setReplacingBoardIndex(null)}
+              >
+                取消
+              </button>
+            </div>
+          </div>
+        )}
+        
+        {/* Socket雕纹选择模态框 */}
+        {selectingGlyphForSocket && (
+          <div className="modal-overlay" onClick={() => setSelectingGlyphForSocket(null)}>
+            <div className="modal-content glyph-select-modal" onClick={e => e.stopPropagation()}>
+              <h3>选择雕纹</h3>
+              <div className="glyph-grid">
+                {data.glyphs.map(glyph => (
+                  <button
+                    key={glyph.id}
+                    className="glyph-select-btn"
+                    onClick={() => equipSocketGlyph(selectingGlyphForSocket.boardId, selectingGlyphForSocket.row, selectingGlyphForSocket.col, glyph.id, 1)}
+                  >
+                    <span className="glyph-name">{getGlyphName(glyph)}</span>
+                    {glyph.thresholdCn && <span className="glyph-threshold">{glyph.thresholdCn}</span>}
+                  </button>
+                ))}
+              </div>
+              <button 
+                className="cancel-btn"
+                onClick={() => setSelectingGlyphForSocket(null)}
+              >
+                取消
+              </button>
+            </div>
+          </div>
+        )}
+        
+        {/* 节点Tooltip */}
+        {hoveredNode && (
+          <NodeTooltip 
+            node={hoveredNode.node}
+            mouseX={mousePosition.x}
+            mouseY={mousePosition.y}
+            language={language}
+          />
         )}
         
         {/* 右侧面板 - 节点详情 */}

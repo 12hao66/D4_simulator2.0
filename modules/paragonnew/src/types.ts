@@ -179,6 +179,11 @@ export interface NodeRequirement {
   value: number;
 }
 
+// 门槛要求配置
+export interface ThresholdRequirements {
+  [className: string]: string[];
+}
+
 // 扩展 GridNode 添加属性需求
 export interface GridNode {
   id: string;
@@ -199,6 +204,8 @@ export interface GridNode {
   value?: number;
   // 属性需求
   requirements?: NodeRequirement[];
+  // 门槛要求（用于稀有节点的加成效果）
+  thresholdRequirements?: ThresholdRequirements;
 }
 
 // 模拟器状态

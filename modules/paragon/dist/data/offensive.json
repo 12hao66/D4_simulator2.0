@@ -1,60 +1,351 @@
 {
   "id": "offensive",
   "name": "进攻盘",
+  "icon": "⚔️",
+  "centerSlot": {
+    "x": 0,
+    "y": 0
+  },
   "nodes": [
     {
       "id": "offensive-entry-top",
       "type": "normal",
-      "x": 10,
-      "y": 0,
+      "name": "节点",
+      "icon": "●",
+      "x": 0,
+      "y": -320,
+      "effects": [],
+      "connections": [
+        "offensive-path-1"
+      ],
       "isEntryPoint": true
     },
     {
       "id": "offensive-path-1",
       "type": "normal",
-      "x": 10,
-      "y": 1,
-      "effects": ["+5% 暴击率"]
+      "name": "+5% 暴击率",
+      "icon": "●",
+      "x": 0,
+      "y": -288,
+      "effects": [
+        {
+          "id": "-5-----",
+          "name": "+5% 暴击率",
+          "description": "+5% 暴击率",
+          "value": 0,
+          "unit": ""
+        }
+      ],
+      "connections": [
+        "offensive-entry-top",
+        "offensive-path-2"
+      ],
+      "isEntryPoint": false
     },
     {
       "id": "offensive-path-2",
       "type": "normal",
-      "x": 10,
-      "y": 2,
-      "effects": ["+10% 暴击伤害"]
+      "name": "+10% 暴击伤害",
+      "icon": "●",
+      "x": 0,
+      "y": -256,
+      "effects": [
+        {
+          "id": "-10------",
+          "name": "+10% 暴击伤害",
+          "description": "+10% 暴击伤害",
+          "value": 0,
+          "unit": ""
+        }
+      ],
+      "connections": [
+        "offensive-path-1",
+        "offensive-node-1781972170199"
+      ],
+      "isEntryPoint": false
     },
     {
       "id": "offensive-center",
       "type": "legendary",
-      "x": 10,
-      "y": 5,
-      "effects": ["+20% 伤害"]
+      "name": "+20% 伤害",
+      "icon": "★",
+      "x": 0,
+      "y": -160,
+      "effects": [
+        {
+          "id": "-20----",
+          "name": "+20% 伤害",
+          "description": "+20% 伤害",
+          "value": 0,
+          "unit": ""
+        }
+      ],
+      "connections": [
+        "offensive-node-1781972180692",
+        "offensive-node-1781972191568"
+      ],
+      "isEntryPoint": false
     },
     {
       "id": "offensive-link-bottom",
       "type": "link",
-      "x": 10,
-      "y": 20
+      "name": "面板链接关口",
+      "icon": "🔗",
+      "x": 0,
+      "y": 320,
+      "effects": [],
+      "connections": [],
+      "isEntryPoint": true
     },
     {
       "id": "offensive-link-left",
       "type": "link",
-      "x": 0,
-      "y": 10
+      "name": "面板链接关口",
+      "icon": "🔗",
+      "x": -320,
+      "y": 0,
+      "effects": [],
+      "connections": [],
+      "isEntryPoint": true
     },
     {
       "id": "offensive-link-right",
       "type": "link",
-      "x": 20,
-      "y": 10
+      "name": "面板链接关口",
+      "icon": "🔗",
+      "x": 320,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "offensive-node-1781972312136"
+      ],
+      "isEntryPoint": true
+    },
+    {
+      "id": "offensive-node-1781972170199",
+      "type": "magic",
+      "name": "魔法01",
+      "icon": "◈",
+      "x": 0,
+      "y": -224,
+      "effects": [],
+      "connections": [
+        "offensive-path-2",
+        "offensive-node-1781972180692"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "offensive-node-1781972180692",
+      "type": "magic",
+      "name": "魔法02",
+      "icon": "◈",
+      "x": 0,
+      "y": -192,
+      "effects": [],
+      "connections": [
+        "offensive-center",
+        "offensive-node-1781972170199"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "offensive-node-1781972191568",
+      "type": "magic",
+      "name": "魔法03",
+      "icon": "◈",
+      "x": 0,
+      "y": -128,
+      "effects": [],
+      "connections": [
+        "offensive-center",
+        "offensive-node-1781972202004"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "offensive-node-1781972202004",
+      "type": "magic",
+      "name": "魔法04",
+      "icon": "◈",
+      "x": 0,
+      "y": -96,
+      "effects": [],
+      "connections": [
+        "offensive-node-1781972191568",
+        "offensive-node-1781972212072"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "offensive-node-1781972212072",
+      "type": "magic",
+      "name": "魔法05",
+      "icon": "◈",
+      "x": 0,
+      "y": -64,
+      "effects": [],
+      "connections": [
+        "offensive-node-1781972202004",
+        "offensive-node-1781972222956"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "offensive-node-1781972222956",
+      "type": "magic",
+      "name": "魔法06",
+      "icon": "◈",
+      "x": 0,
+      "y": -32,
+      "effects": [],
+      "connections": [
+        "offensive-node-1781972212072",
+        "offensive-node-1781972233057",
+        "offensive-node-1781972241411"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "offensive-node-1781972233057",
+      "type": "magic",
+      "name": "魔法07",
+      "icon": "◈",
+      "x": 0,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "offensive-node-1781972222956",
+        "offensive-node-1781972241411"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "offensive-node-1781972241411",
+      "type": "normal",
+      "name": "普通01",
+      "icon": "●",
+      "x": 32,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "offensive-node-1781972222956",
+        "offensive-node-1781972233057",
+        "offensive-node-1781972249296"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "offensive-node-1781972249296",
+      "type": "normal",
+      "name": "普通02",
+      "icon": "●",
+      "x": 64,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "offensive-node-1781972241411",
+        "offensive-node-1781972257973"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "offensive-node-1781972257973",
+      "type": "normal",
+      "name": "普通03",
+      "icon": "●",
+      "x": 96,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "offensive-node-1781972249296",
+        "offensive-node-1781972265835"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "offensive-node-1781972265835",
+      "type": "normal",
+      "name": "普通04",
+      "icon": "●",
+      "x": 128,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "offensive-node-1781972257973",
+        "offensive-node-1781972275198"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "offensive-node-1781972275198",
+      "type": "normal",
+      "name": "普通05",
+      "icon": "●",
+      "x": 160,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "offensive-node-1781972265835",
+        "offensive-node-1781972283960"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "offensive-node-1781972283960",
+      "type": "normal",
+      "name": "普通06",
+      "icon": "●",
+      "x": 192,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "offensive-node-1781972275198",
+        "offensive-node-1781972295132"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "offensive-node-1781972295132",
+      "type": "normal",
+      "name": "普通07",
+      "icon": "●",
+      "x": 224,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "offensive-node-1781972283960",
+        "offensive-node-1781972303364"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "offensive-node-1781972303364",
+      "type": "normal",
+      "name": "普通08",
+      "icon": "●",
+      "x": 256,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "offensive-node-1781972295132",
+        "offensive-node-1781972312136"
+      ],
+      "isEntryPoint": false
+    },
+    {
+      "id": "offensive-node-1781972312136",
+      "type": "normal",
+      "name": "普通09",
+      "icon": "●",
+      "x": 288,
+      "y": 0,
+      "effects": [],
+      "connections": [
+        "offensive-link-right",
+        "offensive-node-1781972303364"
+      ],
+      "isEntryPoint": false
     }
-  ],
-  "connections": [
-    ["offensive-entry-top", "offensive-path-1"],
-    ["offensive-path-1", "offensive-path-2"],
-    ["offensive-path-2", "offensive-center"],
-    ["offensive-center", "offensive-link-bottom"],
-    ["offensive-center", "offensive-link-left"],
-    ["offensive-center", "offensive-link-right"]
   ]
 }

@@ -789,7 +789,7 @@ export const useParagonStore = create<ExtendedParagonState & ParagonActions>((se
       // effects 对象数组转换为字符串数组
       const effectStrings = node.effects?.map(e => {
         if (typeof e === 'string') return e;
-        return e.description || `${e.type}: ${e.value}`;
+        return e.description || `${e.name}: ${e.value}${e.unit || ''}`;
       }) || [];
 
       return {
